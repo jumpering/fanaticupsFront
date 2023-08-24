@@ -1,27 +1,4 @@
 <h1>{{ title }}</h1>
 <h2>Cups & Mugs!</h2>
-<!-- <input type="text" [(ngModel)] = "inputVar" (keydown.enter)="addCup()"> {{ inputVar }}
-<button (click)="changeTitle()">change title sample</button>
-<button (click)="addCup()">add Cup</button> -->
-
-<!-- <div *ngIf="listOfCups.length === 0">
-  <h1>No cups / mugs to show</h1>
-</div>
-
-<table *ngIf="listOfCups.length != 0">
-  <tr>
-    <th>Name</th>
-    <th>Desciption</th>
-    <th>Origin</th>
-    <th>Image</th>
-  </tr>
-  <tr *ngFor="let cup of listOfCups; let i = index;">
-    <td>{{cup.name}}</td>
-    <td>{{cup.description}}</td>
-    <td>{{cup.origin}}</td>
-    <td><img [src]="cup.image" alt=""></td>
-    <td><button (click)="removeCup(i)">remove</button></td>
-  </tr>
-</table> -->
-
-<app-cup [cup] = "cupElement" *ngFor="let cupElement of listOfCups"></app-cup>
+<!-- <app-cup-list></app-cup-list> -->
+<router-outlet></router-outlet>
