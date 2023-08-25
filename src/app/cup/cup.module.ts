@@ -7,21 +7,20 @@ import { CupRoutingModule } from '@cup/cup-routing.module';
 import { CupComponent } from '@cup/components/cup/cup.component';
 import { CupListComponent } from '@cup/components/cup-list/cup-list.component';
 import { CupService } from '@cup/services/cup.service';
-import { ReversePipe } from '@cup/pipes/reverse.pipe';
-import { HighlightDirective } from '@cup/directives/highlight.directive';
+
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
     CupComponent,
-    CupListComponent,
-    ReversePipe,
-    HighlightDirective
-  ],
+    CupListComponent
+    ],
   imports: [
     CommonModule,
     CupRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [
     CupService

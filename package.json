@@ -1,6 +1,9 @@
 {
   "name": "fanaticups-front",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=18 <19"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
