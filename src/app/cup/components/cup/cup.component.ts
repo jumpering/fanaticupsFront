@@ -14,10 +14,15 @@ export class CupComponent implements OnInit {
   }
 
   @Input() cup!: Cup;
-  @Output() viewDescriptionClicked = new EventEmitter<string>();
+  @Output() buy = new EventEmitter<number>();
+  @Output() detail = new EventEmitter<number>();
  
   viewDescription(){
-    this.viewDescriptionClicked.emit(this.cup.description);
+    this.buy.emit(this.cup.id);
+  }
+
+  showDetail(){
+    this.detail.emit(this.cup.id);
   }
 
 }

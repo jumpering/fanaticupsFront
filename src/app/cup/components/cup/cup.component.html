@@ -1,4 +1,9 @@
-<h1 appHighlight>{{ cup.name | reverse}}</h1>
-<img [src]="cup.image" alt="">
-<!-- <p>{{ cup.description }}</p> -->
-<button (click)="viewDescription()">View description</button>
+<h1 class="headerTitle">{{ cup.name }}</h1>
+<img class="cupImage" [src]="cup.image" alt="">
+<p class = "origin">{{ cup.origin }}</p>
+<div class="descriptionShort">
+    <p>{{ cup.description | slice: 0: 50 | threeDotsForShortDescription }}</p>
+</div>
+<button (click)="viewDescription()">buy</button>
+<button (click)="showDetail()">detail</button>
+<a [routerLink]="['/cups', cup.id]">detail with routerLink direct</a>]

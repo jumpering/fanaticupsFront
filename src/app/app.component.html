@@ -1,4 +1,10 @@
-<h1>{{ title }}</h1>
-<h2>Cups & Mugs!</h2>
-<!-- <app-cup-list></app-cup-list> -->
+<img (click)="toHome()" class="logo" src="../assets/images/logo.svg" alt="">
+<nav>
+    <ul>
+        <li><a routerLink="/cups">Cups</a></li>
+        <li><a routerLink="/contact">Contact</a></li>
+    </ul>
+    
+    
+</nav>
 <router-outlet></router-outlet>

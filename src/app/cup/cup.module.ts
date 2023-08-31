@@ -9,11 +9,13 @@ import { CupListComponent } from '@cup/components/cup-list/cup-list.component';
 import { CupService } from '@cup/services/cup.service';
 
 import { SharedModule } from '@shared/shared.module';
+import { CupDetailComponent } from '@cup/components/cup-detail/cup-detail.component';
 
 @NgModule({
   declarations: [
     CupComponent,
-    CupListComponent
+    CupListComponent,
+    CupDetailComponent
     ],
   imports: [
     CommonModule,

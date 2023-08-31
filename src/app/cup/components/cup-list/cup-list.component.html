@@ -1,5 +1,8 @@
-<app-cup
-    [cup] = "cupElement"
-    (viewDescriptionClicked)="onViewDescriptionClicked($event)"
-    *ngFor="let cupElement of listOfCups">
-</app-cup>
+<div class="cups">
+    <app-cup
+        [cup] = "cupElement"
+        (buy)="onBuyClicked($event)"
+        (detail)="onDetailClicked($event)"
+        *ngFor="let cupElement of listOfCups">
+    </app-cup>
+</div>

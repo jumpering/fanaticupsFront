@@ -25,6 +25,7 @@
     "paths": {
       "@cup/*": ["src/app/cup/*"],
       "@core/*": ["src/app/core/*"],
+      "@contact/*": ["src/app/contact/*"],
       "@shared/*": ["src/app/shared/*"]
     }
   },
