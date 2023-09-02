@@ -21,8 +21,11 @@ export class CupDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params
       .subscribe((params: Params) => {
-        const id = params['id'];
-        this.cup = this.cupService.getById(id);
+        const id: number = params['id'];
+        this.cupService.getById(id)
+        .subscribe(element => {
+          this.cup = element;
+        });
       });
   }
 
