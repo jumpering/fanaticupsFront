@@ -1,6 +1,6 @@
 # Fanaticups.org
 
-SPA web application for anonimous and registred users. It will serve to bring together lovers of cups and mugs. They can be viewed, upload, modify, delete, bought, sold, and exchange opinions through a chat.
+SPA web application for anonimous and registred users. It will serve to bring together lovers of cups and mugs. They can be viewed, created, modified, deleted, bought, sold, exchanged, and given opinions through chat.
 
 Technological stack:
 - **Frontend:** Angular
