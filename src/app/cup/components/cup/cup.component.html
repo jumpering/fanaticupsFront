@@ -1,9 +1,16 @@
-<h1 class="headerTitle">{{ cup.name }}</h1>
-<img class="cupImage" [src]="cup.image" alt="">
-<p class = "origin">{{ cup.origin }}</p>
-<div class="descriptionShort">
-    <p>{{ cup.description | slice: 0: 50 | threeDotsForShortDescription }}</p>
-</div>
-<button (click)="viewDescription()">buy</button>
-<button (click)="showDetail()">detail</button>
-<a [routerLink]="['/cups', cup.id]">detail with routerLink direct</a>]
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            {{ cup.name }}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <img class="cupImage" [src]="cup.image" alt="">
+        <p class = "origin">{{ cup.origin }}</p>
+        <div class="descriptionShort">
+            <p>{{ cup.description | slice: 0: 50 | threeDotsForShortDescription }}</p>
+        </div>
+        <button mat-button (click)="viewDescription()" color="primary">Buy</button>
+        <button mat-button (click)="showDetail()" color="primary">Detail</button>
+    </mat-card-content>
+</mat-card>

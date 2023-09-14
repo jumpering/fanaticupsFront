@@ -10,6 +10,7 @@ import { CupService } from '@cup/services/cup.service';
 
 import { SharedModule } from '@shared/shared.module';
 import { CupDetailComponent } from '@cup/components/cup-detail/cup-detail.component';
+import { MaterialModule } from '@material/material.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CupDetailComponent } from '@cup/components/cup-detail/cup-detail.compon
     CupRoutingModule,
     FormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    MaterialModule
   ],
   providers: [
     CupService

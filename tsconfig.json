@@ -26,7 +26,8 @@
       "@cup/*": ["src/app/cup/*"],
       "@core/*": ["src/app/core/*"],
       "@contact/*": ["src/app/contact/*"],
-      "@shared/*": ["src/app/shared/*"]
+      "@shared/*": ["src/app/shared/*"],
+      "@material/*": ["src/app/material/*"],
     }
   },
   "angularCompilerOptions": {
