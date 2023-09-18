@@ -1,0 +1,11 @@
+<mat-toolbar>
+  <img (click)="toHome()" class="logo" src="./../../../../assets/images/logo.svg" alt="">
+  <span class="alignButtons"></span>
+  <div *ngIf="!isLogin()" >
+    <button mat-raised-button class="headerButtons" color="primary" routerLink="/cups">Login</button>  
+    <button mat-raised-button class="headerButtons" color="primary" routerLink="/contact">Sign up</button>
+  </div>
+  <div *ngIf="isLogin()">
+    <button mat-raised-button class="headerButtons" color="primary" routerLink="/cups">Create</button>  
+  </div>
+</mat-toolbar>

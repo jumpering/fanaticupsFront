@@ -20,8 +20,8 @@ export class AppComponent {
     this.title = "Fanaticups".toUpperCase();
   }
 
-  toHome() {
-    this.router.navigate(['/cups']);
-  }
+  // toHome() {
+  //   this.router.navigate(['/cups']);
+  // }
 
 }

@@ -5,16 +5,20 @@ import { Page404Component } from './page404/page404.component';
 const routes: Routes = [
   {
     path:'',
-    redirectTo: 'cups',
+    redirectTo: 'website',
     pathMatch: 'full'
   },
+  // {
+  //   path: 'cups',
+  //   loadChildren: () => import('@cup/cup.module').then(m => m.CupModule)
+  // },
+  // {
+  //   path: 'contact',
+  //   loadChildren: () => import('@contact/contact.module').then(m => m.ContactModule)
+  // },
   {
-    path: 'cups',
-    loadChildren: () => import('@cup/cup.module').then(m => m.CupModule)
-  },
-  {
-    path: 'contact',
-    loadChildren: () => import('@contact/contact.module').then(m => m.ContactModule)
+    path: 'website',
+    loadChildren: () => import('@website/website.module').then(m => m.WebsiteModule)
   },
   {
     path: '**',

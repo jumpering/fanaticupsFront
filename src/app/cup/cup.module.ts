@@ -26,6 +26,9 @@ import { MaterialModule } from '@material/material.module';
     SharedModule,
     MaterialModule
   ],
+  exports: [
+    CupListComponent
+  ],
   providers: [
     CupService
   ]

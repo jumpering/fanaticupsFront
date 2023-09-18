@@ -7,19 +7,19 @@ class Anonimous
 class CupGallery
 class Cup
 note left: name\nprice\ndescription\nsalable\nowner\n...
-class Chat
+class Comment
 class Transaction
 class CreateUpdateDelete
 Community *-->"1..*" User
-Community *-->"1" CupGallery
+Community *--> CupGallery
 CupGallery o-->"0..*" Cup
-Cup *--> Chat
-Anonimous *--> CupGallery
-Registred *--> CupGallery
+Cup *--> Comment
+Anonimous o--> CupGallery
+Registred o--> CupGallery
 User  <|-- Registred
 User  <|-- Anonimous
 Registred ..> Transaction
-Registred ..> Chat
+Registred ..> Comment
 Registred ..> CreateUpdateDelete
 CreateUpdateDelete ..> Cup
 Transaction ..>Cup 
