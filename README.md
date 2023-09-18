@@ -27,4 +27,4 @@ We will use the Rational Unified Process (RUP) development method to diagramming
 
 (registred user)
 
-![UseCaseContextRegistred](./out/documentation//uml/domainModel/../useCases/../useCaseContextAnonimous/UseCaseContextRegistred.svg)
+![UseCaseContextRegistred](./out/documentation//uml/domainModel/../useCases/../useCaseContextRegistred/UseCaseContextRegistred.svg)
