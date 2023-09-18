@@ -19,3 +19,12 @@ We will use the Rational Unified Process (RUP) development method to diagramming
 ### Use Cases
 
 ![UseCases](./out/documentation//uml/domainModel/../useCases/useCases.svg)
+
+### Use Case Context
+(anonimous user)
+
+![UseCaseContextAnonimous](./out/documentation//uml/domainModel/../useCases/../useCaseContextAnonimous/UseCaseContextAnonimous.svg)
+
+(registred user)
+
+![UseCaseContextRegistred](./out/documentation//uml/domainModel/../useCases/../useCaseContextAnonimous/UseCaseContextRegistred.svg)

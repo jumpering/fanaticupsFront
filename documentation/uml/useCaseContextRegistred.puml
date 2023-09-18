@@ -1,0 +1,54 @@
+@startuml UseCaseContextRegistred
+title UseCaseContextRegistred
+
+state REGISTRED
+
+[*] --> REGISTRED
+
+REGISTRED --> OPENED_CUP
+    note on link
+        readCup
+    end note
+
+REGISTRED --> OPENED_CUP_LIST
+    note on link
+        readCupList
+    end note     
+
+OPENED_CUP --> CUP_CREATED
+    note on link
+        createCup
+    end note  
+
+OPENED_CUP_LIST --> CUP_CREATED
+    note on link
+        createCup
+    end note          
+
+OPENED_CUP --> MODIFIED_CUP
+    note on link
+        updateCup
+    end note   
+
+OPENED_CUP --> DELETED_CUP
+    note on link
+        deleteCup
+    end note  
+
+
+DELETED_CUP --> OPENED_CUP_LIST
+    note on link
+        readCup
+    end note          
+
+MODIFIED_CUP --> OPENED_CUP
+    note on link
+        readCup
+    end note  
+
+' CUP_CREATED --> [*]
+'     note on link
+'         Logout
+'     end note
+
+@enduml

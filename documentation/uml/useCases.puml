@@ -1,4 +1,4 @@
-@startuml
+@startuml useCases
 allowmixing
 namespace useCases{
 left to right direction
@@ -7,12 +7,19 @@ actor RegistredUser
 
 usecase CreateCup
 usecase ReadCup
+usecase ReadCupList
 usecase UpdateCup
 usecase DeleteCup
 usecase Transaction
+usecase Login
+usecase Signup
 
 
+AnonimousUser --> Login
+AnonimousUser --> Signup
 AnonimousUser --> ReadCup
+AnonimousUser --> ReadCupList
+
 
 RegistredUser --> CreateCup
 CreateCup ..> ReadCup  : "<<include>>"
@@ -20,7 +27,8 @@ RegistredUser --> UpdateCup
 UpdateCup ..> ReadCup  : "<<include>>"
 RegistredUser --> DeleteCup
 DeleteCup ..> ReadCup  : "<<include>>"
-
+RegistredUser --> ReadCupList
+ReadCupList ..> ReadCup  : "<<include>>"
 RegistredUser --> Transaction
 Transaction ..> ReadCup  : "<<include>>"
 }

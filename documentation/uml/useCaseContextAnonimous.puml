@@ -1,0 +1,28 @@
+@startuml UseCaseContextAnonimous
+title UseCaseContextAnonimous
+
+state UNREGISTRED
+state REGISTRED
+
+
+[*] --> UNREGISTRED
+
+UNREGISTRED --> REGISTRED
+note on link
+    signup
+    login
+end note
+
+UNREGISTRED --> OPENED_CUP
+    note on link
+        readCup
+    end note
+
+UNREGISTRED --> OPENED_CUP_LIST
+    note on link
+        readCupList
+    end note    
+
+REGISTRED --> [*]
+
+@enduml
