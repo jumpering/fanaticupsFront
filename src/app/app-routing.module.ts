@@ -12,10 +12,10 @@ const routes: Routes = [
   //   path: 'cups',
   //   loadChildren: () => import('@cup/cup.module').then(m => m.CupModule)
   // },
-  // {
-  //   path: 'contact',
-  //   loadChildren: () => import('@contact/contact.module').then(m => m.ContactModule)
-  // },
+  {
+    path: 'auth',
+    loadChildren: () => import('@auth/auth.module').then(m => m.AuthModule)
+  },
   {
     path: 'website',
     loadChildren: () => import('@website/website.module').then(m => m.WebsiteModule)

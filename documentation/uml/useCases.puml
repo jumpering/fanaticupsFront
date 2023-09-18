@@ -1,0 +1,27 @@
+@startuml
+allowmixing
+namespace useCases{
+left to right direction
+actor AnonimousUser
+actor RegistredUser
+
+usecase CreateCup
+usecase ReadCup
+usecase UpdateCup
+usecase DeleteCup
+usecase Transaction
+
+
+AnonimousUser --> ReadCup
+
+RegistredUser --> CreateCup
+CreateCup ..> ReadCup  : "<<include>>"
+RegistredUser --> UpdateCup
+UpdateCup ..> ReadCup  : "<<include>>"
+RegistredUser --> DeleteCup
+DeleteCup ..> ReadCup  : "<<include>>"
+
+RegistredUser --> Transaction
+Transaction ..> ReadCup  : "<<include>>"
+}
+@enduml

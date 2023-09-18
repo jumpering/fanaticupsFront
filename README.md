@@ -15,3 +15,7 @@ We will use the Rational Unified Process (RUP) development method to diagramming
 ### Domain model
 
 ![DomainModel](./out/documentation//uml/domainModel/domainModel.svg)
+
+### Use Cases
+
+![UseCases](./out/documentation//uml/domainModel/../useCases/useCases.svg)

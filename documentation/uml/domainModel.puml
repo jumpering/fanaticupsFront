@@ -13,13 +13,13 @@ class CreateUpdateDelete
 Community *-->"1..*" User
 Community *--> CupGallery
 CupGallery o-->"0..*" Cup
-Cup *--> Comment
+Cup *-->"0..*" Comment
 Anonimous o--> CupGallery
 Registred o--> CupGallery
 User  <|-- Registred
 User  <|-- Anonimous
 Registred ..> Transaction
-Registred ..> Comment
+Registred ..>"0..*" Comment
 Registred ..> CreateUpdateDelete
 CreateUpdateDelete ..> Cup
 Transaction ..>Cup 
