@@ -1,13 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="765px" preserveAspectRatio="none" style="width:573px;height:765px;background:#FFFFFF;" version="1.1" viewBox="0 0 573 765" width="573px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="27.6094" id="_title" style="stroke:none;stroke-width:1.0;" width="196" x="181.84" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="186" x="186.84" y="24.5332">UseCaseContextRegistred</text><g id="REGISTRED"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="100" x="308.68" y="125.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="308.68" x2="408.68" y1="153.2188" y2="153.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="80" x="318.68" y="145.1426">REGISTRED</text></g><ellipse cx="358.68" cy="54.6094" fill="#222222" rx="10" ry="10" style="stroke:none;stroke-width:1.0;"/><g id="OPENED_CUP"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="113" x="178.18" y="271.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="178.18" x2="291.18" y1="299.2188" y2="299.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="188.18" y="291.1426">OPENED_CUP</text></g><g id="OPENED_CUP_LIST"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="150" x="278.68" y="563.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="278.68" x2="428.68" y1="591.2188" y2="591.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="288.68" y="583.1426">OPENED_CUP_LIST</text></g><g id="CUP_CREATED"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="122" x="11.68" y="709.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="11.68" x2="133.68" y1="737.2188" y2="737.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="21.68" y="729.1426">CUP_CREATED</text></g><g id="MODIFIED_CUP"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="122" x="116.68" y="417.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="116.68" x2="238.68" y1="445.2188" y2="445.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="126.68" y="437.1426">MODIFIED_CUP</text></g><g id="DELETED_CUP"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="120" x="293.68" y="417.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="293.68" x2="413.68" y1="445.2188" y2="445.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="303.68" y="437.1426">DELETED_CUP</text></g><!--MD5=[c55730823db07d419ff05d147b4e3be1]
-link *start to REGISTRED--><g id="link_*start_REGISTRED"><path d="M358.68,64.6194 C358.68,77.3094 358.68,101.0194 358.68,120.1794 " fill="none" id="*start-to-REGISTRED" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="358.68,125.4494,362.68,116.4494,358.68,120.4494,354.68,116.4494,358.68,125.4494" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[6b6a6dbe57b26daed302292969daf5dd]
-link REGISTRED to OPENED_CUP--><g id="link_REGISTRED_OPENED_CUP"><path d="M337.93,175.7094 C316.11,201.0494 281.82,240.8594 258.81,267.5794 " fill="none" id="REGISTRED-to-OPENED_CUP" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="255.5,271.4294,264.402,267.2158,258.761,267.6392,258.3377,261.9982,255.5,271.4294" style="stroke:#181818;stroke-width:1.0;"/><path d="M316.68,210.6094 L316.68,236.6094 L385.68,236.6094 L385.68,220.6094 L375.68,210.6094 L316.68,210.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M375.68,210.6094 L375.68,220.6094 L385.68,220.6094 L375.68,210.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="48" x="322.68" y="229.1045">readCup</text></g><!--MD5=[107338147d75e844f8419c7acec20691]
-link REGISTRED to OPENED_CUP_LIST--><g id="link_REGISTRED_OPENED_CUP_LIST"><path d="M380.28,175.6294 C387.18,184.4894 394.18,194.9694 398.68,205.6094 C455.94,340.9594 512.12,405.1794 440.68,533.6094 C434.71,544.3494 425.62,553.2294 415.53,560.4594 " fill="none" id="REGISTRED-to-OPENED_CUP_LIST" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="411.15,563.4594,420.8354,561.6724,415.2748,560.6334,416.3138,555.0728,411.15,563.4594" style="stroke:#181818;stroke-width:1.0;"/><path d="M476.68,356.6094 L476.68,382.6094 L566.68,382.6094 L566.68,366.6094 L556.68,356.6094 L476.68,356.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M556.68,356.6094 L556.68,366.6094 L566.68,366.6094 L556.68,356.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="69" x="482.68" y="375.1045">readCupList</text></g><!--MD5=[ae826189fe1dac167b0b2eff72ae56d6]
-link OPENED_CUP to CUP_CREATED--><g id="link_OPENED_CUP_CUP_CREATED"><path d="M177.93,302.6094 C145.07,308.7194 106.07,322.1594 84.68,351.6094 C6,459.9094 43.88,634.7494 63.47,703.9994 " fill="none" id="OPENED_CUP-to-CUP_CREATED" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="64.96,709.1994,66.3336,699.4468,63.5864,704.3918,58.6414,701.6445,64.96,709.1994" style="stroke:#181818;stroke-width:1.0;"/><path d="M43.68,502.6094 L43.68,528.6094 L123.68,528.6094 L123.68,512.6094 L113.68,502.6094 L43.68,502.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M113.68,502.6094 L113.68,512.6094 L123.68,512.6094 L113.68,502.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="59" x="49.68" y="521.1045">createCup</text></g><!--MD5=[fe430948587230a0d9e23e2441f642bc]
-link OPENED_CUP_LIST to CUP_CREATED--><g id="link_OPENED_CUP_LIST_CUP_CREATED"><path d="M306.65,613.7094 C256.3,639.5194 176.63,680.3394 124.51,707.0494 " fill="none" id="OPENED_CUP_LIST-to-CUP_CREATED" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="119.87,709.4294,129.705,708.9068,124.3249,707.1591,126.0726,701.779,119.87,709.4294" style="stroke:#181818;stroke-width:1.0;"/><path d="M251.68,648.6094 L251.68,674.6094 L331.68,674.6094 L331.68,658.6094 L321.68,648.6094 L251.68,648.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M321.68,648.6094 L321.68,658.6094 L331.68,658.6094 L321.68,648.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="59" x="257.68" y="667.1045">createCup</text></g><!--MD5=[9bb7767be3df66492ce7ad37cea1099d]
-link OPENED_CUP to MODIFIED_CUP--><g id="link_OPENED_CUP_MODIFIED_CUP"><path d="M177.95,304.9994 C149.1,311.9494 116.44,325.4394 98.68,351.6094 C89.69,364.8494 91.21,373.4594 98.68,387.6094 C104.24,398.1494 112.89,407.0294 122.46,414.3394 " fill="none" id="OPENED_CUP-to-MODIFIED_CUP" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="126.62,417.3794,121.7173,408.8375,122.5844,414.4275,116.9943,415.2945,126.62,417.3794" style="stroke:#181818;stroke-width:1.0;"/><path d="M103.68,356.6094 L103.68,382.6094 L186.68,382.6094 L186.68,366.6094 L176.68,356.6094 L103.68,356.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M176.68,356.6094 L176.68,366.6094 L186.68,366.6094 L176.68,356.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="62" x="109.68" y="375.1045">updateCup</text></g><!--MD5=[e4be91c987cd9236698cbf939c269774]
-link MODIFIED_CUP to OPENED_CUP--><g id="link_MODIFIED_CUP_OPENED_CUP"><path d="M187.25,417.4294 C197.17,392.3794 212.67,353.2194 223.23,326.5394 " fill="none" id="MODIFIED_CUP-to-OPENED_CUP" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="225.14,321.7094,218.1091,328.6062,223.3003,326.3586,225.5479,331.5498,225.14,321.7094" style="stroke:#181818;stroke-width:1.0;"/><path d="M218.68,356.6094 L218.68,382.6094 L287.68,382.6094 L287.68,366.6094 L277.68,356.6094 L218.68,356.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M277.68,356.6094 L277.68,366.6094 L287.68,366.6094 L277.68,356.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="48" x="224.68" y="375.1045">readCup</text></g><!--MD5=[ef092ebac2cba9d7dba775000b2f6024]
-link OPENED_CUP to DELETED_CUP--><g id="link_OPENED_CUP_DELETED_CUP"><path d="M268.96,321.8794 C279.84,330.5294 291.43,340.8194 300.68,351.6094 C316.67,370.2694 330.58,394.3894 340.14,412.9694 " fill="none" id="OPENED_CUP-to-DELETED_CUP" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="342.47,417.5594,341.9474,407.7244,340.1997,413.1045,334.8196,411.3568,342.47,417.5594" style="stroke:#181818;stroke-width:1.0;"/><path d="M330.68,356.6094 L330.68,382.6094 L409.68,382.6094 L409.68,366.6094 L399.68,356.6094 L330.68,356.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M399.68,356.6094 L399.68,366.6094 L409.68,366.6094 L399.68,356.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="58" x="336.68" y="375.1045">deleteCup</text></g><!--MD5=[f7eb6dcef9e8930f9712d1746cee6083]
-link DELETED_CUP to OPENED_CUP_LIST--><g id="link_DELETED_CUP_OPENED_CUP_LIST"><path d="M353.68,467.7094 C353.68,492.6294 353.68,531.5594 353.68,558.2594 " fill="none" id="DELETED_CUP-to-OPENED_CUP_LIST" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="353.68,563.4294,357.68,554.4294,353.68,558.4294,349.68,554.4294,353.68,563.4294" style="stroke:#181818;stroke-width:1.0;"/><path d="M358.68,502.6094 L358.68,528.6094 L427.68,528.6094 L427.68,512.6094 L417.68,502.6094 L358.68,502.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M417.68,502.6094 L417.68,512.6094 L427.68,512.6094 L417.68,502.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="48" x="364.68" y="521.1045">readCup</text></g><!--MD5=[c8f3b2a02be5384317b3b79a425f60d6]
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="814px" preserveAspectRatio="none" style="width:647px;height:814px;background:#FFFFFF;" version="1.1" viewBox="0 0 647 814" width="647px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="27.6094" id="_title" style="stroke:none;stroke-width:1.0;" width="196" x="218.75" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="186" x="223.75" y="24.5332">UseCaseContextRegistred</text><g id="REGISTRED"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="100" x="363" y="125.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="363" x2="463" y1="153.2188" y2="153.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="80" x="373" y="145.1426">REGISTRED</text></g><ellipse cx="413" cy="54.6094" fill="#222222" rx="10" ry="10" style="stroke:none;stroke-width:1.0;"/><g id="OPENED_CUP"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="113" x="189.5" y="417.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="189.5" x2="302.5" y1="445.2188" y2="445.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="199.5" y="437.1426">OPENED_CUP</text></g><g id="OPENED_CUP_LIST"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="150" x="338" y="271.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="338" x2="488" y1="299.2188" y2="299.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="348" y="291.1426">OPENED_CUP_LIST</text></g><g id="CREATED_CUP"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="122" x="352" y="417.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="352" x2="474" y1="445.2188" y2="445.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="362" y="437.1426">CREATED_CUP</text></g><g id="MODIFIED_CUP"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="122" x="7" y="579.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="7" x2="129" y1="607.2188" y2="607.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="17" y="599.1426">MODIFIED_CUP</text></g><g id="OPENED_COMMENTS"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="164" x="164" y="579.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="164" x2="328" y1="607.2188" y2="607.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="144" x="174" y="599.1426">OPENED_COMMENTS</text></g><g id="OPENED_TRANSACTION"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="182" x="363" y="579.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="363" x2="545" y1="607.2188" y2="607.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="162" x="373" y="599.1426">OPENED_TRANSACTION</text></g><g id="MODIFIED_COMMENTS"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="173" x="159.5" y="758.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="159.5" x2="332.5" y1="786.2188" y2="786.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="153" x="169.5" y="778.1426">MODIFIED_COMMENTS</text></g><g id="LOGGED_OUT"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="117" x="523.5" y="271.6094"/><line style="stroke:#181818;stroke-width:0.5;" x1="523.5" x2="640.5" y1="299.2188" y2="299.2188"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97" x="533.5" y="291.1426">LOGGED_OUT</text></g><ellipse cx="582" cy="442.6094" fill="none" rx="10" ry="10" style="stroke:#222222;stroke-width:1.0;"/><ellipse cx="582.5" cy="443.1094" fill="#222222" rx="6" ry="6" style="stroke:none;stroke-width:1.0;"/><!--MD5=[c55730823db07d419ff05d147b4e3be1]
+link *start to REGISTRED--><g id="link_*start_REGISTRED"><path d="M413,64.6194 C413,77.3094 413,101.0194 413,120.1794 " fill="none" id="*start-to-REGISTRED" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="413,125.4494,417,116.4494,413,120.4494,409,116.4494,413,125.4494" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[6b6a6dbe57b26daed302292969daf5dd]
+link REGISTRED to OPENED_CUP--><g id="link_REGISTRED_OPENED_CUP"><path d="M362.92,172.5994 C323.8,191.9794 272.14,224.8794 248,271.6094 C224.89,316.3494 231.69,376.9594 238.8,412.4194 " fill="none" id="REGISTRED-to-OPENED_CUP" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="239.85,417.4594,241.9427,407.8354,238.8365,412.5632,234.1087,409.457,239.85,417.4594" style="stroke:#181818;stroke-width:1.0;"/><path d="M253,283.6094 L253,309.6094 L315,309.6094 L315,293.6094 L305,283.6094 L253,283.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M305,283.6094 L305,293.6094 L315,293.6094 L305,283.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="41" x="259" y="302.1045">getCup</text></g><!--MD5=[107338147d75e844f8419c7acec20691]
+link REGISTRED to OPENED_CUP_LIST--><g id="link_REGISTRED_OPENED_CUP_LIST"><path d="M413,175.7094 C413,200.6294 413,239.5594 413,266.2594 " fill="none" id="REGISTRED-to-OPENED_CUP_LIST" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="413,271.4294,417,262.4294,413,266.4294,409,262.4294,413,271.4294" style="stroke:#181818;stroke-width:1.0;"/><path d="M418,210.6094 L418,236.6094 L501,236.6094 L501,220.6094 L491,210.6094 L418,210.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M491,210.6094 L491,220.6094 L501,220.6094 L491,210.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="62" x="424" y="229.1045">getCupList</text></g><!--MD5=[74ccb4b4196484d0c4bff76e4ecabccf]
+link OPENED_CUP_LIST to CREATED_CUP--><g id="link_OPENED_CUP_LIST_CREATED_CUP"><path d="M413,321.7094 C413,346.6294 413,385.5594 413,412.2594 " fill="none" id="OPENED_CUP_LIST-to-CREATED_CUP" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="413,417.4294,417,408.4294,413,412.4294,409,408.4294,413,417.4294" style="stroke:#181818;stroke-width:1.0;"/><path d="M418,356.6094 L418,382.6094 L483,382.6094 L483,366.6094 L473,356.6094 L418,356.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M473,356.6094 L473,366.6094 L483,366.6094 L473,356.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="44" x="424" y="375.1045">addCup</text></g><!--MD5=[c6a2fc2f9e3617fa3d75642aba595fa4]
+link OPENED_CUP_LIST to OPENED_CUP--><g id="link_OPENED_CUP_LIST_OPENED_CUP"><path d="M373.57,321.8694 C360.25,330.6694 345.58,341.0594 333,351.6094 C310.4,370.5694 287.31,394.7194 270.6,413.2394 " fill="none" id="OPENED_CUP_LIST-to-OPENED_CUP" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="266.92,417.3394,275.9053,413.3064,270.2569,413.6158,269.9476,407.9674,266.92,417.3394" style="stroke:#181818;stroke-width:1.0;"/><path d="M338,356.6094 L338,382.6094 L400,382.6094 L400,366.6094 L390,356.6094 L338,356.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M390,356.6094 L390,366.6094 L400,366.6094 L390,356.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="41" x="344" y="375.1045">getCup</text></g><!--MD5=[9bb7767be3df66492ce7ad37cea1099d]
+link OPENED_CUP to MODIFIED_CUP--><g id="link_OPENED_CUP_MODIFIED_CUP"><path d="M190.17,467.7294 C174.61,475.9194 158.34,485.9794 145,497.6094 C119.6,519.7394 97.81,551.7494 83.96,574.7994 " fill="none" id="OPENED_CUP-to-MODIFIED_CUP" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="81.3,579.2794,89.3382,573.5884,83.8557,574.9819,82.4622,569.4993,81.3,579.2794" style="stroke:#181818;stroke-width:1.0;"/><path d="M150,502.6094 L150,544.6094 L233,544.6094 L233,512.6094 L223,502.6094 L150,502.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M223,502.6094 L223,512.6094 L233,512.6094 L223,502.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="62" x="156" y="521.1045">updateCup</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="58" x="156" y="537.4561">deleteCup</text></g><!--MD5=[9f4a52bb31e0363b8389a457f572c997]
+link OPENED_CUP to OPENED_COMMENTS--><g id="link_OPENED_CUP_OPENED_COMMENTS"><path d="M246,467.9094 C246,496.4994 246,543.9394 246,574.4794 " fill="none" id="OPENED_CUP-to-OPENED_COMMENTS" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="246,579.6094,250.0257,570.6208,246.0143,574.6094,242.0257,570.598,246,579.6094" style="stroke:#181818;stroke-width:1.0;"/><path d="M251,510.6094 L251,536.6094 L346,536.6094 L346,520.6094 L336,510.6094 L251,510.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M336,510.6094 L336,520.6094 L346,520.6094 L336,510.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="74" x="257" y="529.1045">getComment</text></g><!--MD5=[ffc664547506c101f65735929600eed1]
+link OPENED_CUP to OPENED_TRANSACTION--><g id="link_OPENED_CUP_OPENED_TRANSACTION"><path d="M302.51,465.3294 C321.39,473.9294 341.95,484.8294 359,497.6094 C388.42,519.6494 415.72,551.8594 433.44,574.9894 " fill="none" id="OPENED_CUP-to-OPENED_TRANSACTION" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="436.63,579.1894,434.3698,569.6034,433.6049,575.2083,428,574.4435,436.63,579.1894" style="stroke:#181818;stroke-width:1.0;"/><path d="M417,510.6094 L417,536.6094 L523,536.6094 L523,520.6094 L513,510.6094 L417,510.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M513,510.6094 L513,520.6094 L523,520.6094 L513,510.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="85" x="423" y="529.1045">getTransaction</text></g><!--MD5=[1e0bea6b1ff2681aefa2cf05dfb149e6]
+link OPENED_COMMENTS to MODIFIED_COMMENTS--><g id="link_OPENED_COMMENTS_MODIFIED_COMMENTS"><path d="M246,629.8494 C246,661.9294 246,718.4694 246,753.0294 " fill="none" id="OPENED_COMMENTS-to-MODIFIED_COMMENTS" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="246,758.3794,250,749.3794,246,753.3794,242,749.3794,246,758.3794" style="stroke:#181818;stroke-width:1.0;"/><path d="M251,664.6094 L251,723.6094 L373,723.6094 L373,674.6094 L363,664.6094 L251,664.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M363,664.6094 L363,674.6094 L373,674.6094 L363,664.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="77" x="257" y="683.1045">addComment</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="95" x="257" y="699.4561">updateComment</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="101" x="257" y="715.8076">deleteComponent</text></g><!--MD5=[6b4e0b2082bebb9ae80258b41c83b1ab]
+link REGISTRED to LOGGED_OUT--><g id="link_REGISTRED_LOGGED_OUT"><path d="M463.23,173.0594 C480.36,181.7294 498.96,192.7494 514,205.6094 C534.62,223.2394 552.83,248.1394 565.21,267.2794 " fill="none" id="REGISTRED-to-LOGGED_OUT" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="567.92,271.5194,566.4564,261.7799,565.2328,267.3028,559.7099,266.0793,567.92,271.5194" style="stroke:#181818;stroke-width:1.0;"/><path d="M551,210.6094 L551,236.6094 L607,236.6094 L607,220.6094 L597,210.6094 L551,210.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M597,210.6094 L597,220.6094 L607,220.6094 L597,210.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="35" x="557" y="229.1045">logout</text></g><!--MD5=[6ecef19f19180ea3d578cca876edfc47]
+link LOGGED_OUT to *end--><g id="link_LOGGED_OUT_*end"><path d="M582,321.7094 C582,351.9294 582,402.7594 582,427.3794 " fill="none" id="LOGGED_OUT-to-*end" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="582,432.4994,586,423.4994,582,427.4994,578,423.4994,582,432.4994" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[ddbd818dc78df1120f6d49057f27b7af]
 @startuml UseCaseContextRegistred
 title UseCaseContextRegistred
 
@@ -17,99 +19,53 @@ state REGISTRED
 
 REGISTRED - -> OPENED_CUP
     note on link
-        readCup
+        getCup
     end note
 
 REGISTRED - -> OPENED_CUP_LIST
     note on link
-        readCupList
+        getCupList
     end note     
 
-OPENED_CUP - -> CUP_CREATED
+OPENED_CUP_LIST - -> CREATED_CUP
     note on link
-        createCup
-    end note  
+        addCup
+    end note 
 
-OPENED_CUP_LIST - -> CUP_CREATED
+OPENED_CUP_LIST - -> OPENED_CUP
     note on link
-        createCup
-    end note          
+        getCup
+    end note               
 
 OPENED_CUP - -> MODIFIED_CUP
     note on link
         updateCup
+        deleteCup
     end note   
 
-OPENED_CUP - -> DELETED_CUP
+OPENED_CUP - -> OPENED_COMMENTS
     note on link
-        deleteCup
-    end note  
-
-
-DELETED_CUP - -> OPENED_CUP_LIST
-    note on link
-        readCup
-    end note          
-
-MODIFIED_CUP - -> OPENED_CUP
-    note on link
-        readCup
-    end note  
-
-' CUP_CREATED - -> [*]
-'     note on link
-'         Logout
-'     end note
-
-@enduml
-
-@startuml UseCaseContextRegistred
-title UseCaseContextRegistred
-
-state REGISTRED
-
-[*] - -> REGISTRED
-
-REGISTRED - -> OPENED_CUP
-    note on link
-        readCup
+        getComment
     end note
 
-REGISTRED - -> OPENED_CUP_LIST
+OPENED_CUP - -> OPENED_TRANSACTION
     note on link
-        readCupList
-    end note     
+        getTransaction
+    end note
 
-OPENED_CUP - -> CUP_CREATED
+OPENED_COMMENTS - -> MODIFIED_COMMENTS
     note on link
-        createCup
-    end note  
+        addComment
+        updateComment
+        deleteComponent
+    end note                 
 
-OPENED_CUP_LIST - -> CUP_CREATED
+REGISTRED - -> LOGGED_OUT
     note on link
-        createCup
-    end note          
+        logout
+    end note
 
-OPENED_CUP - -> MODIFIED_CUP
-    note on link
-        updateCup
-    end note   
-
-OPENED_CUP - -> DELETED_CUP
-    note on link
-        deleteCup
-    end note  
-
-
-DELETED_CUP - -> OPENED_CUP_LIST
-    note on link
-        readCup
-    end note          
-
-MODIFIED_CUP - -> OPENED_CUP
-    note on link
-        readCup
-    end note  
+LOGGED_OUT - -> [*]
 
 
 @enduml

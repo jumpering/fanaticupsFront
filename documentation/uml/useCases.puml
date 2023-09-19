@@ -5,46 +5,46 @@ left to right direction
 actor AnonimousUser
 actor RegistredUser
 
-usecase CreateCup
-usecase ReadCup
-usecase ReadCupList
-usecase UpdateCup
-usecase DeleteCup
-usecase Transaction
-usecase Login
-usecase Signup
-usecase Logout
-usecase ReadComment
-usecase CreateComment
-usecase DeleteComment
-usecase UpdateComment
+usecase addCup
+usecase getCup
+usecase getCupList
+usecase updateCup
+usecase deleteCup
+usecase transaction
+usecase login
+usecase signup
+usecase logout
+usecase getComment
+usecase addComment
+usecase deleteComment
+usecase updateComment
 
-AnonimousUser --> Signup
-AnonimousUser --> ReadCup
-AnonimousUser --> ReadCupList
-AnonimousUser --> Login
+AnonimousUser --> signup
+AnonimousUser --> getCup
+AnonimousUser --> getCupList
+AnonimousUser --> login
 
-Transaction ..> ReadCup  : "<<include>>"
+transaction ..> getCup  : "<<include>>"
 
-RegistredUser --> Login
-RegistredUser --> Logout
+RegistredUser --> login
+RegistredUser --> logout
 
-RegistredUser --> CreateCup
-CreateCup ..> ReadCup  : "<<include>>"
-RegistredUser --> UpdateCup
-UpdateCup ..> ReadCup  : "<<include>>"
-RegistredUser --> DeleteCup
-DeleteCup ..> ReadCup  : "<<include>>"
-RegistredUser --> ReadCupList
-ReadCupList ..> ReadCup  : "<<include>>"
+RegistredUser --> addCup
+addCup ..> getCup  : "<<include>>"
+RegistredUser --> updateCup
+updateCup ..> getCup  : "<<include>>"
+RegistredUser --> deleteCup
+deleteCup ..> getCup  : "<<include>>"
+RegistredUser --> getCupList
+getCupList ..> getCup  : "<<include>>"
 
-RegistredUser --> CreateComment
-CreateComment ..> ReadComment  : "<<include>>"
-RegistredUser --> DeleteComment
-DeleteComment ..> ReadComment  : "<<include>>"
-RegistredUser --> UpdateComment
-UpdateComment ..> ReadComment  : "<<include>>"
+RegistredUser --> addComment
+addComment ..> getComment  : "<<include>>"
+RegistredUser --> deleteComment
+deleteComment ..> getComment  : "<<include>>"
+RegistredUser --> updateComment
+updateComment ..> getComment  : "<<include>>"
 
-RegistredUser --> Transaction
+RegistredUser --> transaction
 }
 @enduml

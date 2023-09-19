@@ -7,47 +7,50 @@ state REGISTRED
 
 REGISTRED --> OPENED_CUP
     note on link
-        readCup
+        getCup
     end note
 
 REGISTRED --> OPENED_CUP_LIST
     note on link
-        readCupList
+        getCupList
     end note     
 
-OPENED_CUP --> CUP_CREATED
+OPENED_CUP_LIST --> CREATED_CUP
     note on link
-        createCup
-    end note  
+        addCup
+    end note 
 
-OPENED_CUP_LIST --> CUP_CREATED
+OPENED_CUP_LIST --> OPENED_CUP
     note on link
-        createCup
-    end note          
+        getCup
+    end note               
 
 OPENED_CUP --> MODIFIED_CUP
     note on link
         updateCup
+        deleteCup
     end note   
 
-OPENED_CUP --> DELETED_CUP
+OPENED_CUP --> OPENED_COMMENTS
     note on link
-        deleteCup
-    end note     
+        getComment
+    end note
 
-DELETED_CUP --> OPENED_CUP_LIST
+OPENED_CUP --> OPENED_TRANSACTION
     note on link
-        readCup
-    end note          
+        getTransaction
+    end note
 
-MODIFIED_CUP --> OPENED_CUP
+OPENED_COMMENTS --> MODIFIED_COMMENTS
     note on link
-        readCup
-    end note 
+        addComment
+        updateComment
+        deleteComponent
+    end note                 
 
 REGISTRED --> LOGGED_OUT
     note on link
-        Logout
+        logout
     end note
 
 LOGGED_OUT --> [*]
