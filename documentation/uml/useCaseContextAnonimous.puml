@@ -15,12 +15,12 @@ end note
 
 UNREGISTRED --> OPENED_CUP
     note on link
-        readCup
+        getCup
     end note
 
 UNREGISTRED --> OPENED_CUP_LIST
     note on link
-        readCupList
+        getCupList
     end note    
 
 REGISTRED --> [*]
