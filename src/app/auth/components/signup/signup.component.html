@@ -8,13 +8,22 @@
             <mat-form-field>
                 <mat-label>email</mat-label>
                 <input matInput placeholder="email" formControlName="email">
-                <!-- <mat-error *ngIf="form.value('email').hasError('required')" >
-                    El campo es obligatorio
-                  </mat-error> -->
+                <mat-error *ngIf="form.get('email')!.hasError('required')" >
+                    Required field email
+                  </mat-error>
+                  <mat-error *ngIf="form.get('email')!.hasError('email')" >
+                      Only valid email
+                    </mat-error>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>password</mat-label>
                 <input matInput type="password" placeholder="password" formControlName="password">
+                <mat-error *ngIf="form.get('password')!.dirty && form.get('password')!.hasError('required')" >
+                    Required field password
+                  </mat-error>
+                  <mat-error *ngIf="form.get('password')!.dirty && form.get('password')!.hasError('minlength')" >
+                    Minimum password length 8
+                  </mat-error>
             </mat-form-field>
         </form>
     </mat-card-content>

@@ -9,7 +9,7 @@ class Cup
 note left: name\nprice\ndescription\nsalable\nowner\n...
 class Comment
 class Transaction
-class CreateUpdateDelete
+class Management
 Community *-->"1..*" User
 Community *--> CupGallery
 CupGallery o-->"0..*" Cup
@@ -20,8 +20,8 @@ User  <|-- Registred
 User  <|-- Anonimous
 Registred ..> Transaction
 Registred ..>"0..*" Comment
-Registred ..> CreateUpdateDelete
-CreateUpdateDelete ..> Cup
+Registred ..> Management
+Management ..> Cup
 Transaction ..>Cup 
 }
 @enduml

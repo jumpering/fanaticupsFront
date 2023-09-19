@@ -14,7 +14,7 @@ export class AuthService {
     return this.authFire.signInWithEmailAndPassword(email, password);
   }
 
-  register(email: string, password: string) {
+  signup(email: string, password: string) {
     return this.authFire.createUserWithEmailAndPassword(email, password);
   }
 

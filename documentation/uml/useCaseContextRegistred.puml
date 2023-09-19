@@ -33,8 +33,7 @@ OPENED_CUP --> MODIFIED_CUP
 OPENED_CUP --> DELETED_CUP
     note on link
         deleteCup
-    end note  
-
+    end note     
 
 DELETED_CUP --> OPENED_CUP_LIST
     note on link
@@ -44,11 +43,14 @@ DELETED_CUP --> OPENED_CUP_LIST
 MODIFIED_CUP --> OPENED_CUP
     note on link
         readCup
-    end note  
+    end note 
 
-' CUP_CREATED --> [*]
-'     note on link
-'         Logout
-'     end note
+REGISTRED --> LOGGED_OUT
+    note on link
+        Logout
+    end note
+
+LOGGED_OUT --> [*]
+
 
 @enduml

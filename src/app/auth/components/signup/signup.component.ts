@@ -26,8 +26,8 @@ export class SignupComponent implements OnInit {
   buildForm(): void{
     this.form = this.formBuilder.group({
       //name: ['', Validators.required],
-      email: ['', Validators.required, Validators.email],
-      password: ['', Validators.required, Validators.minLength(6)],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       //confirmPassword: ['', Validators.required, Validators.minLength(6)]
     });
   }
@@ -36,7 +36,7 @@ export class SignupComponent implements OnInit {
     if (this.form.valid) {
       const email = this.form.value.email;
       const password = this.form.value.password;
-      this.authService.login(email, password)
+      this.authService.signup(email, password)
       .then(data => {
         this.router.navigate(['/auth/login']);
       })
@@ -46,5 +46,9 @@ export class SignupComponent implements OnInit {
       });
     }
   }
+
+  // get emailField(){
+  //   return this.form.value.email;
+  // }
 
 }

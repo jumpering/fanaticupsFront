@@ -13,13 +13,21 @@ usecase DeleteCup
 usecase Transaction
 usecase Login
 usecase Signup
+usecase Logout
+usecase ReadComment
+usecase CreateComment
+usecase DeleteComment
+usecase UpdateComment
 
-
-AnonimousUser --> Login
 AnonimousUser --> Signup
 AnonimousUser --> ReadCup
 AnonimousUser --> ReadCupList
+AnonimousUser --> Login
 
+Transaction ..> ReadCup  : "<<include>>"
+
+RegistredUser --> Login
+RegistredUser --> Logout
 
 RegistredUser --> CreateCup
 CreateCup ..> ReadCup  : "<<include>>"
@@ -29,7 +37,14 @@ RegistredUser --> DeleteCup
 DeleteCup ..> ReadCup  : "<<include>>"
 RegistredUser --> ReadCupList
 ReadCupList ..> ReadCup  : "<<include>>"
+
+RegistredUser --> CreateComment
+CreateComment ..> ReadComment  : "<<include>>"
+RegistredUser --> DeleteComment
+DeleteComment ..> ReadComment  : "<<include>>"
+RegistredUser --> UpdateComment
+UpdateComment ..> ReadComment  : "<<include>>"
+
 RegistredUser --> Transaction
-Transaction ..> ReadCup  : "<<include>>"
 }
 @enduml
