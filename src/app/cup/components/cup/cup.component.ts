@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Cup } from '@cup/models/cup.model';
+import { AuthService } from '@auth/services/auth.service';
 
 @Component({
   selector: 'app-cup',
@@ -8,9 +9,14 @@ import { Cup } from '@cup/models/cup.model';
 })
 export class CupComponent implements OnInit {
 
-  constructor() { }
+  public isLogged!: boolean;
+
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.authService.hasSession().subscribe(logged => this.isLogged = logged);
   }
 
   @Input() cup!: Cup;

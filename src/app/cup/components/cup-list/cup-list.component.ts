@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Cup } from '../../models/cup.model';
 import { CupService } from '@cup/services/cup.service';
 
+
 @Component({
   selector: 'app-cup-list',
   templateUrl: './cup-list.component.html',

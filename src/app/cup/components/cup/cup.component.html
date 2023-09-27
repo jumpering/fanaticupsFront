@@ -10,7 +10,9 @@
         <div class="descriptionShort">
             <p>{{ cup.description | slice: 0: 50 | threeDotsForShortDescription }}</p>
         </div>
-        <button mat-button (click)="viewDescription()" color="primary">Buy</button>
-        <button mat-button (click)="showDetail()" color="primary">Detail</button>
+        <div class="buttons">
+            <button mat-raised-button (click)="viewDescription()" color="primary" *ngIf="isLogged">Buy</button>
+            <button mat-raised-button (click)="showDetail()" color="primary">Detail</button>
+        </div>
     </mat-card-content>
 </mat-card>

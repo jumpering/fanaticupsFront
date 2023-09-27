@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '@auth/services/auth.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar 
   ) { 
     this.buildForm();
   }
@@ -38,11 +40,11 @@ export class SignupComponent implements OnInit {
       const password = this.form.value.password;
       this.authService.signup(email, password)
       .then(data => {
-        this.router.navigate(['/auth/login']);
+        this.router.navigate(['/']);
       })
       .catch(error => {
-        console.error(error);
-        //this.openMessage(error.message);
+        console.log({error});
+        this.snackBar.open(error.message,'close',{duration: 5000});
       });
     }
   }
