@@ -8,10 +8,10 @@ const routes: Routes = [
     redirectTo: 'website',
     pathMatch: 'full'
   },
-  // {
-  //   path: 'cups',
-  //   loadChildren: () => import('@cup/cup.module').then(m => m.CupModule)
-  // },
+  {
+    path: 'cups',
+    loadChildren: () => import('@cup/cup.module').then(m => m.CupModule)
+  },
   {
     path: 'auth',
     loadChildren: () => import('@auth/auth.module').then(m => m.AuthModule)
