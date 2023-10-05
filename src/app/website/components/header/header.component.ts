@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toHome() {
-    this.router.navigate(['/cups']);
+    this.router.navigate(['/']);
   }
 
   // isLogin$(): Observable<boolean>{
@@ -34,8 +34,5 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
   }
 
-}
-function value(value: boolean): void {
-  throw new Error('Function not implemented.');
 }
 

@@ -1,18 +1,30 @@
-<mat-card>
+<mat-card class="cupCard">
     <mat-card-header>
         <mat-card-title>
-            {{ cup.name }}
+            <h3>{{ cup.name }}</h3>
         </mat-card-title>
+        <mat-card-subtitle>
+            {{ cup.origin }}
+        </mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
-        <img class="cupImage" [src]="cup.image" alt="">
-        <p class = "origin">{{ cup.origin }}</p>
+    <mat-card-content (click)="showDetail()">
+        <img mat-card-image class="cupImage" [src]="cup.image" alt="">
         <div class="descriptionShort">
-            <p>{{ cup.description | slice: 0: 50 | threeDotsForShortDescription }}</p>
+            <p> {{ cup.description | slice: 0: 50 | threeDotsForShortDescription }}</p>
         </div>
-        <div class="buttons">
-            <button mat-raised-button (click)="viewDescription()" color="primary" *ngIf="isLogged">Buy</button>
-            <button mat-raised-button (click)="showDetail()" color="primary">Detail</button>
+        <mat-divider></mat-divider>
+        <div class="cupPrice">
+            <h2>Price: {{ cup.price }} €</h2>
         </div>
+        <mat-divider></mat-divider>
+        <div class="owner">
+            <h3>@owner: {{ this.getOwner() }}</h3>
+        </div>
+
     </mat-card-content>
+    <mat-card-actions>
+        <div class="buttons">
+            <!-- <button mat-raised-button (click)="viewDescription()" color="primary" *ngIf="isLogged">Buy</button> -->
+        </div>
+    </mat-card-actions>
 </mat-card>

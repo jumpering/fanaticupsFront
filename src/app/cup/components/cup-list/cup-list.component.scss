@@ -1,5 +1,13 @@
+.firstBodyImage{
+    height: 300px;
+    margin-bottom: 100px;
+}
+
 .cups{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    // display: grid;
+    // grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px;
+    justify-content: space-around;
 }

@@ -1,6 +1,61 @@
 <div *ngIf="cup">
-    <h1>Full description component</h1>
+    <!-- <h1>Full description component</h1>
     <img [src]= "cup.image" [alt]="cup.name">
-    <p>{{ cup.description }}</p>
-    
-</div>
+    <p>{{ cup.description }}</p> -->
+
+    <div class="detailContainer">
+        <div class="detail">
+            <div class="right">
+                <mat-card class="cupCard">
+                    <mat-card-content>
+                        <img mat-card-image class="cupImage" [src]="cup.image" alt="">
+                        <mat-divider></mat-divider>
+                        <div style="width: 100px; height: 100px; background-color: aliceblue;">image</div>
+
+                        <mat-divider></mat-divider>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="left">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>{{ cup.name }} ❤️</h2>
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        {{ cup.origin }}
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="descriptionShort">
+                        <p> {{ cup.description }}</p>
+                    </div>
+                    <div class="owner">
+                        <h3>@owner: {{ cup.owner }}</h3>
+                        <h3>------></h3>
+                        <h3>SEGUIR</h3>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="cupPrice">
+                        <h2>Price: {{ cup.price }} €</h2>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <mat-divider></mat-divider>
+                    <h2>6 comments</h2>
+                    <h3>USER_A:  aaa aaaaaa aaaa aaa aaa</h3>
+                    <h3>USER_B:  aaaa aaaaa aaa a aaaa afeefds dfddfsf ddfdssdsdaa</h3>
+                    <h3>aUSER_A:  a aa aaa aaaaaaa aaaaaa</h3>
+                    <h3>USER_B:  aaaa aaaa aa</h3>
+                    <h3>USER_A:  aa aaaa aaaaaa aafdfd dfdfd fdfdfaaaaaa🥰</h3>
+                    <h3>USER_B:  aaa aa aaaaaa aaaaaaa aa</h3>
+
+                </mat-card-content>
+            </mat-card>
+            </div>
+        </div>
+        <div class="related" style="background-color: beige;">
+
+            <h2 style="display: flex; justify-content: center;">...related...</h2>
+        </div>
+    </div>
+

@@ -31,4 +31,8 @@ export class CupComponent implements OnInit {
     this.detail.emit(this.cup.id);
   }
 
+  getOwner(): string{
+    return this.cup.owner;
+  }
+
 }

@@ -28,7 +28,7 @@ export class CupListComponent implements OnInit {
   }
 
   public onDetailClicked(id: number){
-    this.router.navigate(['/cups', id]);
+    this.router.navigate(['/', id]);
   }
 
 }

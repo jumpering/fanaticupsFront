@@ -4,4 +4,6 @@ export interface Cup {
     origin: string;
     description: string;
     image: string;
+    price: number;
+    owner: string;
 }

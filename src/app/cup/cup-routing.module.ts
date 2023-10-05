@@ -6,19 +6,19 @@ import { CupDetailComponent } from './components/cup-detail/cup-detail.component
 import { AuthGuard } from '@auth/guards/auth.guard';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: CupListComponent
-  },
-  {
-    path: ':id',
-    component: CupDetailComponent
-  },
-  {
-    path: 'add',
-    canActivate: [AuthGuard],
-    //component: AddCupComponent
-  }
+  // {
+  //   path: '',
+  //   component: CupListComponent
+  // },
+  // {
+  //   path: ':id',
+  //   component: CupDetailComponent
+  // },
+  // {
+  //   path: 'add',
+  //   canActivate: [AuthGuard],
+  //   //component: AddCupComponent
+  // }
 ];
 
 @NgModule({

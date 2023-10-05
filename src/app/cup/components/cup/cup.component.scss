@@ -1,16 +1,48 @@
-.headerTitle {
-    color: rgb(97, 77, 77);
-    font-size: medium;
-    font-family:Arial, Helvetica, sans-serif;
+::ng-deep .mat-card{
+    border: 55px !important;
+    border-radius: 30px !important;
+    border: 55px solid #000;
+   }
+
+   .mat-card:hover { 
+    filter: brightness(50%);
+}
+
+.cupCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .cupImage {
-    width:  100px;
+    width: 250px;
+    margin:auto;
+}
+
+.descriptionShort{
+    color:black;
+    font-size: large;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .buttons {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex: 1 1 auto;
     gap: 10px;
+}
+
+.cupPrice{
+    display: flex;
+    justify-content: end;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.owner{
+    color: rgb(70, 70, 70);
+    padding-left: 10px;
+    padding-top: 10px;
 }
