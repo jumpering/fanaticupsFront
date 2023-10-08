@@ -6,15 +6,8 @@
     <div class="detailContainer">
         <div class="detail">
             <div class="right">
-                <mat-card class="cupCard">
-                    <mat-card-content>
-                        <img mat-card-image class="cupImage" [src]="cup.image" alt="">
-                        <mat-divider></mat-divider>
-                        <div style="width: 100px; height: 100px; background-color: aliceblue;">image</div>
-
-                        <mat-divider></mat-divider>
-                    </mat-card-content>
-                </mat-card>
+                <img class="backButton" src="./../../../../assets/images/backButton.svg" alt="back" (click)="toHome()">
+                <img class="cupImage" [src]="cup.image" alt="">
             </div>
             <div class="left">
             <mat-card>
@@ -54,7 +47,6 @@
             </div>
         </div>
         <div class="related" style="background-color: beige;">
-
             <h2 style="display: flex; justify-content: center;">...related...</h2>
         </div>
     </div>

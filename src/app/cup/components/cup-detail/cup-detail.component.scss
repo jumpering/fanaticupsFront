@@ -12,36 +12,35 @@
 }
 
 .right{
-    width: 70%;
-}
-
-.cup:hover{
-    cursor:initial;
-}
-
-.chat{
-    width: 100%;
-    background-color: rgb(255, 255, 189);
-}
-
-::ng-deep .mat-card{
-    border: 55px !important;
-    border-radius: 30px !important;
-    border: 55px solid #000;
-   }
-
-.cupCard{
+    width: 75%;
+    height: auto;
+    background-color: bisque;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+
+}
+
+.left{
+    width: 25%;
+    height: auto;
+}
+
+.backButton{
     cursor: pointer;
-    background-color: rgb(208, 255, 239);
+    width: 5%;
+    height: auto;
 }
 
 .cupImage {
-    margin:0, auto;
-    width: 600px;
+    width: 80%;
+    height: auto;
+    object-fit:cover;
+    border-radius: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .descriptionShort{

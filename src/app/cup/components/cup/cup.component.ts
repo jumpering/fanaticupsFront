@@ -20,6 +20,7 @@ export class CupComponent implements OnInit {
   }
 
   @Input() cup!: Cup;
+  @Input() ownerName!: string;
   @Output() buy = new EventEmitter<number>();
   @Output() detail = new EventEmitter<number>();
  
@@ -32,6 +33,7 @@ export class CupComponent implements OnInit {
   }
 
   getOwner(): string{
+    //return this.ownerName;
     return this.cup.owner;
   }
 

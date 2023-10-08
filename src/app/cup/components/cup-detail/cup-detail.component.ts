@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { CupService } from '@cup/services/cup.service'
 import { Cup } from '@cup/models/cup.model';
@@ -15,7 +15,8 @@ export class CupDetailComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private cupService: CupService
+    private cupService: CupService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +30,8 @@ export class CupDetailComponent implements OnInit {
       });
   }
 
-
+  toHome() {
+    this.router.navigate(['/']);
+  }
 
 }
