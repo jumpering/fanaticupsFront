@@ -6,6 +6,7 @@ import { MaterialModule } from '@material/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { CupModule } from '@cup/cup.module';
 import { LayoutComponent } from './components/layout/layout.component';
+import { AuthModule } from '@auth/auth.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { LayoutComponent } from './components/layout/layout.component';
     CommonModule,
     WebsiteRoutingModule,
     MaterialModule,
-    CupModule
+    CupModule,
+    AuthModule
   ]
 })
 export class WebsiteModule { }

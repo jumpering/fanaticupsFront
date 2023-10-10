@@ -6,8 +6,20 @@
 .cups{
     // display: grid;
     // grid-template-columns: repeat(4, 1fr);
+
+
+
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+
     justify-content: space-around;
+
+
+
+    
+    // display: grid;
+    // grid-template-columns: 0.4fr 0.3fr 0.3fr;
+    // grid-column-gap: 10px;
+    // grid-row-gap: 15px;
 }

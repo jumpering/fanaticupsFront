@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { Observable } from 'rxjs';
+import { SignupComponent } from '@auth/components/signup/signup.component';
+import { MatDialog } from '@angular/material/dialog';
+import { CupComponent } from '@cup/components/cup/cup.component';
+import { LoginComponent } from '@auth/components/login/login.component';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +18,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +38,24 @@ export class HeaderComponent implements OnInit {
     // this.authService.logout().then(user => console.log('currentUser after logout subscribe: ' + user));
     this.authService.logout();
   }
+
+  openSignupDialog(){
+    this.dialog.open(SignupComponent);
+    //this.dialog.open(SignupComponent);
+    // const dialogRef = this.dialog.open(SignupComponent);
+    // dialogRef.afterClosed().subscribe(resp => {
+    //   console.log(resp);
+    // })
+  }
+
+  openLoginDialog(){
+    this.dialog.open(LoginComponent);
+    //this.dialog.open(SignupComponent);
+    // const dialogRef = this.dialog.open(SignupComponent);
+    // dialogRef.afterClosed().subscribe(resp => {
+    //   console.log(resp);
+    // })
+  } 
 
 }
 

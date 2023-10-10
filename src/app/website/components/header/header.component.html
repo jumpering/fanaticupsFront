@@ -17,8 +17,10 @@
 
 
   <div *ngIf="!isLogged" >
-    <button mat-raised-button class="headerButtons" color="primary" routerLink="/auth/login">Login</button>  
-    <button mat-raised-button class="headerButtons" color="primary" routerLink="/auth/signup">Sign up</button>
+    <button mat-raised-button class="headerButtons" color="primary" (click)="openLoginDialog()">Login</button>  
+    <!-- <button mat-raised-button class="headerButtons" color="primary" routerLink="/auth/login">Login</button>   -->
+    <!-- <button mat-raised-button class="headerButtons" color="primary" routerLink="/auth/signup">Sign up</button> -->
+    <button mat-raised-button class="headerButtons" color="primary" (click)="openSignupDialog()">Sign up</button>
   </div>
   <div *ngIf="isLogged">
     <button mat-raised-button class="headerButtons" color="primary" routerLink="/cups">Create Cup</button>  
@@ -28,4 +30,4 @@
 
 
 
-</mat-toolbar>
+</mat-toolbar>    

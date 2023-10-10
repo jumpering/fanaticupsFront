@@ -6,10 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CupRoutingModule } from '@cup/cup-routing.module';
 import { CupComponent } from '@cup/components/cup/cup.component';
 import { CupListComponent } from '@cup/components/cup-list/cup-list.component';
+import { CupDetailComponent } from '@cup/components/cup-detail/cup-detail.component';
 import { CupService } from '@cup/services/cup.service';
 
 import { SharedModule } from '@shared/shared.module';
-import { CupDetailComponent } from '@cup/components/cup-detail/cup-detail.component';
 import { MaterialModule } from '@material/material.module';
 
 @NgModule({

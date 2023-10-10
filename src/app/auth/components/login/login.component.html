@@ -1,4 +1,37 @@
-<mat-card>
+<div class="dialogContainer">
+    <h1 class="title">Login to fanaticups!</h1>
+    <mat-divider></mat-divider>
+    <form class="formSignup" novalidate [formGroup]="form">
+        <mat-form-field>
+            <mat-label>email</mat-label>
+            <input matInput placeholder="email" formControlName="email">
+            <mat-error *ngIf="form.get('email')!.hasError('required')" >
+                Required field email
+              </mat-error>
+              <mat-error *ngIf="form.get('email')!.hasError('email')" >
+                  Only valid email
+                </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>password</mat-label>
+            <input matInput type="password" placeholder="password" formControlName="password">
+            <mat-error *ngIf="form.get('password')!.dirty && form.get('password')!.hasError('required')" >
+                Required field password
+              </mat-error>
+              <mat-error *ngIf="form.get('password')!.dirty && form.get('password')!.hasError('minlength')" >
+                Minimum password length 8
+              </mat-error>
+        </mat-form-field>
+    </form>
+    <button mat-raised-button type="button" [disabled]="form.invalid" (click)="login()">Login</button>
+    <button mat-raised-button type="button" (click)="closeDialog()">Close</button>
+
+</div>
+
+
+
+<!-- <mat-card>
     <mat-card-header>
         <mat-card-title>Wellcome to Fanaticups!</mat-card-title>
         <mat-card-subtitle>Login</mat-card-subtitle>
@@ -30,4 +63,4 @@
     <mat-card-actions>
         <button mat-raised-button type="button" [disabled]="form.invalid" (click)="login()">Sign up</button>
     </mat-card-actions>
-</mat-card>
+</mat-card> -->

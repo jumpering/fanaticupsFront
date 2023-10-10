@@ -1,4 +1,4 @@
-<mat-card class="cupCard">
+<mat-card class="cupCard" (click)="showDetail()">
     <mat-card-header>
         <mat-card-title>
             <h3>{{ cup.name }}</h3>
@@ -7,10 +7,10 @@
             {{ cup.origin }}
         </mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content (click)="showDetail()">
+    <mat-card-content>
         <img mat-card-image class="cupImage" [src]="cup.image" alt="">
         <div class="descriptionShort">
-            <p> {{ cup.description | slice: 0: 50 | threeDotsForShortDescription }}</p>
+            <p> {{ cup.description | slice: 0: 30 | threeDotsForShortDescription }}</p>
         </div>
         <mat-divider></mat-divider>
         <div class="cupPrice">

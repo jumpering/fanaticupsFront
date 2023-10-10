@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '@auth/services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
 
@@ -17,7 +19,9 @@ export class SignupComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar 
+    private snackBar: MatSnackBar,
+    public dialogRef: MatDialogRef<SignupComponent>,
+    //@Inject(MAT_DIALOG_DATA) public data: 'ojo al dato'
   ) { 
     this.buildForm();
   }
@@ -49,8 +53,12 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  // get emailField(){
-  //   return this.form.value.email;
-  // }
+  get emailField(): string{
+    return this.form.value.email;
+  }
+
+  closeDialog(): void {
+    this.dialogRef.close();
+  }
 
 }

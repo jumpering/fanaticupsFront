@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '@auth/services/auth.service';
 import { Router } from '@angular/router';
 
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    public dialogRef: MatDialogRef<LoginComponent>
   ) {
     this.buildForm();
    }
@@ -38,9 +41,14 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, password).then(response =>{
       console.log(response);
       this.router.navigate(['/']);
+      this.dialogRef.close();
     },
     error => {
       console.error(error);
     })
+  }
+
+  closeDialog(): void {
+    this.dialogRef.close();
   }
 }
