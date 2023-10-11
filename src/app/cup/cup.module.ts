@@ -11,12 +11,14 @@ import { CupService } from '@cup/services/cup.service';
 
 import { SharedModule } from '@shared/shared.module';
 import { MaterialModule } from '@material/material.module';
+import { CreateComponent } from './components/create/create.component';
 
 @NgModule({
   declarations: [
     CupComponent,
     CupListComponent,
-    CupDetailComponent
+    CupDetailComponent,
+    CreateComponent
     ],
   imports: [
     CommonModule,

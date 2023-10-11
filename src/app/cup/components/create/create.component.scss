@@ -1,0 +1,34 @@
+.container{
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+.title{
+    text-align: center;
+}
+
+::ng-deep .mat-card{
+    border: 75px !important;
+    border-radius: 30px !important;
+    border: 55px solid #000;
+   }
+
+.cupCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-form-field {
+    width:35vw;
+  }
+
+//   .buttons {
+//     display: flex;
+//     flex-direction:row;
+//     justify-content: end;
+
+//     // flex: 1 1 auto;
+//     gap: 10px;
+// }

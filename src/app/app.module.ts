@@ -15,7 +15,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 @NgModule({
   declarations: [
     AppComponent,
-    Page404Component
+    Page404Component,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +23,6 @@ import { AngularFireModule } from '@angular/fire/compat';
     BrowserAnimationsModule,
     //provideFirebaseApp(() => initializeApp(environment.firebase)),
     //provideFirestore(() => getFirestore())
-
     AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],

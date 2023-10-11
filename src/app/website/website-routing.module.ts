@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
 import { CupListComponent } from '@cup/components/cup-list/cup-list.component';
 import { CupDetailComponent } from '@cup/components/cup-detail/cup-detail.component';
+import { CreateComponent } from '../cup/components/create/create.component';
 
 const routes: Routes = [
   {
@@ -12,10 +13,15 @@ const routes: Routes = [
       path: '',
       component: CupListComponent
     },
-  {
-    path: ':id',
-    component: CupDetailComponent
-  }]
+    {
+      path: 'create',
+      component: CreateComponent
+    },
+    {
+      path: ':id',
+      component: CupDetailComponent
+    },
+    ]
   },
 ];
 
