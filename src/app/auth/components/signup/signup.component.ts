@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    //private authService: AuthService,
     private router: Router,
     private snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<SignupComponent>,
@@ -42,14 +42,14 @@ export class SignupComponent implements OnInit {
     if (this.form.valid) {
       const email = this.form.value.email;
       const password = this.form.value.password;
-      this.authService.signup(email, password)
-      .then(data => {
-        this.router.navigate(['/']);
-      })
-      .catch(error => {
-        console.log({error});
-        this.snackBar.open(error.message,'close',{duration: 5000});
-      });
+      // this.authService.signup(email, password)
+      // .then(data => {
+      //   this.router.navigate(['/']);
+      // })
+      // .catch(error => {
+      //   console.log({error});
+      //   this.snackBar.open(error.message,'close',{duration: 5000});
+      // });
     }
   }
 

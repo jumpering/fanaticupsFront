@@ -1,36 +1,49 @@
-<h1 class="title">Create your ❤️ Cup</h1>
-<br>
-<div class="container">
-    <mat-card class="cupCard">
-        <mat-card-title>Please fill all fields</mat-card-title>
-        <mat-card-subtitle>...and your cup was created!</mat-card-subtitle>
-        <mat-card-content>
-            <p>
-                <mat-form-field appearance="outline">
-                  <mat-label>Name</mat-label>
-                  <input matInput type="text" placeholder="Cup name">
-                  <!-- <mat-hint>Cup name</mat-hint> -->
-                </mat-form-field>
-              </p>
-              <p>
-                <mat-form-field appearance="outline">
-                  <mat-label>Origin</mat-label>
-                  <input matInput type="text" placeholder="Origin">
-                </mat-form-field>
-              </p>
-              <p>
-                <mat-form-field appearance="outline">
-                  <mat-label>Description</mat-label>
-                  <textarea matInput name="Description" placeholder="Description"></textarea>
-                </mat-form-field>
-              </p>             
-        </mat-card-content>
-        <mat-card-actions>
-          <div class="buttons">
-              <button mat-raised-button color="primary">Upload image</button>
-              <button mat-raised-button color="primary">Cancel create and back</button>
-          </div>
-      </mat-card-actions>
-    </mat-card>
-</div>
-
+<body>
+  <div class="container">
+    <h1 class="title">Let's create your ❤️ Cup</h1>
+    <br>
+    <div class="cardContainer">
+        <mat-card class="cupCard">
+            <mat-card-title>Please fill all fields</mat-card-title>
+            <mat-card-subtitle>...and your cup was created!</mat-card-subtitle>
+            <mat-card-content>
+                <p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Name</mat-label>
+                      <input matInput type="text" placeholder="Cup name">
+                      <!-- <mat-hint>Cup name</mat-hint> -->
+                    </mat-form-field>
+                  </p>
+                  <p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Origin</mat-label>
+                      <input matInput type="text" placeholder="Origin">
+                    </mat-form-field>
+                  </p>
+                  <p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Description</mat-label>
+                      <textarea matInput name="Description" placeholder="Description"></textarea>
+                    </mat-form-field>
+                  </p>
+                  <!-- <mat-form-field
+                  [hideRequiredMarker]="hideRequiredControl.value"
+                  [floatLabel]="getFloatLabelValue()">
+                <input matInput placeholder="Simple placeholder" required>
+              </mat-form-field>            -->
+            </mat-card-content>
+            <mat-card-actions>
+              <div class="buttons">
+                  <!-- <button mat-raised-button color="primary" onChange="console.log(event.target.files)">Upload image</button> -->
+                <input type="file" class="inputButton" onChange="onSelectedFile($event)" #input>
+                  <div>
+                    {{fileName || "No file uploaded yet."}}
+                  </div>
+                  <button mat-raised-button color="primary" routerLink="/">Cancel</button>
+                  <button mat-raised-button color="primary" (click)="input.click()">Upload image</button>
+              </div>
+          </mat-card-actions>
+        </mat-card>
+    </div>  
+  </div>  
+</body>

@@ -1,9 +1,26 @@
+body{
+    background-image: url("./../../../../assets/images/cup.svg");
+    background-size: 5%;
+    // background-repeat: space;
+    background-repeat: repeat-x;
+}
+
 .container{
+
+
+}
+
+.inputButton{
+    display: none;
+}
+
+.cardContainer{
     padding-left: 30%;
     padding-right: 30%;
 }
 
 .title{
+    padding-top: 100px;
     text-align: center;
 }
 

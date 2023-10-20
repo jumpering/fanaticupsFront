@@ -1,68 +1,44 @@
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Observable, map } from 'rxjs';
+import { Credentials } from '@auth/models/Credentials';
+import { Observable, map, observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
 
+
+
   constructor(
-    private authFire: AngularFireAuth
+    private httpClient: HttpClient
   ) { }
-  login(email: string, password: string) {
-    return this.authFire.signInWithEmailAndPassword(email, password);
+
+  login(credentials: Credentials) {
+    console.log('traza!!!!');
+    return this.httpClient.post('http://localhost:8080/authenticate', credentials, {
+      observe: 'response'
+    }).pipe(map((response: HttpResponse<any>) => {
+      console.log('traza dentro del pipe y map');
+      const body = response.body;
+      const headers = response.headers;
+
+      const bearerToken = headers.get('Authorization')!;
+      const token = bearerToken.replace('Bearer ', '');
+      console.log('TOKEN: ', token);
+
+      localStorage.setItem('token', token);
+      return body;
+    }))
   }
 
-  signup(email: string, password: string) {
-    return this.authFire.createUserWithEmailAndPassword(email, password);
+  getToken(){
+    return localStorage.getItem('token');
+  }  
+
+  hasSession(){
+
+    return true;
   }
-
-  logout() {
-    return this.authFire.signOut();
-  }
-
-  hasSession(): Observable<boolean> {
-  //hasSession(): boolean {    
-    //this.authFire.onAuthStateChanged.
-    // this.authFire.authState.subscribe(user => user === null ? flag = false : flag = true);
-    //return flag;
-    //console.log('test');
-    return this.authFire.authState
-    .pipe(
-      // tap(user => {
-      //   if (user) {
-      //     localStorage.setItem('currentUser', JSON.stringify(user));
-      //     const currentUser = localStorage.getItem('currentUser');
-      //     const original = JSON.parse(currentUser);
-      //   }
-      // }),
-      // map((user) => user === null ? false : true),
-      map(user => {
-        //console.log('dentro pipe/map')
-        if(user === null || user === undefined){
-          //console.log('es false');
-          return false;
-        } else {
-          //console.log('es true');
-          return true;
-        }
-      }
-    ));
-  }
-
-
-
-  currentUserMail(): string | undefined{
-    var userName;
-    this.authFire.currentUser.then(user => {
-      if (user?.email === null || user?.email === undefined){
-        userName = 'nulo';
-      } else {
-        userName = user.email.toString();
-      }
-    });
-    return userName;
-  }
-
 }

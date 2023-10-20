@@ -16,7 +16,7 @@ export class CupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.authService.hasSession().subscribe(logged => this.isLogged = logged);
+    //this.authService.hasSession().subscribe(logged => this.isLogged = logged);
   }
 
   @Input() cup!: Cup;

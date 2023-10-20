@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Page404Component } from './page404/page404.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { environment } from 'src/environments/environment';
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { HttpClientModule, HttpResponse } from '@angular/common/http';
 
-import { AngularFireModule } from '@angular/fire/compat';
+// import { environment } from 'src/environments/environment';
+// import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+// import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+
+// import { AngularFireModule } from '@angular/fire/compat';
 
 
 @NgModule({
@@ -21,9 +23,10 @@ import { AngularFireModule } from '@angular/fire/compat';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule
     //provideFirebaseApp(() => initializeApp(environment.firebase)),
     //provideFirestore(() => getFirestore())
-    AngularFireModule.initializeApp(environment.firebase),
+    //AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],
   bootstrap: [AppComponent]

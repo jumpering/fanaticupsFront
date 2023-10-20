@@ -18,12 +18,14 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService,
+    //private authService: AuthService,
     public dialog: MatDialog
-  ) { }
+  ) {
+    this.isLogged = false;
+   }
 
   ngOnInit(): void {
-    this.authService.hasSession().subscribe(logged => this.isLogged = logged);
+    //this.authService.hasSession().subscribe(logged => this.isLogged = logged);
   }
 
   toHome() {
@@ -36,7 +38,7 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     // this.authService.logout().then(user => console.log('currentUser after logout subscribe: ' + user));
-    this.authService.logout();
+    //this.authService.logout();
   }
 
   openSignupDialog(){
