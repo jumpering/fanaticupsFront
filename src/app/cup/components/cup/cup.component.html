@@ -8,7 +8,9 @@
         </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <img mat-card-image class="cupImage" [src]="cup.image" alt="">
+        <div class="cupImage">
+            <img mat-card-image [src]="cup.image" alt="">
+        </div>
         <div class="descriptionShort">
             <p> {{ cup.description | slice: 0: 30 | threeDotsForShortDescription }}</p>
         </div>

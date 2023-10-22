@@ -17,4 +17,14 @@ export class CupService {
 
     return this.httpClient.get<Cup>('http://localhost:8080/cups/' + id);
   }
+
+  create(cup: Cup){
+    return this.httpClient.post('http://localhost:8080/cups',cup).subscribe(
+      result => {
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      });
+  }
 } 

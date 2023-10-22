@@ -5,14 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Page404Component } from './page404/page404.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HttpResponse } from '@angular/common/http';
-
-// import { environment } from 'src/environments/environment';
-// import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
-// import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-
-// import { AngularFireModule } from '@angular/fire/compat';
-
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpResponse } from '@angular/common/http';
+import { AuthInterceptor } from '@auth/interceptors/auth.interceptor';
+import { AuthModule } from '@auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -23,12 +18,14 @@ import { HttpClientModule, HttpResponse } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
-    //provideFirebaseApp(() => initializeApp(environment.firebase)),
-    //provideFirestore(() => getFirestore())
-    //AngularFireModule.initializeApp(environment.firebase),
+    HttpClientModule,
+    AuthModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

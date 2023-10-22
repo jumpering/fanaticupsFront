@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Credentials } from '@auth/models/Credentials';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -23,15 +25,16 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    public dialogRef: MatDialogRef<LoginComponent>
+    public dialogRef: MatDialogRef<LoginComponent>,
+    private snackBar: MatSnackBar
   ) {
     this.buildForm();
-   }
+  }
 
   ngOnInit(): void {
   }
 
-  buildForm(): void{
+  buildForm(): void {
     this.form = this.formBuilder.group({
       //name: ['', Validators.required],
 
@@ -50,20 +53,28 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login(){
+  login() {
     const user = this.form.value.email;
     const password = this.form.value.password;
     this.credentials.user = user;
     this.credentials.password = password;
-    console.log('datos: ', this.credentials);
-    this.authService.login(this.credentials).subscribe(response =>{
-      console.log('subscrito!');
-      this.router.navigate(['/']);
+    this.authService.login(this.credentials).subscribe(
+      response => {
+        this.showSnackBarMessage('Wellcome!');
+        this.closeDialog();
+        this.router.navigate(['/']);
+    }, 
+    error => {
+      this.showSnackBarMessage('Authenticate error');
     }
     )
   }
 
-  closeDialog(): void {
+  showSnackBarMessage(message: string): void {
+    this.snackBar.open(message, '', { duration: 5000 });
+  }
+
+  closeDialog():void {
     this.dialogRef.close();
   }
 }

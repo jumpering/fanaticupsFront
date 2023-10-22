@@ -18,25 +18,27 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
-    //private authService: AuthService,
+    private authService: AuthService,
     public dialog: MatDialog
   ) {
-    this.isLogged = false;
+    //this.isLogged = this.authService.getToken() !== null;
+    //this.isLogged = this.authService.hasSession();
    }
 
   ngOnInit(): void {
     //this.authService.hasSession().subscribe(logged => this.isLogged = logged);
   }
 
+  hasSession(): Observable<boolean>{
+    return this.authService.hasSession();
+  }
+
   toHome() {
     this.router.navigate(['/']);
   }
 
-  // isLogin$(): Observable<boolean>{
-  //   return this.authService.hasSession();
-  // }
-
   logout(): void {
+    localStorage.clear();
     // this.authService.logout().then(user => console.log('currentUser after logout subscribe: ' + user));
     //this.authService.logout();
   }
@@ -58,6 +60,5 @@ export class HeaderComponent implements OnInit {
     //   console.log(resp);
     // })
   } 
-
 }
 

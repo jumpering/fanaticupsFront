@@ -16,13 +16,16 @@
 
 
 
-  <div *ngIf="!isLogged" >
+  <!-- <div *ngIf="!isLogged" > -->
+  <div *ngIf="!(hasSession() | async)" >
+
     <button mat-raised-button class="headerButtons" color="primary" (click)="openLoginDialog()">Login</button>  
     <!-- <button mat-raised-button class="headerButtons" color="primary" routerLink="/auth/login">Login</button>   -->
     <!-- <button mat-raised-button class="headerButtons" color="primary" routerLink="/auth/signup">Sign up</button> -->
     <button mat-raised-button class="headerButtons" color="primary" (click)="openSignupDialog()">Sign up</button>
   </div>
-  <div *ngIf="isLogged">
+  <!-- <div *ngIf="isLogged"> -->
+  <div *ngIf="(hasSession() | async)">
     <button mat-raised-button class="headerButtons" color="primary" routerLink="/create">Create Cup</button>  
     <button mat-raised-button class="headerButtons" color="primary" routerLink="/" (click)="logout()">logout</button>
   </div>

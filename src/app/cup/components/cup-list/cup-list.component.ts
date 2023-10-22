@@ -31,6 +31,10 @@ export class CupListComponent implements OnInit {
     this.router.navigate(['/', id]);
   }
 
+  public onCreateClicked(cup: Cup){
+    //this.cupService.
+  }
+
   public getOwnerCup(){
     
     return "fake";

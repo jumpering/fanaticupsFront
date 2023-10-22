@@ -6,7 +6,7 @@ import { MaterialModule } from '@material/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { CupModule } from '@cup/cup.module';
 import { LayoutComponent } from './components/layout/layout.component';
-import { AuthModule } from '@auth/auth.module';
+//import { AuthModule } from '@auth/auth.module';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { AuthModule } from '@auth/auth.module';
     WebsiteRoutingModule,
     MaterialModule,
     CupModule,
-    AuthModule
+    //AuthModule
   ]
 })
 export class WebsiteModule { }

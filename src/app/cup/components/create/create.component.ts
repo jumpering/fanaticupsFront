@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Event } from '@angular/router';
+import { Cup } from '@cup/models/cup.model';
+import { CupService } from '@cup/services/cup.service';
 
 @Component({
   selector: 'app-create',
@@ -12,7 +14,9 @@ export class CreateComponent implements OnInit {
   public floatLabel: Boolean = false;
   public fileName!: any;
 
-  constructor() { }
+  constructor(
+    public cupService: CupService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -45,6 +49,21 @@ export class CreateComponent implements OnInit {
         //   }
         // })
     }
+  }
+
+  onCreateCup(){
+    console.log('dentro del metodo onCreateCup');
+    const cup: Cup = {
+      id: 100,
+      name: 'test',
+      origin: 'test',
+      description: 'test',
+      image: 'imagen',
+      price: 1000,
+      owner: '1'
+    };
+    console.log('desde el front: ' + cup);
+    this.cupService.create(cup);
   }
 
 }
