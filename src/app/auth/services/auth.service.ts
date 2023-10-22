@@ -38,10 +38,11 @@ export class AuthService {
   }  
 
   hasSession(): Observable<boolean>{
-    if(localStorage.getItem('token') !== null){
-      return of(true);
-    } else {
-      return of(false);
-    }
+    // if(localStorage.getItem('token') !== null){
+    //   return of(true);
+    // } else {
+    //   return of(false);
+    // }
+    return localStorage.getItem('token') !== null ? of(true) : of(false);
   }
 }

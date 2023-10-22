@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CupListComponent } from '@cup/components/cup-list/cup-list.component';
 import { CupDetailComponent } from './components/cup-detail/cup-detail.component';
 import { AuthGuard } from '@auth/guards/auth.guard';
+import { CreateComponent } from './components/create/create.component';
 
 const routes: Routes = [
   // {
@@ -15,9 +16,9 @@ const routes: Routes = [
   //   component: CupDetailComponent
   // },
   // {
-  //   path: 'add',
-  //   canActivate: [AuthGuard],
-  //   //component: AddCupComponent
+  //   path: 'create',
+  //   component: CreateComponent,
+  //   canActivate: [AuthGuard]
   // }
 ];
 

@@ -5,6 +5,7 @@ import { CupListComponent } from '@cup/components/cup-list/cup-list.component';
 import { CupDetailComponent } from '@cup/components/cup-detail/cup-detail.component';
 import { CreateComponent } from '../cup/components/create/create.component';
 import { LoginComponent } from '@auth/components/login/login.component';
+import { AuthGuard } from '@auth/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
     },
     {
       path: 'create',
-      component: CreateComponent
+      component: CreateComponent,
+      canActivate: [AuthGuard]
     },
     {
       path: ':id',
