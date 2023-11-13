@@ -54,7 +54,7 @@ export class CreateComponent implements OnInit {
   onCreateCup(){
     console.log('dentro del metodo onCreateCup');
     const cup: Cup = {
-      id: 100,
+      //id: 100,
       name: 'test',
       origin: 'test',
       description: 'test',
@@ -62,7 +62,7 @@ export class CreateComponent implements OnInit {
       price: 1000,
       owner: '1'
     };
-    console.log('desde el front: ' + cup);
+    console.log('desde el front: ' + cup.name);
     this.cupService.create(cup);
   }
 

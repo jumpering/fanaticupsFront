@@ -1,5 +1,5 @@
 export interface Cup {
-    id: number;
+    id?: number;
     name: string;
     origin: string;
     description: string;

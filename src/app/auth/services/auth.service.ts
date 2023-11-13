@@ -45,4 +45,21 @@ export class AuthService {
     // }
     return localStorage.getItem('token') !== null ? of(true) : of(false);
   }
+
+  signup(credentials: Credentials) {
+    return this.httpClient.post('http://localhost:8080/register', credentials, {
+      observe: 'response'
+    }).pipe(map((response: HttpResponse<any>) => {
+      const body = response.body;
+      const headers = response.headers;
+      const bearerToken = headers.get('Authorization')!;
+      const token = bearerToken.replace('Bearer ', '');
+      localStorage.setItem('token', token);
+      this.currentToken = token;
+      console.log('set: ', this.currentToken);
+      this.authenticated = true;
+      return body;
+    }))
+
+  }
 }

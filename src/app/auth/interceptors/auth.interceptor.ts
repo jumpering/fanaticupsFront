@@ -22,15 +22,6 @@ export class AuthInterceptor implements HttpInterceptor {
     console.log('TRAZA token: ', token);
     console.log('existe token en locastorage?', existToken);
 
-      // request = request.clone({
-      //   setHeaders: {
-      //     Xurri: 'la que me gusta',
-      //   }
-      // })
-      //  return next.handle(request);
-    
-
-
     if(existToken){
       request = request.clone({
         setHeaders: {
@@ -40,14 +31,5 @@ export class AuthInterceptor implements HttpInterceptor {
     }
      return next.handle(request);
 
-
-
-    // if (existToken) {
-    //   const cloned = request.clone({
-    //     headers: request.headers.set('Authorization', 'Bearer ${token}')
-    //   })
-    //   return next.handle(cloned);
-    // }
-    // return next.handle(request);
   }
 }

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Credentials } from '@auth/models/Credentials';
 
 @Component({
   selector: 'app-signup',
@@ -14,10 +15,16 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class SignupComponent implements OnInit {
 
   form!: FormGroup;
+  credentials: Credentials = {
+    user: '',
+    password: '',
+    name: '',
+    email:''
+  }
 
   constructor(
     private formBuilder: FormBuilder,
-    //private authService: AuthService,
+    private authService: AuthService,
     private router: Router,
     private snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<SignupComponent>,
@@ -31,25 +38,33 @@ export class SignupComponent implements OnInit {
 
   buildForm(): void{
     this.form = this.formBuilder.group({
-      //name: ['', Validators.required],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required]],
+      //password: ['', [Validators.required, Validators.minLength(8)]],
       //confirmPassword: ['', Validators.required, Validators.minLength(6)]
     });
   }
 
   signup(): void {
     if (this.form.valid) {
+      const name = this.form.value.name;
       const email = this.form.value.email;
       const password = this.form.value.password;
-      // this.authService.signup(email, password)
-      // .then(data => {
-      //   this.router.navigate(['/']);
-      // })
-      // .catch(error => {
-      //   console.log({error});
-      //   this.snackBar.open(error.message,'close',{duration: 5000});
-      // });
+      this.credentials.user = email;
+      this.credentials.email = email;
+      this.credentials.password = password;
+      this.credentials.name = name;
+      this.authService.signup(this.credentials).subscribe(
+        response => {
+          this.showSnackBarMessage('Wellcome!');
+          this.closeDialog();
+          this.router.navigate(['/']);
+      }, 
+      error => {
+        this.showSnackBarMessage('error: ' + error);
+      }
+      )
     }
   }
 
@@ -57,7 +72,11 @@ export class SignupComponent implements OnInit {
     return this.form.value.email;
   }
 
-  closeDialog(): void {
+  showSnackBarMessage(message: string): void {
+    this.snackBar.open(message, '', { duration: 5000 });
+  }
+
+  closeDialog():void {
     this.dialogRef.close();
   }
 

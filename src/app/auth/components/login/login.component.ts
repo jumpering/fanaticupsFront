@@ -18,7 +18,9 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
   credentials: Credentials = {
     user: '',
-    password: ''
+    password: '',
+    name: '',
+    email:''
   }
 
   constructor(
@@ -39,11 +41,11 @@ export class LoginComponent implements OnInit {
       //name: ['', Validators.required],
 
 
-      // email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       // password: ['', [Validators.required, Validators.minLength(8)]],
 
 
-      email: ['', [Validators.required]],
+      //email: ['', [Validators.required]],
       password: ['', [Validators.required]],
 
 
