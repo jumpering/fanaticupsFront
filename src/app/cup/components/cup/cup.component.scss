@@ -19,8 +19,8 @@
 .cupImage {
     width: 280px;
     margin:auto;
-    padding-top: 5%;
-    border-radius: 10%;
+    border-radius: 20%;
+    overflow:hidden;
 }
 
 .descriptionShort{
@@ -36,14 +36,16 @@
     gap: 10px;
 }
 
-.cupPrice{
+.priceAndUser{
     display: flex;
-    justify-content: end;
-    padding-top: 10px;
-    padding-right: 10px;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.owner{
+.cupPrice{
     color: rgb(70, 70, 70);
-    padding-left: 10px;
+}
+
+.user{
+    color: rgb(70, 70, 70);
 }

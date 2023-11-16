@@ -15,18 +15,20 @@
             <p> {{ cup.description | slice: 0: 30 | threeDotsForShortDescription }}</p>
         </div>
         <mat-divider></mat-divider>
-        <div class="cupPrice">
-            <h2>Price: {{ cup.price }} €</h2>
+        <div class="priceAndUser">
+            <div class="user">
+                <h4>from: {{ cup.user.name }}</h4>
+            </div>
+            <div class="cupPrice">
+                <h4>Price: {{ cup.price }} €</h4>
+            </div>
         </div>
-        <mat-divider></mat-divider>
-        <div class="owner">
-            <h3>Owner: {{ this.getOwner() }}</h3>
-        </div>
+
 
     </mat-card-content>
     <mat-card-actions>
         <div class="buttons">
-            <!-- <button mat-raised-button (click)="viewDescription()" color="primary" *ngIf="isLogged">Buy</button> -->
+            <button mat-raised-button (click)="viewDescription()" color="primary" *ngIf="isLogged">Buy</button>
         </div>
     </mat-card-actions>
 </mat-card>

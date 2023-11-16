@@ -13,12 +13,10 @@ export class CupService {
     ) { }
 
   getAllCups() : Observable<Cup[]>{
-    
     return this.httpClient.get<Cup[]>('http://localhost:8080/cups');
   }
 
   getById(id: number) : Observable<Cup> {
-
     return this.httpClient.get<Cup>('http://localhost:8080/cups/' + id);
   }
 

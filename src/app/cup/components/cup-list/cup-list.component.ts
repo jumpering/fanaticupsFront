@@ -23,6 +23,7 @@ export class CupListComponent implements OnInit {
     this.cupService.getAllCups().subscribe(data => {
       console.log(data);
       this.listOfCups = data;
+      
     });
   }
 

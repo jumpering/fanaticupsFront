@@ -60,7 +60,10 @@ export class CreateComponent implements OnInit {
       description: 'test',
       image: 'imagen',
       price: 1000,
-      owner: '1'
+      user: {
+        name: 'xavi',
+        email: 'xavi@xavi.com'
+      }
     };
     console.log('desde el front: ' + cup.name);
     this.cupService.create(cup);

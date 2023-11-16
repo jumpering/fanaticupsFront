@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Cup } from '@cup/models/cup.model';
+import { User } from '@cup/models/user.model';
 import { AuthService } from '@auth/services/auth.service';
 
 @Component({
@@ -16,11 +17,10 @@ export class CupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.authService.hasSession().subscribe(logged => this.isLogged = logged);
+    this.authService.hasSession().subscribe(logged => this.isLogged = logged);
   }
 
   @Input() cup!: Cup;
-  @Input() ownerName!: string;
   @Output() buy = new EventEmitter<number>();
   @Output() detail = new EventEmitter<number>();
  
@@ -30,12 +30,6 @@ export class CupComponent implements OnInit {
 
   showDetail(){
     this.detail.emit(this.cup.id);
-  }
-
-  getOwner(): string{
-    //return this.ownerName;
-    //return this.cup.owner;
-    return 'fake';
   }
 
 }

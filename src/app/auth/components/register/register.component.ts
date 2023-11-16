@@ -16,10 +16,10 @@ export class RegisterComponent implements OnInit {
 
   form!: FormGroup;
   credentials: Credentials = {
-    user: '',
-    password: '',
+    //user: '',
     name: '',
-    email:''
+    email:'',
+    password: ''
   }
 
   constructor(
@@ -51,10 +51,10 @@ export class RegisterComponent implements OnInit {
       const name = this.form.value.name;
       const email = this.form.value.email;
       const password = this.form.value.password;
-      this.credentials.user = email;
+      //this.credentials.user = email;
+      this.credentials.name = name;
       this.credentials.email = email;
       this.credentials.password = password;
-      this.credentials.name = name;
       this.authService.register(this.credentials).subscribe(
         response => {
           this.showSnackBarMessage('Wellcome!');

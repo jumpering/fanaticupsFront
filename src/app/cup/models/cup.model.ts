@@ -1,3 +1,5 @@
+import { User } from "./user.model";
+
 export interface Cup {
     id?: number;
     name: string;
@@ -5,5 +7,5 @@ export interface Cup {
     description: string;
     image: string;
     price: number;
-    owner: string;
+    user: User;
 }
