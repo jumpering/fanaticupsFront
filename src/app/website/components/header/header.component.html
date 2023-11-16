@@ -2,35 +2,15 @@
   <img (click)="toHome()" class="logo" src="./../../../../assets/images/logo.svg" alt="">
   <span class="alignButtons"></span>
 
-
-  <!-- <div *ngIf="isLogin$() | async" >
-    <button mat-raised-button class="headerButtons" color="primary" routerLink="/auth/login">Login</button>  
-    <button mat-raised-button class="headerButtons" color="primary" routerLink="/auth/signup">Sign up</button>
-    <button mat-raised-button class="headerButtons" color="primary" routerLink="/" (click)="logout()">logout</button>
-  </div>
-  <div *ngIf="!(isLogin$() | async)">
-    <button mat-raised-button class="headerButtons" color="primary" routerLink="/cups">Create</button>  
-    <button mat-raised-button class="headerButtons" color="primary" routerLink="/" (click)="logout()">logout</button>
-  </div> -->
-
-
-
-
-  <!-- <div *ngIf="!isLogged" > -->
   <div *ngIf="!(hasSession() | async)" >
 
     <button mat-raised-button class="headerButtons" color="primary" (click)="openLoginDialog()">Login</button>  
-    <!-- <button mat-raised-button class="headerButtons" color="primary" routerLink="/auth/login">Login</button>   -->
-    <!-- <button mat-raised-button class="headerButtons" color="primary" routerLink="/auth/signup">Sign up</button> -->
-    <button mat-raised-button class="headerButtons" color="primary" (click)="openSignupDialog()">Sign up</button>
+    <button mat-raised-button class="headerButtons" color="primary" (click)="openRegisterDialog()">Register</button>
   </div>
-  <!-- <div *ngIf="isLogged"> -->
   <div *ngIf="(hasSession() | async)">
+    <h3 mat-card-subtitle class="wellcomeMessage"> {{getUsername()}} </h3>
     <button mat-raised-button class="headerButtons" color="primary" routerLink="/create">Create Cup</button>  
     <button mat-raised-button class="headerButtons" color="primary" routerLink="/" (click)="logout()">logout</button>
   </div>
-
-
-
 
 </mat-toolbar>    

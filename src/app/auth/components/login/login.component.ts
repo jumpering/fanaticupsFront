@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
     this.credentials.password = password;
     this.authService.login(this.credentials).subscribe(
       response => {
-        this.showSnackBarMessage('Wellcome!');
+        this.showSnackBarMessage('Wellcome ' + this.authService.getUsername() + '!');
         this.closeDialog();
         this.router.navigate(['/']);
     }, 

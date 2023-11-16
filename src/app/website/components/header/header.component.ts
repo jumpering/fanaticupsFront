@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { Observable } from 'rxjs';
-import { SignupComponent } from '@auth/components/signup/signup.component';
+import { RegisterComponent } from '@auth/components/register/register.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CupComponent } from '@cup/components/cup/cup.component';
 import { LoginComponent } from '@auth/components/login/login.component';
+import * as JWT from 'jwt-decode';
+
 
 @Component({
   selector: 'app-header',
@@ -43,8 +45,8 @@ export class HeaderComponent implements OnInit {
     //this.authService.logout();
   }
 
-  openSignupDialog(){
-    this.dialog.open(SignupComponent);
+  openRegisterDialog(){
+    this.dialog.open(RegisterComponent);
     //this.dialog.open(SignupComponent);
     // const dialogRef = this.dialog.open(SignupComponent);
     // dialogRef.afterClosed().subscribe(resp => {
@@ -60,5 +62,9 @@ export class HeaderComponent implements OnInit {
     //   console.log(resp);
     // })
   } 
+
+  getUsername(): string | undefined{
+    return 'Wellcome ' + this.authService.getUsername();
+  }
 }
 

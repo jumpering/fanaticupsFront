@@ -20,7 +20,10 @@ export class CupListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.cupService.getAllCups().subscribe(data => this.listOfCups = data);
+    this.cupService.getAllCups().subscribe(data => {
+      console.log(data);
+      this.listOfCups = data;
+    });
   }
 
   public onBuyClicked(id: number){

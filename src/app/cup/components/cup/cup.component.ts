@@ -34,7 +34,8 @@ export class CupComponent implements OnInit {
 
   getOwner(): string{
     //return this.ownerName;
-    return this.cup.owner;
+    //return this.cup.owner;
+    return 'fake';
   }
 
 }

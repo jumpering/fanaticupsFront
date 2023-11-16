@@ -8,11 +8,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Credentials } from '@auth/models/Credentials';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
 })
-export class SignupComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
   form!: FormGroup;
   credentials: Credentials = {
@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private snackBar: MatSnackBar,
-    public dialogRef: MatDialogRef<SignupComponent>,
+    public dialogRef: MatDialogRef<RegisterComponent>,
     //@Inject(MAT_DIALOG_DATA) public data: 'ojo al dato'
   ) { 
     this.buildForm();
@@ -46,7 +46,7 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  signup(): void {
+  register(): void {
     if (this.form.valid) {
       const name = this.form.value.name;
       const email = this.form.value.email;
@@ -55,7 +55,7 @@ export class SignupComponent implements OnInit {
       this.credentials.email = email;
       this.credentials.password = password;
       this.credentials.name = name;
-      this.authService.signup(this.credentials).subscribe(
+      this.authService.register(this.credentials).subscribe(
         response => {
           this.showSnackBarMessage('Wellcome!');
           this.closeDialog();

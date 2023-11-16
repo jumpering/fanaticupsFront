@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Credentials } from '@auth/models/Credentials';
 import { Observable, map, observable, of } from 'rxjs';
 import { setTimeout } from 'timers';
+import * as JWT from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +47,7 @@ export class AuthService {
     return localStorage.getItem('token') !== null ? of(true) : of(false);
   }
 
-  signup(credentials: Credentials) {
+  register(credentials: Credentials) {
     return this.httpClient.post('http://localhost:8080/register', credentials, {
       observe: 'response'
     }).pipe(map((response: HttpResponse<any>) => {
@@ -62,4 +63,17 @@ export class AuthService {
     }))
 
   }
+
+  getUsername(): string | undefined{
+    const token = localStorage.getItem('token');
+    const decodedToken = JWT.jwtDecode<MyToken>(token!);
+    var name = decodedToken['name'];
+    return name;
+  }
+}
+
+interface MyToken {
+  name: string;
+  rol: string; //todo, no es un string!
+  // whatever else is in the JWT.
 }
