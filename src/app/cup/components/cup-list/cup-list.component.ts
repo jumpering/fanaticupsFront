@@ -39,9 +39,9 @@ export class CupListComponent implements OnInit {
     //this.cupService.
   }
 
-  public getOwnerCup(){
+  // public getOwnerCup(){
     
-    return "fake";
-  }
+  //   return "fake";
+  // }
 
 }
