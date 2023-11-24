@@ -1,11 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { AuthService } from '@auth/services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Credentials } from '@auth/models/Credentials';
+import { CustomValidators } from 'src/app/utils/customValidators';
 
 @Component({
   selector: 'app-register',
@@ -16,10 +17,10 @@ export class RegisterComponent implements OnInit {
 
   form!: FormGroup;
   credentials: Credentials = {
-    //user: '',
     name: '',
     email:'',
-    password: ''
+    password: '',
+    confirmPassword: ''
   }
 
   constructor(
@@ -30,20 +31,20 @@ export class RegisterComponent implements OnInit {
     public dialogRef: MatDialogRef<RegisterComponent>,
     //@Inject(MAT_DIALOG_DATA) public data: 'ojo al dato'
   ) { 
-    this.buildForm();
   }
 
   ngOnInit(): void {
+    this.buildForm();
   }
 
   buildForm(): void{
     this.form = this.formBuilder.group({
-      name: ['', Validators.required],
+      name: ['',[Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-      //password: ['', [Validators.required, Validators.minLength(8)]],
-      //confirmPassword: ['', Validators.required, Validators.minLength(6)]
+      password: ['', [Validators.required, Validators.minLength(3)]],
+      confirmPassword: ['',[Validators.required, Validators.minLength(3)]]
     });
+    this.form.setValidators(CustomValidators.isMatchingPasswords);
   }
 
   register(): void {
@@ -51,7 +52,6 @@ export class RegisterComponent implements OnInit {
       const name = this.form.value.name;
       const email = this.form.value.email;
       const password = this.form.value.password;
-      //this.credentials.user = email;
       this.credentials.name = name;
       this.credentials.email = email;
       this.credentials.password = password;

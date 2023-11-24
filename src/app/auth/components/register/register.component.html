@@ -6,6 +6,13 @@
         <mat-form-field>
             <mat-label>name</mat-label>
             <input matInput placeholder="name" formControlName="name">
+            <mat-error *ngIf="form.get('name')?.hasError('required')">
+                Name required
+            </mat-error>
+            <mat-error *ngIf="form.get('name')?.hasError('minlength')">
+                Min 3 characters required
+            </mat-error>
+
         </mat-form-field>
         <br>
         <mat-form-field>
@@ -26,10 +33,28 @@
                 Required field password
             </mat-error>
             <mat-error *ngIf="form.get('password')!.dirty && form.get('password')!.hasError('minlength')">
-                Minimum password length 8
+                Minimum password length 3
             </mat-error>
         </mat-form-field>
-    </form>   
+        <br>
+        <mat-form-field>
+            <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+            <mat-error *ngIf="form.get('confirmPassword')!.dirty && form.get('confirmPassword')!.hasError('required')">
+                Required confirm password
+            </mat-error>
+            <mat-error *ngIf="form.get('confirmPassword')!.dirty && form.get('confirmPassword')!.hasError('minlength')">
+                Minimum confirm password length 3
+            </mat-error>
+            <mat-error *ngIf="form.get('confirmPassword')!.hasError('mismatch')">
+                Password and confirm password doesn't match
+            </mat-error>
+
+        </mat-form-field>
+    </form>
+    <!-- <div *ngIf="form!.hasError('mismatch')">
+        <h6>Password and confirm password not match</h6>
+    </div> -->
+
     <button mat-raised-button type="button" [disabled]="form.invalid" (click)="register()">Register</button>
     <button mat-raised-button type="button" (click)="closeDialog()">Close</button>
 </div>
