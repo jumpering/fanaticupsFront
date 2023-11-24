@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Credentials } from '@auth/models/Credentials';
 import { CustomValidators } from 'src/app/utils/customValidators';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -62,7 +63,8 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/']);
       }, 
       error => {
-        this.showSnackBarMessage('error: ' + error);
+        const msg = error.headers.get('Message');
+        this.showSnackBarMessage(msg);
       }
       )
     }

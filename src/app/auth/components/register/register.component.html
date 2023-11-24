@@ -45,7 +45,7 @@
             <mat-error *ngIf="form.get('confirmPassword')!.dirty && form.get('confirmPassword')!.hasError('minlength')">
                 Minimum confirm password length 3
             </mat-error>
-            <mat-error *ngIf="form.get('confirmPassword')!.hasError('mismatch')">
+            <mat-error *ngIf="form.get('confirmPassword')!.dirty && form.get('confirmPassword')!.hasError('mismatch')">
                 Password and confirm password doesn't match
             </mat-error>
 
