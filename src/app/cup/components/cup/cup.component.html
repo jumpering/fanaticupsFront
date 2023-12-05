@@ -17,7 +17,7 @@
         <mat-divider></mat-divider>
         <div class="priceAndUser">
             <div class="user">
-                <h4>from: {{ cup.user.name }}</h4>
+                <h4>from: {{ cup.user?.name }}</h4>
             </div>
             <div class="cupPrice">
                 <h4>Price: {{ cup.price }} €</h4>
@@ -30,42 +30,3 @@
         </div>
     </mat-card-actions>
 </mat-card>
-
-
-
-
-
-
-
-<!-- <mat-card class="cupCard" (click)="showDetail()">
-    <mat-card-header>
-        <mat-card-title>
-            <h3>{{ cup.name }}</h3>
-        </mat-card-title>
-        <mat-card-subtitle>
-            {{ cup.origin }}
-        </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <div class="cupImage">
-            <img mat-card-image [src]="cup.image" alt="">
-        </div>
-        <div class="descriptionShort">
-            <p> {{ cup.description | slice: 0: 30 | threeDotsForShortDescription }}</p>
-        </div>
-        <mat-divider></mat-divider>
-        <div class="priceAndUser">
-            <div class="user">
-                <h4>from: {{ cup.user.name }}</h4>
-            </div>
-            <div class="cupPrice">
-                <h4>Price: {{ cup.price }} €</h4>
-            </div>
-        </div>
-    </mat-card-content>
-    <mat-card-actions>
-        <div class="buttons">
-            <button mat-raised-button (click)="viewDescription()" color="primary" *ngIf="isLogged">Buy</button>
-        </div>
-    </mat-card-actions>
-</mat-card> -->

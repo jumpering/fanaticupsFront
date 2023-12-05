@@ -7,23 +7,27 @@ import { Router } from '@angular/router';
 @Injectable()
 export class CupService {
 
+  public path = 'http://localhost:8080/cups';
+
   constructor( 
     private httpClient: HttpClient,
     private router: Router
     ) { }
 
   getAllCups() : Observable<Cup[]>{
-    return this.httpClient.get<Cup[]>('http://localhost:8080/cups');
+    return this.httpClient.get<Cup[]>(this.path);
   }
 
   getById(id: number) : Observable<Cup> {
-    return this.httpClient.get<Cup>('http://localhost:8080/cups/' + id);
+    return this.httpClient.get<Cup>(this.path + '/' + id);
   }
 
-  create(cup: Cup){
-    console.log('desde el método cupService para ver el parametro ', cup);
-    return this.httpClient.post('http://localhost:8080/cups',cup).subscribe(
+  create(cup: Cup, userId: number){
+    const path = 'http://localhost:8080/cups/' + userId;
+    return this.httpClient.post(path,cup).subscribe(
       result => {
+        //upload file
+
         const responseCup: any = result;
         this.router.navigate(['/' + responseCup.id]);
       },

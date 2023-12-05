@@ -5,7 +5,7 @@ export interface Cup {
     name: string;
     origin: string;
     description: string;
-    image: string;
-    price: number;
-    user: User;
+    image?: string;
+    price?: number; //todo delete
+    user?: User;
 }

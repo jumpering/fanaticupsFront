@@ -1,7 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Event } from '@angular/router';
 import { Cup } from '@cup/models/cup.model';
 import { CupService } from '@cup/services/cup.service';
+import { AuthService } from '@auth/services/auth.service';
+import { User } from '@cup/models/user.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-create',
@@ -10,63 +14,63 @@ import { CupService } from '@cup/services/cup.service';
 })
 export class CreateComponent implements OnInit {
 
-  public hideRequiredControl: boolean = false;
-  public floatLabel: Boolean = false;
-  public fileName!: any;
+  public file: File | null = null;
+  //public status: "initial" | "uploading" | "success" | "fail" = "initial"; // Variable to store file status
+  public form!: FormGroup;
 
   constructor(
-    public cupService: CupService
-  ) { }
+    public cupService: CupService,
+    public formBuilder: FormBuilder,
+    public authService: AuthService,
+    public http: HttpClient
+  ) { 
+    this.buildForm();
+  }
 
   ngOnInit(): void {
   }
 
-  // getFloatLabelValue(): FloatLabelType {
-  //   return this.floatLabelControl.value || 'auto';
-  // }
+  buildForm(){
+    this.form = this.formBuilder.group({
+      name: [''],
+      origin: [''],
+      description: [''],
+    });
+  }
+
+  private uploadImage(){
+    console.log('...enviando');
+    if (this.file) {
+      const formData = new FormData();
+      formData.append("file", this.file);
+      formData.append("userId", this.authService.getId().toString());
+      
+      this.http.post('http://localhost:8080/files', formData).subscribe(
+        { complete: () => {console.log('complete: ')},
+          error: () => {console.log('error')}
+        },
+      )
+
+
+    }
+  }
 
   onSelectedFile(event: any){
-    // const file:File = event.target.files[0];
-    const file: File = event.target.file[0];
-      
-    if (file) {
-        this.fileName = file.name;
-        const formData = new FormData();
-        formData.append("thumbnail", file);
-
-
-        // const upload$ = this.http.post("/api/thumbnail-upload", formData, {
-        //     reportProgress: true,
-        //     observe: 'events'
-        // })
-        // .pipe(
-        //     finalize(() => this.reset())
-        // );
-      
-        // this.uploadSub = upload$.subscribe(event => {
-        //   if (event.type == HttpEventType.UploadProgress) {
-        //     this.uploadProgress = Math.round(100 * (event.loaded / event.total));
-        //   }
-        // })
-    }
+    this.file =  event.target.files[0];
   }
 
   onCreateCup(){
     console.log('dentro del metodo onCreateCup');
+    this.uploadImage();
     const cup: Cup = {
-      //id: 100,
-      name: 'test',
-      origin: 'test',
-      description: 'test',
-      image: 'imagen',
-      price: 1000,
-      user: {
-        name: 'xavi',
-        email: 'xavi@xavi.com'
-      }
+      name: this.form.get('name')?.value,
+      origin: this.form.get('origin')?.value,
+      description: this.form.get('description')?.value,
+      image: this.file?.name.toString(),
+      //user: this.user,
     };
-    console.log('desde el front: ' + cup.name);
-    this.cupService.create(cup);
+    const userId: number = this.authService.getId();
+    this.cupService.create(cup, userId);
   }
 
 }

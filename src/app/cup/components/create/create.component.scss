@@ -5,10 +5,11 @@ body{
     background-repeat: repeat-x;
 }
 
-.container{
-
-
-}
+::ng-deep .mat-card{
+    border: 75px !important;
+    border-radius: 30px !important;
+    border: 55px solid #000;
+   }
 
 .inputButton{
     display: none;
@@ -24,11 +25,6 @@ body{
     text-align: center;
 }
 
-::ng-deep .mat-card{
-    border: 75px !important;
-    border-radius: 30px !important;
-    border: 55px solid #000;
-   }
 
 .cupCard{
     display: flex;

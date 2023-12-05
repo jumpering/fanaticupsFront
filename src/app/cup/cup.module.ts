@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CupRoutingModule } from '@cup/cup-routing.module';
 import { CupComponent } from '@cup/components/cup/cup.component';
@@ -24,7 +24,8 @@ import { CreateComponent } from './components/create/create.component';
     CupRoutingModule,
     FormsModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   exports: [
     CupListComponent

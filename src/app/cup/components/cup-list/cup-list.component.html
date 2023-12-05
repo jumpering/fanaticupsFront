@@ -1,9 +1,6 @@
 <img mat-card-image class="firstBodyImage" src="./../../../../assets/images/firstBodyImage.svg" alt="Fanaticups">
 <div class="cups">
-    <app-cup
-        *ngFor="let cupElement of listOfCups"
-        [cup] = "cupElement"
-        (buy)="onBuyClicked($event)"
+    <app-cup *ngFor="let cupElement of listOfCups" [cup]="cupElement" (buy)="onBuyClicked($event)"
         (detail)="onDetailClicked($event)">
     </app-cup>
 </div>
