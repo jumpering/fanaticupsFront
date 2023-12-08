@@ -12,8 +12,9 @@ import { HttpClient } from '@angular/common/http';
 export class CupComponent implements OnInit {
 
   public isLogged!: boolean;
-  public image!: File;
-  public blob!: Blob;
+  //public image!: File;
+  //public blob!: Blob;
+  public cupImage: string = 'http://localhost:8080/images/';
 
   constructor(
     private authService: AuthService,
@@ -22,6 +23,11 @@ export class CupComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.hasSession().subscribe(logged => this.isLogged = logged);
+    
+    const image = this.cup!.image?.toString();
+    this.cupImage = this.cupImage.concat(image!).replace('assets/images/', '');
+
+
     // const path = 'http://localhost:8080/files/' + this.authService.getId().toString();
     // this.http.get(path).subscribe((data) => {
     //   this.blob = new Blob([data], {type: 'application/pdf'});

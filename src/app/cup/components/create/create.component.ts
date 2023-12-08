@@ -61,7 +61,7 @@ export class CreateComponent implements OnInit {
 
   onCreateCup(){
     console.log('dentro del metodo onCreateCup');
-    this.uploadImage();
+    //this.uploadImage();
     const cup: Cup = {
       name: this.form.get('name')?.value,
       origin: this.form.get('origin')?.value,
@@ -70,7 +70,7 @@ export class CreateComponent implements OnInit {
       //user: this.user,
     };
     const userId: number = this.authService.getId();
-    this.cupService.create(cup, userId);
+    this.cupService.create(cup, this.file!);
   }
 
 }

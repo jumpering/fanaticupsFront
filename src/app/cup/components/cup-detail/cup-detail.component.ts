@@ -12,6 +12,7 @@ import { Cup } from '@cup/models/cup.model';
 export class CupDetailComponent implements OnInit {
 
   public cup!: Cup;
+  public cupImage: string = 'http://localhost:8080/images/';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,6 +27,8 @@ export class CupDetailComponent implements OnInit {
         this.cupService.getById(id)
         .subscribe(element => {
           this.cup = element;
+          const image = element.image?.toString();
+          this.cupImage = this.cupImage.concat(image!).replace('assets/images/', '');
         });
       });
   }
