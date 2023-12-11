@@ -4,31 +4,32 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
+import { ImageService } from './image.service';
 
 @Injectable()
 export class CupService {
 
   public cupPath = 'http://localhost:8080/cups';
-  public uloadImageFilePath = 'http://localhost:8080/files';
 
-  constructor( 
+  constructor(
     private httpClient: HttpClient,
     private router: Router,
     public authService: AuthService,
-    ) { }
+    private imageService: ImageService
+  ) { }
 
-  getAllCups() : Observable<Cup[]>{
+  getAllCups(): Observable<Cup[]> {
     return this.httpClient.get<Cup[]>(this.cupPath);
   }
 
-  getById(id: number) : Observable<Cup> {
+  getById(id: number): Observable<Cup> {
     return this.httpClient.get<Cup>(this.cupPath + '/' + id);
   }
 
-  create(cup: Cup, file: File | undefined){
+  create(cup: Cup, file: File | undefined) {
     const formData = new FormData();
     formData.append("file", file!);
-    formData.append("cupName",cup.name.toString());
+    formData.append("cupName", cup.name.toString());
     formData.append("userId", this.authService.getId().toString());
 
     let request: RequestInfo = {
@@ -36,21 +37,27 @@ export class CupService {
       cup: JSON.stringify(cup)
     }
 
-    return this.httpClient.post(this.cupPath, request).subscribe(
-      result => {
-        this.httpClient.post(this.uloadImageFilePath, formData).subscribe(
-          result => {},
-          error => {}
-        );
-        const responseCup: any = result;
-        this.router.navigate(['/' + responseCup.id]);
+    this.imageService.uploadImage(formData).subscribe({
+      next: (response) => {
+        console.log('Success:', response);
+        this.httpClient.post(this.cupPath, request).subscribe({
+          next: (resultCup) => {
+            const responseCup: any = resultCup;
+            this.router.navigate(['/' + responseCup.id]);
+          },
+          error: (error) => {
+            console.log(error);
+          }
+        });
       },
-      error => {}
-      );
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
-} 
+}
 
-interface RequestInfo{
+interface RequestInfo {
   userId: string;
   cup: string;
 }

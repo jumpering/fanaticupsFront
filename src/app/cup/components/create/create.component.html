@@ -30,35 +30,17 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-            <div class="buttons">
-              <input type="file" class="inputButton" (change)="onSelectedFile($event)" #input>
-              <!-- <div>
-                    {{fileName || "No file uploaded yet."}}
-                  </div> -->
-              <button mat-raised-button color="primary" routerLink="/">Cancel</button>
-              <button mat-raised-button color="primary" (click)="input.click()">Upload image</button>
-              <button mat-raised-button color="primary" (click)="onCreateCup()">create!</button>
+            <div class="divButtonsAndImage">
+              <div class="buttons">
+                <input type="file" class="inputButton" (change)="onSelectedFile($event)" #input>
+                <button *ngIf="!file" mat-raised-button color="primary" (click)="input.click()">Upload image</button>
+                <button mat-raised-button color="primary" (click)="onCreateCup()">create!</button>
+                <button mat-raised-button color="primary" routerLink="/">Cancel</button>
+                <div class="imagePreviewDiv">
+                  <img class="imagePreview" *ngIf="urlImage" [src]="urlImage" alt="Imagen">
+                </div>
+              </div>
             </div>
-
-            <!-- <input type="file" class="file-input" (change)="onChange($event)" #fileUpload />
-            <div *ngIf="file">
-              <section class="file-info">
-                File details:
-                <ul>
-                  <li>Name: {{file.name}}</li>
-                  <li>Type: {{file.type}}</li>
-                  <li>Size: {{file.size}} bytes</li>
-                </ul>
-              </section>
-              <button (click)="onUpload()">Upload the file</button>
-
-              <section [ngSwitch]="status">
-                <p *ngSwitchCase="'uploading'">⏳ Uploading...</p>
-                <p *ngSwitchCase="'success'">✅ Done!</p>
-                <p *ngSwitchCase="'fail'">❌ Error!</p>
-                <p *ngSwitchDefault>😶 Waiting to upload...</p>
-              </section>
-            </div> -->
           </mat-card-actions>
         </form>
 

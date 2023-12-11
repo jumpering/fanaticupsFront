@@ -1,47 +1,57 @@
-body{
+body {
     background-image: url("./../../../../assets/images/cup.svg");
     background-size: 5%;
-    // background-repeat: space;
     background-repeat: repeat-x;
 }
 
-::ng-deep .mat-card{
+::ng-deep .mat-card {
     border: 75px !important;
     border-radius: 30px !important;
     border: 55px solid #000;
-   }
-
-.inputButton{
-    display: none;
 }
 
-.cardContainer{
-    padding-left: 30%;
-    padding-right: 30%;
+mat-form-field {
+    width: 35vw;
 }
 
-.title{
-    padding-top: 100px;
-    text-align: center;
-}
-
-
-.cupCard{
+.cupCard {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-mat-form-field {
-    width:35vw;
-  }
+.cardContainer {
+    padding-left: 30%;
+    padding-right: 30%;
+}
 
-//   .buttons {
-//     display: flex;
-//     flex-direction:row;
-//     justify-content: end;
+.title {
+    padding-top: 100px;
+    text-align: center;
+}
 
-//     // flex: 1 1 auto;
-//     gap: 10px;
-// }
+.divButtonsAndImage {
+    position: relative;
+}
+
+.buttons {
+    float: left;
+}
+
+.inputButton {
+    display: none;
+}
+
+
+.imagePreviewDiv {
+    position: absolute;
+    top: 0;
+    right: 30px;
+}
+
+.imagePreview {
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
