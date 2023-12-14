@@ -13,7 +13,6 @@ import { CustomValidators } from 'src/app/utils/customValidators';
 export class CreateComponent implements OnInit {
 
   public file: File | null = null;
-  public test = true;
   public form!: FormGroup;
   public urlImage!: string;
 
