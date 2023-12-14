@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Cup } from '@cup/models/cup.model';
 import { CupService } from '@cup/services/cup.service';
 import { AuthService } from '@auth/services/auth.service';
+import { CustomValidators } from 'src/app/utils/customValidators';
 
 @Component({
   selector: 'app-create',
@@ -12,6 +13,7 @@ import { AuthService } from '@auth/services/auth.service';
 export class CreateComponent implements OnInit {
 
   public file: File | null = null;
+  public test = true;
   public form!: FormGroup;
   public urlImage!: string;
 
@@ -28,9 +30,12 @@ export class CreateComponent implements OnInit {
 
   buildForm(){
     this.form = this.formBuilder.group({
-      name: [''],
-      origin: [''],
-      description: [''],
+      name: ['', //default
+            [Validators.required, Validators.minLength(3)], //sync 
+            [CustomValidators.existCupName(this.cupService)] //async
+          ],
+      origin: ['',[Validators.required]],
+      description: ['',[Validators.required]],
     });
   }
 

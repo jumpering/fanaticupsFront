@@ -1,4 +1,6 @@
 import { AbstractControl, ValidatorFn } from "@angular/forms";
+import { CupService } from "@cup/services/cup.service";
+import { map } from "rxjs";
 
 export class CustomValidators{
 
@@ -22,6 +24,20 @@ export class CustomValidators{
         }
         confirmControl?.setErrors({...currentErrors, mismatch: true});
         return {mismatch: true};
+    }
+
+    static existCupName(cupService: CupService){ //async validator, send function clousure
+        return (control: AbstractControl) => {
+            const name = control.value;
+            return cupService.existCupName(name).pipe(
+                map(existCupName => {
+                    if(existCupName){
+                        return { existCupName: true }
+                    }
+                    return null;
+                })
+            );
+        }
     }
 
 }

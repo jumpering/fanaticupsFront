@@ -13,19 +13,30 @@
               <mat-form-field appearance="outline">
                 <mat-label>Name</mat-label>
                 <input matInput type="text" placeholder="Cup name" formControlName="name">
-              </mat-form-field>
+                  <mat-error *ngIf="form.get('name')?.hasError('minlength') || form.get('name')?.hasError('required')">
+                    Minimum 3 characters length
+                  </mat-error>  
+                  <mat-error *ngIf="form.get('name')?.hasError('existCupName')">
+                    Name exist, use another please
+                  </mat-error>           
+              </mat-form-field>           
             </p>
             <p>
               <mat-form-field appearance="outline">
                 <mat-label>Origin</mat-label>
                 <input matInput type="text" placeholder="Origin" formControlName="origin">
+                <mat-error *ngIf="form.get('origin')?.hasError('required')">
+                  Required origin
+                </mat-error>   
               </mat-form-field>
             </p>
             <p>
               <mat-form-field appearance="outline">
                 <mat-label>Description</mat-label>
-                <textarea matInput name="Description" placeholder="Description"
-                  formControlName="description"></textarea>
+                <textarea matInput name="Description" placeholder="Description" formControlName="description"></textarea>
+                <mat-error *ngIf="form.get('description')?.hasError('required')">
+                  Required origin
+                </mat-error> 
               </mat-form-field>
             </p>
           </mat-card-content>
@@ -34,7 +45,7 @@
               <div class="buttons">
                 <input type="file" class="inputButton" (change)="onSelectedFile($event)" #input>
                 <button *ngIf="!file" mat-raised-button color="primary" (click)="input.click()">Upload image</button>
-                <button mat-raised-button color="primary" (click)="onCreateCup()">create!</button>
+                <button [disabled]="!form.valid || !file" mat-raised-button color="primary" (click)="onCreateCup()">create!</button>
                 <button mat-raised-button color="primary" routerLink="/">Cancel</button>
                 <div class="imagePreviewDiv">
                   <img class="imagePreview" *ngIf="urlImage" [src]="urlImage" alt="Imagen">

@@ -16,10 +16,10 @@
         <mat-form-field>
             <mat-label>password</mat-label>
             <input matInput type="password" placeholder="password" formControlName="password">
-            <mat-error *ngIf="form.get('password')!.dirty && form.get('password')!.hasError('required')" >
+            <mat-error *ngIf="form.get('password')!.touched && form.get('password')!.hasError('required')" >
                 Required field password
               </mat-error>
-              <mat-error *ngIf="form.get('password')!.dirty && form.get('password')!.hasError('minlength')" >
+              <mat-error *ngIf="form.get('password')!.touched && form.get('password')!.hasError('minlength')" >
                 Minimum password length 8
               </mat-error>
         </mat-form-field>

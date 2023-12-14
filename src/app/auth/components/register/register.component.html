@@ -29,23 +29,23 @@
         <mat-form-field>
             <mat-label>password</mat-label>
             <input matInput type="password" placeholder="password" formControlName="password">
-            <mat-error *ngIf="form.get('password')!.dirty && form.get('password')!.hasError('required')">
+            <mat-error *ngIf="form.get('password')!.touched && form.get('password')!.hasError('required')">
                 Required field password
             </mat-error>
-            <mat-error *ngIf="form.get('password')!.dirty && form.get('password')!.hasError('minlength')">
+            <mat-error *ngIf="form.get('password')!.touched && form.get('password')!.hasError('minlength')">
                 Minimum password length 3
             </mat-error>
         </mat-form-field>
         <br>
         <mat-form-field>
             <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword">
-            <mat-error *ngIf="form.get('confirmPassword')!.dirty && form.get('confirmPassword')!.hasError('required')">
+            <mat-error *ngIf="form.get('confirmPassword')!.touched && form.get('confirmPassword')!.hasError('required')">
                 Required confirm password
             </mat-error>
-            <mat-error *ngIf="form.get('confirmPassword')!.dirty && form.get('confirmPassword')!.hasError('minlength')">
+            <mat-error *ngIf="form.get('confirmPassword')!.touched && form.get('confirmPassword')!.hasError('minlength')">
                 Minimum confirm password length 3
             </mat-error>
-            <mat-error *ngIf="form.get('confirmPassword')!.dirty && form.get('confirmPassword')!.hasError('mismatch')">
+            <mat-error *ngIf="form.get('confirmPassword')!.touched && form.get('confirmPassword')!.hasError('mismatch')">
                 Password and confirm password doesn't match
             </mat-error>
 
