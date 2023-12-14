@@ -33,6 +33,11 @@ export class CupDetailComponent implements OnInit {
       });
   }
 
+  delete(): void {
+    this.cupService.delete(this.cup.id!);
+    
+  }
+
   toHome() {
     this.router.navigate(['/']);
   }

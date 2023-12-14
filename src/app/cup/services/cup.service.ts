@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cup } from '@cup/models/cup.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -62,6 +62,33 @@ export class CupService {
         console.log(error);
       }
     });
+  }
+
+  delete(id: number){
+    const path = this.cupPath + '/' + id;
+    this.httpClient.delete<void>(path).subscribe(
+    //   {
+    //   next: (response) => {
+    //     const resp: any = response;
+    //     if(resp.status == 204){
+    //       console.log('response = 204');
+    //       this.router.navigate(['/']);
+    //     }
+    //   },
+    //   error: (error) => {
+    //     console.log('something wrong at delete');
+    //   }
+    // }
+    {
+      next: (response) => {
+        console.log('success: ' + response);
+        this.router.navigate(['/']);
+      },
+      error: (error) => {
+        console.log('error: ' + error);
+      }
+    }
+    );
   }
 }
 
