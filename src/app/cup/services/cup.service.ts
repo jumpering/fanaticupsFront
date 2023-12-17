@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { ImageService } from './image.service';
+import { log } from 'console';
 
 @Injectable()
 export class CupService {
@@ -23,7 +24,7 @@ export class CupService {
     return this.httpClient.get<Cup[]>(this.cupPath);
   }
 
-  existCupName(name: string): Observable<boolean>{
+  existCupName(name: string): Observable<boolean> {
     const path = this.cupPath + '/findCupName'
     const formData: FormData = new FormData();
     formData.append("userId", this.authService.getId().toString());
@@ -64,30 +65,22 @@ export class CupService {
     });
   }
 
-  delete(id: number){
+  delete(id: number) {
     const path = this.cupPath + '/' + id;
-    this.httpClient.delete<void>(path).subscribe(
-    //   {
-    //   next: (response) => {
-    //     const resp: any = response;
-    //     if(resp.status == 204){
-    //       console.log('response = 204');
-    //       this.router.navigate(['/']);
-    //     }
-    //   },
-    //   error: (error) => {
-    //     console.log('something wrong at delete');
-    //   }
-    // }
-    {
-      next: (response) => {
-        console.log('success: ' + response);
-        this.router.navigate(['/']);
-      },
-      error: (error) => {
-        console.log('error: ' + error);
+    this.httpClient.delete<void>(path, { observe: 'response' }).subscribe(
+      {
+        next: (response: HttpResponse<void>) => {
+          if (response.status === 204) {
+            console.log('response is 204, success delete');
+            this.router.navigate(['/']);
+          } else {
+            console.log('error code: ' + response.status);
+          }
+        },
+        error: (error) => {
+          console.log('something wrong at delete' + error);
+        }
       }
-    }
     );
   }
 }
