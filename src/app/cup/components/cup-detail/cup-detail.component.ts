@@ -28,7 +28,7 @@ export class CupDetailComponent implements OnInit {
         .subscribe(element => {
           this.cup = element;
           const image = element.image?.toString();
-          this.cupImage = this.cupImage.concat(image!).replace('assets/images/', '');
+          this.cupImage = this.cupImage.concat(image!);
         });
       });
   }

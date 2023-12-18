@@ -25,7 +25,7 @@ export class CupService {
   }
 
   existCupName(name: string): Observable<boolean> {
-    const path = this.cupPath + '/findCupName'
+    const path = this.cupPath + '/findCupNameByUserId'
     const formData: FormData = new FormData();
     formData.append("userId", this.authService.getId().toString());
     formData.append("cupName", name);
@@ -45,7 +45,6 @@ export class CupService {
       userId: this.authService.getId().toString(),
       cup: JSON.stringify(cup)
     }
-
     this.imageService.uploadImage(formData).subscribe({
       next: (response) => {
         console.log('Success:', response);
