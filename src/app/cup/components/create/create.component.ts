@@ -4,6 +4,7 @@ import { Cup } from '@cup/models/cup.model';
 import { CupService } from '@cup/services/cup.service';
 import { AuthService } from '@auth/services/auth.service';
 import { CustomValidators } from 'src/app/utils/customValidators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create',
@@ -15,11 +16,13 @@ export class CreateComponent implements OnInit {
   public file: File | null = null;
   public form!: FormGroup;
   public urlImage!: string;
+  private extensionsPermited: string[] = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
   constructor(
-    public cupService: CupService,
-    public formBuilder: FormBuilder,
-    public authService: AuthService,
+    private cupService: CupService,
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private snackBar: MatSnackBar
   ) { 
     this.buildForm();
   }
@@ -40,13 +43,30 @@ export class CreateComponent implements OnInit {
 
   onSelectedFile(event: any){
     this.file =  event.target.files[0];
-    if (this.file) {
+    if (this.file && this.isImage()) {
       const reader = new FileReader();
       reader.onloadend = () => {
         this.urlImage = reader.result as string;
       };
       reader.readAsDataURL(this.file);
+    } else {
+      this.file = null;
+      let messageExtensionsPrettyFormat: string = '';
+      this.extensionsPermited.forEach(ext => {
+        messageExtensionsPrettyFormat = messageExtensionsPrettyFormat.concat('*.' + ext + ` `);
+      });
+      this.showSnackBarMessage('Only ' + messageExtensionsPrettyFormat + ' files are supported.');
     }
+  }
+
+  private isImage(): boolean {
+    const image = this.file?.name.split('.');
+    const extension = image![(image!.length) - 1];
+    return this.extensionsPermited.includes(extension);
+  }
+
+  private showSnackBarMessage(message: string): void {
+    this.snackBar.open(message, '', { duration: 10000 });
   }
 
   onCreateCup(){

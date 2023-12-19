@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Cup } from '@cup/models/cup.model';
-import { User } from '@cup/models/user.model';
 import { AuthService } from '@auth/services/auth.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -12,8 +11,6 @@ import { HttpClient } from '@angular/common/http';
 export class CupComponent implements OnInit {
 
   public isLogged!: boolean;
-  //public image!: File;
-  //public blob!: Blob;
   public cupImage: string = 'http://localhost:8080/images/';
 
   constructor(
@@ -26,12 +23,6 @@ export class CupComponent implements OnInit {
     
     const image = this.cup!.image?.toString();
     this.cupImage = this.cupImage.concat(image!).replace('assets/images/', '');
-
-
-    // const path = 'http://localhost:8080/files/' + this.authService.getId().toString();
-    // this.http.get(path).subscribe((data) => {
-    //   this.blob = new Blob([data], {type: 'application/pdf'});
-    // });
   }
 
   @Input() cup!: Cup;

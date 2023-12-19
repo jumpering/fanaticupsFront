@@ -3,10 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '@auth/services/auth.service';
 import { Router } from '@angular/router';
 
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Credentials } from '@auth/models/Credentials';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +16,6 @@ export class LoginComponent implements OnInit {
 
   form!: FormGroup;
   credentials: Credentials = {
-    //user: '',
     name: '',
     email:'',
     password: ''
@@ -27,7 +25,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    public dialogRef: MatDialogRef<LoginComponent>,
+    private dialogRef: MatDialogRef<LoginComponent>,
     private snackBar: MatSnackBar
   ) {
     this.buildForm();

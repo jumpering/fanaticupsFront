@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core';
 import { Cup } from '@cup/models/cup.model';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { ImageService } from './image.service';
-import { log } from 'console';
 
 @Injectable()
 export class CupService {

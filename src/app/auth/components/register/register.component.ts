@@ -1,13 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '@auth/services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Credentials } from '@auth/models/Credentials';
 import { CustomValidators } from 'src/app/utils/customValidators';
-import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -30,7 +29,6 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<RegisterComponent>,
-    //@Inject(MAT_DIALOG_DATA) public data: 'ojo al dato'
   ) { 
   }
 
