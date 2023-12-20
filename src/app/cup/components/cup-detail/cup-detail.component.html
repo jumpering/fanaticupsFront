@@ -30,7 +30,13 @@
                     <div class="cupPrice">
                         <h2>Price: {{ cup.price }} €</h2>
                     </div>
-                    <button mat-raised-button color="primary" (click)="delete()">Delete</button>
+                            <button mat-fab 
+                                color="primary" 
+                                matTooltip="Delete" 
+                                class="trashImageButton" 
+                                (click)="openDeleteDialog()">
+                                    <mat-icon>delete</mat-icon>
+                            </button>
                     <mat-divider></mat-divider>
                     <mat-divider></mat-divider>
                     <h2>6 comments</h2>
@@ -45,7 +51,7 @@
             </mat-card>
             </div>
         </div>
-        <div class="related" style="background-color: beige;">
+        <div class="related" style="background-color: rgb(238, 238, 238);">
             <h2 style="display: flex; justify-content: center;">...related...</h2>
         </div>
     </div>

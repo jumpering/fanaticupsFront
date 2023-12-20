@@ -3,6 +3,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { CupService } from '@cup/services/cup.service'
 import { Cup } from '@cup/models/cup.model';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogComponent } from 'src/app/message/components/delete-dialog/delete-dialog.component';
+
 
 @Component({
   selector: 'app-cup-detail',
@@ -17,7 +20,8 @@ export class CupDetailComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private cupService: CupService,
-    private router: Router
+    private router: Router,
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -33,9 +37,22 @@ export class CupDetailComponent implements OnInit {
       });
   }
 
-  delete(): void {
-    this.cupService.delete(this.cup.id!);
-    
+  public openDeleteDialog(): void {
+    const dialogRef = this.matDialog.open(DeleteDialogComponent, {
+      width: '300px',
+      data: {cupName: this.cup.name}
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== undefined && result === true){
+        console.log('es true, y deberia de borrar');
+        this.cupService.delete(this.cup.id!);
+      }
+    });
+  }
+
+  private showDialog(message: string): void{
+
   }
 
   toHome() {
