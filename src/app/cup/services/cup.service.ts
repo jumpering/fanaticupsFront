@@ -23,7 +23,7 @@ export class CupService {
   }
 
   existCupName(name: string): Observable<boolean> {
-    const path = this.cupPath + '/findCupNameByUserId'
+    const path = this.cupPath + '/existCupNameByUserId'
     const formData: FormData = new FormData();
     formData.append("userId", this.authService.getId().toString());
     formData.append("cupName", name);
@@ -79,6 +79,11 @@ export class CupService {
         }
       }
     );
+  }
+
+  updateCup(id: number){
+    const path = this.cupPath + '/' + id;
+    
   }
 }
 

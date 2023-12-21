@@ -10,49 +10,49 @@
                 <img class="cupImage" [src]="cupImage" alt="">
             </div>
             <div class="left">
-            <mat-card>
-                <mat-card-header>
-                    <mat-card-title>
-                        <h2>{{ cup.name }}</h2>
-                    </mat-card-title>
-                    <mat-card-subtitle>
-                        {{ cup.origin }}
-                    </mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
-                    <div class="descriptionShort">
-                        <p> {{ cup.description }}</p>
-                    </div>
-                    <div class="user">
-                        <h3>user: {{ cup.user?.name }}</h3>
-                    </div>
-                    <mat-divider></mat-divider>
-                    <div class="cupPrice">
-                        <h2>Price: {{ cup.price }} €</h2>
-                    </div>
-                            <button mat-fab 
-                                color="primary" 
-                                matTooltip="Delete" 
-                                class="trashImageButton" 
-                                (click)="openDeleteDialog()">
-                                    <mat-icon>delete</mat-icon>
-                            </button>
-                    <mat-divider></mat-divider>
-                    <mat-divider></mat-divider>
-                    <h2>6 comments</h2>
-                    <h3>USER_A:  aaa aaaaaa aaaa aaa aaa</h3>
-                    <h3>USER_B:  aaaa aaaaa aaa a aaaa afeefds dfddfsf ddfdssdsdaa</h3>
-                    <h3>aUSER_A:  a aa aaa aaaaaaa aaaaaa</h3>
-                    <h3>USER_B:  aaaa aaaa aa</h3>
-                    <h3>USER_A:  aa aaaa aaaaaa aafdfd dfdfd fdfdfaaaaaa🥰</h3>
-                    <h3>USER_B:  aaa aa aaaaaa aaaaaaa aa</h3>
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>
+                            <h2>{{ cup.name }}</h2>
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            {{ cup.origin }}
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="descriptionShort">
+                            <p> {{ cup.description }}</p>
+                        </div>
+                        <div class="user">
+                            <h3>user: {{ cup.user?.name }}</h3>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div class="cupPrice">
+                            <h2>Price: {{ cup.price }} €</h2>
+                        </div>
+                        <button mat-fab color="primary" matTooltip="Delete"
+                            (click)="openDeleteDialog()">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        <button mat-fab color="primary" matTooltip="Edit"
+                        (click)="editCup()">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <mat-divider></mat-divider>
+                        <mat-divider></mat-divider>
+                        <h2>6 comments</h2>
+                        <h3>USER_A: aaa aaaaaa aaaa aaa aaa</h3>
+                        <h3>USER_B: aaaa aaaaa aaa a aaaa afeefds dfddfsf ddfdssdsdaa</h3>
+                        <h3>aUSER_A: a aa aaa aaaaaaa aaaaaa</h3>
+                        <h3>USER_B: aaaa aaaa aa</h3>
+                        <h3>USER_A: aa aaaa aaaaaa aafdfd dfdfd fdfdfaaaaaa🥰</h3>
+                        <h3>USER_B: aaa aa aaaaaa aaaaaaa aa</h3>
 
-                </mat-card-content>
-            </mat-card>
+                    </mat-card-content>
+                </mat-card>
             </div>
         </div>
         <div class="related" style="background-color: rgb(238, 238, 238);">
             <h2 style="display: flex; justify-content: center;">...related...</h2>
         </div>
     </div>
-

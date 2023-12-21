@@ -55,6 +55,10 @@ export class CupDetailComponent implements OnInit {
 
   }
 
+  public editCup(): void{
+       
+  }
+
   toHome() {
     this.router.navigate(['/']);
   }
