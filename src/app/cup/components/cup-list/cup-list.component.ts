@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Cup } from '../../models/cup.model';
 import { CupService } from '@cup/services/cup.service';
-
 
 @Component({
   selector: 'app-cup-list',
@@ -13,6 +12,10 @@ import { CupService } from '@cup/services/cup.service';
 export class CupListComponent implements OnInit {
 
   public listOfCups: Cup[] = [];
+  public page: number = 0;
+  public cupsPerPage: number = 12;
+  public isFirst: boolean = false;
+  public isLast: boolean = false;
 
   constructor(
     private cupService: CupService,
@@ -20,11 +23,25 @@ export class CupListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.cupService.getAllCups().subscribe(data => {
-      console.log(data);
-      this.listOfCups = data;
-      
+    this.getAllCups();
+  }
+
+  public getAllCups(): void {
+    this.cupService.getAllCups(this.page, this.cupsPerPage).subscribe(requestDataInput => {
+      this.page = requestDataInput.number;
+      this.isFirst = requestDataInput.first;
+      this.isLast = requestDataInput.last;
+      //this.listOfCups = [...requestDataInput.content]; 
+      this.listOfCups.push(...requestDataInput.content);  
     });
+  }
+
+  @HostListener('scroll', ['$event'])
+  public onScrollDown(event: Event){
+    console.log("que es el event: " + event);
+    this.page++;
+    console.log('valor de page: ' + this.page);
+    this.getAllCups();
   }
 
   public onBuyClicked(id: number){
@@ -38,10 +55,5 @@ export class CupListComponent implements OnInit {
   public onCreateClicked(cup: Cup){
     //this.cupService.
   }
-
-  // public getOwnerCup(){
-    
-  //   return "fake";
-  // }
 
 }

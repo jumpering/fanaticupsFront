@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cup } from '@cup/models/cup.model';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { ImageService } from './image.service';
@@ -9,7 +9,7 @@ import { ImageService } from './image.service';
 @Injectable()
 export class CupService {
 
-  public cupPath = 'http://localhost:8080/cups';
+  public cupPath: string = 'http://localhost:8080/cups?';
 
   constructor(
     private httpClient: HttpClient,
@@ -18,9 +18,20 @@ export class CupService {
     private imageService: ImageService
   ) { }
 
-  getAllCups(): Observable<Cup[]> {
-    return this.httpClient.get<Cup[]>(this.cupPath);
+  //For return only desired element of response
+  // getAllCups(page: number, cupsPerPage: number): Observable<Cup[]> {
+  //   const totalPath: string = this.cupPath + 'page=' + page + '&size=' + cupsPerPage;
+  //   return this.httpClient.get<RequestDataInput>(totalPath)
+  //   .pipe(
+  //     map(response => response.content)
+  //   );
+  // }
+
+    getAllCups(page: number, cupsPerPage: number): Observable<RequestDataInput> {
+    const totalPath: string = this.cupPath + 'page=' + page + '&size=' + cupsPerPage;
+    return this.httpClient.get<RequestDataInput>(totalPath);
   }
+
 
   existCupName(name: string): Observable<boolean> {
     const path = this.cupPath + '/existCupNameByUserId'
@@ -90,4 +101,27 @@ export class CupService {
 interface RequestInfo {
   userId: string;
   cup: string;
+}
+
+interface RequestDataInput{
+  content: Cup[];
+  empty: boolean;
+  first: boolean;
+  last: boolean;
+  number: number;
+  numberOfElements: number;
+  pageable: {
+    offset: number;
+  pageNumber: number;
+  pageSize: number;
+  paged: boolean;
+  }
+  size: number;
+  sort: {
+    empty: boolean;
+    sorted: boolean;
+    unsorted: boolean;
+  },
+  totalElements: number;
+  totalPages: number;
 }
