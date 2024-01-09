@@ -11,6 +11,7 @@ import { MessageModule } from '../message/message.module';
 import { SharedModule } from '@shared/shared.module';
 import { MaterialModule } from '@material/material.module';
 import { CreateComponent } from './components/create/create.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CreateComponent } from './components/create/create.component';
     SharedModule,
     MaterialModule,
     ReactiveFormsModule,
-    MessageModule
+    MessageModule,
+    InfiniteScrollModule
   ],
   exports: [
     CupListComponent

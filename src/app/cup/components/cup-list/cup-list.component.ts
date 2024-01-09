@@ -31,17 +31,16 @@ export class CupListComponent implements OnInit {
       this.page = requestDataInput.number;
       this.isFirst = requestDataInput.first;
       this.isLast = requestDataInput.last;
-      //this.listOfCups = [...requestDataInput.content]; 
       this.listOfCups.push(...requestDataInput.content);  
     });
   }
 
-  @HostListener('scroll', ['$event'])
-  public onScrollDown(event: Event){
-    console.log("que es el event: " + event);
+  public onScrollDown(){
     this.page++;
     console.log('valor de page: ' + this.page);
-    this.getAllCups();
+    if(this.isLast !== true){
+      this.getAllCups();
+    }
   }
 
   public onBuyClicked(id: number){
