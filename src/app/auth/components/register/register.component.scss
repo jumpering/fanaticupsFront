@@ -1,13 +1,17 @@
 .dialogContainer {
   display: flex;
   flex-direction: column;
+  justify-content:space-between;
+  padding-top: 1%;
+  padding-bottom: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
-button {
-  margin-right: 8px;
+.title {
+  text-align: center;
 }
 
-.formRegister {
-  padding-top: 50px;
-  padding-bottom: 50px;
+mat-form-field {
+  width: 100%;
 }

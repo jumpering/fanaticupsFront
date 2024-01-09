@@ -1,12 +1,13 @@
-::ng-deep .mat-card{
-    border: 75px !important;
-    border-radius: 30px !important;
-    border: 55px solid #000;
-   }
+// ::ng-deep .mat-card{
+//     background-color: rgb(98, 0, 93);
+//     border: 75px !important;
+//     border-radius: 30px !important;
+//     border: 55px solid #000;
+//    }
 
-   .mat-card:hover { 
-    filter: brightness(50%);
-}
+// ::ng-deep .mat-card:hover { 
+//     filter: brightness(50%);
+// }
 
 .cupCard{
     display: flex;
@@ -14,6 +15,12 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    border-radius: 30px !important;
+    border: 1px solid #f3f3f3;
+}
+
+.cupCard:hover{
+    filter: brightness(50%);
 }
 
 .imageContainer{
