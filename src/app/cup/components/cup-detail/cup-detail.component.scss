@@ -12,13 +12,17 @@
 }
 
 .right{
+    margin-left: 0;
     width: 65%;
     height: auto;
     background-color: rgb(238, 238, 238);
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
+.edit-icon-image{
+    position: relative;
 }
 
 .left{
@@ -33,6 +37,7 @@
 }
 
 .cupImage {
+    position: relative;
     width: 80%;
     height: auto;
     object-fit:cover;

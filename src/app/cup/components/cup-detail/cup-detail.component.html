@@ -4,6 +4,9 @@
             <div class="right">
                 <img class="backButton" src="./../../../../assets/images/backButton.svg" alt="back" (click)="toHome()">
                 <img class="cupImage" [src]="cupImage" alt="cup.name">
+                <div  class="edit-icon-image" *ngIf="updateFields">
+                    <mat-icon class="dit-icon-image" matSuffix>mode_edit</mat-icon>
+                </div>              
             </div>
 
             <div class="left">
@@ -66,7 +69,6 @@
                     <h4>USER_B: aaaa aaaa aa</h4>
                     <h4>USER_A: aa aaaa aaaaaa aafdfd dfdfd fdfdfaaaaaa🥰</h4>
                     <h4>USER_B: aaa aa aaaaaa aaaaaaa aa</h4>
-
                 </div>
 
             </div>
