@@ -12,6 +12,9 @@ export class CupComponent implements OnInit {
 
   public isLogged!: boolean;
   public cupImage: string = 'http://localhost:8080/images/';
+  @Input() cup!: Cup;
+  @Output() buy = new EventEmitter<number>();
+  @Output() detail = new EventEmitter<number>();
 
   constructor(
     private authService: AuthService,
@@ -25,10 +28,6 @@ export class CupComponent implements OnInit {
     this.cupImage = this.cupImage.concat(image!).replace('assets/images/', '');
   }
 
-  @Input() cup!: Cup;
-  @Output() buy = new EventEmitter<number>();
-  @Output() detail = new EventEmitter<number>();
- 
   viewDescription(){
     this.buy.emit(this.cup.id);
   }

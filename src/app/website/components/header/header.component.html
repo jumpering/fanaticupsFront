@@ -4,13 +4,13 @@
 
   <div *ngIf="!(hasSession() | async)" >
 
-    <button mat-raised-button class="headerButtons" color="primary" (click)="openLoginDialog()">Login</button>  
-    <button mat-raised-button class="headerButtons" color="primary" (click)="openRegisterDialog()">Register</button>
+    <button mat-raised-button class="headerButtons" color="primary" (click)="openLoginDialog()" matTooltip="Login">Login</button>  
+    <button mat-raised-button class="headerButtons" color="primary" (click)="openRegisterDialog()" matTooltip="Register">Register</button>
   </div>
   <div *ngIf="(hasSession() | async)">
     <h3 mat-card-subtitle class="wellcomeMessage"> {{getUsername()}} </h3>
-    <button mat-raised-button class="headerButtons" color="primary" routerLink="/create">Create Cup</button>  
-    <button mat-raised-button class="headerButtons" color="primary" routerLink="/" (click)="logout()">logout</button>
+    <button mat-raised-button class="headerButtons" color="primary" routerLink="/create" matTooltip="Create">Create Cup</button>  
+    <button mat-raised-button class="headerButtons" color="primary" routerLink="/" (click)="logout()" matTooltip="Logout">logout</button>
   </div>
 
 </mat-toolbar>    

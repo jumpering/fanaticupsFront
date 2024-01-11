@@ -4,8 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CupService } from '@cup/services/cup.service'
 import { Cup } from '@cup/models/cup.model';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogComponent } from 'src/app/message/components/delete-dialog/delete-dialog.component';
-
+import { DeleteDialogComponent } from '../cup-delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-cup-detail',
@@ -16,6 +15,7 @@ export class CupDetailComponent implements OnInit {
 
   public cup!: Cup;
   public cupImage: string = 'http://localhost:8080/images/';
+  public updateFields: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -38,8 +38,8 @@ export class CupDetailComponent implements OnInit {
   }
 
   public openDeleteDialog(): void {
-    const dialogRef = this.matDialog.open(DeleteDialogComponent, {
-      width: '300px',
+    // const dialogRef = this.matDialog.open(DeleteDialogComponent, {
+      const dialogRef = this.matDialog.open(DeleteDialogComponent, {
       data: {cupName: this.cup.name}
     });
 
@@ -61,6 +61,15 @@ export class CupDetailComponent implements OnInit {
 
   toHome() {
     this.router.navigate(['/']);
+  }
+
+  onClickUpdateFields(): void {
+    this.updateFields = true;
+  }
+
+  updateTitle(): void {
+    alert('title updated on bd');
+    this.updateFields = false;
   }
 
 }

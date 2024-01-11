@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CupListComponent } from '@cup/components/cup-list/cup-list.component';
 import { CupDetailComponent } from './components/cup-detail/cup-detail.component';
 import { AuthGuard } from '@auth/guards/auth.guard';
-import { CreateComponent } from './components/create/create.component';
+import { CreateComponent } from './components/cup-create/create.component';
 
 const routes: Routes = [
   // {
