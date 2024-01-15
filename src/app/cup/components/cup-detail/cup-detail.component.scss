@@ -7,13 +7,23 @@
 .detail{
     width: auto;
     display: flex;
-    flex-direction: row;
-    justify-content:center;    
+    justify-content:center;
+    flex-flow: row wrap;
 }
 
 .right{
     margin-left: 0;
     width: 65%;
+    height: auto;
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right.smallScreenRight{
+    margin-left: 0;
+    width: 100%;
     height: auto;
     background-color: rgb(238, 238, 238);
     display: flex;
@@ -27,6 +37,11 @@
 
 .left{
     width: 35%;
+    height: auto;
+}
+
+.left.smallScreenLeft{
+    width: 100%;
     height: auto;
 }
 

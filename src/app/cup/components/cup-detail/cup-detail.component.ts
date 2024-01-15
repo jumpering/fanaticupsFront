@@ -5,6 +5,7 @@ import { CupService } from '@cup/services/cup.service'
 import { Cup } from '@cup/models/cup.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from '../cup-delete-dialog/delete-dialog.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-cup-detail',
@@ -16,12 +17,14 @@ export class CupDetailComponent implements OnInit {
   public cup!: Cup;
   public cupImage: string = 'http://localhost:8080/images/';
   public updateFields: boolean = false;
+  public isSmallScreen: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private cupService: CupService,
     private router: Router,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private breakpointObserver: BreakpointObserver
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +37,20 @@ export class CupDetailComponent implements OnInit {
           const image = element.image?.toString();
           this.cupImage = this.cupImage.concat(image!);
         });
+      });
+      this.breakpointObserver.observe([
+        Breakpoints.XSmall,
+        Breakpoints.Small,
+        Breakpoints.Medium,
+        Breakpoints.Large,
+        Breakpoints.XLarge
+      ]).subscribe(result => {
+        const breakpoints = result.breakpoints;
+        if (breakpoints[Breakpoints.Small] || breakpoints[Breakpoints.XSmall]){
+          this.isSmallScreen = true;
+        } else {
+          this.isSmallScreen = false;
+        }
       });
   }
 

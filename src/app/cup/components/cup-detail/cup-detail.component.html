@@ -1,7 +1,7 @@
 <div *ngIf="cup">
     <div class="detailContainer">
         <div class="detail">
-            <div class="right">
+            <div class="right" [ngClass]="{'smallScreenRight': isSmallScreen}">
                 <img class="backButton" src="./../../../../assets/images/backButton.svg" alt="back" (click)="toHome()">
                 <img class="cupImage" [src]="cupImage" alt="cup.name">
                 <div  class="edit-icon-image" *ngIf="updateFields">
@@ -9,7 +9,7 @@
                 </div>              
             </div>
 
-            <div class="left">
+            <div class="left" [ngClass]="{'smallScreenLeft': isSmallScreen}">
                 <div class="title-group" *ngIf="!updateFields">
                     <h1 class="title-left">{{ cup.name }}</h1>
                 </div>
