@@ -10,23 +10,22 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
-
-
-
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [],
   imports: [
-    MatCardModule,
-    MatDividerModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatDialogModule,
-    MatTooltipModule,
-    MatIconModule
+    // MatCardModule,
+    // MatDividerModule,
+    // MatButtonModule,
+    // MatToolbarModule,
+    // MatFormFieldModule,
+    // MatInputModule,
+    // MatSnackBarModule,
+    // MatDialogModule,
+    // MatTooltipModule,
+    // MatIconModule,
+    // MatMenuModule
   ],
   exports: [
     MatCardModule,
@@ -39,7 +38,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatTooltipModule,
     MatIconModule,
-  
+    MatMenuModule
   ],
 })
 export class MaterialModule { }

@@ -1,16 +1,44 @@
-<mat-toolbar>
-  <img (click)="toHome()" class="logo" src="./../../../../assets/images/logo.svg" alt="">
-  <span class="alignButtons"></span>
-
-  <div *ngIf="!(hasSession() | async)" >
-
-    <button mat-raised-button class="headerButtons" color="primary" (click)="openLoginDialog()" matTooltip="Login">Login</button>  
-    <button mat-raised-button class="headerButtons" color="primary" (click)="openRegisterDialog()" matTooltip="Register">Register</button>
+<mat-toolbar class="toolbar">
+  <img (click)="toHome()" class="logo" src="./../../../../assets/images/logo.svg" alt="Cups & Mugs!">
+  <!-- <h3 mat-card-subtitle class="wellcomeMessage"> {{getUsername()}} </h3> -->
+  <div *ngIf="!(hasSession() | async)">
+    <button mat-icon-button [matMenuTriggerFor]="menu" [ngClass]="{'smallScreenButton': !isSmallScreen}"
+      matTooltip="Menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openLoginDialog()" matTooltip="Login">
+        <mat-icon>login</mat-icon>
+        <span>Login</span>
+      </button>
+      <button mat-menu-item (click)="openRegisterDialog()" matTooltip="Register">
+        <mat-icon>person_add</mat-icon>
+        <span>Register</span>
+      </button>
+    </mat-menu>
+    <button mat-raised-button class="headerButtons" color="primary" (click)="openLoginDialog()" matTooltip="Login"
+      [ngClass]="{'smallScreenButton': isSmallScreen}">Login</button>
+    <button mat-raised-button class="headerButtons" color="primary" (click)="openRegisterDialog()" matTooltip="Register"
+      [ngClass]="{'smallScreenButton': isSmallScreen}">Register</button>
   </div>
   <div *ngIf="(hasSession() | async)">
-    <h3 mat-card-subtitle class="wellcomeMessage"> {{getUsername()}} </h3>
-    <button mat-raised-button class="headerButtons" color="primary" routerLink="/create" matTooltip="Create">Create Cup</button>  
-    <button mat-raised-button class="headerButtons" color="primary" routerLink="/" (click)="logout()" matTooltip="Logout">logout</button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" [ngClass]="{'smallScreenButton': !isSmallScreen}"
+      matTooltip="Menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/create">
+        <mat-icon>emoji_food_beverage</mat-icon>
+        <span>Create cup</span>
+      </button>
+      <button mat-menu-item routerLink="/" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+    <button mat-raised-button class="headerButtons" color="primary" routerLink="/create" matTooltip="Create cup"
+      [ngClass]="{'smallScreenButton': isSmallScreen}">Create cup</button>
+    <button mat-raised-button class="headerButtons" color="primary" routerLink="/" (click)="logout()"
+      matTooltip="Logout" [ngClass]="{'smallScreenButton': isSmallScreen}">Logout</button>
   </div>
-
-</mat-toolbar>    
+</mat-toolbar>

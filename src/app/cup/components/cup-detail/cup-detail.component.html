@@ -5,7 +5,8 @@
                 <img class="backButton" src="./../../../../assets/images/backButton.svg" alt="back" (click)="toHome()">
                 <img class="cupImage" [src]="cupImage" alt="cup.name">
                 <div  class="edit-icon-image" *ngIf="updateFields">
-                    <mat-icon class="dit-icon-image" matSuffix>mode_edit</mat-icon>
+                    <!-- <mat-icon class="dit-icon-image" matSuffix>mode_edit</mat-icon> -->
+                <button class="uploadImage" *ngIf="!file" mat-raised-button color="primary" (click)="toHome()" matTooltip="upload Image">new image</button>
                 </div>              
             </div>
 

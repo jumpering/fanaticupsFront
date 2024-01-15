@@ -1,14 +1,3 @@
-// ::ng-deep .mat-card{
-//     background-color: rgb(98, 0, 93);
-//     border: 75px !important;
-//     border-radius: 30px !important;
-//     border: 55px solid #000;
-//    }
-
-// ::ng-deep .mat-card:hover { 
-//     filter: brightness(50%);
-// }
-
 .cupCard{
     display: flex;
     flex-direction: column;
@@ -31,9 +20,12 @@
 
 .cupImage {
     margin:auto;
-    height: 280px;
+    //height: 250px;
+    // width: auto;
     border-radius: 10%;
     overflow:hidden;
+     max-height: 300px;
+     max-width: auto;
 }
 
 .descriptionShort{

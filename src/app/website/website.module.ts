@@ -7,7 +7,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { CupModule } from '@cup/cup.module';
 import { LayoutComponent } from './components/layout/layout.component';
 
-
 @NgModule({
   declarations: [
     HeaderComponent,

@@ -1,5 +1,4 @@
 <mat-card class="cupCard" (click)="showDetail()">
-
     <mat-card-header>
         <mat-card-title>
             <h3>{{ cup.name }}</h3>
@@ -11,7 +10,7 @@
 
     <mat-card-content>
         <div class="imageContainer">
-            <img class="cupImage" src= {{cupImage}} alt=""> 
+            <img class="cupImage" src={{cupImage}} alt="">
         </div>
         <p class="descriptionShort"> {{ cup.description | slice: 0: 30 | threeDotsForShortDescription }}</p>
         <mat-divider></mat-divider>

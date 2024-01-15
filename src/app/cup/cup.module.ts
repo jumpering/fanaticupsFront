@@ -12,7 +12,7 @@ import { MaterialModule } from '@material/material.module';
 import { CreateComponent } from './components/cup-create/create.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DeleteDialogComponent } from './components/cup-delete-dialog/delete-dialog.component';
-import { LayoutModule } from '@angular/cdk/layout';
+//import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MaterialModule,
     ReactiveFormsModule,
     InfiniteScrollModule,
-    LayoutModule
+    //LayoutModule
   ],
   exports: [
     CupListComponent

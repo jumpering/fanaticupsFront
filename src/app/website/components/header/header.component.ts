@@ -4,10 +4,8 @@ import { AuthService } from '@auth/services/auth.service';
 import { Observable } from 'rxjs';
 import { RegisterComponent } from '@auth/components/register/register.component';
 import { MatDialog } from '@angular/material/dialog';
-import { CupComponent } from '@cup/components/cup/cup.component';
 import { LoginComponent } from '@auth/components/login/login.component';
-import * as JWT from 'jwt-decode';
-
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-header',
@@ -17,18 +15,31 @@ import * as JWT from 'jwt-decode';
 export class HeaderComponent implements OnInit {
 
   public isLogged!: boolean;
+  public isSmallScreen: boolean = false;
 
   constructor(
     private router: Router,
     private authService: AuthService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public breakpointObserver: BreakpointObserver
   ) {
-    //this.isLogged = this.authService.getToken() !== null;
-    //this.isLogged = this.authService.hasSession();
    }
 
   ngOnInit(): void {
-    //this.authService.hasSession().subscribe(logged => this.isLogged = logged);
+    this.breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge
+    ]).subscribe(result => {
+      const breakpoints = result.breakpoints;
+      if (breakpoints[Breakpoints.Small] || breakpoints[Breakpoints.XSmall]){
+        this.isSmallScreen = true;
+      } else {
+        this.isSmallScreen = false;
+      }
+    });
   }
 
   hasSession(): Observable<boolean>{
@@ -41,30 +52,18 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     localStorage.clear();
-    // this.authService.logout().then(user => console.log('currentUser after logout subscribe: ' + user));
-    //this.authService.logout();
   }
 
   openRegisterDialog(){
     this.dialog.open(RegisterComponent);
-    //this.dialog.open(SignupComponent);
-    // const dialogRef = this.dialog.open(SignupComponent);
-    // dialogRef.afterClosed().subscribe(resp => {
-    //   console.log(resp);
-    // })
   }
 
   openLoginDialog(){
     this.dialog.open(LoginComponent);
-    //this.dialog.open(SignupComponent);
-    // const dialogRef = this.dialog.open(SignupComponent);
-    // dialogRef.afterClosed().subscribe(resp => {
-    //   console.log(resp);
-    // })
   } 
 
   getUsername(): string | undefined{
-    return 'Wellcome ' + this.authService.getUsername();
+    return this.authService.getUsername();
   }
 }
 

@@ -1,3 +1,10 @@
+.toolbar{
+  display: flex;
+  flex-direction:row;
+  margin-right: auto;
+  justify-content:space-between;
+}
+
 .logo {
     width: 200px;
 }
@@ -16,6 +23,10 @@
 
   .wellcomeMessage{
     position: absolute;
-    right: 20%;
+    right: 50%;
     color: rgb(150, 150, 150);
+  }
+
+  .smallScreenButton{
+    display:none !important;
   }

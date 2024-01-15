@@ -18,6 +18,7 @@ export class CupDetailComponent implements OnInit {
   public cupImage: string = 'http://localhost:8080/images/';
   public updateFields: boolean = false;
   public isSmallScreen: boolean = false;
+  public file: File | null = null;
 
   constructor(
     private activatedRoute: ActivatedRoute,
