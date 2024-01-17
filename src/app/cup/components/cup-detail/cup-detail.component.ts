@@ -6,6 +6,8 @@ import { Cup } from '@cup/models/cup.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from '../cup-delete-dialog/delete-dialog.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { BreakpointService } from 'src/app/utils/breakpoint.service';
 
 @Component({
   selector: 'app-cup-detail',
@@ -17,7 +19,7 @@ export class CupDetailComponent implements OnInit {
   public cup!: Cup;
   public cupImage: string = 'http://localhost:8080/images/';
   public updateFields: boolean = false;
-  public isSmallScreen: boolean = false;
+  public isHandset$!: Observable<boolean>;
   public file: File | null = null;
 
   constructor(
@@ -25,7 +27,7 @@ export class CupDetailComponent implements OnInit {
     private cupService: CupService,
     private router: Router,
     private matDialog: MatDialog,
-    private breakpointObserver: BreakpointObserver
+    private breakpointService: BreakpointService
   ) { }
 
   ngOnInit(): void {
@@ -33,48 +35,26 @@ export class CupDetailComponent implements OnInit {
       .subscribe((params: Params) => {
         const id: number = params['id'];
         this.cupService.getById(id)
-        .subscribe(element => {
-          this.cup = element;
-          const image = element.image?.toString();
-          this.cupImage = this.cupImage.concat(image!);
-        });
+          .subscribe(element => {
+            this.cup = element;
+            const image = element.image?.toString();
+            this.cupImage = this.cupImage.concat(image!);
+          });
       });
-      this.breakpointObserver.observe([
-        Breakpoints.XSmall,
-        Breakpoints.Small,
-        Breakpoints.Medium,
-        Breakpoints.Large,
-        Breakpoints.XLarge
-      ]).subscribe(result => {
-        const breakpoints = result.breakpoints;
-        if (breakpoints[Breakpoints.Small] || breakpoints[Breakpoints.XSmall]){
-          this.isSmallScreen = true;
-        } else {
-          this.isSmallScreen = false;
-        }
-      });
+    this.isHandset$ = this.breakpointService.isHandset$;
   }
 
   public openDeleteDialog(): void {
-    // const dialogRef = this.matDialog.open(DeleteDialogComponent, {
-      const dialogRef = this.matDialog.open(DeleteDialogComponent, {
-      data: {cupName: this.cup.name}
+    const dialogRef = this.matDialog.open(DeleteDialogComponent, {
+      data: { cupName: this.cup.name }
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result !== undefined && result === true){
+      if (result !== undefined && result === true) {
         console.log('es true, y deberia de borrar');
         this.cupService.delete(this.cup.id!);
       }
     });
-  }
-
-  private showDialog(message: string): void{
-
-  }
-
-  public editCup(): void{
-       
   }
 
   toHome() {

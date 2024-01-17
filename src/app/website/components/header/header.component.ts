@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { RegisterComponent } from '@auth/components/register/register.component';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '@auth/components/login/login.component';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BreakpointService } from 'src/app/utils/breakpoint.service';
 
 @Component({
   selector: 'app-header',
@@ -15,31 +15,18 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 export class HeaderComponent implements OnInit {
 
   public isLogged!: boolean;
-  public isSmallScreen: boolean = false;
+  public isHandset$!: Observable<boolean>;
 
   constructor(
     private router: Router,
     private authService: AuthService,
     public dialog: MatDialog,
-    public breakpointObserver: BreakpointObserver
+    public breakpointService: BreakpointService
   ) {
    }
 
   ngOnInit(): void {
-    this.breakpointObserver.observe([
-      Breakpoints.XSmall,
-      Breakpoints.Small,
-      Breakpoints.Medium,
-      Breakpoints.Large,
-      Breakpoints.XLarge
-    ]).subscribe(result => {
-      const breakpoints = result.breakpoints;
-      if (breakpoints[Breakpoints.Small] || breakpoints[Breakpoints.XSmall]){
-        this.isSmallScreen = true;
-      } else {
-        this.isSmallScreen = false;
-      }
-    });
+    this.isHandset$ = this.breakpointService.isHandset$;
   }
 
   hasSession(): Observable<boolean>{
