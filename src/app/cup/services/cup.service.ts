@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cup } from '@cup/models/cup.model';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, Subscriber, map } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { ImageService } from './image.service';
@@ -83,7 +83,7 @@ export class CupService {
     );
   }
 
-  update(cup: Cup, file: File) {
+  updateFile(cup: Cup, file: File): Observable<string>{
     const formData: FormData = new FormData();
     formData.append("file", file!);
     formData.append("userId", this.authService.getId().toString());
@@ -91,27 +91,12 @@ export class CupService {
     if (cup.id !== undefined) {
       formData.append("cupId", cup.id?.toString());
     }
-    this.imageService.updateImage(formData).subscribe({
-      next: (response) => {
-        console.log('Success:', response);
-        const path = this.cupPath + '/' + cup.id;
+    return this.imageService.updateImage(formData);
+  }
 
-        
-        this.httpClient.put<Cup>(path, JSON.stringify(cup)).subscribe({
-          next: (resultCup) => {
-            const responseCup: any = resultCup;
-            console.log('dentro del next: del subscribe.. valor de responseCup.id: ' + responseCup.id);
-            this.router.navigate(['/' + responseCup.id]);
-          },
-          error: (error) => {
-            console.log('error: ' + error);
-          }
-        });
-      },
-      error: (error) => {
-        console.log('error: ' + error);
-      }
-    });
+  updateCup(cup: Cup, file: File): Observable<Cup>{
+    const path = this.cupPath + '/' + cup.id;
+    return this.httpClient.put<Cup>(path, JSON.stringify(cup));
   }
 }
 

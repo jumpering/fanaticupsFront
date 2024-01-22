@@ -92,7 +92,23 @@ export class CupDetailComponent implements OnInit {
     this.cup.name = this.form.get('name')?.value;
     this.cup.description = this.form.get('description')?.value;
     this.cup.image = this.file?.name.toString();
-    this.cupService.update(this.cup, this.file!);
+    this.cupService.updateFile(this.cup, this.file!).subscribe({
+      next: (responseString) =>{
+        console.log('Success file upload: ', responseString);
+        this.cupService.updateCup(this.cup, this.file!).subscribe({
+          next: (responseCup) => {
+            console.log('response new cup name: ' + responseCup.name);
+            this.updateFields = false;
+          },
+          error: (error) => {
+            console.log('error: ' + error);
+          }
+        })
+      },
+      error: (error) =>{
+        console.log('error: ' + error);
+      }
+    });
   }
 
   onClickCancelUpdate() {
