@@ -13,6 +13,9 @@ export class ImageService {
 
   public uploadImage(formData: FormData): Observable<string>{
     return this.http.post<string>(this.uloadImageFilePath, formData, {responseType:'text' as 'json'});
+  }
 
+  public updateImage(formData: FormData): Observable<string>{
+    return this.http.put<string>(this.uloadImageFilePath, formData, {responseType:'text' as 'json'});
   }
 }

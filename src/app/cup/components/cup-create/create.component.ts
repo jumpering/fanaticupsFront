@@ -76,7 +76,7 @@ export class CreateComponent implements OnInit {
       description: this.form.get('description')?.value,
       image: this.file?.name.toString(),
     };
-    const userId: number = this.authService.getId();
+    //const userId: number = this.authService.getId();
     this.cupService.create(cup, this.file!);
   }
 

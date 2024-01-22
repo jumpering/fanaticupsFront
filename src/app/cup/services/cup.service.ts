@@ -18,16 +18,7 @@ export class CupService {
     private imageService: ImageService
   ) { }
 
-  //For return only desired element of response
-  // getAllCups(page: number, cupsPerPage: number): Observable<Cup[]> {
-  //   const totalPath: string = this.cupPath + 'page=' + page + '&size=' + cupsPerPage;
-  //   return this.httpClient.get<RequestDataInput>(totalPath)
-  //   .pipe(
-  //     map(response => response.content)
-  //   );
-  // }
-
-    getAllCups(page: number, cupsPerPage: number): Observable<RequestDataInput> {
+  getAllCups(page: number, cupsPerPage: number): Observable<RequestDataInput> {
     const totalPath: string = this.cupPath + '?' + 'page=' + page + '&size=' + cupsPerPage;
     return this.httpClient.get<RequestDataInput>(totalPath);
   }
@@ -45,11 +36,11 @@ export class CupService {
     return this.httpClient.get<Cup>(this.cupPath + '/' + id);
   }
 
-  create(cup: Cup, file: File | undefined) {
+  create(cup: Cup, file: File) {
     const formData: FormData = new FormData();
     formData.append("file", file!);
-    formData.append("cupName", cup.name.toString());
     formData.append("userId", this.authService.getId().toString());
+    formData.append("cupName", cup.name.toString());
     let request: RequestInfo = {
       userId: this.authService.getId().toString(),
       cup: JSON.stringify(cup)
@@ -92,9 +83,35 @@ export class CupService {
     );
   }
 
-  updateCup(id: number){
-    const path = this.cupPath + '/' + id;
-    
+  update(cup: Cup, file: File) {
+    const formData: FormData = new FormData();
+    formData.append("file", file!);
+    formData.append("userId", this.authService.getId().toString());
+    formData.append("cupName", cup.name.toString());
+    if (cup.id !== undefined) {
+      formData.append("cupId", cup.id?.toString());
+    }
+    this.imageService.updateImage(formData).subscribe({
+      next: (response) => {
+        console.log('Success:', response);
+        const path = this.cupPath + '/' + cup.id;
+
+        
+        this.httpClient.put<Cup>(path, JSON.stringify(cup)).subscribe({
+          next: (resultCup) => {
+            const responseCup: any = resultCup;
+            console.log('dentro del next: del subscribe.. valor de responseCup.id: ' + responseCup.id);
+            this.router.navigate(['/' + responseCup.id]);
+          },
+          error: (error) => {
+            console.log('error: ' + error);
+          }
+        });
+      },
+      error: (error) => {
+        console.log('error: ' + error);
+      }
+    });
   }
 }
 
@@ -103,7 +120,7 @@ interface RequestInfo {
   cup: string;
 }
 
-interface RequestDataInput{
+interface RequestDataInput {
   content: Cup[];
   empty: boolean;
   first: boolean;
@@ -112,9 +129,9 @@ interface RequestDataInput{
   numberOfElements: number;
   pageable: {
     offset: number;
-  pageNumber: number;
-  pageSize: number;
-  paged: boolean;
+    pageNumber: number;
+    pageSize: number;
+    paged: boolean;
   }
   size: number;
   sort: {

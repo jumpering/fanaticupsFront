@@ -12,66 +12,91 @@
             </div>
 
             <div class="left" [ngClass]="{'smallScreenLeft': isHandset$ | async}">
-                <div class="title-group" *ngIf="!updateFields">
-                    <h1 class="title-left">{{ cup.name }}</h1>
-                </div>
-                <div class="title-group" *ngIf="updateFields">
-                    <h1 class="title-left" contenteditable="true" (keydown.enter)="updateTitle()">{{ cup.name }}</h1>
-                    <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
-                </div>
-                <div class="origin-user-group">
-                    <div class="origin">
-                        <h4>{{ cup.origin }}</h4>
-                    </div>
-                    <div class="user" matTooltip="Follow user">
-                        <h4>follow: {{ cup.user?.name }}</h4>
-                    </div>
-                </div>
-                <mat-divider></mat-divider>
-                <div class="description" *ngIf="!updateFields">
-                    <p> {{ cup.description }}</p>
-                </div>
-                <div class="description" *ngIf="updateFields">
-                    <p contenteditable="true">{{ cup.description }}</p>
-                    <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
-                </div>
 
-                <mat-divider></mat-divider>
-                <div class="cup-price">
-                    <h2>Price: {{ cup.price }} €</h2>
-                </div>
-                <div class="buttons">
-                    <button mat-fab color="primary" matTooltip="Delete" (click)="openDeleteDialog()">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                    <div *ngIf="!updateFields">
-                        <button mat-fab color="primary" matTooltip="Edit" (click)="onClickUpdateFields()">
-                            <mat-icon>edit</mat-icon>
+                <form novalidate [formGroup]="form">
+                    <div class="title-group" *ngIf="!updateFields">
+                        <h1 class="title-left">{{ cup.name }}</h1>
+                    </div>
+                    <div class="title-group" *ngIf="updateFields">
+                        <mat-form-field class="title-edit">
+                            <input matInput type="text" placeholder="Cup name" formControlName="name">
+                            <mat-error *ngIf="form.get('name')?.hasError('minlength') || form.get('name')?.hasError('required')">
+                                Minimum 3 characters length
+                              </mat-error> 
+                              <mat-error *ngIf="form.get('name')?.hasError('existCupName')">
+                                Name exist, use another please
+                              </mat-error>         
+                        </mat-form-field>
+                        <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
+                    </div>
+                    <div class="origin-user-group">
+                        <div class="origin">
+                            <h4>{{ cup.origin }}</h4>
+                        </div>
+                        <div class="user" matTooltip="Follow user">
+                            <h4>follow: {{ cup.user?.name }}</h4>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="description" *ngIf="!updateFields">
+                        <p> {{ cup.description }}</p>
+                    </div>
+                    <div class="description" *ngIf="updateFields">
+                        <mat-form-field class="description-edit">
+                            <textarea matInput placeholder="description" formControlName="description"></textarea>
+                            <mat-error *ngIf="form.get('description')?.hasError('required')">
+                                Required field
+                              </mat-error> 
+                        </mat-form-field>
+                        <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
+                    </div>
+    
+                    <mat-divider></mat-divider>
+                    <div class="cup-price">
+                        <h2>Price: {{ cup.price }} €</h2>
+                    </div>
+                    <div class="buttons">
+                        <button mat-fab color="primary" matTooltip="Delete" (click)="openDeleteDialog()">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        <div *ngIf="!updateFields">
+                            <button mat-fab color="primary" matTooltip="Edit" (click)="onClickUpdateFields()">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                        </div>
+                        <div *ngIf="updateFields">
+                            <button mat-fab color="primary" matTooltip="Save" (click)="onClickSaveFields()">
+                                <mat-icon>save</mat-icon>
+                            </button>
+                        </div>
+                        <div *ngIf="updateFields">
+                            <button mat-fab color="primary" matTooltip="Cancel" (click)="onClickCancelUpdate()">
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                        </div>
+                        <button mat-fab color="primary" matTooltip="Like" (click)="onClickUpdateFields()">
+                            <mat-icon style="color: pink;">favorite</mat-icon>
+                        </button>
+                        <button mat-fab color="primary" matTooltip="Share" (click)="onClickUpdateFields()">
+                            <mat-icon>share</mat-icon>
                         </button>
                     </div>
-                    <div *ngIf="updateFields">
-                        <button mat-fab color="primary" matTooltip="Save" (click)="onClickUpdateFields()">
-                            <mat-icon>save</mat-icon>
-                        </button>
+                    <mat-divider></mat-divider>
+                    <div class="comments">
+                        <h2>Chat (6)</h2>
+                        <br>
+                        <h4>USER_A: aaa aaaaaa aaaa aaa aaa</h4>
+                        <h4>USER_B: aaaa aaaaa aaa a aaaa afeefds dfddfsf ddfdssdsdaa</h4>
+                        <h4>aUSER_A: a aa aaa aaaaaaa aaaaaa</h4>
+                        <h4>USER_B: aaaa aaaa aa</h4>
+                        <h4>USER_A: aa aaaa aaaaaa aafdfd dfdfd fdfdfaaaaaa🥰</h4>
+                        <h4>USER_B: aaa aa aaaaaa aaaaaaa aa</h4>
                     </div>
-                    <button mat-fab color="primary" matTooltip="Like" (click)="onClickUpdateFields()">
-                        <mat-icon style="color: pink;">favorite</mat-icon>
-                    </button>
-                    <button mat-fab color="primary" matTooltip="Share" (click)="onClickUpdateFields()">
-                        <mat-icon>share</mat-icon>
-                    </button>
-                </div>
-                <mat-divider></mat-divider>
-                <div class="comments">
-                    <h2>Chat (6)</h2>
-                    <br>
-                    <h4>USER_A: aaa aaaaaa aaaa aaa aaa</h4>
-                    <h4>USER_B: aaaa aaaaa aaa a aaaa afeefds dfddfsf ddfdssdsdaa</h4>
-                    <h4>aUSER_A: a aa aaa aaaaaaa aaaaaa</h4>
-                    <h4>USER_B: aaaa aaaa aa</h4>
-                    <h4>USER_A: aa aaaa aaaaaa aafdfd dfdfd fdfdfaaaaaa🥰</h4>
-                    <h4>USER_B: aaa aa aaaaaa aaaaaaa aa</h4>
-                </div>
+
+
+                </form>
+
+
 
             </div>
         </div>

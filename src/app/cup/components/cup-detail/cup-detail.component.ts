@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'src/app/utils/customValidators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
 @Component({
   selector: 'app-cup-detail',
   templateUrl: './cup-detail.component.html',
@@ -35,7 +36,20 @@ export class CupDetailComponent implements OnInit {
     private breakpointService: BreakpointService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar
-  ) { }
+  ) {
+    this.buildFormForUpdate();
+  }
+
+  buildFormForUpdate(): void {
+    this.form = this.formBuilder.group({
+      name: ['', //default
+        [Validators.required, Validators.minLength(3)], //sync 
+        [CustomValidators.existCupName(this.cupService)] //async
+      ],
+      //origin: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+    })
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params
@@ -70,25 +84,28 @@ export class CupDetailComponent implements OnInit {
 
   onClickUpdateFields(): void {
     this.updateFields = true;
+    this.form.get('name')?.setValue(this.cup.name);
+    this.form.get('description')?.setValue(this.cup.description);
   }
 
-  onClickSaveFields(): void { //for update cup
-    this.form = this.formBuilder.group({
-      name: ['', //default
-        [Validators.required, Validators.minLength(3)], //sync 
-        [CustomValidators.existCupName(this.cupService)] //async
-      ],
-      origin: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-    })
+  onClickSaveFields(): void {
+    this.cup.name = this.form.get('name')?.value;
+    this.cup.description = this.form.get('description')?.value;
+    this.cup.image = this.file?.name.toString();
+    this.cupService.update(this.cup, this.file!);
+  }
+
+  onClickCancelUpdate() {
+    this.updateFields = false;
   }
 
   onSelectedFile(event: any): void {
-    this.file =  event.target.files[0];
+    this.file = event.target.files[0];
     if (this.file && this.isImage()) {
       const reader = new FileReader();
       reader.onloadend = () => {
         this.urlImage = reader.result as string;
+        this.cupImage = this.urlImage;
       };
       reader.readAsDataURL(this.file);
     } else {
@@ -109,11 +126,6 @@ export class CupDetailComponent implements OnInit {
 
   private showSnackBarMessage(message: string): void {
     this.snackBar.open(message, '', { duration: 10000 });
-  }
-
-  updateTitle(): void {
-    alert('title updated on bd');
-    this.updateFields = false;
   }
 
 }
