@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Cup } from '@cup/models/cup.model';
 import { CupService } from '@cup/services/cup.service';
-import { AuthService } from '@auth/services/auth.service';
 import { CustomValidators } from 'src/app/utils/customValidators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { BreakpointService } from 'src/app/utils/breakpoint.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create',
@@ -17,17 +18,19 @@ export class CreateComponent implements OnInit {
   public form!: FormGroup;
   public urlImage!: string;
   private extensionsPermited: string[] = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+  public isHandset$!: Observable<boolean>;
 
   constructor(
     private cupService: CupService,
     private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private breakpointService: BreakpointService
   ) { 
     this.buildForm();
   }
 
   ngOnInit(): void {
+    this.isHandset$ = this.breakpointService.isHandset$;
   }
 
   buildForm(){
@@ -76,7 +79,6 @@ export class CreateComponent implements OnInit {
       description: this.form.get('description')?.value,
       image: this.file?.name.toString(),
     };
-    //const userId: number = this.authService.getId();
     this.cupService.create(cup, this.file!);
   }
 

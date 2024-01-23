@@ -18,7 +18,7 @@
                         <h1 class="title-left">{{ cup.name }}</h1>
                     </div>
                     <div class="title-group" *ngIf="updateFields">
-                        <mat-form-field class="title-edit">
+                        <mat-form-field class="title-edit" appearance="outline">
                             <input matInput type="text" placeholder="Cup name" formControlName="name">
                             <mat-error *ngIf="form.get('name')?.hasError('minlength') || form.get('name')?.hasError('required')">
                                 Minimum 3 characters length
@@ -42,7 +42,7 @@
                         <p> {{ cup.description }}</p>
                     </div>
                     <div class="description" *ngIf="updateFields">
-                        <mat-form-field class="description-edit">
+                        <mat-form-field class="description-edit" appearance="outline">
                             <textarea matInput placeholder="description" formControlName="description"></textarea>
                             <mat-error *ngIf="form.get('description')?.hasError('required')">
                                 Required field
