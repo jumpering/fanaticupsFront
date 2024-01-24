@@ -10,6 +10,7 @@ import { BreakpointService } from 'src/app/utils/breakpoint.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'src/app/utils/customValidators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '@auth/services/auth.service';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class CupDetailComponent implements OnInit {
   public form!: FormGroup;
   public urlImage!: string;
   private extensionsPermited: string[] = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+  public hasSession$!: Observable<boolean>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -35,16 +37,18 @@ export class CupDetailComponent implements OnInit {
     private matDialog: MatDialog,
     private breakpointService: BreakpointService,
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) {
     this.buildFormForUpdate();
+    this.hasSession$ = this.authService.hasSession();
   }
 
   buildFormForUpdate(): void {
     this.form = this.formBuilder.group({
       name: ['', //default
         [Validators.required, Validators.minLength(3)], //sync 
-        [CustomValidators.existCupName(this.cupService)] //async
+        //[CustomValidators.existCupName(this.cupService)] //async (in keyup event http with method onCupNameChange())
       ],
       //origin: ['', [Validators.required]],
       description: ['', [Validators.required]],
@@ -65,6 +69,16 @@ export class CupDetailComponent implements OnInit {
     this.isHandset$ = this.breakpointService.isHandset$;
   }
 
+
+  public onCupNameChange(): void {
+    if (this.form.get('name')?.value.toLowerCase() === this.cup.name.toLowerCase()) {
+      this.form.get('name')?.clearAsyncValidators();
+      this.form.get('name')?.updateValueAndValidity();
+    } else {
+      this.form.get('name')?.setAsyncValidators(CustomValidators.existCupName(this.cupService));
+      this.form.get('name')?.updateValueAndValidity();
+    }
+  }
   public openDeleteDialog(): void {
     const dialogRef = this.matDialog.open(DeleteDialogComponent, {
       data: { cupName: this.cup.name }
@@ -72,7 +86,6 @@ export class CupDetailComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== undefined && result === true) {
-        console.log('es true, y deberia de borrar');
         this.cupService.delete(this.cup.id!);
       }
     });
@@ -91,24 +104,33 @@ export class CupDetailComponent implements OnInit {
   onClickSaveFields(): void {
     this.cup.name = this.form.get('name')?.value;
     this.cup.description = this.form.get('description')?.value;
-    this.cup.image = this.file?.name.toString();
-    this.cupService.updateFile(this.cup, this.file!).subscribe({
-      next: (responseString) =>{
-        console.log('Success file upload: ', responseString);
-        this.cupService.updateCup(this.cup, this.file!).subscribe({
-          next: (responseCup) => {
-            console.log('response new cup name: ' + responseCup.name);
-            this.updateFields = false;
-          },
-          error: (error) => {
-            console.log('error: ' + error);
-          }
-        })
-      },
-      error: (error) =>{
-        console.log('error: ' + error);
-      }
-    });
+    if (this.file == null) {
+      const cupImageWithoutURL = this.cup.image?.split('/');
+      const length: number | undefined = cupImageWithoutURL?.length;
+      this.cup.image = cupImageWithoutURL![length! - 1];
+      this.cupService.updateCup(this.cup).subscribe({
+        next: (responseCup) => {
+          this.updateFields = false;
+        },
+        error: (error) => {
+        }
+      });
+    } else {
+      this.cup.image = this.file?.name.toString();
+      this.cupService.updateFile(this.cup, this.file!).subscribe({
+        next: (responseString) => {
+        },
+        error: (error) => {
+        }
+      });
+      this.cupService.updateCup(this.cup).subscribe({
+        next: (responseCup) => {
+          this.updateFields = false;
+        },
+        error: (error) => {
+        }
+      });
+    }
   }
 
   onClickCancelUpdate() {
@@ -144,4 +166,7 @@ export class CupDetailComponent implements OnInit {
     this.snackBar.open(message, '', { duration: 10000 });
   }
 
+  public isCupOwner(): boolean {
+    return this.cup.user?.id === this.authService.getId();
+  }
 }

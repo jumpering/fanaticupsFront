@@ -19,7 +19,7 @@
                     </div>
                     <div class="title-group" *ngIf="updateFields">
                         <mat-form-field class="title-edit" appearance="outline">
-                            <input matInput type="text" placeholder="Cup name" formControlName="name">
+                            <input matInput type="text" placeholder="Cup name" formControlName="name" (keyup)="onCupNameChange()">
                             <mat-error *ngIf="form.get('name')?.hasError('minlength') || form.get('name')?.hasError('required')">
                                 Minimum 3 characters length
                               </mat-error> 
@@ -55,29 +55,31 @@
                     <div class="cup-price">
                         <h2>Price: {{ cup.price }} €</h2>
                     </div>
-                    <div class="buttons">
-                        <button mat-fab color="primary" matTooltip="Delete" (click)="openDeleteDialog()">
-                            <mat-icon>delete</mat-icon>
-                        </button>
-                        <div *ngIf="!updateFields">
-                            <button mat-fab color="primary" matTooltip="Edit" (click)="onClickUpdateFields()">
-                                <mat-icon>edit</mat-icon>
+                    <div class="buttons" [ngClass]="{'isHandset': isHandset$ | async}">
+                        @if ( (hasSession$ | async) && isCupOwner()) {
+                            <button mat-fab color="primary" matTooltip="Delete" (click)="openDeleteDialog()">
+                                <mat-icon>delete</mat-icon>
                             </button>
-                        </div>
-                        <div *ngIf="updateFields">
-                            <button mat-fab color="primary" matTooltip="Save" (click)="onClickSaveFields()">
-                                <mat-icon>save</mat-icon>
-                            </button>
-                        </div>
-                        <div *ngIf="updateFields">
-                            <button mat-fab color="primary" matTooltip="Cancel" (click)="onClickCancelUpdate()">
-                                <mat-icon>cancel</mat-icon>
-                            </button>
-                        </div>
-                        <button mat-fab color="primary" matTooltip="Like" (click)="onClickUpdateFields()">
+                            <div *ngIf="!updateFields">
+                                <button mat-fab color="primary" matTooltip="Edit" (click)="onClickUpdateFields()">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </div>
+                            <div *ngIf="updateFields">
+                                <button mat-fab color="primary" matTooltip="Save" (click)="onClickSaveFields()">
+                                    <mat-icon>save</mat-icon>
+                                </button>
+                            </div>
+                            <div *ngIf="updateFields">
+                                <button mat-fab color="primary" matTooltip="Cancel" (click)="onClickCancelUpdate()">
+                                    <mat-icon>cancel</mat-icon>
+                                </button>
+                            </div>
+                        } 
+                        <button mat-fab color="primary" matTooltip="Like" (click)="toHome()">
                             <mat-icon style="color: pink;">favorite</mat-icon>
                         </button>
-                        <button mat-fab color="primary" matTooltip="Share" (click)="onClickUpdateFields()">
+                        <button mat-fab color="primary" matTooltip="Share" (click)="toHome()">
                             <mat-icon>share</mat-icon>
                         </button>
                     </div>

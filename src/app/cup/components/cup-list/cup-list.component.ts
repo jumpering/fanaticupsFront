@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { Cup } from '../../models/cup.model';
 import { CupService } from '@cup/services/cup.service';
+import { BreakpointService } from 'src/app/utils/breakpoint.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cup-list',
@@ -16,14 +18,17 @@ export class CupListComponent implements OnInit {
   public cupsPerPage: number = 12;
   public isFirst: boolean = false;
   public isLast: boolean = false;
+  public isHandset$!: Observable<boolean>;
 
   constructor(
     private cupService: CupService,
-    private router: Router
+    private router: Router,
+    private breakpointService: BreakpointService
     ) { }
 
   ngOnInit(): void {
     this.getAllCups();
+    this.isHandset$ = this.breakpointService.isHandset$;
   }
 
   public getAllCups(): void {

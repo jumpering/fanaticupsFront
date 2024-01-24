@@ -94,7 +94,7 @@ export class CupService {
     return this.imageService.updateImage(formData);
   }
 
-  updateCup(cup: Cup, file: File): Observable<Cup>{
+  updateCup(cup: Cup): Observable<Cup>{
     const path = this.cupPath + '/' + cup.id;
     return this.httpClient.put<Cup>(path, JSON.stringify(cup));
   }
