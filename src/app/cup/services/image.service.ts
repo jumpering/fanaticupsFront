@@ -18,4 +18,8 @@ export class ImageService {
   public updateImage(formData: FormData): Observable<string>{
     return this.http.put<string>(this.uloadImageFilePath, formData, {responseType:'text' as 'json'});
   }
+
+  public updatePath(formData: FormData): Observable<string>{
+    return this.http.put<string>(this.uloadImageFilePath + "/updatePath", formData, {responseType:'text' as 'json'});
+  }
 }

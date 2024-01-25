@@ -102,35 +102,26 @@ export class CupDetailComponent implements OnInit {
   }
 
   onClickSaveFields(): void {
-    this.cup.name = this.form.get('name')?.value;
+    const oldCupName: string = this.cup.name;
+    const newCupName: string = this.form.get('name')?.value;
+    this.cup.name = newCupName;
     this.cup.description = this.form.get('description')?.value;
     if (this.file == null) {
       const cupImageWithoutURL = this.cup.image?.split('/');
       const length: number | undefined = cupImageWithoutURL?.length;
       this.cup.image = cupImageWithoutURL![length! - 1];
-      this.cupService.updateCup(this.cup).subscribe({
-        next: (responseCup) => {
-          this.updateFields = false;
-        },
-        error: (error) => {
-        }
-      });
+      this.cupService.updatePath(oldCupName, newCupName).subscribe();
     } else {
       this.cup.image = this.file?.name.toString();
-      this.cupService.updateFile(this.cup, this.file!).subscribe({
-        next: (responseString) => {
-        },
-        error: (error) => {
-        }
-      });
-      this.cupService.updateCup(this.cup).subscribe({
-        next: (responseCup) => {
-          this.updateFields = false;
-        },
-        error: (error) => {
-        }
-      });
+      this.cupService.updatePathAndFile(this.cup, this.file!).subscribe();
     }
+    this.cupService.updateCup(this.cup).subscribe({
+      next: (responseCup) => {
+        this.updateFields = false;
+      },
+      error: (error) => {
+      }
+    });
   }
 
   onClickCancelUpdate() {

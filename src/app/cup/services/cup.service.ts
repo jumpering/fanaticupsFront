@@ -83,7 +83,7 @@ export class CupService {
     );
   }
 
-  updateFile(cup: Cup, file: File): Observable<string>{
+  updatePathAndFile(cup: Cup, file: File): Observable<string>{
     const formData: FormData = new FormData();
     formData.append("file", file!);
     formData.append("userId", this.authService.getId().toString());
@@ -92,6 +92,14 @@ export class CupService {
       formData.append("cupId", cup.id?.toString());
     }
     return this.imageService.updateImage(formData);
+  }
+
+  updatePath(oldPath: string, newPath: string): Observable<string>{
+    const formData: FormData = new FormData();
+    formData.append('userId', this.authService.getId().toString());
+    formData.append('oldPath', oldPath);
+    formData.append('newPath', newPath);
+    return this.imageService.updatePath(formData);
   }
 
   updateCup(cup: Cup): Observable<Cup>{
