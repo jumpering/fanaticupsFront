@@ -1,6 +1,6 @@
 FROM node:20-alpine as angular
 
-WORKDIR /app
+WORKDIR /
 
 RUN npm install
 RUN npm run build
