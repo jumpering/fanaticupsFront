@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class ImageService {
 
-  //public uloadImageFilePath = 'http://localhost:8080/files';
-  public uloadImageFilePath = 'https://fanaticupsback.onrender.com/files';
+  public uloadImageFilePath = 'http://localhost:8080/files';
+  //public uloadImageFilePath = 'https://fanaticupsback.onrender.com/files';
 
 
   constructor(private http: HttpClient) { }

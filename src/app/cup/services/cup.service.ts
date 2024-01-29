@@ -9,8 +9,8 @@ import { ImageService } from './image.service';
 @Injectable()
 export class CupService {
 
-  //public cupPath: string = 'http://localhost:8080/cups';
-  public cupPath: string = 'https://fanaticupsback.onrender.com/cups';
+  public cupPath: string = 'http://localhost:8080/cups';
+  //public cupPath: string = 'https://fanaticupsback.onrender.com/cups';
 
   constructor(
     private httpClient: HttpClient,
