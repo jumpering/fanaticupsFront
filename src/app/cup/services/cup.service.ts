@@ -10,7 +10,7 @@ import { ImageService } from './image.service';
 export class CupService {
 
   //public cupPath: string = 'http://localhost:8080/cups';
-  public cupPath: string = 'https://fanaticupsback.onrender.com:8080/cups';
+  public cupPath: string = 'https://fanaticupsback.onrender.com/cups';
 
   constructor(
     private httpClient: HttpClient,
