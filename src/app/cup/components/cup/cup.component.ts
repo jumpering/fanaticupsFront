@@ -14,7 +14,8 @@ import { Observable } from 'rxjs';
 export class CupComponent implements OnInit {
 
   public isLogged!: boolean;
-  public cupImage: string = 'http://localhost:8080/images/';
+  //public cupImage: string = 'http://localhost:8080/images/';
+  public cupImage: string = 'https://fanaticupsback.onrender.com/files/';
   public isHandset$!: Observable<boolean>;
   @Input() cup!: Cup;
   @Output() buy = new EventEmitter<number>();
