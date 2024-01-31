@@ -1,5 +1,5 @@
 <mat-toolbar class="toolbar">
-  <img (click)="toHome()" class="logo" src="./../../../../assets/images/logo.svg" alt="Cups & Mugs!"  [ngClass]="{'isHandset-logo': (isHandset$ | async) === true}">
+  <img (click)="toHome()" class="logo" src="./../../../../assets/images/logo.svg" alt="Cups & Mugs!" [ngClass]="{'isHandset-logo': (isHandset$ | async) === true}">
   <!-- <h3 mat-card-subtitle class="wellcomeMessage"> {{getUsername()}} </h3> -->
   <div *ngIf="!(hasSession() | async)">
     <button mat-icon-button [matMenuTriggerFor]="menu" [ngClass]="{'smallScreenButton': (isHandset$ | async) === false}"
