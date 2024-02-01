@@ -22,7 +22,7 @@ export class CupDetailComponent implements OnInit {
 
   public cup!: Cup;
   //public cupImage: string = 'http://localhost:8080/images/';
-  public cupImage: string = 'https://5.250.190.45/images';
+  public cupImage: string = 'https://5.250.190.45/images/';
   public updateFields: boolean = false;
   public isHandset$!: Observable<boolean>;
   public file: File | null = null;
