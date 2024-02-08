@@ -20,7 +20,7 @@ export class AuthService {
   register(credentials: Credentials) {
     //return this.httpClient.post('http://localhost:8080/register', credentials, {
     //return this.httpClient.post('https://fanaticupsback.onrender.com/register', credentials, {
-      return this.httpClient.post('http://172.17.0.3:8080/register', credentials, {
+      return this.httpClient.post('http://5.250.184.31:8080/register', credentials, {
       observe: 'response'
     }).pipe(map((response: HttpResponse<any>) => {
       const body = response.body;
