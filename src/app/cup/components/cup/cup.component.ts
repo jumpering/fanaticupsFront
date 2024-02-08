@@ -17,7 +17,8 @@ export class CupComponent implements OnInit {
   //public cupImage: string = 'http://localhost:8080/images/';
   //public cupImage: string = 'https://fanaticupsback.onrender.com/files/';
   //public cupImage: string = 'https://5.250.190.45/images/';
-  public cupImage: string = 'https://images.fanaticups.org/images/';
+  //public cupImage: string = 'https://images.fanaticups.org/images/';
+  public cupImage: string = 'http://172.17.0.3:8080/images/';
 
   public isHandset$!: Observable<boolean>;
   @Input() cup!: Cup;

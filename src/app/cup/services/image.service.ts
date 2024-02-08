@@ -10,7 +10,8 @@ export class ImageService {
   //public uloadImageFilePath = 'http://localhost:8080/files';
   //public uloadImageFilePath = 'https://fanaticupsback.onrender.com/files';
   //public uloadImageFilePath = 'https://5.250.190.45/images';
-  public uloadImageFilePath = 'https://images.fanaticups.org/images';
+  //public uloadImageFilePath = 'https://images.fanaticups.org/images';
+  public uloadImageFilePath = 'http://172.17.0.3:8080/images';
 
   constructor(private http: HttpClient) { }
 
