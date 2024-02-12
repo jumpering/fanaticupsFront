@@ -20,8 +20,13 @@ RUN npm run build --prod
 
 FROM nginx:alpine
 COPY --from=node /app/dist/fanaticups-front /usr/share/nginx/html
-# Copiar la configuración personalizada de nginx
-#COPY nginx.conf /etc/nginx/nginx.conf
+# Copiar certificados desde host
+RUN mkdir -p /etc/nginx/ssl
+COPY /root/certificateFanaticups_org/_.fanaticups.org_private_key.key /etc/nginx/ssl
+COPY /root/certificateFanaticups_org/bundle.crt /etc/nginx/ssl
+
+#Copiar la configuración personalizada de nginx 
+COPY default.conf /etc/nginx/nginx.conf
 
 # Exponer el puerto 80 para que nginx pueda servir la aplicación
 EXPOSE 80
