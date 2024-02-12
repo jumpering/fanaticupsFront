@@ -13,7 +13,7 @@ export class CupService {
   //public cupPath: string = 'https://fanaticupsback.onrender.com/cups';
   //public cupPath: string = 'http://5.250.184.31:8080/cups';
   //public cupPath: string = 'http://fanaticups_back:8080/cups';172.17.0.3
-  public cupPath: string = 'http://fanaticups/back:8080/cups';
+  public cupPath: string = 'https://fanaticups.org/back:8080/cups';
 
   constructor(
     private httpClient: HttpClient,
