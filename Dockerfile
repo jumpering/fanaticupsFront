@@ -30,3 +30,4 @@ COPY default.conf /etc/nginx/nginx.conf
 
 # Exponer el puerto 80 para que nginx pueda servir la aplicación
 EXPOSE 80
+EXPOSE 443
