@@ -1,17 +1,11 @@
 .cupCard{
     display: flex;
-    //flex-direction: column;
-    //justify-content: center;
-    //align-items: center;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end; //era center  
     cursor: pointer;
-    //border-radius: 25px !important;
-    //border: 1px solid #f3f3f3;
-
-    ////
-    /// 
-    flex-wrap: wrap;
-    align-items: flex-start; /* Evita que las tarjetas se estiren para igualar la altura */
-
+    border-radius: 25px !important;
+    border: 1px solid #f3f3f3;
 }
 
 .cupCard:hover{
