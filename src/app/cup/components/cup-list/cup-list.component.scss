@@ -23,7 +23,8 @@
     flex-wrap: wrap;
     gap: 10px;
     justify-content: space-around;
-    align-items: flex-end;
+    align-items: center;
+    align-content: stretch;
 
     // display: grid;
     // grid-template-columns: 0.4fr 0.3fr 0.3fr;
