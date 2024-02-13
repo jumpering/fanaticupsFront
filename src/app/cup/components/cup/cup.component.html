@@ -1,5 +1,5 @@
 <mat-card class="cupCard" (click)="showDetail()">
-    <mat-card-header>
+    <mat-card-header class="cupHeader">
         <mat-card-title>
             @if(isHandset$ | async){
                 <h6>{{ cup.name }}</h6>
