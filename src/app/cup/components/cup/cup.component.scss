@@ -12,6 +12,8 @@
     filter: brightness(50%);
 }
 
+
+
 .imageContainer{
     display: flex;
     justify-content:center;
@@ -46,6 +48,13 @@
     font-size: large;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.descriptionShort.isHandset{
+    color:black;
+    font-size: smaller;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .buttons {

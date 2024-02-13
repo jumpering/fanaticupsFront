@@ -1,7 +1,12 @@
 <mat-card class="cupCard" (click)="showDetail()">
     <mat-card-header>
         <mat-card-title>
-            <h3>{{ cup.name }}</h3>
+            @if(isHandset$ | async){
+                <h6>{{ cup.name }}</h6>
+            }
+            @else {
+                <h3>{{ cup.name }}</h3>
+            }
         </mat-card-title>
         <mat-card-subtitle>
             {{ cup.origin }}
@@ -12,7 +17,7 @@
         <div class="imageContainer">
             <img class="cupImage" src={{cupImage}} alt={{cup.image}} [ngClass]="{'isHandset': isHandset$ | async}">
         </div>
-        <p class="descriptionShort"> {{ cup.description | slice: 0: 30 | threeDotsForShortDescription }}</p>
+            <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}">{{ cup.description | slice: 0: 30 | threeDotsForShortDescription }}</p>
         <mat-divider></mat-divider>
         <div class="priceAndUser">
             <div class="user">
@@ -23,9 +28,9 @@
             </div>
         </div>
     </mat-card-content>
-    <mat-card-actions>
+    <!-- <mat-card-actions>
         <div class="buttons">
-            <!-- <button mat-raised-button (click)="viewDescription()" color="primary" *ngIf="isLogged">Buy</button> -->
+             <button mat-raised-button (click)="viewDescription()" color="primary" *ngIf="isLogged">Buy</button> 
         </div>
-    </mat-card-actions>
+    </mat-card-actions> -->
 </mat-card>
