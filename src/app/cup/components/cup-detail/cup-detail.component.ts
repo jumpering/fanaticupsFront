@@ -25,7 +25,8 @@ export class CupDetailComponent implements OnInit {
   //public cupImage: string = 'https://5.250.190.45/images/';
   //public cupImage: string = 'https://images.fanaticups.org/images/';
   //public cupImage: string = 'http://5.250.184.31:8080/images/';
-  public cupImage: string = 'http://5.250.184.31:9000/fanaticups/';
+  //public cupImage: string = 'http://5.250.184.31:9000/fanaticups/';
+  public cupImage: string = 'images/fanaticups/';
 
   public updateFields: boolean = false;
   public isHandset$!: Observable<boolean>;
