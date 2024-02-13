@@ -2,7 +2,7 @@
     <mat-card-header>
         <mat-card-title>
             @if(isHandset$ | async){
-                <h5>{{ cup.name }}</h5>
+                <h6>{{ cup.name }}</h6>
             }
             @else {
                 <h3>{{ cup.name }}</h3>
@@ -17,7 +17,12 @@
         <div class="imageContainer">
             <img class="cupImage" src={{cupImage}} alt={{cup.image}} [ngClass]="{'isHandset': isHandset$ | async}">
         </div>
-            <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}">{{ cup.description | slice: 0: 25 | threeDotsForShortDescription }}</p>
+        @if(isHandset$ | async){
+            <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}">{{ cup.description | slice: 0: 22 | threeDotsForShortDescription }}</p>
+        }
+        @else{
+            <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}">{{ cup.description | slice: 0: 30 | threeDotsForShortDescription }}</p>
+        }
         <mat-divider></mat-divider>
         <div class="priceAndUser">
             <div class="user">
@@ -30,7 +35,7 @@
             </div>
             <div class="cupPrice">
                 @if(isHandset$ | async){
-                    <h5>Price: {{ cup.price }} €</h5>
+                    <h6>Price: {{ cup.price }} €</h6>
                 }
                 @else{
                     <h4>Price: {{ cup.price }} €</h4>
