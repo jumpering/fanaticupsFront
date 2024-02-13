@@ -30,15 +30,15 @@
     min-width: 350px;
 }
 
-.cupImage.isSmallScreen {
+.cupImage.isHandset {
     //height: 250px;
     // width: auto;
     border-radius: 10%;
     overflow:hidden;
      max-height: auto;
-     max-width: 250px;
+     max-width: 150px; //ERA 250!
      min-height: auto;
-     min-width: 250px;
+     min-width: 150px;
 }
 
 .descriptionShort{
