@@ -16,12 +16,11 @@
             <img class="cupImage" src={{cupImage}} alt={{cup.image}} [ngClass]="{'isHandset': isHandset$ | async}">
         </div>
         @if(isHandset$ | async){
-        <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}">{{ cup.description | slice: 0: 20 |
-            threeDotsForShortDescription }}</p>
+        <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}" [innerHTML]="cup.description | slice: 0: 40 | splitInTwoLines | threeDotsForShortDescription"></p>
         }
         @else{
-        <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}">{{ cup.description | slice: 0: 30 |
-            threeDotsForShortDescription }}</p>
+            <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}" [innerHTML]="cup.description | slice: 0: 80 | splitInTwoLines | threeDotsForShortDescription"></p>
+
         }
 
         @if((isHandset$ | async)=== false){

@@ -12,32 +12,33 @@ import { MaterialModule } from '@material/material.module';
 import { CreateComponent } from './components/cup-create/create.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DeleteDialogComponent } from './components/cup-delete-dialog/delete-dialog.component';
+import { SplitInTwoLinesPipe } from "../shared/pipes/split-in-two-lines.pipe";
 //import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
-  declarations: [
-    CupComponent,
-    CupListComponent,
-    CupDetailComponent,
-    CreateComponent,
-    DeleteDialogComponent,
+    declarations: [
+        CupComponent,
+        CupListComponent,
+        CupDetailComponent,
+        CreateComponent,
+        DeleteDialogComponent,
     ],
-  imports: [
-    CommonModule,
-    CupRoutingModule,
-    FormsModule,
-    SharedModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    InfiniteScrollModule,
-    //LayoutModule
-  ],
-  exports: [
-    CupListComponent
-  ],
-  providers: [
-    CupService
-  ]
+    exports: [
+        CupListComponent
+    ],
+    providers: [
+        CupService
+    ],
+    imports: [
+        CommonModule,
+        CupRoutingModule,
+        FormsModule,
+        SharedModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        InfiniteScrollModule,
+        SplitInTwoLinesPipe
+    ]
 })
 export class CupModule { }
