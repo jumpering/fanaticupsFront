@@ -5,6 +5,7 @@ import { Observable, Subscriber, map } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { ImageService } from './image.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class CupService {
@@ -13,7 +14,8 @@ export class CupService {
   //public cupPath: string = 'https://fanaticupsback.onrender.com/cups';
   //public cupPath: string = 'http://5.250.184.31:8080/cups';
   //public cupPath: string = 'http://fanaticups_back:8080/cups';172.17.0.3
-  public cupPath: string = 'api/cups';
+  //public cupPath: string = 'api/cups';
+  public cupPath: string = environment.apiCups;
 
   constructor(
     private httpClient: HttpClient,

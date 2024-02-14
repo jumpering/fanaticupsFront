@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Credentials } from '@auth/models/Credentials';
 import { Observable, map, observable, of } from 'rxjs';
 import * as JWT from 'jwt-decode';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,8 @@ export class AuthService {
     //return this.httpClient.post('http://localhost:8080/register', credentials, {
     //return this.httpClient.post('https://fanaticupsback.onrender.com/register', credentials, {
     //return this.httpClient.post('http://5.250.184.31:8080/register', credentials, {
-      return this.httpClient.post('api/register', credentials, {
+     // return this.httpClient.post('api/register', credentials, {
+    return this.httpClient.post(environment.apiRegister, credentials, {
       observe: 'response'
     }).pipe(map((response: HttpResponse<any>) => {
       const body = response.body;

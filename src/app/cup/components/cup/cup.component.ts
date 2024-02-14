@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { BreakpointService } from 'src/app/utils/breakpoint.service';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cup',
@@ -20,7 +21,8 @@ export class CupComponent implements OnInit {
   //public cupImage: string = 'https://images.fanaticups.org/images/';
   //public cupImage: string = 'http://5.250.184.31:8080/images/';
   //public cupImage: string = 'http://5.250.184.31:9000/fanaticups/';
-  public cupImage: string = 'images/fanaticups/';
+  //public cupImage: string = 'images/fanaticups/';
+  public cupImage: string = environment.images;
 
   public isHandset$!: Observable<boolean>;
   @Input() cup!: Cup;

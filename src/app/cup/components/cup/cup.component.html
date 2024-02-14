@@ -1,53 +1,40 @@
-<mat-card class="cupCard" (click)="showDetail()">
-    <mat-card-header class="cardHeader">
-        <mat-card-title class="cardTitle">
-            @if(isHandset$ | async){
-                <h6>{{ cup.name }}</h6>
-            }
-            @else {
-                <h3>{{ cup.name }}</h3>
+<mat-card class="cup-card" (click)="showDetail()" [ngClass]="{'isHandset': isHandset$ | async}">
+    <mat-card-header class="card-header">
+        <mat-card-title class="card-title">
+            @if((isHandset$ | async) === false){
+            <h3>{{ cup.name }}</h3>
             }
         </mat-card-title>
         <mat-card-subtitle>
-            
-            @if(isHandset$ | async){
-                <h6>{{ cup.origin }}</h6>
+            @if((isHandset$ | async)=== false){
+            <h4>{{ cup.origin }}</h4>
             }
-            @else {
-                <h4>{{ cup.origin }}</h4>
-            }            
         </mat-card-subtitle>
     </mat-card-header>
-
-    <mat-card-content>
+    <mat-card-content class="card-content" [ngClass]="{'isHandset': isHandset$ | async}">
         <div class="imageContainer">
             <img class="cupImage" src={{cupImage}} alt={{cup.image}} [ngClass]="{'isHandset': isHandset$ | async}">
         </div>
         @if(isHandset$ | async){
-            <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}">{{ cup.description | slice: 0: 20 | threeDotsForShortDescription }}</p>
+        <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}">{{ cup.description | slice: 0: 20 |
+            threeDotsForShortDescription }}</p>
         }
         @else{
-            <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}">{{ cup.description | slice: 0: 30 | threeDotsForShortDescription }}</p>
+        <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}">{{ cup.description | slice: 0: 30 |
+            threeDotsForShortDescription }}</p>
         }
-        <mat-divider></mat-divider>
-        <div class="priceAndUser">
-            <div class="user">
-                @if(isHandset$ | async){
-                    <h6>from: {{ cup.user?.name }}</h6>
-                }
-                @else{
+
+        @if((isHandset$ | async)=== false){
+            <mat-divider></mat-divider>
+            <div class="priceAndUser">
+                <div class="user">
                     <h4>from: {{ cup.user?.name }}</h4>
-                }
-            </div>
-            <div class="cupPrice">
-                @if(isHandset$ | async){
-                    <h6>Price: {{ cup.price }} €</h6>
-                }
-                @else{
+                </div>
+                <div class="cupPrice">
                     <h4>Price: {{ cup.price }} €</h4>
-                }
+                </div>
             </div>
-        </div>
+        }
     </mat-card-content>
     <!-- <mat-card-actions>
         <div class="buttons">
