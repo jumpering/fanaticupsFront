@@ -17,17 +17,10 @@
 }
 
 .cups{
-    // display: grid;
-    // grid-template-columns: repeat(4, 1fr);
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    align-items:flex-start;
+    align-content: stretch; //flex-start;
     gap: 10px;
-    justify-content: space-evenly; // space-around;
-    align-items: center;
-    align-content: stretch;
-
-    // display: grid;
-    // grid-template-columns: 0.4fr 0.3fr 0.3fr;
-    // grid-column-gap: 10px;
-    // grid-row-gap: 15px;
 }
