@@ -15,13 +15,6 @@ import { environment } from 'src/environments/environment';
 export class CupComponent implements OnInit {
 
   public isLogged!: boolean;
-  //public cupImage: string = 'http://localhost:8080/images/';
-  //public cupImage: string = 'https://fanaticupsback.onrender.com/files/';
-  //public cupImage: string = 'https://5.250.190.45/images/';
-  //public cupImage: string = 'https://images.fanaticups.org/images/';
-  //public cupImage: string = 'http://5.250.184.31:8080/images/';
-  //public cupImage: string = 'http://5.250.184.31:9000/fanaticups/';
-  //public cupImage: string = 'images/fanaticups/';
   public cupImage: string = environment.images;
 
   public isHandset$!: Observable<boolean>;
@@ -38,7 +31,8 @@ export class CupComponent implements OnInit {
   ngOnInit(): void {
     this.authService.hasSession().subscribe(logged => this.isLogged = logged);
     const image = this.cup!.image?.toString();
-    this.cupImage = this.cupImage.concat(image!).replace('assets/images/', '');
+    //this.cupImage = this.cupImage.concat(image!).replace('assets/images/', '');
+    this.cupImage = this.cupImage.concat(image!);
     this.isHandset$ = this.breakpointService.isHandset$;
   }
 
