@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Cup } from '../../models/cup.model';
 import { CupService } from '@cup/services/cup.service';
 import { BreakpointService } from 'src/app/utils/breakpoint.service';
 import { Observable } from 'rxjs';
+import { NgxMasonryComponent } from 'ngx-masonry';
+
 
 @Component({
   selector: 'app-cup-list',
@@ -13,12 +15,14 @@ import { Observable } from 'rxjs';
 })
 export class CupListComponent implements OnInit {
 
-  public listOfCups: Cup[] = [];
+  public listOfCups: Cup[] = []; 
   public page: number = 0;
   public cupsPerPage: number = 12;
   public isFirst: boolean = false;
   public isLast: boolean = false;
   public isHandset$!: Observable<boolean>;
+  // @ViewChild(NgxMasonryComponent)
+  // masonry!: NgxMasonryComponent;
 
   constructor(
     private cupService: CupService,
@@ -31,12 +35,15 @@ export class CupListComponent implements OnInit {
     this.isHandset$ = this.breakpointService.isHandset$;
   }
 
+
   public getAllCups(): void {
     this.cupService.getAllCups(this.page, this.cupsPerPage).subscribe(requestDataInput => {
       this.page = requestDataInput.number;
       this.isFirst = requestDataInput.first;
       this.isLast = requestDataInput.last;
       this.listOfCups.push(...requestDataInput.content);  
+      // this.masonry.reloadItems();
+      // this.masonry.layout();
     });
   }
 

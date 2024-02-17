@@ -1,6 +1,11 @@
+body{
+    //margin: 1em;
+    padding-bottom: .5em;
+}
+
 .cup-card{
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,11 +13,23 @@
     cursor: pointer;
     border-radius: 25px !important;
     border: 1px solid #f3f3f3;
+
+    //for masonry
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+
+    //size
+    max-height: auto;
+    max-width: 360px;
+    min-height: auto;
+    min-width: 360px;
+
 }
 
 .cup-card.isHandset{
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,6 +37,15 @@
     cursor: pointer;
     border-radius: 10px !important;
     border: 1px solid #f3f3f3;
+
+    //size
+    max-height: auto;
+    max-width: 160px;
+    min-height: auto;
+    min-width: 160px;
+
+
+
 }
 
 .cup-card:hover{
@@ -56,25 +82,24 @@
 
 .cupImage {
     margin:auto;
-    //height: 250px;
-    // width: auto;
     border-radius: 10%;
     overflow:hidden;
-    max-height: auto;
-    max-width: 350px;
-    min-height: auto;
-    min-width: 350px;
+    width: 100%;
+    // max-height: auto;
+    // max-width: 350px;
+    // min-height: auto;
+    // min-width: 350px;
 }
 
 .cupImage.isHandset {
-    //height: 250px;
-    // width: auto;
-    border-radius: 10%;
+    margin: auto;
+    border-radius: 5%;
     overflow:hidden;
-     max-height: auto;
-     max-width: 160px; //ERA 250!
-     min-height: auto;
-     min-width: 160px;
+    width: 95%;
+    //  max-height: auto;
+    //  max-width: 160px; //ERA 250!
+    //  min-height: auto;
+    //  min-width: 160px;
 }
 
 .descriptionShort{

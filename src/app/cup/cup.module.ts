@@ -14,7 +14,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DeleteDialogComponent } from './components/cup-delete-dialog/delete-dialog.component';
 import { SplitInTwoLinesPipe } from "../shared/pipes/split-in-two-lines.pipe";
 //import { LayoutModule } from '@angular/cdk/layout';
-
+import { NgxMasonryModule } from 'ngx-masonry';
 
 @NgModule({
     declarations: [
@@ -38,7 +38,8 @@ import { SplitInTwoLinesPipe } from "../shared/pipes/split-in-two-lines.pipe";
         MaterialModule,
         ReactiveFormsModule,
         InfiniteScrollModule,
-        SplitInTwoLinesPipe
+        SplitInTwoLinesPipe,
+       NgxMasonryModule
     ]
 })
 export class CupModule { }

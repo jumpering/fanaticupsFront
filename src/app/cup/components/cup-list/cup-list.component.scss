@@ -1,3 +1,13 @@
+body{
+    margin: .5em;
+    //background-color: rgb(158, 158, 158);
+}
+
+.cups{
+    //background-color: aqua;
+    padding-left: 5%;
+}
+
 .firstBodyImage{
     height: 250px;
     margin-bottom: 100px;
@@ -16,11 +26,10 @@
     margin-bottom: 20px;
 }
 
-.cups{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items:flex-start;
-    align-content: stretch; //flex-start;
-    gap: 10px;
+.masonry-item{
+    width: 350px;
+}
+
+.masonry-item.isHandset{
+    width: 160px;
 }

@@ -1,6 +1,40 @@
-<img mat-card-image class="firstBodyImage" src="./../../../../assets/images/firstBodyImage.svg" alt="Fanaticups" [ngClass]="{'isHandset': isHandset$ | async}">
-<div class="cups" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1" (scrolled)="onScrollDown()">
-    <app-cup *ngFor="let cupElement of listOfCups" [cup]="cupElement" (buy)="onBuyClicked($event)"
-        (detail)="onDetailClicked($event)">
+<body>
+    <!-- <img mat-card-image class="firstBodyImage" 
+    src="./../../../../assets/images/firstBodyImage.svg" 
+    alt="Fanaticups"
+    [ngClass]="{'isHandset': isHandset$ | async}">
+
+<div infiniteScroll class="cups" 
+    [infiniteScrollDistance]="2" 
+    [infiniteScrollThrottle]="1" 
+    (scrolled)="onScrollDown()"
+    [ngClass]="{'isHandset': isHandset$ | async}">
+
+
+    <app-cup *ngFor="let cupElement of listOfCups" 
+    class="cards"
+    [cup]="cupElement" 
+    (buy)="onBuyClicked($event)"
+    (detail)="onDetailClicked($event)">
     </app-cup>
+
+</div> -->
+<img mat-card-image class="firstBodyImage" 
+    src="./../../../../assets/images/firstBodyImage.svg" 
+    alt="Fanaticups"
+    [ngClass]="{'isHandset': isHandset$ | async}">
+<div infiniteScroll class="cups" 
+    [infiniteScrollDistance]="2" 
+    [infiniteScrollThrottle]="1" 
+    (scrolled)="onScrollDown()">
+
+<ngx-masonry loading="lazy" [ordered]="true" [options]="{ gutter: 20, fitWidth: false, initLayout: true, resize: true, originTop: true, percentPosition: true }">
+      <app-cup  ngxMasonryItem class="masonry-item" *ngFor="let cupElement of listOfCups"
+      [ngClass]="{'isHandset': isHandset$ | async}" 
+      [cup]="cupElement" 
+      (buy)="onBuyClicked($event)"
+      (detail)="onDetailClicked($event)">
+      </app-cup>
+</ngx-masonry>
 </div>
+</body>
