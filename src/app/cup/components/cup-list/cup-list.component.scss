@@ -6,6 +6,11 @@ body{
 .cups{
     //background-color: aqua;
     padding-left: 5%;
+    overflow-anchor: none; //para prevenir auto scroll up de libreria masonry TODO
+}
+
+.masonry{
+    overflow-anchor: none; //para prevenir auto scroll up de libreria masonry TODO
 }
 
 .firstBodyImage{

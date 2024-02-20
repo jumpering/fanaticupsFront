@@ -39,7 +39,7 @@ import { NgxMasonryModule } from 'ngx-masonry';
         ReactiveFormsModule,
         InfiniteScrollModule,
         SplitInTwoLinesPipe,
-       NgxMasonryModule
+        NgxMasonryModule
     ]
 })
 export class CupModule { }

@@ -1,11 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Cup } from '@cup/models/cup.model';
 import { AuthService } from '@auth/services/auth.service';
-import { HttpClient } from '@angular/common/http';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { BreakpointService } from 'src/app/utils/breakpoint.service';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cup',
@@ -15,8 +12,7 @@ import { environment } from 'src/environments/environment';
 export class CupComponent implements OnInit {
 
   public isLogged!: boolean;
-  public cupImage: string = environment.images;
-
+  public cupImage: string = '';
   public isHandset$!: Observable<boolean>;
   @Input() cup!: Cup;
   @Output() buy = new EventEmitter<number>();
@@ -24,16 +20,14 @@ export class CupComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private http: HttpClient,
-    private breakpointService: BreakpointService
+    private breakpointService: BreakpointService,
+
   ) { }
 
   ngOnInit(): void {
-    this.authService.hasSession().subscribe(logged => this.isLogged = logged);
-    const image = this.cup!.image?.toString();
-    //this.cupImage = this.cupImage.concat(image!).replace('assets/images/', '');
-    this.cupImage = this.cupImage.concat(image!);
     this.isHandset$ = this.breakpointService.isHandset$;
+    this.authService.hasSession().subscribe(logged => this.isLogged = logged);
+    this.cupImage = this.cup!.image?.toString()!;
   }
 
   viewDescription() {

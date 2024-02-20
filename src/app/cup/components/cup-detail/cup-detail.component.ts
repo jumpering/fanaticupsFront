@@ -22,7 +22,7 @@ import { environment } from 'src/environments/environment';
 export class CupDetailComponent implements OnInit {
 
   public cup!: Cup;
-  public cupImage: string = environment.images;
+  public cupImage: string = '';
 
   public updateFields: boolean = false;
   public isHandset$!: Observable<boolean>;
@@ -64,8 +64,7 @@ export class CupDetailComponent implements OnInit {
         this.cupService.getById(id)
           .subscribe(element => {
             this.cup = element;
-            const image = element.image?.toString();
-            this.cupImage = this.cupImage.concat(image!);
+            this.cupImage = element.image?.toString()!;
           });
       });
     this.isHandset$ = this.breakpointService.isHandset$;
