@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cup } from '@cup/models/cup.model';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable, Subscriber, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { ImageService } from './image.service';

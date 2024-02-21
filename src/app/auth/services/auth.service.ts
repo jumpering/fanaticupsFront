@@ -19,10 +19,6 @@ export class AuthService {
   ) { }
 
   register(credentials: Credentials) {
-    //return this.httpClient.post('http://localhost:8080/register', credentials, {
-    //return this.httpClient.post('https://fanaticupsback.onrender.com/register', credentials, {
-    //return this.httpClient.post('http://5.250.184.31:8080/register', credentials, {
-     // return this.httpClient.post('api/register', credentials, {
     return this.httpClient.post(environment.apiRegister, credentials, {
       observe: 'response'
     }).pipe(map((response: HttpResponse<any>) => {
@@ -39,9 +35,7 @@ export class AuthService {
   }
 
   login(credentials: Credentials) {
-    //return this.httpClient.post('http://localhost:8080/authenticate', credentials, {
-    //return this.httpClient.post('https://fanaticupsback.onrender.com/authenticate', credentials, {
-      return this.httpClient.post('api/authenticate', credentials, {
+      return this.httpClient.post(environment.apiAuthenticate, credentials, {
       observe: 'response'
     }).pipe(map((response: HttpResponse<any>) => {
       const body = response.body;
@@ -86,7 +80,7 @@ export class AuthService {
 
 interface MyToken {
   name: string;
-  rol: string; //todo, no es un string!
+  rol: string; //todo, is not a string! not implemented
   id: number;
   sub: string;
   // whatever else is in the JWT.

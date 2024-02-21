@@ -1,17 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImageService {
 
-  //public uloadImageFilePath = 'http://localhost:8080/files';
-  //public uloadImageFilePath = 'https://fanaticupsback.onrender.com/files';
-  //public uloadImageFilePath = 'https://5.250.190.45/images';
-  //public uloadImageFilePath = 'https://images.fanaticups.org/images';
-  public uloadImageFilePath = 'http://5.250.184.31:8080/images';
+  public uloadImageFilePath = environment.apiFiles;
 
   constructor(private http: HttpClient) { }
 
