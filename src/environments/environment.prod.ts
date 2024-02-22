@@ -3,6 +3,5 @@ export const environment = {
   apiRegister: 'api/register',
   apiAuthenticate: 'api/authenticate',
   apiCups: 'api/cups',
-  // apiImages: 'images'
   apiFiles: 'api/files'
 };

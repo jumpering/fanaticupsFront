@@ -32,6 +32,10 @@
             <mat-error *ngIf="form.get('description')?.hasError('required')">
               Required origin
             </mat-error>
+            <mat-error *ngIf="form.get('description')?.hasError('maxlenght')">
+              Maximum 250 characters
+              counter: {{250 - form.get('description')?.value.length}}
+            </mat-error>
           </mat-form-field>
         </mat-card-content>
         <br>

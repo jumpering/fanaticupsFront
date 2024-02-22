@@ -40,7 +40,7 @@ export class CreateComponent implements OnInit {
             [CustomValidators.existCupName(this.cupService)] //async
           ],
       origin: ['',[Validators.required]],
-      description: ['',[Validators.required]],
+      description: ['',[Validators.required, Validators.maxLength(250)]],
     });
   }
 
