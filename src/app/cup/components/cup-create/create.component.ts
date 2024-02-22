@@ -36,7 +36,7 @@ export class CreateComponent implements OnInit {
   buildForm(){
     this.form = this.formBuilder.group({
       name: ['', //default
-            [Validators.required, Validators.minLength(3)], //sync 
+            [Validators.required, Validators.minLength(3), Validators.maxLength(30)], //sync 
             [CustomValidators.existCupName(this.cupService)] //async
           ],
       origin: ['',[Validators.required]],
