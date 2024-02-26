@@ -78,7 +78,7 @@ export class CupService {
           }
         },
         error: (error) => {
-          console.log('something wrong at delete' + error);
+          console.log('Something wrong at delete: ' + error);
         }
       }
     );
