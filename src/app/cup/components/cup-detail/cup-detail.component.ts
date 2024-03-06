@@ -102,28 +102,25 @@ export class CupDetailComponent implements OnInit {
     this.form.get('description')?.setValue(this.cup.description);
   }
 
+
   onClickSaveFields(): void {
     const oldCupName: string = this.cup.name;
     const newCupName: string = this.form.get('name')?.value;
     this.cup.name = newCupName;
     this.cup.description = this.form.get('description')?.value;
-    if (this.file == null) {
-      const cupImageWithoutURL = this.cup.image?.split('/');
-      const length: number | undefined = cupImageWithoutURL?.length;
-      this.cup.image = cupImageWithoutURL![length! - 1];
-      this.cupService.updatePath(oldCupName, newCupName).subscribe();
-    } else {
-      this.cup.image = this.file?.name.toString();
-      this.cupService.updatePathAndFile(this.cup, this.file!).subscribe();
-    }
-    this.cupService.updateCup(this.cup).subscribe({
-      next: (responseCup) => {
-        this.updateFields = false;
-      },
-      error: (error) => {
-      }
-    });
+    const removePathFromImage: string = environment.urlMinioImages + this.authService.getId() + '/' + oldCupName  + '/';
+    this.cup.image = this.cup.image?.replace( removePathFromImage , '');
+    this.cupService.updateCup(this.cup, this.file!).subscribe({
+              next: (responseCup) => {
+                console.log('cup uploaded! ' + responseCup.name);
+                this.updateFields = false;
+              },
+              error: (error) => {
+                console.log('Error uploading cup and/or  file: ' + error)
+              }
+            });
   }
+
 
   onClickCancelUpdate() {
     this.updateFields = false;

@@ -43,7 +43,7 @@ export class CupService {
     formData.append("userId", this.authService.getId().toString());
     formData.append("cupName", cup.name.toString());
     let request: RequestInfo = {
-      userId: this.authService.getId().toString(),
+      userId: this.authService.getId().toString(), //todo no necesario? ¿esta la info del usuario id en la cup?
       cup: JSON.stringify(cup)
     }
     this.imageService.uploadImage(formData).subscribe({
@@ -84,7 +84,7 @@ export class CupService {
     );
   }
 
-  updatePathAndFile(cup: Cup, file: File): Observable<string>{
+  updateImage(cup: Cup, file: File): Observable<string>{
     const formData: FormData = new FormData();
     formData.append("file", file!);
     formData.append("userId", this.authService.getId().toString());
@@ -95,18 +95,45 @@ export class CupService {
     return this.imageService.updateImage(formData);
   }
 
-  updatePath(oldPath: string, newPath: string): Observable<string>{
+
+
+
+  updateCupName(oldCupName: string, newCupName: string): Observable<string>{
     const formData: FormData = new FormData();
     formData.append('userId', this.authService.getId().toString());
-    formData.append('oldPath', oldPath);
-    formData.append('newPath', newPath);
+    formData.append('oldCupName', oldCupName);
+    formData.append('newCupName', newCupName);
     return this.imageService.updatePath(formData);
   }
 
-  updateCup(cup: Cup): Observable<Cup>{
-    const path = this.cupPath + '/' + cup.id;
-    return this.httpClient.put<Cup>(path, JSON.stringify(cup));
+  updatePathV2(cup: Cup, file: File): Observable<string>{
+
+    if (file != null) {
+      let requestUpdate: requestUpdate = {
+        cup: JSON.stringify(cup)
+      }
+
+    } else {
+
+    }
+    const formData: FormData = new FormData();
+    formData.append('cup', JSON.stringify(cup));
+    return this.imageService.updatePath(formData);
   }
+
+
+  updateCup(cup: Cup, file: File): Observable<Cup>{
+    const formData: FormData = new FormData();
+    formData.append('cup', JSON.stringify(cup));
+    formData.append('file', file);
+    return this.httpClient.put<Cup>(this.cupPath, formData);
+  }
+
+}
+
+
+interface requestUpdate {
+  cup: string
 }
 
 interface RequestInfo {
