@@ -24,7 +24,6 @@ export class CupService {
     return this.httpClient.get<RequestDataInput>(totalPath);
   }
 
-
   existCupName(name: string): Observable<boolean> {
     const path = this.cupPath + '/existCupNameByUserId'
     const formData: FormData = new FormData();
@@ -39,30 +38,18 @@ export class CupService {
 
   create(cup: Cup, file: File) {
     const formData: FormData = new FormData();
-    formData.append("file", file!);
     formData.append("userId", this.authService.getId().toString());
-    formData.append("cupName", cup.name.toString());
-    let request: RequestInfo = {
-      userId: this.authService.getId().toString(), //todo no necesario? ¿esta la info del usuario id en la cup?
-      cup: JSON.stringify(cup)
-    }
-    this.imageService.uploadImage(formData).subscribe({
-      next: (response) => {
-        console.log('Success:', response);
-        this.httpClient.post(this.cupPath, request).subscribe({
-          next: (resultCup) => {
-            const responseCup: any = resultCup;
-            this.router.navigate(['/' + responseCup.id]);
-          },
-          error: (error) => {
-            console.log(error);
-          }
-        });
+    formData.append("file", file!);
+    formData.append("cup", JSON.stringify(cup));
+    this.httpClient.post(this.cupPath, formData).subscribe({
+      next: (resultCup) => {
+        const responseCup: any = resultCup;
+        this.router.navigate(['/' + responseCup.id]);
       },
       error: (error) => {
         console.log(error);
       }
-    });
+    })
   }
 
   delete(id: number) {
@@ -95,9 +82,6 @@ export class CupService {
     return this.imageService.updateImage(formData);
   }
 
-
-
-
   updateCupName(oldCupName: string, newCupName: string): Observable<string>{
     const formData: FormData = new FormData();
     formData.append('userId', this.authService.getId().toString());
@@ -106,39 +90,12 @@ export class CupService {
     return this.imageService.updatePath(formData);
   }
 
-  updatePathV2(cup: Cup, file: File): Observable<string>{
-
-    if (file != null) {
-      let requestUpdate: requestUpdate = {
-        cup: JSON.stringify(cup)
-      }
-
-    } else {
-
-    }
-    const formData: FormData = new FormData();
-    formData.append('cup', JSON.stringify(cup));
-    return this.imageService.updatePath(formData);
-  }
-
-
   updateCup(cup: Cup, file: File): Observable<Cup>{
     const formData: FormData = new FormData();
     formData.append('cup', JSON.stringify(cup));
     formData.append('file', file);
     return this.httpClient.put<Cup>(this.cupPath, formData);
   }
-
-}
-
-
-interface requestUpdate {
-  cup: string
-}
-
-interface RequestInfo {
-  userId: string;
-  cup: string;
 }
 
 interface RequestDataInput {
