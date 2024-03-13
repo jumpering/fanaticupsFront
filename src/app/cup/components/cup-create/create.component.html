@@ -43,6 +43,9 @@
               counter: {{form.get('description')?.value.length}} characters length
             </mat-error>
           </mat-form-field>
+          <div *ngIf="showProgressBar">
+            <mat-progress-bar mode="query"></mat-progress-bar>
+          </div>
         </mat-card-content>
         <br>
         <mat-card-actions>

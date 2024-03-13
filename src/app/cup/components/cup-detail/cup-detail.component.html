@@ -83,6 +83,9 @@
                             <mat-icon>share</mat-icon>
                         </button>
                     </div>
+                    <div *ngIf="showProgressBar">
+                        <mat-progress-bar mode="query"></mat-progress-bar>
+                      </div>
                     <mat-divider></mat-divider>
                     <div class="comments">
                         <h2>Chat (6)</h2>

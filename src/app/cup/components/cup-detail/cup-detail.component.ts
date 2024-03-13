@@ -23,7 +23,7 @@ export class CupDetailComponent implements OnInit {
 
   public cup!: Cup;
   public cupImage: string = '';
-
+  public showProgressBar: boolean = false;
   public updateFields: boolean = false;
   public isHandset$!: Observable<boolean>;
   public file: File | null = null;
@@ -110,13 +110,16 @@ export class CupDetailComponent implements OnInit {
     this.cup.description = this.form.get('description')?.value;
     const removePathFromImage: string = environment.urlMinioImages + this.authService.getId() + '/' + oldCupName  + '/';
     this.cup.image = this.cup.image?.replace( removePathFromImage , '');
+    this.showProgressBar = true;
     this.cupService.updateCup(this.cup, this.file!).subscribe({
               next: (responseCup) => {
                 console.log('cup uploaded! ' + responseCup.name);
                 this.updateFields = false;
+                this.showProgressBar = false;
               },
               error: (error) => {
-                console.log('Error uploading cup and/or  file: ' + error)
+                console.log('Error uploading cup and/or  file: ' + error);
+                this.showProgressBar = false;
               }
             });
   }

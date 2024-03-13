@@ -36,20 +36,12 @@ export class CupService {
     return this.httpClient.get<Cup>(this.cupPath + '/' + id);
   }
 
-  create(cup: Cup, file: File) {
+  create(cup: Cup, file: File): Observable<any> {
     const formData: FormData = new FormData();
     formData.append("userId", this.authService.getId().toString());
     formData.append("file", file!);
     formData.append("cup", JSON.stringify(cup));
-    this.httpClient.post(this.cupPath, formData).subscribe({
-      next: (resultCup) => {
-        const responseCup: any = resultCup;
-        this.router.navigate(['/' + responseCup.id]);
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    })
+    return this.httpClient.post(this.cupPath, formData);
   }
 
   delete(id: number) {

@@ -6,6 +6,7 @@ import { CustomValidators } from 'src/app/utils/customValidators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BreakpointService } from 'src/app/utils/breakpoint.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -19,12 +20,16 @@ export class CreateComponent implements OnInit {
   public urlImage!: string;
   private extensionsPermited: string[] = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
   public isHandset$!: Observable<boolean>;
+  public showProgressBar: boolean = false;
+
+  //para observable de create, barra de progreso
 
   constructor(
     private cupService: CupService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-    private breakpointService: BreakpointService
+    private breakpointService: BreakpointService,
+    private router: Router
   ) { 
     this.buildForm();
   }
@@ -79,7 +84,19 @@ export class CreateComponent implements OnInit {
       description: this.form.get('description')?.value,
       image: this.file?.name.toString(),
     };
-    this.cupService.create(cup, this.file!);
+    //this.cupService.create(cup, this.file!);
+    this.showProgressBar = true;
+    this.cupService.create(cup, this.file!).subscribe({
+          next: (resultCup) => {
+            const responseCup: any = resultCup;
+            this.showProgressBar = false;
+            this.router.navigate(['/' + responseCup.id]);
+          },
+          error: (error) => {
+            console.log(error);
+            this.showProgressBar = false;
+          }
+        });
   }
 
 }
