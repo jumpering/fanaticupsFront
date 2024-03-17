@@ -6,17 +6,20 @@ import { MaterialModule } from '@material/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { CupModule } from '@cup/cup.module';
 import { LayoutComponent } from './components/layout/layout.component';
+import { SearchbarComponent } from './components/searchbar/searchbar.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    LayoutComponent
+    LayoutComponent,
+    //SearchbarComponent
   ],
   imports: [
     CommonModule,
     WebsiteRoutingModule,
     MaterialModule,
     CupModule,
+    SearchbarComponent
   ]
 })
 export class WebsiteModule { }

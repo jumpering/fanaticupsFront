@@ -1,24 +1,4 @@
 <body>
-    <!-- <img mat-card-image class="firstBodyImage" 
-    src="./../../../../assets/images/firstBodyImage.svg" 
-    alt="Fanaticups"
-    [ngClass]="{'isHandset': isHandset$ | async}">
-
-<div infiniteScroll class="cups" 
-    [infiniteScrollDistance]="2" 
-    [infiniteScrollThrottle]="1" 
-    (scrolled)="onScrollDown()"
-    [ngClass]="{'isHandset': isHandset$ | async}">
-
-
-    <app-cup *ngFor="let cupElement of listOfCups" 
-    class="cards"
-    [cup]="cupElement" 
-    (buy)="onBuyClicked($event)"
-    (detail)="onDetailClicked($event)">
-    </app-cup>
-
-</div> -->
     <img mat-card-image class="firstBodyImage" src="./../../../../assets/images/firstBodyImage.svg" alt="Fanaticups"
         [ngClass]="{'isHandset': isHandset$ | async}">
     <div infiniteScroll class="cups" [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1"

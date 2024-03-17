@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Cup } from '../../models/cup.model';
 import { CupService } from '@cup/services/cup.service';
 import { BreakpointService } from 'src/app/utils/breakpoint.service';
 import { Observable } from 'rxjs';
-import { NgxMasonryComponent } from 'ngx-masonry';
+import { SearchService } from '@shared/services/search.service';
 
 
 @Component({
@@ -21,20 +21,31 @@ export class CupListComponent implements OnInit {
   public isFirst: boolean = false;
   public isLast: boolean = false;
   public isHandset$!: Observable<boolean>;
-  // @ViewChild(NgxMasonryComponent)
-  // masonry!: NgxMasonryComponent;
+  public searchString: string = '';
 
   constructor(
     private cupService: CupService,
     private router: Router,
-    private breakpointService: BreakpointService
+    private breakpointService: BreakpointService,
+    private searchService: SearchService
     ) { }
 
   ngOnInit(): void {
     this.getAllCups();
     this.isHandset$ = this.breakpointService.isHandset$;
+    this.searchService.searchTermChanged.subscribe((searchTerm: string) => {
+      this.searchString = searchTerm;
+      if(this.searchString == ''){
+        this.resetPageable();
+        this.listOfCups = [];
+        this.getAllCups();
+      }else {
+        this.resetPageable();
+        this.listOfCups = [];
+        this.getAllCupsFilteredSearch(); 
+      }
+    });
   }
-
 
   public getAllCups(): void {
     this.cupService.getAllCups(this.page, this.cupsPerPage).subscribe(requestDataInput => {
@@ -42,9 +53,22 @@ export class CupListComponent implements OnInit {
       this.isFirst = requestDataInput.first;
       this.isLast = requestDataInput.last;
       this.listOfCups.push(...requestDataInput.content);  
-      // this.masonry.reloadItems();
-      // this.masonry.layout();
     });
+  }
+
+  public getAllCupsFilteredSearch(): void {
+    this.cupService.getAllCupsFilteredSearch(this.page, this.cupsPerPage, this.searchString).subscribe(requestDataInput => {
+      this.page = requestDataInput.number;
+      this.isFirst = requestDataInput.first;
+      this.isLast = requestDataInput.last;
+      this.listOfCups.push(...requestDataInput.content);  
+    });
+  }
+
+  private resetPageable(): void {
+    this.page = 0;
+    this.isFirst = false;
+    this.isLast = false;
   }
 
   public onScrollDown(){

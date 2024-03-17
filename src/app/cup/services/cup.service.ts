@@ -4,8 +4,8 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
-import { ImageService } from './image.service';
 import { environment } from 'src/environments/environment';
+import { RequestDataInput } from '@cup/models/request-data-input';
 
 @Injectable()
 export class CupService {
@@ -16,11 +16,15 @@ export class CupService {
     private httpClient: HttpClient,
     private router: Router,
     public authService: AuthService,
-    private imageService: ImageService
   ) { }
 
   getAllCups(page: number, cupsPerPage: number): Observable<RequestDataInput> {
     const totalPath: string = this.cupPath + '?' + 'page=' + page + '&size=' + cupsPerPage;
+    return this.httpClient.get<RequestDataInput>(totalPath);
+  }
+
+  getAllCupsFilteredSearch(page: number, cupsPerPage: number, searchString: string): Observable<RequestDataInput>{
+    const totalPath: string = this.cupPath + '/search/' + searchString + '?page=' + page + '&size=' + cupsPerPage;
     return this.httpClient.get<RequestDataInput>(totalPath);
   }
 
@@ -63,25 +67,6 @@ export class CupService {
     );
   }
 
-  updateImage(cup: Cup, file: File): Observable<string>{
-    const formData: FormData = new FormData();
-    formData.append("file", file!);
-    formData.append("userId", this.authService.getId().toString());
-    formData.append("cupName", cup.name.toString());
-    if (cup.id !== undefined) {
-      formData.append("cupId", cup.id?.toString());
-    }
-    return this.imageService.updateImage(formData);
-  }
-
-  updateCupName(oldCupName: string, newCupName: string): Observable<string>{
-    const formData: FormData = new FormData();
-    formData.append('userId', this.authService.getId().toString());
-    formData.append('oldCupName', oldCupName);
-    formData.append('newCupName', newCupName);
-    return this.imageService.updatePath(formData);
-  }
-
   updateCup(cup: Cup, file: File): Observable<Cup>{
     const formData: FormData = new FormData();
     formData.append('cup', JSON.stringify(cup));
@@ -90,25 +75,25 @@ export class CupService {
   }
 }
 
-interface RequestDataInput {
-  content: Cup[];
-  empty: boolean;
-  first: boolean;
-  last: boolean;
-  number: number;
-  numberOfElements: number;
-  pageable: {
-    offset: number;
-    pageNumber: number;
-    pageSize: number;
-    paged: boolean;
-  }
-  size: number;
-  sort: {
-    empty: boolean;
-    sorted: boolean;
-    unsorted: boolean;
-  },
-  totalElements: number;
-  totalPages: number;
-}
+// interface RequestDataInput {
+//   content: Cup[];
+//   empty: boolean;
+//   first: boolean;
+//   last: boolean;
+//   number: number;
+//   numberOfElements: number;
+//   pageable: {
+//     offset: number;
+//     pageNumber: number;
+//     pageSize: number;
+//     paged: boolean;
+//   }
+//   size: number;
+//   sort: {
+//     empty: boolean;
+//     sorted: boolean;
+//     unsorted: boolean;
+//   },
+//   totalElements: number;
+//   totalPages: number;
+// }

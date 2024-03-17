@@ -1,0 +1,24 @@
+.search-bar{
+  display: flex;
+  align-items: center;
+  height: 30px;
+  width: 100%;
+  margin: 20px, 10%;
+  background-color: rgb(218, 218, 218);
+  margin: 10px, 10px;
+  border-radius: 20px;
+  input {
+    border: unset;
+    margin: 20px;
+    background-color: unset;
+    width: 100%;
+    &:focus{
+      outline: none;
+    }
+  }
+}
+
+.icon{
+  padding: 10px;
+  margin: 10px;
+}
