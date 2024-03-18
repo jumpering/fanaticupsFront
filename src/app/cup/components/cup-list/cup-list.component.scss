@@ -11,6 +11,7 @@ body{
 
 .masonry{
     overflow-anchor: none; //para prevenir auto scroll up de libreria masonry TODO
+    
 }
 
 .firstBodyImage{
@@ -32,9 +33,13 @@ body{
 }
 
 .masonry-item{
-    width: 350px;
+    //width: 350px;
+    //width: 100%;
+    margin: 10px;
 }
 
 .masonry-item.isHandset{
-    width: 160px;
+    //width: 160px;
+    //width: 100%;
+    margin: 2px;
 }

@@ -5,7 +5,16 @@
         (scrolled)="onScrollDown()">
 
         <ngx-masonry loading="lazy" [ordered]="true" class="masonry"
-            [options]="{ gutter: 20, fitWidth: false, initLayout: true, resize: true, originTop: true, percentPosition: true }">
+            [options]="{ 
+                gutter: 30, 
+                fitWidth: true, 
+                originLeft: false, 
+                initLayout: true, 
+                resize: true, 
+                originTop: true, 
+                percentPosition: true, 
+                horizontalOrder: true 
+                }">
             <app-cup ngxMasonryItem class="masonry-item" *ngFor="let cupElement of listOfCups"
                 [ngClass]="{'isHandset': isHandset$ | async}" [cup]="cupElement" (buy)="onBuyClicked($event)"
                 (detail)="onDetailClicked($event)">
