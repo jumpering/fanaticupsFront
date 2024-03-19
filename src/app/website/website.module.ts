@@ -12,7 +12,6 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
   declarations: [
     HeaderComponent,
     LayoutComponent,
-    //SearchbarComponent
   ],
   imports: [
     CommonModule,

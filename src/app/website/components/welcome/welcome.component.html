@@ -1,0 +1,31 @@
+<body *ngIf="displayWelcome == true">
+    <mat-card class="card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Welcome to my WIP (Work in progress) demo and porfolio</mat-card-title>
+            <mat-card-subtitle>Xavi Gómez Canals</mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        
+        <mat-card-content>
+            <p>You can navigate throw the website to test CRUD</p>
+            <p>user: x&#64;x.x</p>
+            <p>password: secreto</p>
+            <p>Registre is disabled for avoid troubles</p>
+            <p>This website uses:</p>
+            <ul>
+                <li>Angular on Frontend</li>
+                <li>Spring boot in Backend</li>
+                <li>Minio S3 for store images (open source Bucket like AWS S3)</li>
+                <li>MySql for data base</li>
+                <li>Microservices deployed in Docker</li>
+            </ul>
+        </mat-card-content>
+        <mat-card-footer>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="disableDisplayWelcome()" matTooltip="Close" >Close</button>
+            </mat-card-actions>
+        </mat-card-footer>
+
+    </mat-card>
+</body>

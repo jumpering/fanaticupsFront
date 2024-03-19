@@ -6,6 +6,8 @@ import { CupDetailComponent } from '@cup/components/cup-detail/cup-detail.compon
 import { CreateComponent } from '../cup/components/cup-create/create.component';
 import { LoginComponent } from '@auth/components/login/login.component';
 import { AuthGuard } from '@auth/guards/auth.guard';
+import { Page404Component } from '../page404/page404.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 const routes: Routes = [
   {
@@ -15,6 +17,11 @@ const routes: Routes = [
       path: '',
       component: CupListComponent
     },
+    {
+      path: '',
+      component: WelcomeComponent, outlet: 'overlapping'
+    },
+
     {
       path: 'create',
       component: CreateComponent,
@@ -27,6 +34,10 @@ const routes: Routes = [
     {
       path: 'login',
       component: LoginComponent
+    },
+    {
+      path: '**',
+      component: Page404Component
     }
     ]
   },
