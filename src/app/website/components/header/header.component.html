@@ -1,7 +1,6 @@
 <mat-toolbar class="toolbar">
   <img (click)="toHome()" class="logo" src="./../../../../assets/images/logo.svg" alt="Cups & Mugs!" [ngClass]="{'isHandset-logo': (isHandset$ | async) === true}">
-  <!-- <h3 mat-card-subtitle class="wellcomeMessage"> {{getUsername()}} </h3> -->
-  <app-searchbar></app-searchbar>
+  <app-searchbar *ngIf="router.url == '/'"></app-searchbar>
   <div *ngIf="!(hasSession() | async)">
     <button mat-icon-button [matMenuTriggerFor]="menu" [ngClass]="{'smallScreenButton': (isHandset$ | async) === false}"
       matTooltip="Menu">
@@ -37,7 +36,7 @@
         <span>Logout</span>
       </button>
     </mat-menu>
-    <button mat-raised-button class="headerButtons" color="primary" routerLink="/create" matTooltip="Create cup"
+    <button mat-raised-button class="headerButtons" color="primary" routerLink="/create" matTooltip="Create cup" *ngIf="router.url !== '/create'"
       [ngClass]="{'smallScreenButton': isHandset$ | async}">Create cup</button>
     <button mat-raised-button class="headerButtons" color="primary" routerLink="/" (click)="logout()"
       matTooltip="Logout" [ngClass]="{'smallScreenButton': (isHandset$ | async) === true}">Logout</button>

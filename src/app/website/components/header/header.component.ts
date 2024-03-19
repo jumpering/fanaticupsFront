@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   public isHandset$!: Observable<boolean>;
 
   constructor(
-    private router: Router,
+    public router: Router,
     private authService: AuthService,
     public dialog: MatDialog,
     public breakpointService: BreakpointService
