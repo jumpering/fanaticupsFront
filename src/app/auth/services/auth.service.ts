@@ -28,7 +28,6 @@ export class AuthService {
       const token = bearerToken.replace('Bearer ', '');
       localStorage.setItem('token', token);
       this.currentToken = token;
-      console.log('set: ', this.currentToken);
       this.authenticated = true;
       return body;
     }))
@@ -44,7 +43,6 @@ export class AuthService {
       const token = bearerToken.replace('Bearer ', '');
       localStorage.setItem('token', token);
       this.currentToken = token;
-      console.log('set: ', this.currentToken);
       this.authenticated = true;
       return body;
     }))

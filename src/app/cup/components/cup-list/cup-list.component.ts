@@ -76,7 +76,6 @@ export class CupListComponent implements OnInit {
 
   public onScrollDown(){
     this.page++;
-    console.log('valor de page: ' + this.page);
     if(this.isLast !== true){
       this.reloadMasonry();
       this.getAllCups();
@@ -92,7 +91,7 @@ export class CupListComponent implements OnInit {
   }
 
   public onBuyClicked(id: number){
-    console.log("buy ID cup: " + id);
+    //console.log("buy ID cup: " + id);
   }
 
   public onDetailClicked(id: number){
