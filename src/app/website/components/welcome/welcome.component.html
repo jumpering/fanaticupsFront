@@ -1,4 +1,4 @@
-<body *ngIf="displayWelcome == true">
+<body *ngIf="isActiveMessage">
     <mat-card class="card">
         <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
@@ -8,11 +8,15 @@
         <mat-divider></mat-divider>
         
         <mat-card-content>
-            <p>You can navigate throw the website to test CRUD</p>
-            <p>user: x&#64;x.x</p>
-            <p>password: secreto</p>
+            <p>You can navigate throw the website to test CRUD (create, read, update and delete) cups.</p>
+            <p>This is a website like pinterest or similar product / image gallery.</p>
+            <p>For login you can use these credentials:</p>
+            <div class="credentials">
+                <p>user: x&#64;x.x</p>
+                <p>password: secreto</p>
+            </div>
             <p>Registre is disabled for avoid troubles</p>
-            <p>This website uses:</p>
+            <p>Technology stack used:</p>
             <ul>
                 <li>Angular for Frontend</li>
                 <li>Spring boot for Backend</li>
@@ -22,8 +26,8 @@
             </ul>
         </mat-card-content>
         <mat-card-footer>
-            <mat-card-actions>
-                <button mat-raised-button color="primary" (click)="disableDisplayWelcome()" matTooltip="Close" >Close</button>
+            <mat-card-actions class="card-actions">
+                <button mat-raised-button color="primary" (click)="emitEvent()" matTooltip="Close" >Close</button>
             </mat-card-actions>
         </mat-card-footer>
 

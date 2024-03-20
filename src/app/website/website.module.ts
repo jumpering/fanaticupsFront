@@ -7,18 +7,20 @@ import { HeaderComponent } from './components/header/header.component';
 import { CupModule } from '@cup/cup.module';
 import { LayoutComponent } from './components/layout/layout.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    LayoutComponent,
+    LayoutComponent  
   ],
   imports: [
     CommonModule,
     WebsiteRoutingModule,
     MaterialModule,
     CupModule,
-    SearchbarComponent
+    SearchbarComponent,
+    WelcomeComponent
   ]
 })
 export class WebsiteModule { }

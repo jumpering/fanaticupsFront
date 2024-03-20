@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MaterialModule } from '@material/material.module';
 
 @Component({
@@ -11,10 +11,12 @@ import { MaterialModule } from '@material/material.module';
 })
 export class WelcomeComponent {
 
-  public displayWelcome: boolean = true;
+  public isActiveMessage: boolean = true;
+  @Output() childEvent = new EventEmitter<boolean>();
 
-  public disableDisplayWelcome(){
-    this.displayWelcome = false;
+  emitEvent() {
+    this.isActiveMessage = false;
+    this.childEvent.emit(false);
   }
 
 }

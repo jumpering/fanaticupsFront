@@ -18,11 +18,6 @@ const routes: Routes = [
       component: CupListComponent
     },
     {
-      path: '',
-      component: WelcomeComponent, outlet: 'overlapping'
-    },
-
-    {
       path: 'create',
       component: CreateComponent,
       canActivate: [AuthGuard]
