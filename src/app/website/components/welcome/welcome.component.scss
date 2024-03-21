@@ -10,7 +10,7 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
-    cursor:not-allowed;
+    //cursor:not-allowed;
 }
 
 .card{
@@ -19,7 +19,7 @@ body{
     margin-top: 50px;
     background-color: rgb(222, 222, 222);
     border-radius: 30px;
-    cursor: default;
+    //cursor: default;
 }
 
 .card-actions{
@@ -44,4 +44,8 @@ body{
 
   .credentials{
     background-color: beige;
+  }
+
+  .button-ok{
+    cursor: pointer;
   }
