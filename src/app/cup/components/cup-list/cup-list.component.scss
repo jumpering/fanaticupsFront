@@ -4,15 +4,20 @@ body{
 }
 
 .cups{
-    //background-color: aqua;
-    //padding-left: 5%;
-    overflow-anchor: none; //para prevenir auto scroll up de libreria masonry TODO
+    //overflow-anchor: none; //para prevenir auto scroll up de libreria masonry TODO NGX-MASONRY
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.masonry{
-    overflow-anchor: none; //para prevenir auto scroll up de libreria masonry TODO
-    
+.loading{
+    position: fixed;
+    padding-inline: 45vw;
+    z-index: 3;
+    scale: .8;
 }
+
 
 .firstBodyImage{
     height: 250px;
@@ -32,13 +37,13 @@ body{
     margin-bottom: 20px;
 }
 
-.masonry-item{
+.item{
     //width: 350px;
     //width: 100%;
     margin: 15px;
 }
 
-.masonry-item.isHandset{
+.item.isHandset{
     //width: 160px;
     //width: 100%;
     margin: 2px;

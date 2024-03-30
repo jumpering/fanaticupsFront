@@ -4,7 +4,12 @@
     <div infiniteScroll class="cups" [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1"
         (scrolled)="onScrollDown()">
 
-        <ngx-masonry loading="lazy" [ordered]="true" class="masonry"
+        <div class="loading" *ngIf="showLoading">
+            <!-- <mat-progress-bar mode="query"></mat-progress-bar> -->
+            <mat-spinner></mat-spinner>
+          </div>
+
+        <!-- <ngx-masonry loading="lazy" [ordered]="true" class="masonry"
             [options]="{ 
                 gutter: 30, 
                 fitWidth: true, 
@@ -14,11 +19,18 @@
                 originTop: true, 
                 percentPosition: true, 
                 horizontalOrder: true 
-                }">
-            <app-cup ngxMasonryItem class="masonry-item" *ngFor="let cupElement of listOfCups"
+                }"> -->
+            <!-- <app-cup ngxMasonryItem class="masonry-item" *ngFor="let cupElement of listOfCups"
                 [ngClass]="{'isHandset': isHandset$ | async}" [cup]="cupElement" (buy)="onBuyClicked($event)"
                 (detail)="onDetailClicked($event)">
-            </app-cup>
-        </ngx-masonry>
+            </app-cup> -->
+
+            <app-cup class="item" *ngFor="let cupElement of listOfCups"
+            [ngClass]="{'isHandset': isHandset$ | async}" 
+            [cup]="cupElement" 
+            (buy)="onBuyClicked($event)"
+            (detail)="onDetailClicked($event)">
+        </app-cup>
+        <!-- </ngx-masonry> -->
     </div>
 </body>

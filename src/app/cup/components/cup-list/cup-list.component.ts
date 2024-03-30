@@ -6,7 +6,7 @@ import { CupService } from '@cup/services/cup.service';
 import { BreakpointService } from 'src/app/utils/breakpoint.service';
 import { Observable, Subject, debounceTime } from 'rxjs';
 import { SearchService } from '@shared/services/search.service';
-import { NgxMasonryComponent } from 'ngx-masonry';
+//import { NgxMasonryComponent } from 'ngx-masonry';
 
 
 @Component({
@@ -23,7 +23,8 @@ export class CupListComponent implements OnInit {
   public isLast: boolean = false;
   public isHandset$!: Observable<boolean>;
   public searchString: string = '';
-  @ViewChild(NgxMasonryComponent) masonry!: NgxMasonryComponent;
+  public showLoading: boolean = false;
+  //@ViewChild(NgxMasonryComponent) masonry!: NgxMasonryComponent;
 
   constructor(
     private cupService: CupService,
@@ -37,7 +38,7 @@ export class CupListComponent implements OnInit {
     this.isHandset$ = this.breakpointService.isHandset$;
     this.searchService.searchTermChanged.pipe(debounceTime(300)).subscribe((searchTerm: string) => {
       this.searchString = searchTerm;
-      this.reloadMasonry();
+      //this.reloadMasonry();
       if(this.searchString == ''){
         this.resetPageable();
         this.listOfCups = [];
@@ -51,10 +52,12 @@ export class CupListComponent implements OnInit {
   }
 
   public getAllCups(): void {
+    this.showLoading = true;
     this.cupService.getAllCups(this.page, this.cupsPerPage).subscribe(requestDataInput => {
       this.page = requestDataInput.number;
       this.isFirst = requestDataInput.first;
       this.isLast = requestDataInput.last;
+      this.showLoading = false;
       this.listOfCups.push(...requestDataInput.content); 
     });
   }
@@ -77,7 +80,7 @@ export class CupListComponent implements OnInit {
   public onScrollDown(){
     this.page++;
     if(this.isLast !== true){
-      this.reloadMasonry();
+      //this.reloadMasonry();
       this.getAllCups();
     }
   }
@@ -86,8 +89,8 @@ export class CupListComponent implements OnInit {
     //this.masonry.ngOnInit();
     //this.masonry.reloadItems();
     //this.masonry.layout(); 
-    this.masonry.reloadItems();
-    this.masonry.ordered = true;
+    //this.masonry.reloadItems();
+    //this.masonry.ordered = true;
   }
 
   public onBuyClicked(id: number){
