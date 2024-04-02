@@ -3,26 +3,69 @@ body{
 }
 
 h2{
-    font-size: small;
+    font-size: medium;
+    padding-left: 5px;
 }
 
 .table{
     width: 100%;
 }
 
-.table-name-field{
-    cursor: pointer;
+// .name-chat-line{
+//     cursor: pointer;
+// }
+
+
+
+.local-time-info{
+    font-size: small;
+    color: rgb(75, 75, 75);
+    margin: 0 auto;
+
+    height: 15px;
+    margin-left: 5px;
 }
 
-td:nth-child(even){
-    background-color: rgb(255, 255, 255);
-    border: solid rgb(157, 157, 157);
-    border-width: .5px 0;
+// .icon {
+//     cursor: pointer;
+//     color: rgb(255, 255, 255);
+//     background-color: rgb(79, 127, 199);
+//     border-radius: 50%; /* Make the element round */
+//     width: 50px; /* Adjust width as needed */
+//     height: 50px; /* Adjust height as needed */
+//     text-align: center; /* Center the text horizontally */
+//     font-size: larger;
+//     line-height: 50px; /* Center the text vertically */
+// }
+
+.message-chat-line{
+    padding-top: 0;
+    background-color: rgba(255, 255, 255, 0);
+    padding-bottom: 20px;
 }
 
-td:nth-child(odd){
-    background-color: rgb(243, 243, 243);
-}
+// .even {
+//     background-color:rgb(255, 255, 255);
+// }
+
+// .odd {
+//     background-color: rgb(245, 248, 255);
+// }
+
+// td:nth-child(even){
+
+// }
+
+// td:nth-child(odd){
+//     color: rgb(255, 255, 255);
+//     background-color: rgb(79, 127, 199);
+//     border-radius: 50%; /* Make the element round */
+//     width: 25px; /* Adjust width as needed */
+//     height: 25px; /* Adjust height as needed */
+//     text-align: center; /* Center the text horizontally */
+//     font-size: larger;
+//     line-height: 25px; /* Center the text vertically */
+// }
 
 .form{
     display: flex;

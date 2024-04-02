@@ -1,3 +1,5 @@
-<app-header *ngIf="!isActiveMessage"></app-header>
-<router-outlet *ngIf="!isActiveMessage"></router-outlet>
-<app-welcome (childEvent)="handleChildEvent($event)"></app-welcome>
+<body>
+    <app-header *ngIf="!isActiveMessage"></app-header>
+    <router-outlet *ngIf="!isActiveMessage"></router-outlet>
+    <app-welcome (childEvent)="handleChildEvent($event)"></app-welcome>
+</body>

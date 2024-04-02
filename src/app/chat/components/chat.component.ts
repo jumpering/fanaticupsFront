@@ -62,7 +62,9 @@ export class ChatComponent implements OnInit{
       },
       complete: () => {
         this.form.get("messageInput")?.setValue('');
-        //this.form.get("messageInput")?.markAsUntouched();
+        this.form.get("messageInput")?.clearValidators();
+        this.form.get("messageInput")?.markAsUntouched();
+        //this.form.get("messageInput")?.addValidators(Validators.maxLength(250));
       }
     });
 

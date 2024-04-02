@@ -6,9 +6,12 @@
         <th>User</th>
         <th>Message</th>
       </tr> -->
-      <tr  *ngFor="let item of listOfMessages">
-        <td class="table-name-field" matTooltip="{{item.user?.name}}">{{item.user?.name | slice: 0 : 1}}</td>
-        <td>{{item.message}}</td>
+      <tr *ngFor="let item of listOfMessages; let i = index">
+        <!-- <span class="icon" matTooltip="{{item.user?.name}}">{{item.user?.name | slice: 0 : 1 | uppercase}}</span> -->
+        <p class="local-time-info">{{item.user?.name}} at {{item.localDate}}</p>
+        <div [ngClass]="{'even': i % 2 == 0, 'odd': i % 2 != 0}">
+          <td class="message-chat-line">{{item.message}}</td>
+        </div>
       </tr>
     </table>
   </section>
