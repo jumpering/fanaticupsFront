@@ -2,16 +2,16 @@
   <h2>comments ({{listOfMessages.length}})</h2>
   <section class="chat-list">
     <table class="table">
-      <!-- <tr>
-        <th>User</th>
-        <th>Message</th>
-      </tr> -->
       <tr *ngFor="let item of listOfMessages; let i = index">
-        <!-- <span class="icon" matTooltip="{{item.user?.name}}">{{item.user?.name | slice: 0 : 1 | uppercase}}</span> -->
-        <p class="local-time-info">{{item.user?.name}} at {{item.localDate}}</p>
-        <div [ngClass]="{'even': i % 2 == 0, 'odd': i % 2 != 0}">
-          <td class="message-chat-line">{{item.message}}</td>
+        <div class="comment-container">
+          <div class="left" matTooltip="{{item.user?.name}}">
+            {{item.user?.name | slice: 0 : 1 | uppercase}}
+          </div>
+          <div class="right">
+            <p>{{item.user?.name}} at {{item.localDate}}</p>
+          </div>
         </div>
+        <p class="message-chat-line">{{item.message}}</p>
       </tr>
     </table>
   </section>
@@ -19,7 +19,8 @@
     <form novalidate [formGroup]="form"></form>
     <form novalidate class="form" [formGroup]="form">
       <mat-form-field>
-        <textarea matInput placeholder="add comment" class="message-input" formControlName="messageInput" (ngModelChange)="onChangeMessageInput()"></textarea>
+        <textarea matInput placeholder="add comment" class="message-input" formControlName="messageInput"
+          (ngModelChange)="onChangeMessageInput()"></textarea>
         <mat-error *ngIf="form.get('messageInput')?.hasError('maxlength')">
           Maximum 250 characters length
         </mat-error>
@@ -27,7 +28,7 @@
           counter: {{form.get('messageInput')?.value.length}} characters length
         </mat-error>
       </mat-form-field>
-      <button mat-button [disabled]= "!form.valid" (click)="sendMessage()">send comment</button>
+      <button mat-button [disabled]="!form.valid" (click)="sendMessage()">send comment</button>
     </form>
   </section>
 </body>

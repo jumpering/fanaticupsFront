@@ -1,10 +1,19 @@
 <mat-card class="cup-card" (click)="showDetail()" [ngClass]="{'isHandset': isHandset$ | async}">
     <mat-card-header class="card-header">
-        <mat-card-title class="card-title">
+
+
+        <mat-card-title class="card-title" [ngClass]="{'isHandset': isHandset$ | async}">
+            {{ cup.name }}
+        </mat-card-title>
+
+        <!-- <mat-card-title class="card-title">
             @if((isHandset$ | async) === false){
             <h3>{{ cup.name }}</h3>
+            } 
+            @else {
+                <h6>{{ cup.name }}</h6>
             }
-        </mat-card-title>
+        </mat-card-title> -->
         <mat-card-subtitle>
             @if((isHandset$ | async)=== false){
             <h4>{{ cup.origin }}</h4>
@@ -17,11 +26,11 @@
         </div>
         @if(isHandset$ | async){
         <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}"
-            [innerHTML]="cup.description | slice: 0: 40 | splitInTwoLines | threeDotsForShortDescription"></p>
+            [innerHTML]="cup.description | slice: 0: 50 | threeDotsForShortDescription"></p>
         }
         @else{
         <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}"
-            [innerHTML]="cup.description | slice: 0: 80 | splitInTwoLines | threeDotsForShortDescription"></p>
+            [innerHTML]="cup.description | slice: 0: 80 | threeDotsForShortDescription"></p>
 
         }
 
