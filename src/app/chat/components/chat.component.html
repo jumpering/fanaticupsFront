@@ -16,9 +16,15 @@
     <form novalidate [formGroup]="form"></form>
     <form novalidate class="form" [formGroup]="form">
       <mat-form-field>
-        <input matInput placeholder="add comment" class="message-input">
+        <textarea matInput placeholder="add comment" class="message-input" formControlName="messageInput" (ngModelChange)="onChangeMessageInput()"></textarea>
+        <mat-error *ngIf="form.get('messageInput')?.hasError('maxlength')">
+          Maximum 250 characters length
+        </mat-error>
+        <mat-error *ngIf="form.get('messageInput')?.value.length > 250">
+          counter: {{form.get('messageInput')?.value.length}} characters length
+        </mat-error>
       </mat-form-field>
-      <button mat-button (click)="sendMessage()">send comment</button>
+      <button mat-button [disabled]= "!form.valid" (click)="sendMessage()">send comment</button>
     </form>
   </section>
 </body>

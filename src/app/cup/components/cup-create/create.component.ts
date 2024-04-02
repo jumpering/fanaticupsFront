@@ -22,15 +22,13 @@ export class CreateComponent implements OnInit {
   public isHandset$!: Observable<boolean>;
   public showProgressBar: boolean = false;
 
-  //para observable de create, barra de progreso
-
   constructor(
     private cupService: CupService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private breakpointService: BreakpointService,
     private router: Router
-  ) { 
+  ) {
     this.buildForm();
   }
 
@@ -38,20 +36,19 @@ export class CreateComponent implements OnInit {
     this.isHandset$ = this.breakpointService.isHandset$;
   }
 
-  buildForm(){
+  buildForm() {
     this.form = this.formBuilder.group({
-      name: ['', //default
-            [Validators.required, Validators.minLength(3), Validators.maxLength(30)], //sync 
-            [CustomValidators.existCupName(this.cupService)] //async
-          ],
-      origin: ['',[Validators.required]],
-      description: ['',[Validators.required, Validators.maxLength(250)]],
+      name: ['', //default name
+        [Validators.required, Validators.minLength(3), Validators.maxLength(30)], //sync 
+        [CustomValidators.existCupName(this.cupService)] //async
+      ],
+      origin: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.maxLength(250)]],
     });
-    this.form.markAllAsTouched();
   }
 
-  onSelectedFile(event: any){
-    this.file =  event.target.files[0];
+  onSelectedFile(event: any) {
+    this.file = event.target.files[0];
     if (this.file && this.isImage()) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -78,26 +75,28 @@ export class CreateComponent implements OnInit {
     this.snackBar.open(message, '', { duration: 10000 });
   }
 
-  onCreateCup(){
+  onCreateCup() {
     const cup: Cup = {
       name: this.form.get('name')?.value,
       origin: this.form.get('origin')?.value,
       description: this.form.get('description')?.value,
       image: this.file?.name.toString(),
     };
-    //this.cupService.create(cup, this.file!);
     this.showProgressBar = true;
     this.cupService.create(cup, this.file!).subscribe({
-          next: (resultCup) => {
-            const responseCup: any = resultCup;
-            this.showProgressBar = false;
-            this.router.navigate(['/' + responseCup.id]);
-          },
-          error: (error) => {
-            console.log(error);
-            this.showProgressBar = false;
-          }
-        });
+      next: (resultCup) => {
+        const responseCup: any = resultCup;
+        this.showProgressBar = false;
+        this.router.navigate(['/' + responseCup.id]);
+      },
+      error: (error) => {
+        console.log(error);
+        this.showProgressBar = false;
+      }
+    });
   }
 
+  onCupFieldChange(inputField: string) {
+    this.form.get(inputField)?.markAsTouched();
+  }
 }

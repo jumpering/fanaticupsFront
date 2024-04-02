@@ -19,7 +19,6 @@ export class ChatComponent implements OnInit{
 
   @Input() cupId?: number;
   public form: FormGroup;
-  public message!: string; //para form
   public listOfMessages: Message[] = [];
   public hasSession$!: Observable<boolean>; 
 
@@ -30,15 +29,15 @@ export class ChatComponent implements OnInit{
     ){
       this.hasSession$ = this.authService.hasSession();
       this.form = this.formBuilder.group({
-        messageInput: ['comment', [Validators.required, Validators.maxLength(250)]]
+        messageInput: ['', [Validators.required, Validators.maxLength(250)]]
       });
+      //this.form.markAllAsTouched();
     }
 
   ngOnInit(): void {
     this.chatService.getAllMessages(this.cupId).subscribe({
       next: (elements: Message[]) =>{
         this.listOfMessages.push(...elements);
-        console.log(this.listOfMessages);
       },
       error: err => {
         console.log('Error fetching messages: ' + err);
@@ -47,11 +46,25 @@ export class ChatComponent implements OnInit{
         //
       }
     });
+  }
 
+  public onChangeMessageInput(){
     this.form.markAllAsTouched();
   }
 
   public sendMessage():void {
+    this.chatService.addMessage(this.cupId, this.form.get("messageInput")?.value).subscribe({
+      next: (element: Message) => {
+        this.listOfMessages.push(element);
+      },
+      error: (err) => {
+        console.log('Error sending message ' + err);
+      },
+      complete: () => {
+        this.form.get("messageInput")?.setValue('');
+        //this.form.get("messageInput")?.markAsUntouched();
+      }
+    });
 
   }
 

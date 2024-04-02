@@ -9,7 +9,7 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
-            <input matInput type="text" placeholder="Cup name" formControlName="name">
+            <input matInput type="text" placeholder="Cup name" formControlName="name" (ngModelChange)="onCupFieldChange('name')">
             <mat-error *ngIf="form.get('name')?.hasError('minlength') || form.get('name')?.hasError('required')">
               Required filed
               Minimum 3 characters length
@@ -24,7 +24,7 @@
           <br>
           <mat-form-field appearance="outline">
             <mat-label>Origin</mat-label>
-            <input matInput type="text" placeholder="Origin" formControlName="origin">
+            <input matInput type="text" placeholder="Origin" formControlName="origin" (ngModelChange)="onCupFieldChange('origin')">
             <mat-error *ngIf="form.get('origin')?.hasError('required')">
               Required field
             </mat-error>
@@ -32,7 +32,7 @@
           <br>
           <mat-form-field appearance="outline">
             <mat-label>Description</mat-label>
-            <textarea matInput name="Description" placeholder="Description" formControlName="description"></textarea>
+            <textarea matInput name="Description" placeholder="Description" formControlName="description" (ngModelChange)="onCupFieldChange('description')"></textarea>
             <mat-error *ngIf="form.get('description')?.hasError('required')">
               Required field
             </mat-error>
