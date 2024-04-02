@@ -5,20 +5,9 @@
         <mat-card-title class="card-title" [ngClass]="{'isHandset': isHandset$ | async}">
             {{ cup.name }}
         </mat-card-title>
-
-        <!-- <mat-card-title class="card-title">
-            @if((isHandset$ | async) === false){
-            <h3>{{ cup.name }}</h3>
-            } 
-            @else {
-                <h6>{{ cup.name }}</h6>
-            }
-        </mat-card-title> -->
-        <mat-card-subtitle>
-            @if((isHandset$ | async)=== false){
-            <h4>{{ cup.origin }}</h4>
-            }
-        </mat-card-subtitle>
+        <mat-card-subtitle  class="card-origin" [ngClass]="{'isHandset': isHandset$ | async}">
+            {{ cup.origin }}
+        </mat-card-subtitle> 
     </mat-card-header>
     <mat-card-content class="card-content" [ngClass]="{'isHandset': isHandset$ | async}">
         <div class="imageContainer">
