@@ -53,8 +53,9 @@ export class CupDetailComponent implements OnInit {
         //[CustomValidators.existCupName(this.cupService)] //async (in keyup event http with method onCupNameChange())
       ],
       //origin: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-    })
+      description: ['', [Validators.required, Validators.maxLength(250)]],
+    });
+    this.form.markAllAsTouched();
   }
 
   ngOnInit(): void {

@@ -47,6 +47,12 @@
                             <mat-error *ngIf="form.get('description')?.hasError('required')">
                                 Required field
                               </mat-error> 
+                              <mat-error *ngIf="form.get('description')?.hasError('maxlength')">
+                                Maximum 250 characters length
+                              </mat-error> 
+                              <mat-error *ngIf="form.get('description')?.value.length > 250">
+                                counter: {{form.get('description')?.value.length}} characters length
+                              </mat-error>
                         </mat-form-field>
                         <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
                     </div>
@@ -66,7 +72,7 @@
                                 </button>
                             </div>
                             <div *ngIf="updateFields">
-                                <button mat-fab color="primary" matTooltip="Save" (click)="onClickSaveFields()">
+                                <button mat-fab color="primary" [disabled]="!form.valid"  matTooltip="Save" (click)="onClickSaveFields()">
                                     <mat-icon>save</mat-icon>
                                 </button>
                             </div>
@@ -87,7 +93,7 @@
                         <mat-progress-bar mode="query"></mat-progress-bar>
                       </div>
                     <mat-divider></mat-divider>
-                    <div class="comments">
+                    <!-- <div class="comments">
                         <h2>Chat (6)</h2>
                         <br>
                         <h4>USER_A: aaa aaaaaa aaaa aaa aaa</h4>
@@ -96,8 +102,9 @@
                         <h4>USER_B: aaaa aaaa aa</h4>
                         <h4>USER_A: aa aaaa aaaaaa aafdfd dfdfd fdfdfaaaaaa🥰</h4>
                         <h4>USER_B: aaa aa aaaaaa aaaaaaa aa</h4>
-                    </div>
-
+                    </div> -->
+                    
+                    <app-chat [cupId] = "cup.id"></app-chat>
 
                 </form>
 

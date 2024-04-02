@@ -44,6 +44,7 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['',[Validators.required, Validators.minLength(3)]]
     });
     this.form.setValidators(CustomValidators.isMatchingPasswords);
+    //this.form.markAllAsTouched();
   }
 
   register(): void {

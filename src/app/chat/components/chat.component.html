@@ -1,0 +1,24 @@
+<body>
+  <h2>comments ({{listOfMessages.length}})</h2>
+  <section class="chat-list">
+    <table class="table">
+      <!-- <tr>
+        <th>User</th>
+        <th>Message</th>
+      </tr> -->
+      <tr  *ngFor="let item of listOfMessages">
+        <td class="table-name-field" matTooltip="{{item.user?.name}}">{{item.user?.name | slice: 0 : 1}}</td>
+        <td>{{item.message}}</td>
+      </tr>
+    </table>
+  </section>
+  <section *ngIf="hasSession$ | async" class="message-form">
+    <form novalidate [formGroup]="form"></form>
+    <form novalidate class="form" [formGroup]="form">
+      <mat-form-field>
+        <input matInput placeholder="add comment" class="message-input">
+      </mat-form-field>
+      <button mat-button (click)="sendMessage()">send comment</button>
+    </form>
+  </section>
+</body>

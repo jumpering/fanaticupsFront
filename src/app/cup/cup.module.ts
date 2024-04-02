@@ -13,6 +13,7 @@ import { CreateComponent } from './components/cup-create/create.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DeleteDialogComponent } from './components/cup-delete-dialog/delete-dialog.component';
 import { SplitInTwoLinesPipe } from "../shared/pipes/split-in-two-lines.pipe";
+import { ChatComponent } from '../chat/components/chat.component';
 //import { LayoutModule } from '@angular/cdk/layout';
 // import { NgxMasonryModule } from 'ngx-masonry';
 
@@ -22,7 +23,7 @@ import { SplitInTwoLinesPipe } from "../shared/pipes/split-in-two-lines.pipe";
         CupListComponent,
         CupDetailComponent,
         CreateComponent,
-        DeleteDialogComponent,
+        DeleteDialogComponent
     ],
     exports: [
         CupListComponent
@@ -39,6 +40,7 @@ import { SplitInTwoLinesPipe } from "../shared/pipes/split-in-two-lines.pipe";
         ReactiveFormsModule,
         InfiniteScrollModule,
         SplitInTwoLinesPipe,
+        ChatComponent
         // NgxMasonryModule
     ]
 })

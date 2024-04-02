@@ -47,6 +47,7 @@ export class CreateComponent implements OnInit {
       origin: ['',[Validators.required]],
       description: ['',[Validators.required, Validators.maxLength(250)]],
     });
+    this.form.markAllAsTouched();
   }
 
   onSelectedFile(event: any){
