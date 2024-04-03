@@ -20,6 +20,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    //position: absolute;
 }
 
 .right.smallScreenRight{
@@ -53,7 +54,7 @@
 }
 
 .cupImage {
-    position: relative;
+    position: relative;////////////
     width: 80%;
     height: auto;
     object-fit:cover;
@@ -62,6 +63,7 @@
     padding-bottom: 5%;
     padding-left: 5%;
     padding-right: 5%;
+
 }
 
 .inputButton {

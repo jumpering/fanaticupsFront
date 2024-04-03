@@ -1,23 +1,36 @@
-.form {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
+
+body{
+//width: 10cqw;
+width: 100%;
+}
+
+.chat-list{
+    width: 100%;
+    //background-color: rgb(191, 114, 12);
+}
+
+
+.table {
+    width: 100%;
+    //background-color: rgb(107, 125, 0);
+}
+
+.table-row{
+    width: 100cqw;
+    //background-color: aquamarine;
 }
 
 h2 {
     font-size: medium;
     padding-left: 5px;
+    //background-color: bisque;
 }
 
-.table {
-    width: 100%;
-}
-
-.comment-container {
+.info-comment-container {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    width: 100%;
 }
 
 .left {
@@ -37,16 +50,26 @@ h2 {
 .right {
     margin-left: 5px;
     font-size: small;
-    color: rgb(105, 105, 105);
+    //color: rgb(105, 105, 105);
+    width: 100%;
 }
 
 
 .message-chat-line {
+    //background-color: rgb(61, 61, 61);
+    color: rgb(0, 0, 0);
+    font-size: large;
     margin-top: 2px;
     padding-top: 0;
     margin-left: 10px;
-    background-color: rgba(255, 255, 255, 0);
     padding-bottom: 20px;
-    width: 100cqw;
-    max-width: 100cqw;
+    width: 95%;
+    max-width: 95%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
 }

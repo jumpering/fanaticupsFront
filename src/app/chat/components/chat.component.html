@@ -2,8 +2,8 @@
   <h2>comments ({{listOfMessages.length}})</h2>
   <section class="chat-list">
     <table class="table">
-      <tr *ngFor="let item of listOfMessages; let i = index">
-        <div class="comment-container">
+      <tr class="table-row" *ngFor="let item of listOfMessages; let i = index">
+        <div class="info-comment-container">
           <div class="left" matTooltip="{{item.user?.name}}">
             {{item.user?.name | slice: 0 : 1 | uppercase}}
           </div>
