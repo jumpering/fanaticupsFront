@@ -26,6 +26,8 @@ export class CupDetailComponent implements OnInit {
   public showProgressBar: boolean = false;
   public updateFields: boolean = false;
   public isHandset$!: Observable<boolean>;
+  public isMedium$!: Observable<boolean>;
+  public isSmall$!: Observable<boolean>;
   public file: File | null = null;
   public form!: FormGroup;
   public urlImage!: string;
@@ -69,6 +71,10 @@ export class CupDetailComponent implements OnInit {
           });
       });
     this.isHandset$ = this.breakpointService.isHandset$;
+    this.isMedium$ = this.breakpointService.isMedium$;
+    this.isSmall$ = this.breakpointService.isSmall$;
+    this.isMedium$.subscribe(result => console.log('¿IS MEDIUM SCREEN SIZE?: ' + result));
+    this.isSmall$.subscribe(result => console.log('¿IS SMALL SCREEN SIZE?: ' + result));
   }
 
 

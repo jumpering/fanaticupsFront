@@ -1,69 +1,77 @@
-.detailContainer{
+.detailContainer {
     display: flex;
     flex-direction: column;
     flex-flow: center;
     padding-right: 0;
+    padding-top: 64px;
 }
 
-.detail{
+.detailContainer.isHandset {
+    display: flex;
+    flex-direction: column;
+    flex-flow: center;
+    padding-right: 0;
+    padding-top: 56px;
+    //padding-block: 55px;
+}
+
+.detail {
     width: auto;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     flex-flow: row wrap;
 }
 
-.right{
+.left {
     margin-left: 0;
     width: 65%;
-    height: auto;
+    height: 54vw;
     background-color: rgb(238, 238, 238);
     display: flex;
     justify-content: center;
     align-items: center;
-    //position: absolute;
+    container-type: inline-size;
 }
 
-.right.smallScreenRight{
+.left.isHandset {
     margin-left: 0;
     width: 100%;
-    height: auto;
+    height: 100vw;
     background-color: rgb(238, 238, 238);
     display: flex;
     justify-content: center;
     align-items: center;
+    container-type: inline-size;
 }
 
-.edit-icon-image{
+.cup-image {
+    width: 80cqw;
+    height: 80cqw;
+    object-fit: cover;
+    border-radius: 10%;
+}
+
+.edit-icon-image {
     position: relative;
 }
 
-.left{
+.right {
     width: 35%;
-    height: auto;
+    height: 54vw;
+    container-type: inline-size;
+    display: flex;
+    flex-direction: column;
 }
 
-.left.smallScreenLeft{
+.right.isHandset {
     width: 100%;
     height: auto;
 }
 
-.backButton{
+.back-button {
     cursor: pointer;
     width: 5%;
     height: auto;
-}
-
-.cupImage {
-    position: relative;////////////
-    width: 80%;
-    height: auto;
-    object-fit:cover;
-    border-radius: 10%;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    padding-left: 5%;
-    padding-right: 5%;
-
 }
 
 .inputButton {
@@ -72,15 +80,15 @@
 
 .title-group {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
 }
 
-.title-left{
+.title {
     margin-left: 20px;
 }
 
-.title-edit{
+.title-edit {
     width: 90%;
 }
 
@@ -93,17 +101,17 @@
     width: 90%;
 }
 
-.description-edit textarea{
-    font-weight:lighter;
+.description-edit textarea {
+    font-weight: lighter;
 }
 
-.edit-icon-right{
+.edit-icon-right {
     margin-right: 20px;
 }
 
-.origin-user-group{
+.origin-user-group {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -111,31 +119,33 @@
     margin-left: 20px;
 }
 
-.user{
+.user {
     color: rgb(70, 70, 70);
     margin-right: 20px;
     cursor: pointer;
 }
 
-.cup-price{  
+.cup-price {
     text-align: right;
     margin-right: 20px;
 }
 
-.description{
+.description {
     display: flex;
-    justify-content:space-between;
-    align-items:center;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .description p {
-    color:black;
+    color: black;
     font-size: large;
     text-align: justify;
     text-justify: inter-word;
     margin-left: 20px;
     max-width: 85%;
-
+    height: 30cqw;
+    max-height: 30cqw;
+    overflow: auto;
 }
 
 .buttons {
@@ -154,11 +164,22 @@
     margin-bottom: 10px;
 }
 
-.comments{
+.comments {
     text-align: right;
     margin-right: 20px;
 }
 
 .uploadImage {
     margin-right: 10px;
+}
+
+.chat {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.chat.isHandset{
+    width: 100%;
+    height: 100vh;
 }

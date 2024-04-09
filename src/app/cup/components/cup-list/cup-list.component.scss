@@ -1,50 +1,41 @@
-body{
-    margin: .5em;
-    //background-color: rgb(158, 158, 158);
+body {
+    padding-block: 64px;
 }
 
-.cups{
-    //overflow-anchor: none; //para prevenir auto scroll up de libreria masonry TODO NGX-MASONRY
+.cups {
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.loading{
+.loading {
     position: fixed;
     padding-inline: 45vw;
     z-index: 3;
     scale: .8;
 }
 
-
-.firstBodyImage{
+.firstBodyImage {
     height: 250px;
     margin-bottom: 100px;
-    margin: 0 auto; 
+    margin: 0 auto;
     display: block;
-    margin-top: 20px;
     margin-bottom: 40px;
 }
 
-.firstBodyImage.isHandset{
+.firstBodyImage.isHandset {
     height: 190px;
     margin-bottom: 50px;
-    margin: 0 auto; 
+    margin: 0 auto;
     display: block;
-    margin-top: 5px;
     margin-bottom: 20px;
 }
 
-.item{
-    //width: 350px;
-    //width: 100%;
+.item {
     margin: 15px;
 }
 
-.item.isHandset{
-    //width: 160px;
-    //width: 100%;
+.item.isHandset {
     margin: 2px;
 }

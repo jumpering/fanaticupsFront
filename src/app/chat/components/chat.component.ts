@@ -55,7 +55,7 @@ export class ChatComponent implements OnInit{
   public sendMessage():void {
     this.chatService.addMessage(this.cupId, this.form.get("messageInput")?.value).subscribe({
       next: (element: Message) => {
-        this.listOfMessages.push(element);
+        this.listOfMessages.unshift(element);
       },
       error: (err) => {
         console.log('Error sending message ' + err);

@@ -3,6 +3,8 @@
   flex-direction:row;
   margin-right: auto;
   justify-content:space-between;
+  position: fixed;
+  z-index: 2;
 }
 
 .logo {
@@ -16,11 +18,6 @@
 .isHandset-logo{
   width: 150px;
 }
-
-// .alignButtons {
-//     flex: 1 1 auto;
-//   }
-
   .headerButtons {
     margin-right: 10px;
   }
