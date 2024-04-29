@@ -8,6 +8,8 @@ import { LoginComponent } from '@auth/components/login/login.component';
 import { AuthGuard } from '@auth/guards/auth.guard';
 import { Page404Component } from '../page404/page404.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { CupProfileComponent } from '@cup/components/cup-profile/cup-profile.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
@@ -15,11 +17,16 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [{
       path: '',
-      component: CupListComponent
+      component: HomeComponent
     },
     {
       path: 'create',
       component: CreateComponent,
+      canActivate: [AuthGuard]
+    },
+    {
+      path: 'profile',
+      component: CupProfileComponent,
       canActivate: [AuthGuard]
     },
     {

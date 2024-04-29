@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { environment } from 'src/environments/environment';
 import { RequestDataInput } from '@cup/models/request-data-input';
+import { UserFilter } from '@cup/filterCriteria/user-filter';
+import { DefaultFilter } from '@cup/filterCriteria/default-filter';
+import { Criteria } from '@cup/filterCriteria/criteria';
 
 @Injectable()
 export class CupService {
@@ -18,12 +21,16 @@ export class CupService {
     public authService: AuthService,
   ) { }
 
-  getAllCups(page: number, cupsPerPage: number): Observable<RequestDataInput> {
-    const totalPath: string = this.cupPath + '?' + 'page=' + page + '&size=' + cupsPerPage;
-    return this.httpClient.get<RequestDataInput>(totalPath);
+  getAllCups(page: number, cupsPerPage: number, criteria: Criteria): Observable<RequestDataInput> {
+    const userFilter: UserFilter = new UserFilter(this.httpClient);
+    const defaultFilter: DefaultFilter = new DefaultFilter(this.httpClient);
+    userFilter.setNext(defaultFilter);
+    return userFilter.applyFilter(page, cupsPerPage, criteria);
+    // const totalPath: string = this.cupPath + '?' + 'page=' + page + '&size=' + cupsPerPage;
+    // return this.httpClient.get<RequestDataInput>(totalPath);
   }
 
-  getAllCupsFilteredSearch(page: number, cupsPerPage: number, searchString: string): Observable<RequestDataInput>{
+  getAllCupsSearch(page: number, cupsPerPage: number, searchString: string): Observable<RequestDataInput>{
     const totalPath: string = this.cupPath + '/search/' + searchString + '?page=' + page + '&size=' + cupsPerPage;
     return this.httpClient.get<RequestDataInput>(totalPath);
   }

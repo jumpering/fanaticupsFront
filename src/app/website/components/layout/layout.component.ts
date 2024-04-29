@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BreakpointService } from 'src/app/utils/breakpoint.service';
 
 @Component({
   selector: 'app-layout',
@@ -7,11 +9,13 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  isActiveMessage = true;
+  public isActiveMessage = true;
+  public isHandset$!: Observable<boolean>;
 
-  constructor() { }
+  constructor(private breakpointService: BreakpointService,) { }
 
   ngOnInit(): void {
+    this.isHandset$ = this.breakpointService.isHandset$;
   }
 
   handleChildEvent(event: boolean) {

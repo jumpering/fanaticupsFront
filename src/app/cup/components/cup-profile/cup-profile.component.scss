@@ -1,0 +1,69 @@
+body {
+    padding-block: 64px;
+}
+
+.header{
+    width: 100vw;
+    height: 50px;
+    background-color: #3f51b5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1vw;
+}
+
+.header-text {
+    font-size: xx-large;
+    color: rgb(224, 224, 224);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+.menu{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    & label {
+        padding: 10px;
+        border: 1px solid blue;
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover{
+            background-color: #3f51b5;
+            color: white;
+        }
+        &:has(+input:checked) {
+            background-color: #3f51b5;
+            color: white;
+            cursor: default;
+          }
+    } 
+}
+
+.list{
+    padding-top: 40px;
+}
+
+.my-cups-section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorites-section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
