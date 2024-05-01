@@ -1,6 +1,6 @@
 <body>
-    <section class="header">
-        <div class="header-text">{{authService.getUsername()}} space</div>
+    <section class="header" [ngClass]="{'isHandset': isHandset$ | async}">
+        <div class="header-text" [ngClass]="{'isHandset': isHandset$ | async}">{{authService.getUsername()}} space</div>
     </section>
     <section>
         <form class="menu">

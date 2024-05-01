@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 
 import { Cup } from '../../models/cup.model';
 import { CupService } from '@cup/services/cup.service';
-import { BreakpointService } from 'src/app/utils/breakpoint.service';
-import { Observable, debounceTime } from 'rxjs';
+import { debounceTime } from 'rxjs';
 import { SearchService } from '@shared/services/search.service';
 import { Criteria } from '@cup/filterCriteria/criteria';
 
@@ -23,7 +22,6 @@ export class CupListComponent implements OnInit {
   public cupsPerPage: number = 12;
   public isFirst: boolean = false;
   public isLast: boolean = false;
-  public isHandset$!: Observable<boolean>;
   public searchString: string = '';
   public showLoading: boolean = false;
   @Input() criteria!: Criteria;
@@ -31,7 +29,6 @@ export class CupListComponent implements OnInit {
   constructor(
     private cupService: CupService,
     private router: Router,
-    private breakpointService: BreakpointService,
     private searchService: SearchService
   ) {
     this.criteria = {
@@ -44,7 +41,6 @@ export class CupListComponent implements OnInit {
   //TODO search aquí?
   ngOnInit(): void {
     this.getAllCups(this.criteria);
-    this.isHandset$ = this.breakpointService.isHandset$;
     this.searchService.searchTermChanged.pipe(debounceTime(300)).subscribe((searchTerm: string) => {
       this.searchString = searchTerm;
       this.criteria.cupName = searchTerm;

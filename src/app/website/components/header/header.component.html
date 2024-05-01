@@ -28,11 +28,15 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/profile">
+      <button mat-menu-item routerLink="/" *ngIf="router.url !== '/'">
+        <mat-icon>home</mat-icon>
+        <span>Show all</span>
+      </button>
+      <button mat-menu-item routerLink="/profile" *ngIf="router.url !== '/profile'">
         <mat-icon>person</mat-icon>
         <span>My space</span>
       </button>
-      <button mat-menu-item routerLink="/create">
+      <button mat-menu-item routerLink="/create" *ngIf="router.url !== '/create'">
         <mat-icon>emoji_food_beverage</mat-icon>
         <span>Create cup</span>
       </button>

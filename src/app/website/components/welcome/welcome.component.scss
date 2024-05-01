@@ -17,6 +17,7 @@ body{
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    margin-inline: 15px;
     background-color: rgb(222, 222, 222);
     border-radius: 30px;
     //cursor: default;
@@ -29,18 +30,18 @@ body{
     justify-content: center; 
 }
 
-.firstBodyImage{
-    width: 100%;
-    margin-top: 30px;
-    opacity: 30%;
-}
+// .firstBodyImage{
+//     width: 100%;
+//     margin-top: 30px;
+//     opacity: 30%;
+// }
 
-.example-header-image {
-    background-image: url('./../../../../assets/images/firstBodyImage.svg');
-    background-size: cover;
-    width: 200px;
-    padding-bottom: 100px;
-  }
+// .example-header-image {
+//     background-image: url('./../../../../assets/images/firstBodyImage.svg');
+//     background-size: cover;
+//     width: 200px;
+//     padding-bottom: 100px;
+//   }
 
   .credentials{
     background-color: beige;

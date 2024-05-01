@@ -3,7 +3,7 @@
     <div class="loading" *ngIf="showLoading">
         <mat-spinner></mat-spinner>
     </div>
-    <app-cup class="item" *ngFor="let cupElement of listOfCups" [ngClass]="{'isHandset': isHandset$ | async}"
+    <app-cup class="item" *ngFor="let cupElement of listOfCups"
         [cup]="cupElement" (buy)="onBuyClicked($event)" (detail)="onDetailClicked($event)">
     </app-cup>
 </div>
