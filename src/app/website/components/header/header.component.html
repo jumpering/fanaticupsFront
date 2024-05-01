@@ -41,8 +41,11 @@
         <span>Logout</span>
       </button>
     </mat-menu>
-    <button mat-raised-button class="headerButtons" color="primary" routerLink="/profile"
-    matTooltip="My space" [ngClass]="{'smallScreenButton': (isHandset$ | async) === true}">My space</button>
+    <button mat-raised-button class="headerButtons" color="primary" routerLink="/profile" matTooltip="My space"
+      *ngIf="router.url !== '/profile'" [ngClass]="{'smallScreenButton': (isHandset$ | async) === true}">My
+      space</button>
+    <button mat-raised-button class="headerButtons" color="primary" routerLink="/" matTooltip="Show all"
+      *ngIf="router.url !== '/'" [ngClass]="{'smallScreenButton': (isHandset$ | async) === true}">Show All</button>
     <button mat-raised-button class="headerButtons" color="primary" routerLink="/create" matTooltip="Create cup"
       *ngIf="router.url !== '/create'" [ngClass]="{'smallScreenButton': isHandset$ | async}">Create cup</button>
     <button mat-raised-button class="headerButtons" color="primary" routerLink="/" (click)="logout()"

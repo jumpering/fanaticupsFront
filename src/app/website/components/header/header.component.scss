@@ -1,27 +1,28 @@
-.toolbar{
+.toolbar {
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   margin-right: auto;
-  justify-content:space-between;
+  justify-content: space-between;
   position: fixed;
   z-index: 2;
 }
 
 .logo {
-    width: 200px;
+  width: 200px;
 }
 
-.logo:hover{
+.logo:hover {
   cursor: pointer;
 }
 
-.isHandset-logo{
+.isHandset-logo {
   width: 150px;
 }
-  .headerButtons {
-    margin-right: 10px;
-  }
 
-  .smallScreenButton{
-    display:none !important;
-  }
+.headerButtons {
+  margin-right: 10px;
+}
+
+.smallScreenButton {
+  display: none !important;
+}

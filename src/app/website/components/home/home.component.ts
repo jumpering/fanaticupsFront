@@ -7,25 +7,25 @@ import { FormsModule } from '@angular/forms';
 import { Criteria } from '@cup/filterCriteria/criteria';
 
 @Component({
-    selector: 'app-home',
-    standalone: true,
-    templateUrl: './home.component.html',
-    styleUrl: './home.component.scss',
-    imports: [CupModule,CommonModule,FormsModule]
+  selector: 'app-home',
+  standalone: true,
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.scss',
+  imports: [CupModule, CommonModule, FormsModule]
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
 
   public isHandset$!: Observable<boolean>;
-  public criteria!: Criteria; 
+  public criteria!: Criteria;
 
-  constructor(private breakpointService: BreakpointService) {}
+  constructor(private breakpointService: BreakpointService) { }
 
   ngOnInit(): void {
     this.isHandset$ = this.breakpointService.isHandset$;
     this.criteria = {
       userId: undefined,
       cupName: '',
-      cupDescription:''  
-  }
+      cupDescription: ''
+    }
   }
 }

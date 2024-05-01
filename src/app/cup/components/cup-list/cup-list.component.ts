@@ -27,39 +27,33 @@ export class CupListComponent implements OnInit {
   public searchString: string = '';
   public showLoading: boolean = false;
   @Input() criteria!: Criteria;
- 
+
   constructor(
     private cupService: CupService,
     private router: Router,
     private breakpointService: BreakpointService,
     private searchService: SearchService
-    ) {
-      this.criteria = {
-        userId: undefined,
-        cupName: '',
-        cupDescription:''
-      }
+  ) {
+    this.criteria = {
+      userId: undefined,
+      cupName: '',
+      cupDescription: ''
     }
+  }
 
-    //TODO search aquí?
+  //TODO search aquí?
   ngOnInit(): void {
     this.getAllCups(this.criteria);
     this.isHandset$ = this.breakpointService.isHandset$;
     this.searchService.searchTermChanged.pipe(debounceTime(300)).subscribe((searchTerm: string) => {
       this.searchString = searchTerm;
-      if(this.searchString == ''){
-        this.resetPageable();
-        this.listOfCups = [];
-        this.getAllCups(this.criteria);
-      }else {
-        this.resetPageable();
-        this.listOfCups = [];
-        this.getAllCupsFilteredSearch(); 
-      }
+      this.criteria.cupName = searchTerm;
+      this.resetPageable();
+      this.listOfCups = [];
+      this.getAllCups(this.criteria);
     });
   }
 
-  //TODO DRY!
   public getAllCups(criteria: Criteria): void {
     this.showLoading = true;
     this.cupService.getAllCups(this.page, this.cupsPerPage, criteria).subscribe(requestDataInput => {
@@ -71,38 +65,28 @@ export class CupListComponent implements OnInit {
     });
   }
 
-  //TODO search aquí? ...debería desacoplarme y hacer un provider en un componente padre?
-  public getAllCupsFilteredSearch(): void {
-    this.cupService.getAllCupsSearch(this.page, this.cupsPerPage, this.searchString).subscribe(requestDataInput => {
-      this.page = requestDataInput.number;
-      this.isFirst = requestDataInput.first;
-      this.isLast = requestDataInput.last;
-      this.listOfCups.push(...requestDataInput.content);  
-    });
-  }
-
   private resetPageable(): void {
     this.page = 0;
     this.isFirst = false;
     this.isLast = false;
   }
 
-  public onScrollDown(){
+  public onScrollDown() {
     this.page++;
-    if(this.isLast !== true){
+    if (this.isLast !== true) {
       this.getAllCups(this.criteria);
     }
   }
 
-  public onBuyClicked(id: number){
+  public onBuyClicked(id: number) {
     //console.log("buy ID cup: " + id);
   }
 
-  public onDetailClicked(id: number){
+  public onDetailClicked(id: number) {
     this.router.navigate(['/', id]);
   }
 
-  public onCreateClicked(cup: Cup){
+  public onCreateClicked(cup: Cup) {
     //this.cupService.
   }
 

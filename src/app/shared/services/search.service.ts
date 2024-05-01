@@ -5,7 +5,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 })
 export class SearchService {
   
-  searchTermChanged: EventEmitter<string> = new EventEmitter<string>();
+  public searchTermChanged: EventEmitter<string> = new EventEmitter<string>();
   
   constructor() { }
 
