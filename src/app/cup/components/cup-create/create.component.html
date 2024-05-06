@@ -53,7 +53,7 @@
             <div class="buttons">
               <input type="file" class="inputButton" (change)="onSelectedFile($event)" #input>
               <button *ngIf="!file" mat-raised-button color="primary" (click)="input.click()"
-                matTooltip="Upload image">Upload image</button>
+                matTooltip="Select image">Select image</button>
               <button [disabled]="!form.valid || !file" mat-raised-button color="primary" (click)="onCreateCup()"
                 matTooltip="Create">Create!</button>
               <button mat-raised-button color="primary" routerLink="/" matTooltip="Cancel">Cancel</button>
