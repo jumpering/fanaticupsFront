@@ -10,6 +10,7 @@ import { UserFilter } from '@cup/filterCriteria/user-filter';
 import { DefaultFilter } from '@cup/filterCriteria/default-filter';
 import { Criteria } from '@cup/filterCriteria/criteria';
 import { NameFilter } from '@cup/filterCriteria/name-filter';
+import { FavoritesFilter } from '@cup/filterCriteria/favorites-filter';
 
 @Injectable()
 export class CupService {
@@ -24,9 +25,11 @@ export class CupService {
 
   getAllCups(page: number, cupsPerPage: number, criteria: Criteria): Observable<RequestDataInput> {
     const userFilter: UserFilter = new UserFilter(this.httpClient);
+    const favoritesFilter: FavoritesFilter = new FavoritesFilter(this.httpClient);
     const nameFilter: NameFilter = new NameFilter(this.httpClient);
     const defaultFilter: DefaultFilter = new DefaultFilter(this.httpClient);
-    userFilter.setNext(nameFilter);
+    userFilter.setNext(favoritesFilter);
+    favoritesFilter.setNext(nameFilter);
     nameFilter.setNext(defaultFilter);
     return userFilter.applyFilter(page, cupsPerPage, criteria);
   }

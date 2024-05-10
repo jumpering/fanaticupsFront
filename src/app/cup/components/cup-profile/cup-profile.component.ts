@@ -19,11 +19,7 @@ export class CupProfileComponent implements OnInit{
   public isMyCupsSelected: boolean = false;
   public isFavoritesSelected: boolean = false;
   public isHandset$!: Observable<boolean>;
-  public criteria: Criteria = {
-      userId: this.authService.getId(),
-      cupName: '',
-      cupDescription:''  
-  }
+  public criteria!: Criteria;
 
   constructor(public authService: AuthService, private breakpointService: BreakpointService){}
 
@@ -34,10 +30,22 @@ export class CupProfileComponent implements OnInit{
   public loadMyCups(): void{
     this.isMyCupsSelected = true;
     this.isFavoritesSelected = false;
+    this.criteria = {
+      userId: this.authService.getId(),
+      cupName: '',
+      cupDescription:'',
+      showFavorites: false  
+  }
   }
 
   public loadFavorites(): void{
     this.isMyCupsSelected = false;
     this.isFavoritesSelected = true;
+    this.criteria = {
+      userId: this.authService.getId(),
+      cupName: '',
+      cupDescription:'',
+      showFavorites: true 
+    }
   }
 }
