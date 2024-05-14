@@ -34,7 +34,8 @@ export class CupListComponent implements OnInit {
     this.criteria = {
       userId: undefined,
       cupName: '',
-      cupDescription: ''
+      cupDescription: '',
+      showFavorites: false
     }
   }
 
