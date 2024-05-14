@@ -23,8 +23,7 @@ export class FavoritesFilter implements FilterCriteriaChain{
             return this.nextFilter.applyFilter(page, cupsPerPage, criteria);
         }
 
-        // const totalPath: string = this.tempUserPath + '/favorites/' + criteria.userId + '?' + 'page=' + page + '&size=' + cupsPerPage;
-        const totalPath: string = this.tempUserPath + '/favorites/' + criteria.userId;
+        const totalPath: string = this.tempUserPath + '/favorites/' + criteria.userId  + '?page=' + page + '&size=' + cupsPerPage;
         return this.httpClient.get<RequestDataInput>(totalPath);
     }
 }
