@@ -9,8 +9,6 @@ export class FavoritesFilter implements FilterCriteriaChain{
 
     private nextFilter!: FilterCriteriaChain;
     public cupPath: string = environment.apiCups;
-    public tempUserPath: string = 'http://localhost:8080/api/users';
-
     constructor(
         private httpClient: HttpClient,
       ) { }
@@ -23,7 +21,7 @@ export class FavoritesFilter implements FilterCriteriaChain{
             return this.nextFilter.applyFilter(page, cupsPerPage, criteria);
         }
 
-        const totalPath: string = this.tempUserPath + '/favorites/' + criteria.userId  + '?page=' + page + '&size=' + cupsPerPage;
+        const totalPath: string = this.cupPath + '/favorites/' + criteria.userId  + '?page=' + page + '&size=' + cupsPerPage;
         return this.httpClient.get<RequestDataInput>(totalPath);
     }
 }
