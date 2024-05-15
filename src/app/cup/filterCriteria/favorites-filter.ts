@@ -8,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
 export class FavoritesFilter implements FilterCriteriaChain{
 
     private nextFilter!: FilterCriteriaChain;
-    public cupPath: string = environment.apiCups;
+    public cupPath: string = environment.api;
     constructor(
         private httpClient: HttpClient,
       ) { }
