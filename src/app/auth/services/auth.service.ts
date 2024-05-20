@@ -52,27 +52,22 @@ export class AuthService {
     return localStorage.getItem('token');
   }  
 
-  // hasSession(): Observable<boolean>{
-  //   return localStorage.getItem('token') !== null ? of(true) : of(false);
-  // }
-
   hasSession(): Observable<boolean>{
     const token = localStorage.getItem('token');
     if (token) {
       const tokenPayload: any = JWT.jwtDecode(token);
       const expirationDate = new Date(tokenPayload.exp * 1000); // Convertir a milisegundos 1 hora
       if (expirationDate < new Date()) {
-        console.log('El token ha caducado');
+        //console.log('El token ha caducado');
         return of(false);
       } else {
-        console.log('El token es válido');
+        //console.log('El token es válido');
         return of(true);
       }
     } else {
-      console.log('No se encontró el token');
+      //console.log('No se encontró el token');
       return of(false);
     }
-    //return localStorage.getItem('token') !== null ? of(true) : of(false);
   }
 
   getUsername(): string {

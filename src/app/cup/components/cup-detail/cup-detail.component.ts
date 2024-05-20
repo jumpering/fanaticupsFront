@@ -12,7 +12,8 @@ import { CustomValidators } from 'src/app/utils/customValidators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '@auth/services/auth.service';
 import { environment } from 'src/environments/environment';
-
+import { UserService } from 'src/app/user/services/user.service';
+import { CupShareDialogComponent } from '../cup-share-dialog/cup-share-dialog.component';
 
 @Component({
   selector: 'app-cup-detail',
@@ -33,6 +34,7 @@ export class CupDetailComponent implements OnInit {
   public urlImage!: string;
   private extensionsPermited: string[] = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
   public hasSession$!: Observable<boolean>;
+  public isFavoriteForCurrentUser: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -42,7 +44,8 @@ export class CupDetailComponent implements OnInit {
     private breakpointService: BreakpointService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService
   ) {
     this.buildFormForUpdate();
     this.hasSession$ = this.authService.hasSession();
@@ -61,20 +64,21 @@ export class CupDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.params
-      .subscribe((params: Params) => {
+    this.activatedRoute.params.subscribe((params: Params) => {
         const id: number = params['id'];
         this.cupService.getById(id)
           .subscribe(element => {
             this.cup = element;
             this.cupImage = element.image?.toString()!;
+            this.userService.isFavorite(this.cup.id!).subscribe(result => {
+              this.isFavoriteForCurrentUser = result;
+            })
           });
       });
     this.isHandset$ = this.breakpointService.isHandset$;
     this.isMedium$ = this.breakpointService.isMedium$;
-    this.isSmall$ = this.breakpointService.isSmall$;
-    this.isMedium$.subscribe(result => console.log('¿IS MEDIUM SCREEN SIZE?: ' + result));
-    this.isSmall$.subscribe(result => console.log('¿IS SMALL SCREEN SIZE?: ' + result));
+    this.isSmall$ = this.breakpointService.isSmall$; 
+ 
   }
 
 
@@ -101,6 +105,21 @@ export class CupDetailComponent implements OnInit {
 
   toHome() {
     this.router.navigate(['/']);
+  }
+
+  onClickSetFavorite():void {
+    const cupId: number | undefined = this.cup.id;
+    this.userService.setCupToFavorite(cupId!).subscribe(isFavorite => {
+        if(isFavorite){
+          this.snackBar.open('Added to your favorite list', '', { duration: 5000 });
+        } else {
+          this.snackBar.open('Removed to your favorite list', '', { duration: 5000 });
+        }
+        this.userService.isFavorite(this.cup.id!).subscribe(response => {
+          this.isFavoriteForCurrentUser = response;
+        });
+      }
+    );
   }
 
   onClickUpdateFields(): void {
@@ -167,5 +186,17 @@ export class CupDetailComponent implements OnInit {
 
   public isCupOwner(): boolean {
     return this.cup.user?.id === this.authService.getId();
+  }
+
+  public onClickShare(){
+    const dialogRef = this.matDialog.open(CupShareDialogComponent, {
+      data: { cupURL: this.router.url }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== undefined && result === true) {
+        this.cupService.delete(this.cup.id!);
+      }
+    });
   }
 }

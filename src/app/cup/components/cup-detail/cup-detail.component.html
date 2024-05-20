@@ -84,10 +84,18 @@
                             </button>
                         </div>
                         }
-                        <button mat-fab color="primary" matTooltip="Like" (click)="toHome()">
-                            <mat-icon style="color: pink;">favorite</mat-icon>
-                        </button>
-                        <button mat-fab color="primary" matTooltip="Share" (click)="toHome()">
+                        @if ( (hasSession$ | async) ){
+                            <button mat-fab color="primary" matTooltip="Like" (click)="onClickSetFavorite()">
+                                <div *ngIf="isFavoriteForCurrentUser else noFavorite">
+                                <mat-icon style="color: pink;">favorite</mat-icon>
+                            </div>
+                            <ng-template #noFavorite>
+                                <mat-icon style="color: rgb(255, 255, 255);">favorite</mat-icon>
+                            </ng-template>
+                        </button>  
+                        }
+
+                        <button mat-fab color="primary" matTooltip="Share" (click)="onClickShare()">
                             <mat-icon>share</mat-icon>
                         </button>
                     </div>
