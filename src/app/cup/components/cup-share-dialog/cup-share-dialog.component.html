@@ -1,5 +1,5 @@
 <p class="title">Share this cup!</p>
-<div class="shareDialog">
+<div class="shareDialog" [ngClass]="{'isHandset': isHandset$ | async}"> 
     <share-button button="facebook"></share-button>
     <share-button button="twitter"></share-button>
     <share-button button="whatsapp"></share-button>

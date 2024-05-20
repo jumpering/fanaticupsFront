@@ -192,11 +192,5 @@ export class CupDetailComponent implements OnInit {
     const dialogRef = this.matDialog.open(CupShareDialogComponent, {
       data: { cupURL: this.router.url }
     });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result !== undefined && result === true) {
-        this.cupService.delete(this.cup.id!);
-      }
-    });
   }
 }
