@@ -49,10 +49,12 @@
     height: 80cqw;
     object-fit: cover;
     border-radius: 10%;
+    position: absolute;
 }
 
 .edit-icon-image {
     position: relative;
+    z-index: 2;
 }
 
 .right {

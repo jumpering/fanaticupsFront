@@ -6,8 +6,14 @@
       <mat-card-subtitle class="subtitle">...and your cup was created!</mat-card-subtitle>
       <form novalidate [formGroup]="form">
         <mat-card-content class="cardContent">
-
-          <mat-form-field appearance="outline">
+          <div class="imagePreviewDiv" [ngClass]="{'isHandset': isHandset$ | async}">
+            <img class="imagePreview" *ngIf="urlImage" [src]="urlImage" alt="Imagen"
+            [ngClass]="{'isHandset': isHandset$ | async}">
+            <input type="file" class="inputButton" (change)="onSelectedFile($event)" #input>
+            <button *ngIf="!file" mat-raised-button color="primary" (click)="input.click()"
+            matTooltip="Select image">Select image</button>
+          </div>
+          <mat-form-field appearance="outline" class="name">
             <mat-label>Name</mat-label>
             <input matInput type="text" placeholder="Cup name" formControlName="name" (ngModelChange)="onCupFieldChange('name')">
             <mat-error *ngIf="form.get('name')?.hasError('minlength') || form.get('name')?.hasError('required')">
@@ -22,7 +28,7 @@
             </mat-error>
           </mat-form-field>
           <br>
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline" class="origin">
             <mat-label>Origin</mat-label>
             <input matInput type="text" placeholder="Origin" formControlName="origin" (ngModelChange)="onCupFieldChange('origin')">
             <mat-error *ngIf="form.get('origin')?.hasError('required')">
@@ -30,7 +36,7 @@
             </mat-error>
           </mat-form-field>
           <br>
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline" class="description">
             <mat-label>Description</mat-label>
             <textarea matInput name="Description" placeholder="Description" formControlName="description" (ngModelChange)="onCupFieldChange('description')"></textarea>
             <mat-error *ngIf="form.get('description')?.hasError('required')">
@@ -51,16 +57,9 @@
         <mat-card-actions>
           <div class="divButtonsAndImage">
             <div class="buttons">
-              <input type="file" class="inputButton" (change)="onSelectedFile($event)" #input>
-              <button *ngIf="!file" mat-raised-button color="primary" (click)="input.click()"
-                matTooltip="Select image">Select image</button>
               <button [disabled]="!form.valid || !file" mat-raised-button color="primary" (click)="onCreateCup()"
                 matTooltip="Create">Create!</button>
               <button mat-raised-button color="primary" routerLink="/" matTooltip="Cancel">Cancel</button>
-              <div class="imagePreviewDiv">
-                <img class="imagePreview" *ngIf="urlImage" [src]="urlImage" alt="Imagen"
-                  [ngClass]="{'isHandset': isHandset$ | async}">
-              </div>
             </div>
           </div>
         </mat-card-actions>

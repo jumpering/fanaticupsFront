@@ -33,11 +33,15 @@ body {
     padding-right: 5%;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    justify-content: center;
 }
 
 .divButtonsAndImage {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .buttons button {
@@ -48,21 +52,38 @@ body {
     display: none;
 }
 
-
 .imagePreviewDiv {
-    position: absolute;
-    top: -10%;
-    left: 100%;
+    width: 30%;
+    height: 20cqw;
+    margin-bottom: 20px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagePreviewDiv.isHandset{
+    width: 60%;
+    height: 40cqw;
+    margin-bottom: 20px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.name, .origin, .description {
+    width: 100%;
 }
 
 .imagePreview {
-    height: 150px;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.imagePreview.isHandset {
-    height: 100px;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+     border-radius: 5%;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
