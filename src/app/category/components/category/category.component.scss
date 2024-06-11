@@ -1,0 +1,27 @@
+.card{
+    border: 0px solid #ffffff;
+    border-radius: 8% !important;
+    cursor: pointer;
+}
+
+.card:hover{
+    filter: brightness(60%);
+}
+
+.content-text{
+    position: absolute;
+    z-index: 2;
+    font-size: 32px;
+    text-shadow: 3px 3px 3px rgb(30, 30, 30);
+    color: aliceblue;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.content-image{
+    width: 300px;
+    border-radius: 8%;
+    position: relative;
+    filter: brightness(80%);
+}

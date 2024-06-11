@@ -1,16 +1,10 @@
-body {
-    background-image: url("./../../../../assets/images/cup.svg");
-    background-size: 5%;
-    background-repeat: repeat-x;
-}
-
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.container .title {
+.container .title {   
     padding-top: 50px;
 }
 
@@ -24,7 +18,7 @@ body {
 }
 
 .container .cupCard .subtitle{
-    margin-top: 15px;
+    margin-top: 5px;
     text-align: center;
 }
 

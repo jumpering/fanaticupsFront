@@ -1,0 +1,17 @@
+.title{
+    padding-top: 125px;
+    font-size: 38px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(75, 75, 75);
+    text-align: center;
+}
+
+.container{
+    padding-top: 100px;
+    gap: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+}

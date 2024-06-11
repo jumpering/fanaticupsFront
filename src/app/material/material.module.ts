@@ -15,6 +15,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTableModule} from '@angular/material/table';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [],
@@ -46,7 +47,8 @@ import {MatTableModule} from '@angular/material/table';
     MatProgressBarModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,
-    MatTableModule
+    MatTableModule,
+    MatChipsModule
   ],
 })
 export class MaterialModule { }

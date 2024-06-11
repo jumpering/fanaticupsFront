@@ -134,8 +134,15 @@ export class CupDetailComponent implements OnInit {
     const newCupName: string = this.form.get('name')?.value;
     this.cup.name = newCupName;
     this.cup.description = this.form.get('description')?.value;
+
+
+    //TODO REMOVE enviroment.urlMinioImages!!!!
     const removePathFromImage: string = environment.urlMinioImages + this.authService.getId() + '/' + oldCupName  + '/';
     this.cup.image = this.cup.image?.replace( removePathFromImage , '');
+
+
+
+
     this.showProgressBar = true;
     this.cupService.updateCup(this.cup, this.file!).subscribe({
               next: (responseCup) => {

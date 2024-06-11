@@ -1,15 +1,14 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
-import { CupListComponent } from '@cup/components/cup-list/cup-list.component';
 import { CupDetailComponent } from '@cup/components/cup-detail/cup-detail.component';
 import { CreateComponent } from '../cup/components/cup-create/create.component';
 import { LoginComponent } from '@auth/components/login/login.component';
 import { AuthGuard } from '@auth/guards/auth.guard';
 import { Page404Component } from '../page404/page404.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
 import { CupProfileComponent } from '@cup/components/cup-profile/cup-profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { CategoryListComponent } from '../category/components/category-list/category-list.component';
 
 const routes: Routes = [
   {
@@ -28,6 +27,10 @@ const routes: Routes = [
       path: 'profile',
       component: CupProfileComponent,
       canActivate: [AuthGuard]
+    },
+    {
+      path: 'categories',
+      component: CategoryListComponent
     },
     {
       path: ':id',

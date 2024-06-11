@@ -8,6 +8,10 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/categories" matTooltip="Explore">
+        <mat-icon>explore</mat-icon>
+        <span>Explore</span>
+      </button>
       <button mat-menu-item (click)="openLoginDialog()" matTooltip="Login">
         <mat-icon>login</mat-icon>
         <span>Login</span>
@@ -17,6 +21,8 @@
         <span>Register</span>
       </button>
     </mat-menu>
+    <button mat-raised-button class="headerButtons" color="primary" routerLink="/categories" matTooltip="Explore"
+    [ngClass]="{'smallScreenButton': (isHandset$ | async) === true}">Explore</button>
     <button mat-raised-button class="headerButtons" color="primary" (click)="openLoginDialog()" matTooltip="Login"
       [ngClass]="{'smallScreenButton': (isHandset$ | async) === true}">Login</button>
     <button mat-raised-button class="headerButtons" color="primary" (click)="openRegisterDialog()" matTooltip="Register"
