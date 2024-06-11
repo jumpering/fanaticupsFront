@@ -8,7 +8,11 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/categories" matTooltip="Explore">
+      <button mat-menu-item routerLink="/" *ngIf="router.url !== '/'">
+        <mat-icon>home</mat-icon>
+        <span>Show all</span>
+      </button>
+      <button mat-menu-item routerLink="/categories" matTooltip="Explore" *ngIf="router.url !== '/categories'">
         <mat-icon>explore</mat-icon>
         <span>Explore</span>
       </button>
@@ -21,8 +25,10 @@
         <span>Register</span>
       </button>
     </mat-menu>
-    <button mat-raised-button class="headerButtons" color="primary" routerLink="/categories" matTooltip="Explore"
+    <button mat-raised-button class="headerButtons" color="primary" routerLink="/categories" matTooltip="Explore" *ngIf="router.url !== '/categories'"
     [ngClass]="{'smallScreenButton': (isHandset$ | async) === true}">Explore</button>
+    <button mat-raised-button class="headerButtons" color="primary" routerLink="/" matTooltip="Show all" 
+    *ngIf="router.url !== '/'" [ngClass]="{'smallScreenButton': (isHandset$ | async) === true}">Show All</button>
     <button mat-raised-button class="headerButtons" color="primary" (click)="openLoginDialog()" matTooltip="Login"
       [ngClass]="{'smallScreenButton': (isHandset$ | async) === true}">Login</button>
     <button mat-raised-button class="headerButtons" color="primary" (click)="openRegisterDialog()" matTooltip="Register"
@@ -34,6 +40,10 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/categories" *ngIf="router.url !== '/categories'">
+        <mat-icon>explore</mat-icon>
+        <span>Explore</span>
+      </button>
       <button mat-menu-item routerLink="/" *ngIf="router.url !== '/'">
         <mat-icon>home</mat-icon>
         <span>Show all</span>
@@ -51,6 +61,8 @@
         <span>Logout</span>
       </button>
     </mat-menu>
+    <button mat-raised-button class="headerButtons" color="primary" routerLink="/categories" matTooltip="Explore" *ngIf="router.url !== '/categories'"
+    [ngClass]="{'smallScreenButton': (isHandset$ | async) === true}">Explore</button>  
     <button mat-raised-button class="headerButtons" color="primary" routerLink="/profile" matTooltip="My space"
       *ngIf="router.url !== '/profile'" [ngClass]="{'smallScreenButton': (isHandset$ | async) === true}">My
       space</button>
