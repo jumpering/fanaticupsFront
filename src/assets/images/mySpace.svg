@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="57.069782mm"
+   height="15.127577mm"
+   viewBox="0 0 57.069781 15.127577"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="categories.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm" />
+  <defs
+     id="defs1">
+    <rect
+       x="163.54591"
+       y="220.04359"
+       width="453.46823"
+       height="176.92694"
+       id="rect2" />
+  </defs>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-50.010167,-104.67588)">
+    <text
+       xml:space="preserve"
+       transform="matrix(0.61284429,0,0,0.61284429,-49.456223,-24.796788)"
+       id="text2"
+       style="font-size:24px;line-height:0;font-family:SignPainter;-inkscape-font-specification:SignPainter;letter-spacing:2.55px;word-spacing:0px;white-space:pre;shape-inside:url(#rect2);fill:#969696;fill-opacity:0.891599;stroke:#000000;stroke-opacity:0"
+       inkscape:label="text2"><tspan
+         x="163.54688"
+         y="226.70964"
+         id="tspan1">My Space</tspan></text>
+  </g>
+</svg>

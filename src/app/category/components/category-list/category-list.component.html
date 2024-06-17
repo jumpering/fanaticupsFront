@@ -1,6 +1,6 @@
 <div class="title">
-    Explore categories
+    <img src="../../../../assets/images/categories.svg" alt="">
 </div>
 <div class="container">
-    <app-category *ngFor="let category of listOfCategories" [category]="category"></app-category>
+    <app-category *ngFor="let category of listOfCategories" [category]="category" (categoryIdEventEmitter)="onCategoryClicked($event)" ></app-category>
 </div>

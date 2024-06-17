@@ -1,4 +1,4 @@
 <mat-card class="card">
     <div class="content-text">{{category.name}}</div>
-    <img class="content-image" src={{category.image?.toString()}} alt={{category.name}}>
+    <img class="content-image" src={{category.image?.toString()}} alt={{category.name}} (click)="onClickCategory()">
 </mat-card>

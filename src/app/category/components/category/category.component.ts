@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MaterialModule } from '@material/material.module';
 import { Category } from '../../models/category';
 import { CommonModule } from '@angular/common';
@@ -13,5 +13,12 @@ import { CommonModule } from '@angular/common';
 export class CategoryComponent {
 
   @Input() category!: Category;
+  @Output() categoryIdEventEmitter = new EventEmitter<number>();
+
+  constructor(){}
+
+  onClickCategory(): void{
+    this.categoryIdEventEmitter.emit(this.category.id);
+  }
 
 }

@@ -74,3 +74,5 @@
       matTooltip="Logout" [ngClass]="{'smallScreenButton': (isHandset$ | async) === true}">Logout</button>
   </div>
 </mat-toolbar>
+<!-- <img class="cupStrip" src="../../../../assets/images/cup.svg" alt=""> -->
+<div class="cupStrip" [ngClass]="{'isHandSet': (isHandset$ | async) === true}"></div>

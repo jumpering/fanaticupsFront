@@ -6,23 +6,23 @@ body {
 .header{
     width: 100vw;
     height: 50px;
-    background-color: #3f51b5;
+    // background-color: #3f51b5;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    //margin-top: 1vw;
+    margin-top: 3vw;
 }
 
 .header.isHandset{
     width: 100vw;
     height: 30px;
-    background-color: #3f51b5;
+    // background-color: #3f51b5;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    //margin-top: 1vw;
+    margin-top: 35px;
 }
 
 .header-text {

@@ -1,3 +1,29 @@
+body{
+  position: absolute;
+}
+.cupStrip{
+  position: relative;
+  top: 75px;
+  width: 100vw;
+  height: 70px;
+  padding-top: 20px;
+  background-image: url("../../../../assets/images/cup.svg");
+  background-repeat: repeat-x;
+  background-size: 100px;
+  opacity: 50%;
+}
+
+.cupStrip.isHandSet{
+  position: relative;
+  top: 60px;
+  width: 100vw;
+  height: 20px;
+  background-image: url("../../../../assets/images/cup.svg");
+  background-repeat: repeat-x;
+  background-size: 50px;
+  opacity: 50%;
+}
+
 .toolbar {
   display: flex;
   flex-direction: row;

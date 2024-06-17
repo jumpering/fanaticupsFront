@@ -1,11 +1,12 @@
 <body>
   <div class="container">
-    <h1 class="title">Let's create your ❤️ Cup
-      <!-- <img class="mugs" src="./../../../../assets/images/cup.svg" alt=""> -->
-    </h1>
+    <!-- <h1 class="title">Let's create your ❤️ Cup
+      <img class="mugs" src="./../../../../assets/images/cup.svg" alt="">
+    </h1> -->
+    <img class="title" src="../../../../assets/images/createCup.svg" alt="">
     <mat-card class="cupCard">
-      <mat-card-title class="subtitle">Please fill all fields</mat-card-title>
-      <mat-card-subtitle class="subtitle">...and your cup was created!</mat-card-subtitle>
+      <!-- <mat-card-title class="subtitle">Please fill all fields</mat-card-title>
+      <mat-card-subtitle class="subtitle">...and your cup was created!</mat-card-subtitle> -->
       <form novalidate [formGroup]="form">
         <mat-card-content class="cardContent">
           <div class="imagePreviewDiv" [ngClass]="{'isHandset': isHandset$ | async}">

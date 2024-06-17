@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="98.529785mm"
+   height="13.492213mm"
+   viewBox="0 0 98.529783 13.492213"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="mySpace.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm" />
+  <defs
+     id="defs1">
+    <rect
+       x="163.54591"
+       y="220.04359"
+       width="453.46823"
+       height="176.92694"
+       id="rect2" />
+  </defs>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-50.238478,-105.02205)">
+    <text
+       xml:space="preserve"
+       transform="matrix(0.61284429,0,0,0.61284429,-49.456223,-24.796788)"
+       id="text2"
+       style="font-size:20.723px;line-height:0;font-family:SignPainter;-inkscape-font-specification:SignPainter;letter-spacing:2.55px;word-spacing:0px;white-space:pre;shape-inside:url(#rect2);fill:#969696;fill-opacity:0.891599;stroke:#000000;stroke-opacity:0"
+       inkscape:label="text2"
+       inkscape:export-filename="createCup.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="163.54688"
+         y="225.79936"
+         id="tspan21"><tspan
+           style="letter-spacing:0.824605px"
+           id="tspan7">Let's</tspan><tspan
+           dx="-1.725395"
+           id="tspan9"> </tspan><tspan
+           dx="1.9887521 -0.56124902"
+           style="letter-spacing:0.561249px"
+           id="tspan12">cr</tspan><tspan
+           dx="0.31516254"
+           style="letter-spacing:0.807335px"
+           id="tspan13">eate</tspan><tspan
+           dx="-1.742667"
+           id="tspan14"> </tspan><tspan
+           dx="1.6476852"
+           style="letter-spacing:0.902316px"
+           id="tspan15">y</tspan><tspan
+           dx="0.047489643 -0.85482597"
+           style="letter-spacing:0.854826px"
+           id="tspan16">ou</tspan><tspan
+           dx="-0.18995523"
+           style="letter-spacing:1.89961px"
+           id="tspan17">r</tspan><tspan
+           dx="-0.65039086"
+           id="tspan18"> </tspan><tspan
+           dx="1.9542055"
+           style="letter-spacing:0.595788px"
+           id="tspan19">C</tspan><tspan
+           dx="-0.78142822"
+           style="letter-spacing:1.37722px"
+           id="tspan20">up</tspan></tspan></text>
+  </g>
+</svg>
