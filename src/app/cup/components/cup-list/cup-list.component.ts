@@ -6,6 +6,7 @@ import { CupService } from '@cup/services/cup.service';
 import { debounceTime } from 'rxjs';
 import { SearchService } from '@shared/services/search.service';
 import { Criteria } from '@cup/filterCriteria/criteria';
+import { CriteriaService } from '@cup/services/criteria.service';
 
 
 @Component({
@@ -24,23 +25,20 @@ export class CupListComponent implements OnInit {
   public isLast: boolean = false;
   public searchString: string = '';
   public showLoading: boolean = false;
-  @Input() criteria!: Criteria;
+  private criteria!: Criteria;
 
   constructor(
     private cupService: CupService,
     private router: Router,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private criteriaService: CriteriaService
   ) {
-    this.criteria = {
-      userId: undefined,
-      cupName: '',
-      cupDescription: '',
-      showFavorites: false
-    }
+
   }
 
   //TODO search aquí?
   ngOnInit(): void {
+    this.criteria = this.criteriaService.getCriteria();
     this.getAllCups(this.criteria);
     this.searchService.searchTermChanged.pipe(debounceTime(300)).subscribe((searchTerm: string) => {
       this.searchString = searchTerm;

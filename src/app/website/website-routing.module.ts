@@ -9,6 +9,8 @@ import { Page404Component } from '../page404/page404.component';
 import { CupProfileComponent } from '@cup/components/cup-profile/cup-profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { CategoryListComponent } from '../category/components/category-list/category-list.component';
+import { CupListComponent } from '@cup/components/cup-list/cup-list.component';
+import { CategoryDetailComponent } from '../category/components/category-detail/category-detail.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,10 @@ const routes: Routes = [
       component: HomeComponent
     },
     {
+      path: 'cup-list',
+      component: CupListComponent
+    },    
+    {
       path: 'create',
       component: CreateComponent,
       canActivate: [AuthGuard]
@@ -28,10 +34,30 @@ const routes: Routes = [
       component: CupProfileComponent,
       canActivate: [AuthGuard]
     },
-    {
+
+    
+    // {
+    //   path: 'categories',
+    //   component: CategoryListComponent
+    // },
+
+
+
+   {
       path: 'categories',
-      component: CategoryListComponent
+      children: [
+        {
+        path: '',
+        component: CategoryListComponent
+      },
+        {
+        path: ':id',
+        component: CategoryDetailComponent
+      }]
     },
+
+
+
     {
       path: ':id',
       component: CupDetailComponent
@@ -46,6 +72,7 @@ const routes: Routes = [
     }
     ]
   },
+
 ];
 
 @NgModule({

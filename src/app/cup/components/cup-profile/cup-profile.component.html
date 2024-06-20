@@ -1,6 +1,5 @@
 <body>
     <section class="header" [ngClass]="{'isHandset': isHandset$ | async}">
-        <!-- <div class="header-text" [ngClass]="{'isHandset': isHandset$ | async}">{{authService.getUsername()}} space</div> -->
          <img src="../../../../assets/images/mySpace.svg" alt="">
     </section>
     <section>
@@ -12,9 +11,9 @@
         </form>
     </section>
     <section class="my-cups-section" *ngIf="isMyCupsSelected">
-        <app-cup-list class="list" [criteria]="criteria"></app-cup-list>
+         <app-cup-list class="list"></app-cup-list>
     </section>
     <section class="favorites-section" *ngIf="isFavoritesSelected">
-        <app-cup-list class="list" [criteria]="criteria"></app-cup-list>
+        <app-cup-list class="list"></app-cup-list>
     </section>
 </body>

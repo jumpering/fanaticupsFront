@@ -1,14 +1,14 @@
-import { RequestDataInput } from "@cup/models/request-data-input";
-import { Observable } from "rxjs";
-import { Criteria } from "./criteria";
-import { FilterCriteriaChain } from "./filter-criteria-chain";
 import { environment } from "src/environments/environment";
+import { FilterCriteriaChain } from "./filter-criteria-chain";
 import { HttpClient } from "@angular/common/http";
+import { Criteria } from "./criteria";
+import { Observable } from "rxjs";
+import { RequestDataInput } from "@cup/models/request-data-input";
 
-export class NameFilter implements FilterCriteriaChain{
-
+export class CategoryFilter{
+    
     private nextFilter!: FilterCriteriaChain;
-    public cupPath: string = environment.apiCups;
+    public cupPath: string = environment.apiCategories;
 
     constructor(
         private httpClient: HttpClient,
@@ -19,12 +19,11 @@ export class NameFilter implements FilterCriteriaChain{
     }
 
     applyFilter(page: number, cupsPerPage: number, criteria: Criteria): Observable<RequestDataInput> {
-        if(criteria.cupName == ''){
+        if(criteria.categoryId == undefined){
             return this.nextFilter.applyFilter(page, cupsPerPage, criteria);
         }
 
-        const totalPath: string = this.cupPath + '/name/' + criteria.cupName + '?page=' + page + '&size=' + cupsPerPage;
+        const totalPath: string = this.cupPath + '/' + criteria.categoryId + '/cups' + '?page=' + page + '&size=' + cupsPerPage;
         return this.httpClient.get<RequestDataInput>(totalPath);   
     }
-
 }

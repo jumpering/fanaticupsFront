@@ -19,6 +19,7 @@ export class CategoryComponent {
 
   onClickCategory(): void{
     this.categoryIdEventEmitter.emit(this.category.id);
+
   }
 
 }
