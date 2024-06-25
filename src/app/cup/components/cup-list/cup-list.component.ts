@@ -38,8 +38,10 @@ export class CupListComponent implements OnInit {
 
   //TODO search aquí?
   ngOnInit(): void {
-    this.criteria = this.criteriaService.getCriteria();
-    this.getAllCups(this.criteria);
+    this.criteriaService.getCriteria().subscribe(element =>{
+      this.criteria = element;
+      this.getAllCups(element);
+    })
     this.searchService.searchTermChanged.pipe(debounceTime(300)).subscribe((searchTerm: string) => {
       this.searchString = searchTerm;
       this.criteria.cupName = searchTerm;
