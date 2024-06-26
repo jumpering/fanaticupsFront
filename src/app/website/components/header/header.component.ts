@@ -14,7 +14,7 @@ import { BreakpointService } from 'src/app/utils/breakpoint.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public isLogged!: boolean;
+  //public isLogged!: boolean;
   public isHandset$!: Observable<boolean>;
 
   constructor(

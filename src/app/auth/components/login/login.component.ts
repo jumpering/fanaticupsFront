@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
 
   buildForm(): void {
     this.form = this.formBuilder.group({
-      email: ['demo@demo.demo', [Validators.required, Validators.email]],
-      password: ['1234', [Validators.required]],
+      email: ['a@a.a', [Validators.required, Validators.email]],
+      password: ['aaaa', [Validators.required]],
     });
     //this.form.markAllAsTouched();
   }
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     this.credentials.password = password;
     this.authService.login(this.credentials).subscribe(
       response => {
-        this.showSnackBarMessage('Wellcome ' + this.authService.getUsername() + '!');
+        this.showSnackBarMessage('Welcome ' + this.authService.getUsername() + '!');
         this.closeDialog();
         this.router.navigate(['/']);
     }, 

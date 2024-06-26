@@ -1,4 +1,7 @@
 <mat-toolbar class="toolbar">
+  <div *ngIf="!(hasSession() | async)" class="try" [ngClass]="{'isHandSet': (isHandset$ | async) === true}">
+    <img class="try-img" src="../../../../assets/images/try.svg" alt="tryIt!" [ngClass]="{'isHandSet': (isHandset$ | async) === true}">
+  </div>
   <img (click)="toHome()" class="logo" src="./../../../../assets/images/logo.svg" alt="Cups & Mugs!"
     [ngClass]="{'isHandset-logo': (isHandset$ | async) === true}">
   <app-searchbar *ngIf="router.url == '/'"></app-searchbar>

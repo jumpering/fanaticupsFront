@@ -1,10 +1,35 @@
 body{
-  position: absolute;
+  //position: absolute;
+  position: relative;
 }
+
+.try{
+  z-index: 3;
+  position: absolute;
+  right: 140px;
+  top: 60px;
+}
+
+.try.isHandSet{
+  z-index: 3;
+  position: absolute;
+  right: 30px;
+  top: 40px;
+}
+
+.try-img{
+  width: 200px;
+}
+
+.try-img.isHandSet{
+  width: 140px;
+}
+
+
 .cupStrip{
   position: relative;
   top: 75px;
-  width: 100vw;
+  width: 100%;
   height: 70px;
   padding-top: 20px;
   background-image: url("../../../../assets/images/cup.svg");
@@ -16,7 +41,7 @@ body{
 .cupStrip.isHandSet{
   position: relative;
   top: 60px;
-  width: 100vw;
+  width: 100%;
   height: 20px;
   background-image: url("../../../../assets/images/cup.svg");
   background-repeat: repeat-x;
