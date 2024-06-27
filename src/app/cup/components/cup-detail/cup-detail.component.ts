@@ -11,7 +11,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'src/app/utils/customValidators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '@auth/services/auth.service';
-import { environment } from 'src/environments/environment';
 import { UserService } from 'src/app/user/services/user.service';
 import { CupShareDialogComponent } from '../cup-share-dialog/cup-share-dialog.component';
 
@@ -35,6 +34,7 @@ export class CupDetailComponent implements OnInit {
   private extensionsPermited: string[] = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
   public hasSession$!: Observable<boolean>;
   public isFavoriteForCurrentUser: boolean = false;
+  private originalCupImage: string = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -70,6 +70,7 @@ export class CupDetailComponent implements OnInit {
           .subscribe(element => {
             this.cup = element;
             this.cupImage = element.image?.toString()!;
+            this.originalCupImage = this.cupImage;
             this.userService.isFavorite(this.cup.id!).subscribe(result => {
               this.isFavoriteForCurrentUser = result;
             })
@@ -78,7 +79,7 @@ export class CupDetailComponent implements OnInit {
     this.isHandset$ = this.breakpointService.isHandset$;
     this.isMedium$ = this.breakpointService.isMedium$;
     this.isSmall$ = this.breakpointService.isSmall$; 
- 
+
   }
 
 
@@ -134,15 +135,8 @@ export class CupDetailComponent implements OnInit {
     const newCupName: string = this.form.get('name')?.value;
     this.cup.name = newCupName;
     this.cup.description = this.form.get('description')?.value;
-
-
-    //TODO REMOVE enviroment.urlMinioImages!!!!
-    const removePathFromImage: string = environment.urlMinioImages + this.authService.getId() + '/' + oldCupName  + '/';
-    this.cup.image = this.cup.image?.replace( removePathFromImage , '');
-
-
-
-
+    const position: number = this.cupImage?.lastIndexOf('/');
+    this.cup.image = this.cupImage.substring(position + 1);
     this.showProgressBar = true;
     this.cupService.updateCup(this.cup, this.file!).subscribe({
               next: (responseCup) => {
@@ -157,9 +151,10 @@ export class CupDetailComponent implements OnInit {
             });
   }
 
-
   onClickCancelUpdate() {
     this.updateFields = false;
+    this.cupImage = this.originalCupImage;
+    this.file = null;
   }
 
   onSelectedFile(event: any): void {
