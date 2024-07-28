@@ -25,10 +25,10 @@ export class ChipsListComponent implements OnInit{
     });
   }
 
-  toggleSelection(index: number) {
-    const selectedIndex = this.selectedCategoriesIndices.indexOf(index);
+  toggleSelection(categoryId: number) {
+    const selectedIndex = this.selectedCategoriesIndices.indexOf(categoryId);
     if (selectedIndex === -1) {
-      this.selectedCategoriesIndices.push(index);
+      this.selectedCategoriesIndices.push(categoryId);
     } else {
       this.selectedCategoriesIndices.splice(selectedIndex, 1);
     }
@@ -36,7 +36,7 @@ export class ChipsListComponent implements OnInit{
   }
 
   isSelected(index: number): boolean {
-    return this.selectedCategoriesIndices.includes(index + 1);
+    return this.selectedCategoriesIndices.includes(index);
   }
   
 

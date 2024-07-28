@@ -3,8 +3,8 @@
   <div *ngFor="let category of categories; let i = index">
     <mat-chip-row  
     class="chip" 
-    [class.selected]="isSelected(i)"
-    (click)="toggleSelection(i)">
+    [class.selected]="isSelected(category.id!)"
+    (click)="toggleSelection(category.id!)">
     {{category.name}}
     </mat-chip-row>
   </div>
