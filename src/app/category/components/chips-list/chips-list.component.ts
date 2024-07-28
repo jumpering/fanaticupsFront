@@ -36,7 +36,7 @@ export class ChipsListComponent implements OnInit{
   }
 
   isSelected(index: number): boolean {
-    return this.selectedCategoriesIndices.includes(index);
+    return this.selectedCategoriesIndices.includes(index + 1);
   }
   
 
