@@ -1,0 +1,19 @@
+.title{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.chip{
+    background-color: #efefef  !important; /* Color de fondo */
+    color: rgb(255, 255, 255)  !important; /* Color del texto */
+    border: 1px solid #5d5d5d  !important; /* Borde */
+}
+
+.chip.selected {
+    background-color: #bdbdbd !important;/* Rojo */
+    color: rgb(255, 255, 255)  !important; /* Color del texto */
+    border: 1px solid #5d5d5d  !important; /* Borde */
+  }
+
+
+

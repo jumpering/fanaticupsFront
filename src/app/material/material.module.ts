@@ -30,7 +30,7 @@ import {MatChipsModule} from '@angular/material/chips';
     // MatDialogModule,
     // MatTooltipModule,
     // MatIconModule,
-    // MatMenuModule
+    // MatMenuModule,
   ],
   exports: [
     MatCardModule,

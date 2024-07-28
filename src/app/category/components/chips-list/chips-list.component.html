@@ -1,0 +1,11 @@
+<div class="title">Select categories for this cup</div>
+<mat-chip-set aria-label="Category selection">
+  <div *ngFor="let category of categories; let i = index">
+    <mat-chip-row  
+    class="chip" 
+    [class.selected]="isSelected(i)"
+    (click)="toggleSelection(i)">
+    {{category.name}}
+    </mat-chip-row>
+  </div>
+</mat-chip-set>

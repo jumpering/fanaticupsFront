@@ -55,6 +55,7 @@
           <div *ngIf="showProgressBar">
             <mat-progress-bar mode="query"></mat-progress-bar>
           </div>
+          <app-chips-list (addCategories)="onCategoriesSelected($event)"></app-chips-list>
         </mat-card-content>
         <br>
         <mat-card-actions>

@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { BreakpointService } from 'src/app/utils/breakpoint.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { CategoryService } from 'src/app/category/services/category.service';
 
 @Component({
   selector: 'app-create',
@@ -21,9 +22,11 @@ export class CreateComponent implements OnInit {
   private extensionsPermited: string[] = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
   public isHandset$!: Observable<boolean>;
   public showProgressBar: boolean = false;
+  public selectedCategoriesIndex: number[] = [];
 
   constructor(
     private cupService: CupService,
+    private categoryService: CategoryService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private breakpointService: BreakpointService,
@@ -85,7 +88,15 @@ export class CreateComponent implements OnInit {
     this.showProgressBar = true;
     this.cupService.create(cup, this.file!).subscribe({
       next: (resultCup) => {
-        const responseCup: any = resultCup;
+        const responseCup: Cup = resultCup;
+        this.categoryService.addCategoriesToCupId(responseCup.id!, this.selectedCategoriesIndex).subscribe({
+          next: (response) =>{
+            console.log("categories created");
+          },
+          error: (error) => {
+            console.log("error creating categories: ");
+          }
+        });
         this.showProgressBar = false;
         this.router.navigate(['/' + responseCup.id]);
       },
@@ -98,5 +109,9 @@ export class CreateComponent implements OnInit {
 
   onCupFieldChange(inputField: string) {
     this.form.get(inputField)?.markAsTouched();
+  }
+
+  onCategoriesSelected(categoriesIndexs: number[]){
+    this.selectedCategoriesIndex = categoriesIndexs;
   }
 }

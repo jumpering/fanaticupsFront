@@ -14,6 +14,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DeleteDialogComponent } from './components/cup-delete-dialog/delete-dialog.component';
 import { SplitInTwoLinesPipe } from "../shared/pipes/split-in-two-lines.pipe";
 import { ChatComponent } from '../chat/components/chat.component';
+import { ChipsListComponent } from '../category/components/chips-list/chips-list.component';
 //import { LayoutModule } from '@angular/cdk/layout';
 // import { NgxMasonryModule } from 'ngx-masonry';
 
@@ -40,7 +41,8 @@ import { ChatComponent } from '../chat/components/chat.component';
         ReactiveFormsModule,
         InfiniteScrollModule,
         SplitInTwoLinesPipe,
-        ChatComponent
+        ChatComponent,
+        ChipsListComponent
         // NgxMasonryModule
     ]
 })
