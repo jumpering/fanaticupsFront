@@ -1,5 +1,11 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .title{
-    text-align: center;
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 
@@ -10,7 +16,7 @@
 }
 
 .chip.selected {
-    background-color: #bdbdbd !important;/* Rojo */
+    background-color: #3f90ee !important;/* Rojo */
     color: rgb(255, 255, 255)  !important; /* Color del texto */
     border: 1px solid #5d5d5d  !important; /* Borde */
   }

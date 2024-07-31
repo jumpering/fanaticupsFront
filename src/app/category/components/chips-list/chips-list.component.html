@@ -1,11 +1,13 @@
-<div class="title">Select categories for this cup</div>
-<mat-chip-set aria-label="Category selection">
-  <div *ngFor="let category of categories; let i = index">
-    <mat-chip-row  
-    class="chip" 
-    [class.selected]="isSelected(category.id!)"
-    (click)="toggleSelection(category.id!)">
-    {{category.name}}
-    </mat-chip-row>
-  </div>
-</mat-chip-set>
+<div class="container">
+  <img class="title" src="../../../../assets/images/selectCategoriesOnCreate.svg" alt="">
+  <mat-chip-set aria-label="Category selection">
+    <div *ngFor="let category of categories; let i = index">
+      <mat-chip-row  
+      class="chip" 
+      [class.selected]="isSelected(category.id!)"
+      (click)="toggleSelection(category.id!)">
+      {{category.name}}
+      </mat-chip-row>
+    </div>
+  </mat-chip-set>
+</div>

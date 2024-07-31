@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="113.71023mm"
+   height="14.030612mm"
+   viewBox="0 0 113.71023 14.030612"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm" />
+  <defs
+     id="defs1">
+    <rect
+       x="546.27716"
+       y="188.59567"
+       width="592.03516"
+       height="90.907303"
+       id="rect1-4" />
+  </defs>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-65.136972,-107.84308)">
+    <text
+       xml:space="preserve"
+       id="text1"
+       style="font-size:43.2834px;line-height:0;letter-spacing:7.82px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1-4);display:inline;fill:#aeaaa5;fill-opacity:1;stroke:none;stroke-opacity:1"
+       transform="matrix(0.3260168,0,0,0.3260168,-112.28649,51.235497)"
+       inkscape:label="text1"><tspan
+         x="546.27734"
+         y="201.03234"
+         id="tspan6"><tspan
+           style="font-family:SignPainter;-inkscape-font-specification:SignPainter"
+           id="tspan1">Select Categ</tspan><tspan
+           dx="4.1760969 -3.6439199"
+           style="letter-spacing:3.64392px"
+           id="tspan3">or</tspan><tspan
+           dx="-0.53218126"
+           style="font-family:SignPainter;-inkscape-font-specification:SignPainter"
+           id="tspan5">ies</tspan></tspan></text>
+  </g>
+</svg>
