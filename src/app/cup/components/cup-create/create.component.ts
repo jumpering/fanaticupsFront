@@ -47,6 +47,7 @@ export class CreateComponent implements OnInit {
       ],
       origin: ['', [Validators.required]],
       description: ['', [Validators.required, Validators.maxLength(250)]],
+      // price: ['', [Validators.required, Validators.pattern('/^\d+$/')]]
     });
   }
 

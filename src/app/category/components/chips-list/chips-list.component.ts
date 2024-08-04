@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { MaterialModule } from '@material/material.module';
 import { Category } from '../../models/category';
 import { CategoryService } from '../../services/category.service';

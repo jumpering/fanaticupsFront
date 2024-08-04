@@ -110,8 +110,8 @@ export class CupDetailComponent implements OnInit {
 
   onClickSetFavorite():void {
     const cupId: number | undefined = this.cup.id;
-    this.userService.setCupToFavorite(cupId!).subscribe(isFavorite => {
-        if(isFavorite){
+    this.userService.setCupToFavorite(cupId!).subscribe(addedToFavorites => {
+        if(addedToFavorites){
           this.snackBar.open('Added to your favorite list', '', { duration: 5000 });
         } else {
           this.snackBar.open('Removed to your favorite list', '', { duration: 5000 });
