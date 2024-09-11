@@ -13,7 +13,10 @@
 
             <div class="right" [ngClass]="{'isHandset': isHandset$ | async}">
                 <form novalidate [formGroup]="form">
-                    <div class="title-group" *ngIf="!updateFields">
+
+
+
+                    <!-- <div class="title-group" *ngIf="!updateFields">
                         <h1 class="title">{{ cup.name }}</h1>
                     </div>
                     <div class="title-group" *ngIf="updateFields">
@@ -29,17 +32,62 @@
                             </mat-error>
                         </mat-form-field>
                         <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
+                    </div> -->
+
+
+                    <div class="title-group">
+                        @if(!updateFields){
+                            <h1 class="title">{{ cup.name }}</h1>
+                        } @else{
+                            <mat-form-field class="title-edit" appearance="outline">
+                                <input matInput type="text" placeholder="Cup name" formControlName="name"
+                                    (keyup)="onCupNameChange()">
+                                <mat-error
+                                    *ngIf="form.get('name')?.hasError('minlength') || form.get('name')?.hasError('required')">
+                                    Minimum 3 characters length
+                                </mat-error>
+                                <mat-error *ngIf="form.get('name')?.hasError('existCupName')">
+                                    Name exist, use another please
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
+                        }
                     </div>
-                    <div class="origin-user-group">
+
+
+
+                    <!-- <div class="origin-group">
                         <div class="origin">
                             <h4>{{ cup.origin }}</h4>
                         </div>
-                        <div class="user" matTooltip="Follow user">
-                            <h4>follow: {{ cup.user?.name }}</h4>
+                    </div> -->
+
+
+                <div class="origin-group">
+                    @if(!updateFields) {
+                        <div class="origin">
+                            <h4>{{ cup.origin }}</h4>
                         </div>
-                    </div>
+                    } @else {
+                        <mat-form-field class="origin-edit" appearance="outline">
+                            <input matInput type="text" placeholder="Cup origin" formControlName="origin">
+                        </mat-form-field>
+                        <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
+                    }
+                </div>
+
+
+
+
+
                     <mat-divider></mat-divider>
-                    <div class="description" *ngIf="!updateFields">
+
+
+
+
+
+
+                    <!-- <div class="description" *ngIf="!updateFields">
                         <p> {{ cup.description }}</p>
                     </div>
                     <div class="description" *ngIf="updateFields">
@@ -56,12 +104,53 @@
                             </mat-error>
                         </mat-form-field>
                         <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
+                    </div> -->
+
+
+                    <div class="description-group">
+                        @if(!updateFields){
+                            <p> {{ cup.description }}</p>
+                        } @else{
+                            <mat-form-field class="description-edit" appearance="outline">
+                                <textarea matInput placeholder="description" formControlName="description"></textarea>
+                                <mat-error *ngIf="form.get('description')?.hasError('required')">
+                                    Required field
+                                </mat-error>
+                                <mat-error *ngIf="form.get('description')?.hasError('maxlength')">
+                                    Maximum 250 characters length
+                                </mat-error>
+                                <mat-error *ngIf="form.get('description')?.value.length > 250">
+                                    counter: {{form.get('description')?.value.length}} characters length
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
+                        }
                     </div>
 
+
+
                     <mat-divider></mat-divider>
-                    <div class="cup-price">
-                        <h2>Price: {{ cup.price }} €</h2>
+
+
+
+
+                    <div class="price-group">
+                        @if(!updateFields) {
+                            <h2 class="price">Price: {{ cup.price }} €</h2>
+                        } @else {
+                            <mat-form-field appearance="outline">
+                                <input type="text" matInput placeholder="price" formControlName="price" style="text-align:right;">
+                            </mat-form-field>
+                            <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
+                        }
+                        
                     </div>
+
+
+
+
+
+
                     <div class="buttons" [ngClass]="{'isHandset': isHandset$ | async}">
                         @if ( (hasSession$ | async) && isCupOwner()) {
                         <button mat-fab color="primary" matTooltip="Delete" (click)="openDeleteDialog()">
@@ -95,6 +184,10 @@
                         </button>  
                         }
 
+
+
+
+
                         <button mat-fab color="primary" matTooltip="Share" (click)="onClickShare()">
                             <mat-icon>share</mat-icon>
                         </button>
@@ -111,3 +204,4 @@
             <h2 style="display: flex; justify-content: center;">...related...</h2>
         </div> -->
     </div>
+</div>

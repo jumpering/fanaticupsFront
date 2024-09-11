@@ -99,19 +99,7 @@
     font-weight: bold;
 }
 
-.description-edit {
-    width: 90%;
-}
-
-.description-edit textarea {
-    font-weight: lighter;
-}
-
-.edit-icon-right {
-    margin-right: 20px;
-}
-
-.origin-user-group {
+.origin-group {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -121,22 +109,24 @@
     margin-left: 20px;
 }
 
-.user {
-    color: rgb(70, 70, 70);
-    margin-right: 20px;
-    cursor: pointer;
+.origin-edit {
+    width: 90%;
+    height: 50px;
+    margin-bottom: 20px;
 }
 
-.cup-price {
-    text-align: right;
-    margin-right: 20px;
-}
 
-.description {
+.description-group{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; 
 }
+
+// .description {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+// }
 
 .description p {
     color: black;
@@ -148,6 +138,40 @@
     height: 40cqw;
     max-height: 40cqw;
     overflow: auto;
+}
+
+.description-edit {
+    width: 90%;
+}
+
+.description-edit textarea {
+    font-weight: lighter;
+}
+
+.price-group{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+}
+
+.price {
+    text-align: right;
+    margin-right: 20px;
+}
+
+.edit-icon-right {
+    margin-right: 20px;
+}
+
+
+
+
+
+.user {
+    color: rgb(70, 70, 70);
+    margin-right: 20px;
+    cursor: pointer;
 }
 
 .buttons {

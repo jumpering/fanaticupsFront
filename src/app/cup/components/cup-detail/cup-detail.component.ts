@@ -31,7 +31,7 @@ export class CupDetailComponent implements OnInit {
   public file: File | null = null;
   public form!: FormGroup;
   public urlImage!: string;
-  private extensionsPermited: string[] = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+  private extensionsPermited: string[] = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'JPG', 'JPEG', 'PNG', 'GIF', 'WEBP'];
   public hasSession$!: Observable<boolean>;
   public isFavoriteForCurrentUser: boolean = false;
   private originalCupImage: string = '';
@@ -57,8 +57,9 @@ export class CupDetailComponent implements OnInit {
         [Validators.required, Validators.minLength(3)], //sync 
         //[CustomValidators.existCupName(this.cupService)] //async (in keyup event http with method onCupNameChange())
       ],
-      //origin: ['', [Validators.required]],
+      origin: ['', [Validators.required]],
       description: ['', [Validators.required, Validators.maxLength(250)]],
+      price: ['', [Validators.required, Validators.pattern('^[0-9]+(\.[0-9]{1,2})?$')]] //para 2 decimales con punto: Validators.pattern('^[0-9]+(\.[0-9]{1,2})?$')
     });
     this.form.markAllAsTouched();
   }
@@ -127,13 +128,17 @@ export class CupDetailComponent implements OnInit {
     this.updateFields = true;
     this.form.get('name')?.setValue(this.cup.name);
     this.form.get('description')?.setValue(this.cup.description);
+    this.form.get('origin')?.setValue(this.cup.origin);
+    this.form.get('price')?.setValue(this.cup.price);
   }
 
 
   onClickSaveFields(): void {
-    const oldCupName: string = this.cup.name;
+    //const oldCupName: string = this.cup.name;
     const newCupName: string = this.form.get('name')?.value;
     this.cup.name = newCupName;
+    this.cup.origin = this.form.get('origin')?.value;
+    this.cup.price = this.form.get('price')?.value;
     this.cup.description = this.form.get('description')?.value;
     const position: number = this.cupImage?.lastIndexOf('/');
     this.cup.image = this.cupImage.substring(position + 1);

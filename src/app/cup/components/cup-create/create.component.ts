@@ -47,7 +47,7 @@ export class CreateComponent implements OnInit {
       ],
       origin: ['', [Validators.required]],
       description: ['', [Validators.required, Validators.maxLength(250)]],
-      // price: ['', [Validators.required, Validators.pattern('/^\d+$/')]]
+       price: ['', [Validators.required, Validators.pattern('^[0-9]+(\.[0-9]{1,2})?$')]]
     });
   }
 
@@ -84,7 +84,8 @@ export class CreateComponent implements OnInit {
       name: this.form.get('name')?.value,
       origin: this.form.get('origin')?.value,
       description: this.form.get('description')?.value,
-      image: this.file?.name.toString(),
+      price: this.form.get('price')?.value,
+      image: this.file?.name.toString()
     };
     this.showProgressBar = true;
     this.cupService.create(cup, this.file!).subscribe({
@@ -114,5 +115,11 @@ export class CreateComponent implements OnInit {
 
   onCategoriesSelected(categoriesIndexs: number[]){
     this.selectedCategoriesIndex = categoriesIndexs;
+  }
+
+  onPriceInput(event: any){
+    const input = event.target;
+    input.value = input.value.replace(',', '.');
+    this.form.get('price')?.setValue(input.value);
   }
 }

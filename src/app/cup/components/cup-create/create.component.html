@@ -1,12 +1,7 @@
 <body>
   <div class="container">
-    <!-- <h1 class="title">Let's create your ❤️ Cup
-      <img class="mugs" src="./../../../../assets/images/cup.svg" alt="">
-    </h1> -->
     <img class="title" src="../../../../assets/images/createCup.svg" alt="">
     <mat-card class="cupCard">
-      <!-- <mat-card-title class="subtitle">Please fill all fields</mat-card-title>
-      <mat-card-subtitle class="subtitle">...and your cup was created!</mat-card-subtitle> -->
       <form novalidate [formGroup]="form">
         <mat-card-content class="cardContent">
           <div class="imagePreviewDiv" [ngClass]="{'isHandset': isHandset$ | async}">
@@ -18,7 +13,7 @@
           </div>
           <mat-form-field appearance="outline" class="name">
             <mat-label>Name</mat-label>
-            <input matInput type="text" placeholder="Cup name" formControlName="name" (ngModelChange)="onCupFieldChange('name')">
+            <input matInput type="text" placeholder="name" formControlName="name" (ngModelChange)="onCupFieldChange('name')">
             <mat-error *ngIf="form.get('name')?.hasError('minlength') || form.get('name')?.hasError('required')">
               Required filed
               Minimum 3 characters length
@@ -50,6 +45,17 @@
             </mat-error>
             <mat-error *ngIf="form.get('description')?.value.length > 250">
               counter: {{form.get('description')?.value.length}} characters length
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="outline" class="price">
+            <mat-label>Price</mat-label>
+            <input matInput name="Price" placeholder="Price" formControlName="price" (input)="onPriceInput($event)" (ngModelChange)="onCupFieldChange('price')">
+            <mat-error *ngIf="form.get('price')?.hasError('required')">
+              Required field
+            </mat-error>
+            <mat-error *ngIf="form.get('price')?.hasError('pattern')">
+              Only price with numbers, like "10.50"
             </mat-error>
           </mat-form-field>
           <div *ngIf="showProgressBar">
