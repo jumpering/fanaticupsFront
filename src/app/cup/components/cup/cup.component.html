@@ -20,17 +20,14 @@
             [innerHTML]="cup.description | slice: 0: 80 | threeDotsForShortDescription"></p>
 
         }
-
-        @if((isHandset$ | async)=== false){
         <mat-divider></mat-divider>
         <div class="priceAndUser">
-            <div class="user">
+            <div class="user" [ngClass]="{'isHandset': isHandset$ | async}">
                 <h4>from: {{ cup.user?.name }}</h4>
             </div>
-            <div class="cupPrice">
+            <div class="price" [ngClass]="{'isHandset': isHandset$ | async}">
                 <h4>Price: {{ cup.price }} €</h4>
             </div>
-        </div>
-        }
+        </div>       
     </mat-card-content>
 </mat-card>

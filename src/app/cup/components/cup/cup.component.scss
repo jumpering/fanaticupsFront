@@ -145,11 +145,23 @@
     border: 3px;
 }
 
-.cupPrice{
+.price{
+    color: rgb(70, 70, 70);
+}
+
+.price.isHandset{
+    margin-right: 5px;
+    font-size:xx-small;
     color: rgb(70, 70, 70);
 }
 
 .user{
+    color: rgb(70, 70, 70);
+}
+
+.user.isHandset{
+    margin-left: 5px;
+    font-size:xx-small;
     color: rgb(70, 70, 70);
 }
 
