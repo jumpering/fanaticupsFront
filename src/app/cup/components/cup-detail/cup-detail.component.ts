@@ -13,6 +13,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '@auth/services/auth.service';
 import { UserService } from 'src/app/user/services/user.service';
 import { CupShareDialogComponent } from '../cup-share-dialog/cup-share-dialog.component';
+import { CriteriaService } from '@cup/services/criteria.service';
+import { Criteria } from '@cup/filterCriteria/criteria';
 
 @Component({
   selector: 'app-cup-detail',
@@ -45,7 +47,8 @@ export class CupDetailComponent implements OnInit {
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private criteriaService: CriteriaService
   ) {
     this.buildFormForUpdate();
     this.hasSession$ = this.authService.hasSession();
@@ -66,20 +69,29 @@ export class CupDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
-        const id: number = params['id'];
-        this.cupService.getById(id)
-          .subscribe(element => {
-            this.cup = element;
-            this.cupImage = element.image?.toString()!;
-            this.originalCupImage = this.cupImage;
+      const id: number = params['id'];
+      this.cupService.getById(id).subscribe(element => {
+        this.cup = element;
+        this.cupImage = element.image?.toString()!;
+        this.originalCupImage = this.cupImage;
+
+        //todo no hay user registrado!
+        this.hasSession$.subscribe((isSession: any) => {
+          if(isSession){
             this.userService.isFavorite(this.cup.id!).subscribe(result => {
               this.isFavoriteForCurrentUser = result;
-            })
-          });
+            });
+          }
+        });
+        // this.userService.isFavorite(this.cup.id!).subscribe(result => {
+        //   this.isFavoriteForCurrentUser = result;
+        // });
+
       });
+    });
     this.isHandset$ = this.breakpointService.isHandset$;
     this.isMedium$ = this.breakpointService.isMedium$;
-    this.isSmall$ = this.breakpointService.isSmall$; 
+    this.isSmall$ = this.breakpointService.isSmall$;
 
   }
 
@@ -109,18 +121,18 @@ export class CupDetailComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  onClickSetFavorite():void {
+  onClickSetFavorite(): void {
     const cupId: number | undefined = this.cup.id;
     this.userService.setCupToFavorite(cupId!).subscribe(addedToFavorites => {
-        if(addedToFavorites){
-          this.snackBar.open('Added to your favorite list', '', { duration: 5000 });
-        } else {
-          this.snackBar.open('Removed to your favorite list', '', { duration: 5000 });
-        }
-        this.userService.isFavorite(this.cup.id!).subscribe(response => {
-          this.isFavoriteForCurrentUser = response;
-        });
+      if (addedToFavorites) {
+        this.snackBar.open('Added to your favorite list', '', { duration: 5000 });
+      } else {
+        this.snackBar.open('Removed to your favorite list', '', { duration: 5000 });
       }
+      this.userService.isFavorite(this.cup.id!).subscribe(response => {
+        this.isFavoriteForCurrentUser = response;
+      });
+    }
     );
   }
 
@@ -134,7 +146,6 @@ export class CupDetailComponent implements OnInit {
 
 
   onClickSaveFields(): void {
-    //const oldCupName: string = this.cup.name;
     const newCupName: string = this.form.get('name')?.value;
     this.cup.name = newCupName;
     this.cup.origin = this.form.get('origin')?.value;
@@ -144,16 +155,16 @@ export class CupDetailComponent implements OnInit {
     this.cup.image = this.cupImage.substring(position + 1);
     this.showProgressBar = true;
     this.cupService.updateCup(this.cup, this.file!).subscribe({
-              next: (responseCup) => {
-                console.log('cup uploaded! ' + responseCup.name);
-                this.updateFields = false;
-                this.showProgressBar = false;
-              },
-              error: (error) => {
-                console.log('Error uploading cup and/or  file: ' + error);
-                this.showProgressBar = false;
-              }
-            });
+      next: (responseCup) => {
+        console.log('cup uploaded! ' + responseCup.name);
+        this.updateFields = false;
+        this.showProgressBar = false;
+      },
+      error: (error) => {
+        console.log('Error uploading cup and/or  file: ' + error);
+        this.showProgressBar = false;
+      }
+    });
   }
 
   onClickCancelUpdate() {
@@ -195,9 +206,24 @@ export class CupDetailComponent implements OnInit {
     return this.cup.user?.id === this.authService.getId();
   }
 
-  public onClickShare(){
+  public onClickShare() {
     const dialogRef = this.matDialog.open(CupShareDialogComponent, {
       data: { cupURL: this.router.url }
     });
+  }
+
+  onClickUser() {
+    const criteria: Criteria = {
+      userId: this.cup.user?.id,
+      cupName: '',
+      cupDescription: '',
+      showFavorites: false,
+      categoryId: undefined
+    }
+    this.criteriaService.setCriteria(criteria);
+    //todo esto ha de ser otro componente!
+    //this.router.navigate(['/']);
+
+    this.router.navigate(['/user-list', this.cup.user?.id]);
   }
 }

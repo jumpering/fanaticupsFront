@@ -23,13 +23,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.isHandset$ = this.breakpointService.isHandset$;
-    const criteria: Criteria = {
-      userId: undefined,
-      cupName: '',
-      cupDescription: '',
-      showFavorites: false,
-      categoryId: undefined
-    }
-    this.criteriaService.setCriteria(criteria);
+    this.criteriaService.setDefaultCriteria();
   }
 }

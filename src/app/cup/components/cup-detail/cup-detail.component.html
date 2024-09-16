@@ -2,7 +2,6 @@
     <div class="detailContainer" [ngClass]="{'isHandset': isHandset$ | async}">
         <div class="detail">
             <div class="left" [ngClass]="{'isHandset': isHandset$ | async}">
-                <!-- <img class="back-button" src="./../../../../assets/images/backButton.svg" alt="back" (click)="toHome()"> -->
                 <img class="cup-image" [src]="cupImage" alt="cup.name">
                 <div class="edit-icon-image" *ngIf="updateFields">
                     <button class="uploadImage" *ngIf="!file" mat-raised-button color="primary" (click)="input.click()"
@@ -13,13 +12,10 @@
 
             <div class="right" [ngClass]="{'isHandset': isHandset$ | async}">
                 <form novalidate [formGroup]="form">
-
-
-
-                    <!-- <div class="title-group" *ngIf="!updateFields">
+                    <div class="title-group">
+                        @if(!updateFields){
                         <h1 class="title">{{ cup.name }}</h1>
-                    </div>
-                    <div class="title-group" *ngIf="updateFields">
+                        } @else{
                         <mat-form-field class="title-edit" appearance="outline">
                             <input matInput type="text" placeholder="Cup name" formControlName="name"
                                 (keyup)="onCupNameChange()">
@@ -32,65 +28,33 @@
                             </mat-error>
                         </mat-form-field>
                         <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
-                    </div> -->
-
-
-                    <div class="title-group">
-                        @if(!updateFields){
-                            <h1 class="title">{{ cup.name }}</h1>
-                        } @else{
-                            <mat-form-field class="title-edit" appearance="outline">
-                                <input matInput type="text" placeholder="Cup name" formControlName="name"
-                                    (keyup)="onCupNameChange()">
-                                <mat-error
-                                    *ngIf="form.get('name')?.hasError('minlength') || form.get('name')?.hasError('required')">
-                                    Minimum 3 characters length
-                                </mat-error>
-                                <mat-error *ngIf="form.get('name')?.hasError('existCupName')">
-                                    Name exist, use another please
-                                </mat-error>
-                            </mat-form-field>
-                            <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
                         }
                     </div>
-
-
-
-                    <!-- <div class="origin-group">
+                    <div class="origingroup-user">
+                    <div class="origin-group">
+                        @if(!updateFields) {
                         <div class="origin">
                             <h4>{{ cup.origin }}</h4>
                         </div>
-                    </div> -->
-
-
-                <div class="origin-group">
-                    @if(!updateFields) {
-                        <div class="origin">
-                            <h4>{{ cup.origin }}</h4>
-                        </div>
-                    } @else {
+                        } @else {
                         <mat-form-field class="origin-edit" appearance="outline">
                             <input matInput type="text" placeholder="Cup origin" formControlName="origin">
                         </mat-form-field>
                         <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
-                    }
-                </div>
+                        }
+                    </div>
+                    <h4 class="user" (click)="onClickUser()">owner: {{ cup.user?.name }}</h4>
+                    </div>
 
 
 
 
 
                     <mat-divider></mat-divider>
-
-
-
-
-
-
-                    <!-- <div class="description" *ngIf="!updateFields">
+                    <div class="description-group">
+                        @if(!updateFields){
                         <p> {{ cup.description }}</p>
-                    </div>
-                    <div class="description" *ngIf="updateFields">
+                        } @else{
                         <mat-form-field class="description-edit" appearance="outline">
                             <textarea matInput placeholder="description" formControlName="description"></textarea>
                             <mat-error *ngIf="form.get('description')?.hasError('required')">
@@ -104,53 +68,20 @@
                             </mat-error>
                         </mat-form-field>
                         <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
-                    </div> -->
-
-
-                    <div class="description-group">
-                        @if(!updateFields){
-                            <p> {{ cup.description }}</p>
-                        } @else{
-                            <mat-form-field class="description-edit" appearance="outline">
-                                <textarea matInput placeholder="description" formControlName="description"></textarea>
-                                <mat-error *ngIf="form.get('description')?.hasError('required')">
-                                    Required field
-                                </mat-error>
-                                <mat-error *ngIf="form.get('description')?.hasError('maxlength')">
-                                    Maximum 250 characters length
-                                </mat-error>
-                                <mat-error *ngIf="form.get('description')?.value.length > 250">
-                                    counter: {{form.get('description')?.value.length}} characters length
-                                </mat-error>
-                            </mat-form-field>
-                            <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
                         }
                     </div>
-
-
-
                     <mat-divider></mat-divider>
-
-
-
-
                     <div class="price-group">
                         @if(!updateFields) {
-                            <h2 class="price">Price: {{ cup.price }} €</h2>
+                        <h2 class="price">Price: {{ cup.price }} €</h2>
                         } @else {
-                            <mat-form-field appearance="outline">
-                                <input type="text" matInput placeholder="price" formControlName="price" style="text-align:right;">
-                            </mat-form-field>
-                            <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
+                        <mat-form-field appearance="outline">
+                            <input type="text" matInput placeholder="price" formControlName="price"
+                                style="text-align:right;">
+                        </mat-form-field>
+                        <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
                         }
-                        
                     </div>
-
-
-
-
-
-
                     <div class="buttons" [ngClass]="{'isHandset': isHandset$ | async}">
                         @if ( (hasSession$ | async) && isCupOwner()) {
                         <button mat-fab color="primary" matTooltip="Delete" (click)="openDeleteDialog()">
@@ -174,20 +105,15 @@
                         </div>
                         }
                         @if ( (hasSession$ | async) ){
-                            <button mat-fab color="primary" matTooltip="Like" (click)="onClickSetFavorite()">
-                                <div *ngIf="isFavoriteForCurrentUser else noFavorite">
+                        <button mat-fab color="primary" matTooltip="Like" (click)="onClickSetFavorite()">
+                            <div *ngIf="isFavoriteForCurrentUser else noFavorite">
                                 <mat-icon style="color: pink;">favorite</mat-icon>
                             </div>
                             <ng-template #noFavorite>
                                 <mat-icon style="color: rgb(255, 255, 255);">favorite</mat-icon>
                             </ng-template>
-                        </button>  
+                        </button>
                         }
-
-
-
-
-
                         <button mat-fab color="primary" matTooltip="Share" (click)="onClickShare()">
                             <mat-icon>share</mat-icon>
                         </button>

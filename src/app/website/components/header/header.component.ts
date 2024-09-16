@@ -6,6 +6,7 @@ import { RegisterComponent } from '@auth/components/register/register.component'
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '@auth/components/login/login.component';
 import { BreakpointService } from 'src/app/utils/breakpoint.service';
+import { CriteriaService } from '@cup/services/criteria.service';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,8 @@ export class HeaderComponent implements OnInit {
     public router: Router,
     private authService: AuthService,
     public dialog: MatDialog,
-    public breakpointService: BreakpointService
+    public breakpointService: BreakpointService,
+    private criteriaService: CriteriaService
   ) {
    }
 
@@ -34,6 +36,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toHome() {
+    this.criteriaService.setDefaultCriteria();
     this.router.navigate(['/']);
   }
 

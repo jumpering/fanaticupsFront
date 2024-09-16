@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '@auth/services/auth.service';
+import { User } from '@cup/models/user.model';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -25,5 +26,10 @@ export class UserService {
     const formData: FormData = new FormData();
     formData.append("cupId", cupId.toString());
     return this.httpClient.post<boolean>(path, formData);
+  }
+
+  getUser(userId: number): Observable<User> {
+    const path = this.userPath + "/" + userId; 
+    return this.httpClient.get<User>(path);
   }
 }

@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CategoryListComponent } from '../category/components/category-list/category-list.component';
 import { CupListComponent } from '@cup/components/cup-list/cup-list.component';
 import { CategoryDetailComponent } from '../category/components/category-detail/category-detail.component';
+import { CupUserListComponent } from '@cup/components/cup-user-list/cup-user-list.component';
 
 const routes: Routes = [
   {
@@ -36,12 +37,23 @@ const routes: Routes = [
     },
 
     
+    {
+      path: 'user-list',
+      children: [
+        {
+        path: '',
+        component: Page404Component
+      },
+        {
+        path: ':id',
+        component: CupUserListComponent
+      }]
+    },
+
     // {
     //   path: 'categories',
     //   component: CategoryListComponent
     // },
-
-
 
    {
       path: 'categories',

@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Cup } from '../../models/cup.model';
 import { CupService } from '@cup/services/cup.service';
-import { debounceTime } from 'rxjs';
+import { debounceTime, Subscription } from 'rxjs';
 import { SearchService } from '@shared/services/search.service';
 import { Criteria } from '@cup/filterCriteria/criteria';
 import { CriteriaService } from '@cup/services/criteria.service';
@@ -26,22 +26,21 @@ export class CupListComponent implements OnInit {
   public searchString: string = '';
   public showLoading: boolean = false;
   private criteria!: Criteria;
+  private criteriaSubscription!: Subscription; //for unsubscribe
 
   constructor(
     private cupService: CupService,
     private router: Router,
     private searchService: SearchService,
     private criteriaService: CriteriaService
-  ) {
-
-  }
+  ) { }
 
   //TODO search aquí?
   ngOnInit(): void {
-    this.criteriaService.getCriteria().subscribe(element =>{
+    this.criteriaSubscription = this.criteriaService.getCriteria().subscribe(element => {
       this.criteria = element;
-      this.getAllCups(element);
-    })
+      this.getAllCups(this.criteria);
+    });
     this.searchService.searchTermChanged.pipe(debounceTime(300)).subscribe((searchTerm: string) => {
       this.searchString = searchTerm;
       this.criteria.cupName = searchTerm;
@@ -49,6 +48,10 @@ export class CupListComponent implements OnInit {
       this.listOfCups = [];
       this.getAllCups(this.criteria);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.criteriaSubscription.unsubscribe();
   }
 
   public getAllCups(criteria: Criteria): void {

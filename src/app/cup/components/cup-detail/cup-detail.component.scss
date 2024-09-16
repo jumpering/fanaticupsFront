@@ -12,7 +12,6 @@
     flex-flow: center;
     padding-right: 0;
     padding-top: 56px;
-    //padding-block: 55px;
 }
 
 .detail {
@@ -70,11 +69,11 @@
     height: auto;
 }
 
-.back-button {
-    cursor: pointer;
-    width: 5%;
-    height: auto;
-}
+// .back-button {
+//     cursor: pointer;
+//     width: 5%;
+//     height: auto;
+// }
 
 .inputButton {
     display: none;
@@ -99,6 +98,12 @@
     font-weight: bold;
 }
 
+.origingroup-user{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
 .origin-group {
     display: flex;
     justify-content: space-between;
@@ -120,13 +125,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center; 
+    margin-left: 20px;
 }
-
-// .description {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-// }
 
 .description p {
     color: black;
@@ -163,10 +163,6 @@
 .edit-icon-right {
     margin-right: 20px;
 }
-
-
-
-
 
 .user {
     color: rgb(70, 70, 70);
