@@ -19,27 +19,27 @@
     min-width: 365px;
 }
 
-// .cup-card.isHandset{
-//     cursor: pointer;
-//     border-radius: 10px !important;
-//     border: 1px solid #f3f3f3;
-//     max-width: 185px;
-//     min-width: 185px;
-// }
-
-
-.cup-card.isHandset {
+.cup-card.isHandset{
     cursor: pointer;
     border-radius: 10px !important;
     border: 1px solid #f3f3f3;
-    // width: 100%;
-    // max-width: 185px;
     max-width: 185px;
     min-width: 185px;
-    grid-row-end: span 1; /* Ajusta este valor según la altura aproximada de la tarjeta */
-    align-self: start; /* Alinea las tarjetas al principio de la fila */
-    box-sizing: border-box; /* Asegura que los bordes y padding no rompan el layout */
 }
+
+
+// .cup-card.isHandset {
+//     cursor: pointer;
+//     border-radius: 10px !important;
+//     border: 1px solid #f3f3f3;
+//     // width: 100%;
+//     // max-width: 185px;
+//     max-width: 185px;
+//     min-width: 185px;
+//     grid-row-end: span 1; /* Ajusta este valor según la altura aproximada de la tarjeta */
+//     align-self: start; /* Alinea las tarjetas al principio de la fila */
+//     box-sizing: border-box; /* Asegura que los bordes y padding no rompan el layout */
+// }
 
 .cup-card:hover{
     filter: brightness(50%);
