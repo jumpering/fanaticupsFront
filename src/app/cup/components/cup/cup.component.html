@@ -3,9 +3,11 @@
         <mat-card-title class="card-title" [ngClass]="{'isHandset': isHandset$ | async}">
             {{ cup.name }}
         </mat-card-title>
-        <mat-card-subtitle class="card-origin" [ngClass]="{'isHandset': isHandset$ | async}">
-            {{ cup.origin }}
-        </mat-card-subtitle>
+        @if(!(isHandset$ | async)){
+            <mat-card-subtitle class="card-origin.isHandset">
+                {{ cup.origin }}
+            </mat-card-subtitle>
+        }
     </mat-card-header>
     <mat-card-content class="card-content" [ngClass]="{'isHandset': isHandset$ | async}">
         <div class="imageContainer">
@@ -18,16 +20,16 @@
         @else{
         <p class="descriptionShort" [ngClass]="{'isHandset': isHandset$ | async}"
             [innerHTML]="cup.description | slice: 0: 80 | threeDotsForShortDescription"></p>
+            <mat-divider></mat-divider>
+            <div class="priceAndUser">
+                <div class="user" [ngClass]="{'isHandset': isHandset$ | async}">
+                    <h4>from: {{ cup.user?.name }}</h4>
+                </div>
+                <div class="price" [ngClass]="{'isHandset': isHandset$ | async}">
+                    <h4>Price: {{ cup.price }} €</h4>
+                </div>
+            </div>   
 
-        }
-        <mat-divider></mat-divider>
-        <div class="priceAndUser">
-            <div class="user" [ngClass]="{'isHandset': isHandset$ | async}">
-                <h4>from: {{ cup.user?.name }}</h4>
-            </div>
-            <div class="price" [ngClass]="{'isHandset': isHandset$ | async}">
-                <h4>Price: {{ cup.price }} €</h4>
-            </div>
-        </div>       
+        }    
     </mat-card-content>
 </mat-card>

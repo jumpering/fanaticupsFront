@@ -1,6 +1,4 @@
 .cup-card{
-    padding-top: 5px;
-    padding-bottom: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,22 +19,26 @@
     min-width: 365px;
 }
 
-.cup-card.isHandset{
-    padding-top: 2px;
-    padding-bottom: 2px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch; //era center  
+// .cup-card.isHandset{
+//     cursor: pointer;
+//     border-radius: 10px !important;
+//     border: 1px solid #f3f3f3;
+//     max-width: 185px;
+//     min-width: 185px;
+// }
+
+
+.cup-card.isHandset {
     cursor: pointer;
     border-radius: 10px !important;
     border: 1px solid #f3f3f3;
-
-    //size
-    max-height: auto;
-    max-width: 165px;
-    min-height: auto;
-    min-width: 165px;
+    // width: 100%;
+    // max-width: 185px;
+    max-width: 185px;
+    min-width: 185px;
+    grid-row-end: span 1; /* Ajusta este valor según la altura aproximada de la tarjeta */
+    align-self: start; /* Alinea las tarjetas al principio de la fila */
+    box-sizing: border-box; /* Asegura que los bordes y padding no rompan el layout */
 }
 
 .cup-card:hover{
@@ -55,10 +57,10 @@
 }
 
 .card-title.isHandset{
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-top: 10px;
+    padding-bottom: 8px;
     font-size: x-small;
-    margin-top: -5px;
+    margin-top: -10px;
     margin-bottom: -15px;
     border: 0px;
 }
