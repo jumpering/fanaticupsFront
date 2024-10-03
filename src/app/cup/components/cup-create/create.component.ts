@@ -19,7 +19,8 @@ export class CreateComponent implements OnInit {
   public file: File | null = null;
   public form!: FormGroup;
   public urlImage!: string;
-  private extensionsPermited: string[] = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+  private extensionsPermited: string[] = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'JPG', 'JPEG', 'PNG', 'GIF', 'WEBP'];
+  private maximumFileSize: number = 5000000;
   public isHandset$!: Observable<boolean>;
   public showProgressBar: boolean = false;
   public selectedCategoriesIndex: number[] = [];
@@ -53,7 +54,13 @@ export class CreateComponent implements OnInit {
 
   onSelectedFile(event: any) {
     this.file = event.target.files[0];
-    if (this.file && this.isImage()) {
+    if(this.file && this.file?.size > this.maximumFileSize){
+      this.file = null;
+      this.showSnackBarMessage('Error: Maximum image size is ' + this.maximumFileSize / 1000000 + 'MB.');
+    }
+
+
+    else if (this.file && this.isImage()) {
       const reader = new FileReader();
       reader.onloadend = () => {
         this.urlImage = reader.result as string;
