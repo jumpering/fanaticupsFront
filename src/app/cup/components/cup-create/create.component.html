@@ -1,4 +1,8 @@
 <body>
+  <div class="loading" *ngIf="showLoading" [ngClass]="{'isHandset': isHandset$ | async}">
+    <h4>Please wait a moment. Creating in progress</h4>
+    <mat-spinner></mat-spinner>
+</div>
   <div class="container">
     <img class="title" src="../../../../assets/images/createCup.svg" alt="">
     <mat-card class="cupCard">

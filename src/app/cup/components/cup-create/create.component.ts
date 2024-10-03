@@ -24,6 +24,7 @@ export class CreateComponent implements OnInit {
   public isHandset$!: Observable<boolean>;
   public showProgressBar: boolean = false;
   public selectedCategoriesIndex: number[] = [];
+  public showLoading: boolean = false;
 
   constructor(
     private cupService: CupService,
@@ -87,6 +88,7 @@ export class CreateComponent implements OnInit {
   }
 
   onCreateCup() {
+    this.showLoading = true;
     const cup: Cup = {
       name: this.form.get('name')?.value,
       origin: this.form.get('origin')?.value,
@@ -101,6 +103,7 @@ export class CreateComponent implements OnInit {
         this.categoryService.addCategoriesToCupId(responseCup.id!, this.selectedCategoriesIndex).subscribe({
           next: (response) =>{
             console.log("categories created");
+            this.showLoading = false;
           },
           error: (error) => {
             console.log("error creating categories: ");

@@ -1,3 +1,31 @@
+.loading{
+    background-color:rgb(236, 247, 250);
+    color: #284389;
+    position: fixed;
+    padding-inline: 47vw;
+    padding-block: 20vw;
+    z-index: 3;
+    opacity: 85%;
+    text-justify: distribute;
+    text-align: center;
+    top: 0px;
+    bottom: 0px;
+}
+
+.loading.isHandset{
+    background-color:rgb(236, 247, 250);
+    color: #284389;
+    position: fixed;
+    padding-inline: 35vw;
+    padding-block: 75vw;
+    z-index: 3;
+    opacity: 85%;
+    text-justify: distribute;
+    text-align: center;
+    top: 0px;
+    bottom: 0px;
+}
+
 .container {
     display: flex;
     flex-direction: column;
