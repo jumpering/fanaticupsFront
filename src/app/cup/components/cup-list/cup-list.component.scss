@@ -1,25 +1,9 @@
-// .cups {
-//     display: flex;
-//     justify-content:center;
-//     flex-wrap: wrap;
-// }
-
-// .cups {
-//     display: grid;
-//     grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); /* Crea columnas que se adapten */
-//     grid-auto-rows: 250px; /* Esta es la clave para hacer el "masonry" */
-//     gap: 16px; /* Espacio entre las tarjetas */
-// }
-
-
-.cups{
-
-        display: flex;
-        flex-flow:row;
-        flex-wrap: wrap;
-        justify-content: center;
-        height: 500px;
-}
+.cups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
 
 .loading {
     position: fixed;
