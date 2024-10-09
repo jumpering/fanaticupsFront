@@ -69,12 +69,6 @@
     height: auto;
 }
 
-// .back-button {
-//     cursor: pointer;
-//     width: 5%;
-//     height: auto;
-// }
-
 .inputButton {
     display: none;
 }
@@ -121,14 +115,13 @@
     margin-right: 10px;
 }
 
-
 .description-group{
     display: flex;
     justify-content: space-between;
     align-items: center; 
 }
 
-.description p {
+.description-group p {
     color: black;
     font-size: large;
     text-align: justify;

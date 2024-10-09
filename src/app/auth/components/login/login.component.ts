@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
 
   buildForm(): void {
     this.form = this.formBuilder.group({
-      email: ['a@a.a', [Validators.required, Validators.email]],
-      password: ['aaaa', [Validators.required]],
+      email: ['demo@demo.cat', [Validators.required, Validators.email]],
+      password: ['demo', [Validators.required]],
     });
     //this.form.markAllAsTouched();
   }

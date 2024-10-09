@@ -31,25 +31,20 @@
                         }
                     </div>
                     <div class="origingroup-user">
-                    <div class="origin-group">
-                        @if(!updateFields) {
-                        <div class="origin">
-                            <h4>{{ cup.origin }}</h4>
+                        <div class="origin-group">
+                            @if(!updateFields) {
+                            <div class="origin">
+                                <h4>{{ cup.origin }}</h4>
+                            </div>
+                            } @else {
+                            <mat-form-field class="origin-edit" appearance="outline">
+                                <input matInput type="text" placeholder="Cup origin" formControlName="origin">
+                            </mat-form-field>
+                            <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
+                            }
                         </div>
-                        } @else {
-                        <mat-form-field class="origin-edit" appearance="outline">
-                            <input matInput type="text" placeholder="Cup origin" formControlName="origin">
-                        </mat-form-field>
-                        <mat-icon class="edit-icon-right" matSuffix>mode_edit</mat-icon>
-                        }
+                        <h4 class="user" (click)="onClickUser()">owner: {{ cup.user?.name }}</h4>
                     </div>
-                    <h4 class="user" (click)="onClickUser()">owner: {{ cup.user?.name }}</h4>
-                    </div>
-
-
-
-
-
                     <mat-divider></mat-divider>
                     <div class="description-group">
                         @if(!updateFields){
