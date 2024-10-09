@@ -7,6 +7,7 @@ import { debounceTime, Subscription } from 'rxjs';
 import { SearchService } from '@shared/services/search.service';
 import { Criteria } from '@cup/filterCriteria/criteria';
 import { CriteriaService } from '@cup/services/criteria.service';
+import { RequestDataInput } from '@cup/models/request-data-input';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class CupListComponent implements OnInit {
   public showLoading: boolean = false;
   private criteria!: Criteria;
   private criteriaSubscription!: Subscription; //for unsubscribe
+  public isEmptyList: boolean = false;
 
   constructor(
     private cupService: CupService,
@@ -55,13 +57,24 @@ export class CupListComponent implements OnInit {
   }
 
   public getAllCups(criteria: Criteria): void {
+    this.isEmptyList = false;
     this.showLoading = true;
-    this.cupService.getAllCups(this.page, this.cupsPerPage, criteria).subscribe(requestDataInput => {
-      this.page = requestDataInput.number;
-      this.isFirst = requestDataInput.first;
-      this.isLast = requestDataInput.last;
-      this.showLoading = false;
-      this.listOfCups.push(...requestDataInput.content);
+    this.cupService.getAllCups(this.page, this.cupsPerPage, criteria).subscribe({
+      next: value => {
+        this.page = value.number;
+        this.isFirst = value.first;
+        this.isLast = value.last;
+        this.showLoading = false;
+        this.listOfCups.push(...value.content);
+      },
+      error: error => {
+        if (this.listOfCups.length == 0) {
+          this.isEmptyList = true;
+          this.showLoading = false;
+          console.log(error);
+        }
+      },
+      complete: () => { }
     });
   }
 

@@ -5,4 +5,8 @@
     <app-cup class="item" *ngFor="let cupElement of listOfCups"
       [cup]="cupElement" (buy)="onBuyClicked($event)" (detail)="onDetailClicked($event)">
     </app-cup>
+    <div class="empty-list" *ngIf="isEmptyList">
+      <p> ...Ups, no cups to show...</p>
+      <img src="../../../../assets/images/sadCat.jpg" alt="No results" class="cat">
+    </div>
   </div>
