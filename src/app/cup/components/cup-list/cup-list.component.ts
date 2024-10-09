@@ -68,14 +68,20 @@ export class CupListComponent implements OnInit {
         this.listOfCups.push(...value.content);
       },
       error: error => {
-        if (this.listOfCups.length == 0) {
-          this.isEmptyList = true;
-          this.showLoading = false;
-          console.log(error);
-        }
+        console.log(error);
+        this.isEmptyListMessage();
       },
-      complete: () => { }
+      complete: () => {
+        this.isEmptyListMessage();
+      }
     });
+  }
+
+  private isEmptyListMessage(): void {
+    if (this.listOfCups.length == 0) {
+      this.isEmptyList = true;
+      this.showLoading = false;
+    }
   }
 
   private resetPageable(): void {
