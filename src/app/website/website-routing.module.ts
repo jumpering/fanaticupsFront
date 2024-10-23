@@ -21,10 +21,10 @@ const routes: Routes = [
       path: '',
       component: HomeComponent
     },
-    {
-      path: 'cup-list',
-      component: CupListComponent
-    },    
+    // {
+    //   path: 'cup-list',
+    //   component: CupListComponent
+    // },    
     {
       path: 'create',
       component: CreateComponent,

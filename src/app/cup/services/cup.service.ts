@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cup } from '@cup/models/cup.model';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { catchError, Observable, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { environment } from 'src/environments/environment';
@@ -34,7 +34,38 @@ export class CupService {
     favoritesFilter.setNext(nameFilter);
     nameFilter.setNext(categoryFilter);
     categoryFilter.setNext(defaultFilter);
-    return userFilter.applyFilter(page, cupsPerPage, criteria);
+    return userFilter.applyFilter(page, cupsPerPage, criteria)
+    .pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error en la petición:', error);
+        if (error.status === 404) {
+          const requestDataInput: RequestDataInput = {
+            content: [],
+            empty: false,
+            first: false,
+            last: true,
+            number: 0,
+            numberOfElements: 0,
+            pageable: {
+              offset: 0,
+              pageNumber: 0,
+              pageSize: 0,
+              paged: false,
+            },
+            size: 0,
+            sort: {
+              empty: true,
+              sorted: false,
+              unsorted: false
+            },
+            totalElements: 0,
+            totalPages: 0
+          }
+          return of(requestDataInput);
+        }
+        // Para otros errores, lanzamos el error para que el componente lo maneje
+        return throwError(() => new Error(error.message));
+      }));
   }
 
   existCupName(name: string): Observable<boolean> {

@@ -1,4 +1,54 @@
+<!-- <div class="search-container">
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Search</mat-label>
+    <input 
+      type="text" 
+      matInput 
+      [formControl]="searchControl" 
+      placeholder="Search..." 
+      class="input"
+      [matAutocomplete]="auto">
+    
+    <mat-icon matSuffix>search</mat-icon>
+    
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)" class="autocomplete">
+      <h4 class="title">Cups</h4>
+      <mat-option *ngFor="let cup of cups | slice: 0:5">
+        {{cup.name}}
+      </mat-option>
+      <mat-divider></mat-divider>
+      <h4 class="title">Users</h4>
+      <mat-option *ngFor="let user of users | slice: 0:5">
+        {{user.name}}
+      </mat-option>      
+
+    </mat-autocomplete>
+  </mat-form-field>
+</div> -->
+
+
+
+
 <div class="search-bar">
-  <input type="text" [(ngModel)]="searchString" (ngModelChange)="onSearchStringInputChange()" placeholder="Search...">
-  <mat-icon fontIcon="search" class="icon"></mat-icon>
+    <input 
+      type="text" 
+      matInput 
+      [formControl]="searchControl" 
+      placeholder="Search..." 
+      class="input"
+      [matAutocomplete]="auto">
+    
+    <mat-icon class="icon" matSuffix>search</mat-icon>
+    
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)" class="autocomplete" [displayWith]="displayCupOrUser">
+      <h4 class="title">Cups</h4>
+      <mat-option *ngFor="let cup of cups | slice: 0:5" class="option" [value]="{name: cup.name, type: 'cup', id: cup.id}">
+        {{cup.name}}
+      </mat-option>
+      <mat-divider></mat-divider>
+      <h4 class="title">Users</h4>
+      <mat-option *ngFor="let user of users | slice: 0:5" class="option" [value]="{name: user.name, type: 'user', id: user.id}">
+        {{user.name}}
+      </mat-option>      
+    </mat-autocomplete>
 </div>

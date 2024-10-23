@@ -32,4 +32,9 @@ export class UserService {
     const path = this.userPath + "/" + userId; 
     return this.httpClient.get<User>(path);
   }
+
+  getByName(name: string): Observable<User[]> {
+    const path = this.userPath + "/name/" + name; 
+    return this.httpClient.get<User[]>(path);
+  }
 }
