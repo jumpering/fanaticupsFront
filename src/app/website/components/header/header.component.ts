@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '@auth/components/login/login.component';
 import { BreakpointService } from 'src/app/utils/breakpoint.service';
 import { CriteriaService } from '@cup/services/criteria.service';
+import { SearchService } from '@shared/services/search.service';
+import { SearchbarComponent } from '../searchbar/searchbar.component';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +17,6 @@ import { CriteriaService } from '@cup/services/criteria.service';
 })
 export class HeaderComponent implements OnInit {
 
-  //public isLogged!: boolean;
   public isHandset$!: Observable<boolean>;
 
   constructor(
@@ -23,7 +24,8 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     public dialog: MatDialog,
     public breakpointService: BreakpointService,
-    private criteriaService: CriteriaService
+    private criteriaService: CriteriaService,
+    private searchService: SearchService
   ) {
    }
 
@@ -37,6 +39,7 @@ export class HeaderComponent implements OnInit {
 
   toHome() {
     this.criteriaService.setDefaultCriteria();
+    this.searchService.searchTermChanged.emit('');
     this.router.navigate(['/']);
   }
 

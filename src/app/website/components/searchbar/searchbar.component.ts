@@ -4,12 +4,11 @@ import { FormControl, FormsModule } from '@angular/forms';
 import { MaterialModule } from '@material/material.module';
 import { CupService } from '@cup/services/cup.service';
 import { Criteria } from '@cup/filterCriteria/criteria';
-import { CriteriaService } from '@cup/services/criteria.service';
 import { Cup } from '@cup/models/cup.model';
-import { ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsModule
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { debounceTime, switchMap } from 'rxjs/operators'; // Importa switchMap para manejar las solicitudes de búsqueda
-import { of } from 'rxjs'; // Importa 'of' para gestionar la respuesta vacía
+import { debounceTime, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { UserService } from 'src/app/user/services/user.service';
 import { User } from '@cup/models/user.model';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -37,10 +36,9 @@ export class SearchbarComponent implements OnInit {
   public searchControl = new FormControl();
   public users?: User[] | undefined;
 
-  constructor(private searchService: SearchService, 
-    private cupService: CupService, 
-    private userService: UserService, 
-    //private criteriaService: CriteriaService,
+  constructor(private searchService: SearchService,
+    private cupService: CupService,
+    private userService: UserService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -69,19 +67,19 @@ export class SearchbarComponent implements OnInit {
         error: (error) => {
           console.log('Error al obtener los resultados:', error);
         },
-        complete: () => {}
+        complete: () => { }
       });
 
-      //para user
-      this.searchControl.valueChanges.pipe(
-        debounceTime(300),
-        switchMap(value => {
-          if (!value) {
-            return of([]);
-          }
-          return this.userService.getByName(value);
-        })
-      )
+    //para user
+    this.searchControl.valueChanges.pipe(
+      debounceTime(300),
+      switchMap(value => {
+        if (!value) {
+          return of([]);
+        }
+        return this.userService.getByName(value);
+      })
+    )
       .subscribe({
         next: (users: User[] | undefined) => {
           this.users = users || [];
@@ -89,23 +87,22 @@ export class SearchbarComponent implements OnInit {
         error: (error) => {
           console.error('Error fetching users:', error);
         },
-        complete: () => {}
+        complete: () => { }
       });
   }
 
   onOptionSelected(event: MatAutocompleteSelectedEvent) {
     const selectedOption = event.option.value;
-    //console.log('Opción seleccionada:', selectedOption);
-    if(selectedOption.type === 'cup'){
+    if (selectedOption.type === 'cup') {
       this.searchControl.setValue('');
       this.router.navigate(['/', selectedOption.id]);
-    } else if (selectedOption.type === 'user'){
+    } else if (selectedOption.type === 'user') {
       this.searchControl.setValue('');
       this.router.navigate(['/user-list', selectedOption.id]);
     }
   }
 
-  displayCupOrUser(option: {name: string}): string {
+  displayCupOrUser(option: { name: string }): string {
     return option ? option.name : '';
   }
 }
